@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="815px"
+    android:layout_height="495px"
+    >
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="815px"
+        android:layout_height="42px"
+        android:textSize="13px"
+        android:gravity="center"
+        android:background="#3a3a3a"
+        android:textColor="@android:color/white"
+        android:text="일반 차량으로 입차 - 차종 선택"
+        />
+    <GridView
+        android:id="@+id/panel_cartypeList"
+        android:layout_width="777px"
+        android:layout_height="438px"
+        android:numColumns="4"
+        android:verticalSpacing="9px"
+        android:horizontalSpacing="9px"
+        android:layout_marginTop="15px"
+        android:layout_marginLeft="19px"
+        android:layout_marginRight="19px"
+        >
+    </GridView>
+</LinearLayout>
