@@ -341,7 +341,7 @@ public class Garage_Service extends SQLiteOpenHelper {
 
         // DB에 있는 데이터를 쉽게 처리하기 위해 Cursor를 사용하여 테이블에 있는 모든 데이터 출력
         Cursor cursor = db.rawQuery("SELECT * FROM garage WHERE cooper_title = ? AND cooper_start >= " + cooper_start + " AND cooper_end <= " + cooper_end + " ", new String[] {cooper_title});
-        if (cursor.moveToNext()) {
+        while (cursor.moveToNext()) {
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("idx", cursor.getInt(0));
             map.put("start_date", cursor.getLong(1));

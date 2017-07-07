@@ -178,13 +178,7 @@ public class Cooper_Fragment extends Fragment {
 
                                 List<Map<String, Object>> plist = garage_service.getPeriod(coop_title, startDate, endDate);
                                 CooperPeriodAdapter P_adapter = new CooperPeriodAdapter(getActivity(), R.layout.cooper_period_item, plist);
-                                P_adapter.notifyDataSetChanged();
                                 cooperList.setAdapter(P_adapter);
-
-                                AlertDialog.Builder adb = new AlertDialog.Builder(getActivity());
-                                adb.setTitle(coop_title+""+startDate+""+endDate);
-                                adb.setNegativeButton("닫기", null);
-                                adb.show();
 
                             }
                         }

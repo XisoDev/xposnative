@@ -58,7 +58,7 @@ public class Dc_Cooper extends DialogFragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 int cooper_idx = (int) list.get(position).get("idx");
-                String cooper_title = (String) list.get(position).get("cooper_title");
+                String cooper_title = (String) list.get(position).get("coop_title");
 
                 double startDate = start_date;
                 double oneSecond = 1000;

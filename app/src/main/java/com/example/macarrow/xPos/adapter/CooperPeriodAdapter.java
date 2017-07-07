@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.example.macarrow.xPos.R;
+
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
 
@@ -53,10 +55,34 @@ public class CooperPeriodAdapter extends BaseAdapter {
             item = (CooperPeriod_Item) convertView.getTag();
 
         }
+
+        double startDate = (long) list.get(position).get("start_date");
+        double endDate = (long) list.get(position).get("end_date");
+        double gap = (endDate - startDate);
+        double oneSecond = 1000;
+        double oneMinute = oneSecond * 60;
+        double oneHour = oneMinute * 60;
+        double oneDay = oneHour * 24;
+        int minutes = (int) Math.floor((gap % oneHour) / oneMinute);
+        int hours = (int) Math.floor((gap % oneDay) / oneHour);
+        int days = (int) Math.floor(gap / oneDay);
+        String pt = "";
+        if (days != 0) {
+            pt += days + "일";
+        } if (hours != 0) {
+            pt += hours + "시간";
+        } if (minutes != 0) {
+            pt += minutes + "분";
+        } if(pt == "") {
+            pt = "0분";
+        }
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd HH:mm");
+
         item.cooperTitle.setText((String) list.get(position).get("cooper_title"));
-        item.cooperStart.setText((Integer) list.get(position).get("cooper_start") + "");
-        item.cooperEnd.setText((Integer) list.get(position).get("cooper_end") + "");
-        item.cooperPt.setText((Integer) list.get(position).get(11) + "");
+        item.cooperStart.setText(simpleDateFormat.format((long) list.get(position).get("start_date")) + "");
+        item.cooperEnd.setText(simpleDateFormat.format((long) list.get(position).get("end_date")) + "");
+        item.cooperPt.setText(pt + "");
         item.discountCooper.setText((Integer) list.get(position).get("discount_cooper") + "");
 
         return convertView;

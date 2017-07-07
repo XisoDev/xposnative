@@ -138,7 +138,6 @@ public class Payment_Input extends DialogFragment {
                 final int discount_self = (Integer.parseInt(Discount_self.getText().toString()));
                 final int pay_money = (Integer.parseInt(Pay_money.getText().toString()));
                 final int payAmount = pay_amount+pay_money;
-                final int cooper_idx = cooperIdx;
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
                 final int cooper_start = Integer.parseInt(sdf.format(startDate));
                 final int cooper_end = Integer.parseInt(sdf.format(endDate));
@@ -159,13 +158,14 @@ public class Payment_Input extends DialogFragment {
                                 if (discount_cooper > 0) {
 
                                     garageService.updateCooper(
-                                        cooper_idx,
+                                        cooperIdx,
                                         cooper_title,
                                         cooper_start,
                                         cooper_end,
                                         discount_cooper,
                                         minute_free,
                                         idx);
+
                                 }
 
                                 String is_out = "Y";
@@ -176,7 +176,7 @@ public class Payment_Input extends DialogFragment {
                                     is_paid = "N";
                                 }
 
-                                garageService.outCar(endDate, total_amount, payAmount, cooper_idx, discount_cooper, discount_self, is_out, is_paid, idx);
+                                garageService.outCar(endDate, total_amount, payAmount, cooperIdx, discount_cooper, discount_self, is_out, is_paid, idx);
                                 String lookup_type = "garage";
                                 String pay_type = "card";
                                 int pay_amount = Integer.parseInt(In_pay.getText().toString());
@@ -198,7 +198,7 @@ public class Payment_Input extends DialogFragment {
                                 if (discount_cooper > 0) {
 
                                     garageService.updateCooper(
-                                            cooper_idx,
+                                            cooperIdx,
                                             cooper_title,
                                             cooper_start,
                                             cooper_end,
@@ -215,7 +215,7 @@ public class Payment_Input extends DialogFragment {
                                     is_paid = "N";
                                 }
 
-                                garageService.outCar(endDate, total_amount, payAmount, cooper_idx, discount_cooper, discount_self, is_out, is_paid, idx);
+                                garageService.outCar(endDate, total_amount, payAmount, cooperIdx, discount_cooper, discount_self, is_out, is_paid, idx);
                                 String lookup_type = "garage";
                                 String pay_type = "cash";
                                 payment_services.insert(idx, lookup_type, pay_type, inPay, pay_money);
