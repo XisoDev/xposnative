@@ -158,8 +158,7 @@ public class Garage_Service extends SQLiteOpenHelper {
                              int cooper_start,
                              int cooper_end,
                              int discount_cooper,
-                             int basic_amount,
-                             int basic_minute,
+                             int minute_free,
                              int idx) {
         SQLiteDatabase db = getWritableDatabase();
         // 입력한 항목과 일치하는 행의 가격 정보 수정
@@ -168,8 +167,7 @@ public class Garage_Service extends SQLiteOpenHelper {
                 "cooper_start = " + cooper_start + ", " +
                 "cooper_end = " + cooper_end + ", " +
                 "discount_cooper = " + discount_cooper + ", " +
-                "basic_amount = " + basic_amount + ", " +
-                "basic_minute = " + basic_minute + " " +
+                "minute_free = " + minute_free + " " +
                 "WHERE idx = " + idx + ";");
         db.close();
 
@@ -336,14 +334,15 @@ public class Garage_Service extends SQLiteOpenHelper {
 
     }
 
-    public Map<String, Object> getCooper(String cooper_title) {
+    public List<Map<String, Object>> getPeriod(String cooper_title, int cooper_start, int cooper_end) {
         // 읽기가 가능하게 DB 열기
         SQLiteDatabase db = getReadableDatabase();
-        Map<String, Object> map = new HashMap<String, Object>();
+        List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 
         // DB에 있는 데이터를 쉽게 처리하기 위해 Cursor를 사용하여 테이블에 있는 모든 데이터 출력
-        Cursor cursor = db.rawQuery("SELECT * FROM garage WHERE cooper_title = " + cooper_title, null);
+        Cursor cursor = db.rawQuery("SELECT * FROM garage WHERE cooper_title = ? AND cooper_start >= " + cooper_start + " AND cooper_end <= " + cooper_end + " ", new String[] {cooper_title});
         if (cursor.moveToNext()) {
+            Map<String, Object> map = new HashMap<String, Object>();
             map.put("idx", cursor.getInt(0));
             map.put("start_date", cursor.getLong(1));
             map.put("end_date", cursor.getLong(2));
@@ -366,9 +365,10 @@ public class Garage_Service extends SQLiteOpenHelper {
             map.put("is_paid", cursor.getString(19));
             map.put("is_out", cursor.getString(20));
             map.put("is_cancel", cursor.getString(21));
+            list.add(map);
         }
 
-        return map;
+        return list;
 
     }
 

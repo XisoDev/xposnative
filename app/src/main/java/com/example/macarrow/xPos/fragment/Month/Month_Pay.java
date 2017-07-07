@@ -3,6 +3,7 @@ package com.example.macarrow.xPos.fragment.Month;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.Editable;
@@ -17,6 +18,8 @@ import android.widget.TextView;
 import com.example.macarrow.xPos.R;
 import com.example.macarrow.xPos.Services.Month_Service;
 import com.example.macarrow.xPos.Services.Payment_Services;
+import com.example.macarrow.xPos.fragment.Month_Fragment;
+
 import java.util.Map;
 
 public class Month_Pay extends DialogFragment {
@@ -124,6 +127,7 @@ public class Month_Pay extends DialogFragment {
             Pay_money.addTextChangedListener(textWatcher);
 
             View.OnClickListener clickListener = new View.OnClickListener() {
+                private FragmentManager fm = getFragmentManager();
                 @Override
                 public void onClick(View v) {
 
@@ -159,6 +163,7 @@ public class Month_Pay extends DialogFragment {
                                     String pay_type = "card";
                                     payment_services.insert(lookup_idx, lookup_type, pay_type, total_result, payMoney);
                                     dismiss();
+                                    fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment("possibility")).commit();
 
                                 }
                             });
@@ -186,6 +191,7 @@ public class Month_Pay extends DialogFragment {
                                     String pay_type = "cash";
                                     payment_services.insert(lookup_idx, lookup_type, pay_type, total_result, payMoney);
                                     dismiss();
+                                    fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment("possibility")).commit();
                                 }
                             });
                             do_cash.show();
@@ -194,6 +200,7 @@ public class Month_Pay extends DialogFragment {
                         case R.id.close_pay_month:
 
                             dismiss();
+                            fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment("possibility")).commit();
                             break;
                     }
                 }
@@ -301,6 +308,7 @@ public class Month_Pay extends DialogFragment {
             Pay_money.addTextChangedListener(textWatcher);
 
             View.OnClickListener clickListener = new View.OnClickListener() {
+                private FragmentManager fm = getFragmentManager();
                 @Override
                 public void onClick(View v) {
 
@@ -336,6 +344,7 @@ public class Month_Pay extends DialogFragment {
                                     String pay_type = "card";
                                     payment_services.insert(lookup_idx, lookup_type, pay_type, Amount, payMoney);
                                     dismiss();
+                                    fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment("possibility")).commit();
                                 }
                             });
                             do_card.show();
@@ -363,6 +372,7 @@ public class Month_Pay extends DialogFragment {
                                     String pay_type = "cash";
                                     payment_services.insert(lookup_idx, lookup_type, pay_type, Amount, payMoney);
                                     dismiss();
+                                    fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment("possibility")).commit();
                                 }
                             });
                             do_cash.show();
@@ -372,6 +382,7 @@ public class Month_Pay extends DialogFragment {
 
                             month_service.updatePay(pay_amount, edy, edm, edd, end_date, "N", idx);
                             dismiss();
+                            fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment("possibility")).commit();
                             break;
                     }
                 }

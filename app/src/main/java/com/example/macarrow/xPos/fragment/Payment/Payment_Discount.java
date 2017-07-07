@@ -155,6 +155,7 @@ public class Payment_Discount extends DialogFragment {
             public void onClick(View v) {
 
                 int discount_self = Integer.parseInt(Discount_self.getText().toString());
+                int discount_cooper = Integer.parseInt(Discount_cooper.getText().toString());
 
                 long end_date = 0;
                 if (is_out.equals("N")) {
@@ -173,6 +174,7 @@ public class Payment_Discount extends DialogFragment {
                             adb.setNegativeButton("닫기", null);
                             adb.show();
                             return;
+
                         } else {
                             Bundle args = new Bundle();
                             args.putInt("idx", idx);
@@ -194,21 +196,31 @@ public class Payment_Discount extends DialogFragment {
                             adb.setNegativeButton("닫기", null);
                             adb.show();
                             return;
+
+                        } else if (discount_cooper > 0) {
+
+                            AlertDialog.Builder adb = new AlertDialog.Builder(getActivity());
+                            adb.setTitle("이미 지정주차 할인을 받았습니다");
+                            adb.setNegativeButton("닫기", null);
+                            adb.show();
+                            return;
+
                         } else if (cooper_services.cooper() < 1) {
                             AlertDialog.Builder adb = new AlertDialog.Builder(getActivity());
                             adb.setTitle("지정주차 등록을 해주세요");
                             adb.setNegativeButton("확인", null);
                             adb.show();
                             return;
+
                         } else {
                             Bundle args = new Bundle();
                             args.putInt("idx", idx);
-                            args.putDouble("total_amount", resultCharge);
+                            args.putInt("total_amount", resultCharge);
                             args.putLong("end_date", end_date);
                             Dc_Cooper dc_cooper = new Dc_Cooper();
                             dc_cooper.setArguments(args);
                             dc_cooper.setCancelable(false);
-                            dc_cooper.show(getFragmentManager(), "payment_input");
+                            dc_cooper.show(getFragmentManager(), "dc_cooper");
                         }
                         dismiss();
                         break;
@@ -221,12 +233,14 @@ public class Payment_Discount extends DialogFragment {
                             adb.setNegativeButton("닫기", null);
                             adb.show();
                             return;
+
                         } else if (carTypeServices.car_type("Y") < 1) {
                             AlertDialog.Builder adb = new AlertDialog.Builder(getActivity());
                             adb.setTitle("일차등록을 해주세요");
                             adb.setNegativeButton("확인", null);
                             adb.show();
                             return;
+
                         } else {
                             Bundle args = new Bundle();
                             args.putInt("idx", idx);

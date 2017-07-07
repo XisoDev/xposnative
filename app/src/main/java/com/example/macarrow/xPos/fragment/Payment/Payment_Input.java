@@ -29,7 +29,9 @@ public class Payment_Input extends DialogFragment {
         final int idx = mArgs.getInt("idx");
         int totalAmount = mArgs.getInt("total_amount");
         final int cooperIdx = mArgs.getInt("cooper_idx");
-        int discountCooper = mArgs.getInt("discount_cooper");
+        final String cooper_title = mArgs.getString("cooper_title");
+        final int discountCooper = mArgs.getInt("discount_cooper");
+        final int minute_free = mArgs.getInt("minute_free");
         int discountSelf = mArgs.getInt("discount_self");
         final long endDate = mArgs.getLong("end_date");
 
@@ -59,6 +61,7 @@ public class Payment_Input extends DialogFragment {
         builder.setView(view);
 
         final Map<String, Object> map = garageService.getResultForUpdate(idx);
+
         // 타이틀
         String car_num = (String) map.get("car_num");
         String CarNum = "";
@@ -83,7 +86,7 @@ public class Payment_Input extends DialogFragment {
         final int inPay = totalAmount - (Integer) map.get("pay_amount") - Integer.parseInt(Discount_cooper.getText().toString()) - discountSelf;
         In_pay.setText(inPay+"");
         // 날짜가져오기
-        long startDate = (long) map.get("start_date");
+        final long startDate = (long) map.get("start_date");
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         Start_date.setText(simpleDateFormat.format(startDate));
         End_date.setText(simpleDateFormat.format(endDate));
@@ -136,6 +139,9 @@ public class Payment_Input extends DialogFragment {
                 final int pay_money = (Integer.parseInt(Pay_money.getText().toString()));
                 final int payAmount = pay_amount+pay_money;
                 final int cooper_idx = cooperIdx;
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+                final int cooper_start = Integer.parseInt(sdf.format(startDate));
+                final int cooper_end = Integer.parseInt(sdf.format(endDate));
                 if (Integer.parseInt(Pay_money.getText().toString()) <= 0) {
                     Pay_money.setText(inPay+"");
                 }
@@ -149,6 +155,19 @@ public class Payment_Input extends DialogFragment {
                         do_card.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+
+                                if (discount_cooper > 0) {
+
+                                    garageService.updateCooper(
+                                        cooper_idx,
+                                        cooper_title,
+                                        cooper_start,
+                                        cooper_end,
+                                        discount_cooper,
+                                        minute_free,
+                                        idx);
+                                }
+
                                 String is_out = "Y";
                                 String is_paid = "";
                                 if (total_amount-pay_money-pay_amount-discount_cooper-discount_self == 0) {
@@ -175,6 +194,19 @@ public class Payment_Input extends DialogFragment {
                         do_cash.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+
+                                if (discount_cooper > 0) {
+
+                                    garageService.updateCooper(
+                                            cooper_idx,
+                                            cooper_title,
+                                            cooper_start,
+                                            cooper_end,
+                                            discount_cooper,
+                                            minute_free,
+                                            idx);
+                                }
+
                                 String is_out = "Y";
                                 String is_paid = "";
                                 if (total_amount-pay_money-payAmount-discount_cooper-discount_self == 0) {
@@ -182,6 +214,7 @@ public class Payment_Input extends DialogFragment {
                                 } else {
                                     is_paid = "N";
                                 }
+
                                 garageService.outCar(endDate, total_amount, payAmount, cooper_idx, discount_cooper, discount_self, is_out, is_paid, idx);
                                 String lookup_type = "garage";
                                 String pay_type = "cash";
@@ -199,6 +232,14 @@ public class Payment_Input extends DialogFragment {
                         force_out.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+
+                                if (discountCooper > 0) {
+                                    AlertDialog.Builder adb = new AlertDialog.Builder(getActivity());
+                                    adb.setTitle("지정주차 요금이 있어 결제 없이 출차가 불가능합니다");
+                                    adb.setNegativeButton("닫기", null);
+                                    adb.show();
+                                }
+
                                 String is_out = "Y";
                                 String is_paid = "";
 

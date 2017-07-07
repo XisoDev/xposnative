@@ -58,28 +58,29 @@ public class Dc_Cooper extends DialogFragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 int cooper_idx = (int) list.get(position).get("idx");
-                int minute_unit = (int) list.get(position).get("minute_unit");
-                int minute_max = (int) list.get(position).get("minute_max");
+                String cooper_title = (String) list.get(position).get("cooper_title");
 
-                int amount_unit = (int) list.get(position).get("amount_unit");
-                int basic_amount = 0;
-                int basic_minute = 0;
                 double startDate = start_date;
-
                 double oneSecond = 1000;
                 double oneMinute = oneSecond * 60;
                 int cooper_charge = 0;
                 double park_min = Math.floor(((double) endDate - startDate) / oneMinute);
-                double free_min = minute_max;
+                int basic_amount = (int) (Integer) map.get("basic_amount");
+                int amount_unit = (int) (Integer) map.get("amount_unit");
+                int minute_free = (int) (Integer) map.get("minute_free");
+                double free_min = (int) list.get(position).get("minute_max") + minute_free;
+                double basic_min= (int) (Integer) map.get("basic_minute");
+                double minute_unit = (int) (Integer) map.get("minute_unit");
 
                 if (park_min - free_min > 0) {
-                    if(park_min - free_min - basic_minute > 0){
-                        double added_min = Math.ceil((park_min - free_min - basic_minute) / minute_unit);
+                    if(park_min - free_min - basic_min > 0){
+                        double added_min = Math.ceil((park_min - free_min - basic_min) / minute_unit);
                         cooper_charge = (int) (basic_amount + (added_min * amount_unit));
                     } else {
                         cooper_charge = basic_amount;
                     }
                 }
+
                 int discount_cooper = 0;
                 if (totalAmount < cooper_charge) {
                     discount_cooper = totalAmount;
@@ -87,22 +88,13 @@ public class Dc_Cooper extends DialogFragment {
                     discount_cooper = totalAmount - cooper_charge;
                 }
 
-                // 지정할인해서 요금이 더 커진다면?
-
-//                garageService.updateCooper(
-//                        cooper_idx,
-//                        minute_unit,
-//                        minute_max,
-//                        amount_unit,
-//                        basic_amount,
-//                        basic_minute,
-//                        idx);
-
                 Bundle args = new Bundle();
                 args.putInt("idx", idx);
                 args.putInt("total_amount", totalAmount);
                 args.putInt("cooper_idx", cooper_idx);
+                args.putString("cooper_title", cooper_title);
                 args.putInt("discount_cooper", discount_cooper);
+                args.putInt("minute_free", (int) list.get(position).get("minute_max") + minute_free);
                 args.putLong("end_date", endDate);
                 Payment_Input payment_input = new Payment_Input();
                 payment_input.setArguments(args);

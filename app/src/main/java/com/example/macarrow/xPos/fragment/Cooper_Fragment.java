@@ -27,6 +27,7 @@ import android.widget.Toast;
 import com.example.macarrow.xPos.R;
 import com.example.macarrow.xPos.Services.Cooper_Services;
 import com.example.macarrow.xPos.Services.Garage_Service;
+import com.example.macarrow.xPos.adapter.CooperPeriodAdapter;
 import com.example.macarrow.xPos.adapter.CooperViewAdapter;
 import com.example.macarrow.xPos.fragment.Cooper.Cooper_Add;
 import com.example.macarrow.xPos.fragment.Month.Month_Add;
@@ -151,13 +152,6 @@ public class Cooper_Fragment extends Fragment {
                 Search_start.setOnClickListener(onClickListener);
                 Search_end.setOnClickListener(onClickListener);
 
-
-
-
-
-
-
-
                 Search_btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -182,28 +176,18 @@ public class Cooper_Fragment extends Fragment {
 
                             } else {
 
-                                Map<String, Object> map = garage_service.getCooper(coop_title);
+                                List<Map<String, Object>> plist = garage_service.getPeriod(coop_title, startDate, endDate);
+                                CooperPeriodAdapter P_adapter = new CooperPeriodAdapter(getActivity(), R.layout.cooper_period_item, plist);
+                                P_adapter.notifyDataSetChanged();
+                                cooperList.setAdapter(P_adapter);
 
                                 AlertDialog.Builder adb = new AlertDialog.Builder(getActivity());
-                                adb.setTitle(endDate+"개");
+                                adb.setTitle(coop_title+""+startDate+""+endDate);
                                 adb.setNegativeButton("닫기", null);
                                 adb.show();
 
                             }
                         }
-
-
-
-
-
-
-
-
-
-//                        CooperViewAdapter P_adapter = new CooperViewAdapter(getActivity(), R.layout.cooper_item, plist);
-//                        P_adapter.notifyDataSetChanged();
-//                        cooperList.setAdapter(P_adapter);
-
                     }
                 });
                 break;
