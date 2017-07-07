@@ -104,6 +104,6 @@ public class Dc_Day_Car extends DialogFragment{
     public void onResume() {
         super.onResume();
         Window window = getDialog().getWindow();
-        window.setLayout(845, WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setLayout(835, WindowManager.LayoutParams.WRAP_CONTENT);
     }
 }

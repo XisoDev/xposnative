@@ -30,6 +30,7 @@ import com.example.macarrow.xPos.Services.Month_Service;
 import com.example.macarrow.xPos.adapter.PanelCarTypeViewAdapter;
 import com.example.macarrow.xPos.adapter.PanelMonthTypeViewAdapter;
 import com.example.macarrow.xPos.fragment.Calcu_Fragment;
+import com.example.macarrow.xPos.fragment.Config.Config_CarType_Add;
 import com.example.macarrow.xPos.fragment.Cooper_Fragment;
 import com.example.macarrow.xPos.fragment.History_Fragment;
 import com.example.macarrow.xPos.fragment.Config_Fragment;
@@ -204,94 +205,13 @@ public class MainActivity extends Activity {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
 
-                                    AlertDialog.Builder adb = new AlertDialog.Builder(activity);
-
-                                    View view = activity.getLayoutInflater().inflate(R.layout.config_addcartype, null);
-                                    final TextView titleCarType = (TextView)view.findViewById(R.id.title_car_type);
-                                    final Button insertCartype = (Button)view.findViewById(R.id.insert_cartype);
-                                    final Button closeCartype = (Button)view.findViewById(R.id.close_cartype);
-                                    final EditText Car_type_title = (EditText)view.findViewById(R.id.car_type_title);
-                                    final EditText Minute_unit = (EditText)view.findViewById(R.id.minute_unit);
-                                    final EditText Minute_free = (EditText)view.findViewById(R.id.minute_free);
-                                    final EditText Amount_unit = (EditText)view.findViewById(R.id.amount_unit);
-                                    final EditText Basic_amount = (EditText)view.findViewById(R.id.basic_amount);
-                                    final EditText Basic_minute = (EditText)view.findViewById(R.id.basic_minute);
-
-                                    adb.setView(view);
-                                    // 다이얼 로그 크기 조정
-                                    final Dialog cts = adb.create();
-                                    WindowManager.LayoutParams params = new WindowManager.LayoutParams();
-                                    params.copyFrom(cts.getWindow().getAttributes());
-                                    params.width = 845;
-                                    params.height = WindowManager.LayoutParams.WRAP_CONTENT;
-                                    cts.show();
-                                    Window window = cts.getWindow();
-                                    window.setAttributes(params);
-                                    window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-                                    titleCarType.setText("차종 추가");
-                                    insertCartype.setVisibility(View.VISIBLE);
-
-                                    View.OnClickListener clickListener = new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            switch (v.getId()) {
-
-                                                case R.id.insert_cartype :
-
-                                                    try {
-
-                                                        if (Car_type_title.getText().toString().equals("")) {
-                                                            Toast.makeText(v.getContext(), "차종명을 입력하지 않았습니다", Toast.LENGTH_SHORT).show();
-                                                            return;
-
-                                                        } else if (Minute_free.getText().toString().equals("")) {
-                                                            Toast.makeText(v.getContext(), "최초무료시간을 입력하지 않았습니다", Toast.LENGTH_SHORT).show();
-                                                            return;
-
-                                                        } else if (Basic_amount.getText().toString().equals("")) {
-                                                            Toast.makeText(v.getContext(), "기본요금을 입력하지 않았습니다", Toast.LENGTH_SHORT).show();
-                                                            return;
-
-                                                        } else if (Basic_minute.getText().toString().equals("")) {
-                                                            Toast.makeText(v.getContext(), "기본시간을 입력하지 않았습니다", Toast.LENGTH_SHORT).show();
-                                                            return;
-
-                                                        } else if (Amount_unit.getText().toString().equals("")) {
-                                                            Toast.makeText(v.getContext(), "추가요금을 입력하지 않았습니다", Toast.LENGTH_SHORT).show();
-                                                            return;
-
-                                                        } else if (Minute_unit.getText().toString().equals("")) {
-                                                            Toast.makeText(v.getContext(), "추가요금 단위(분)을 입력하지 않았습니다", Toast.LENGTH_SHORT).show();
-                                                            return;
-
-                                                        }
-
-                                                    } catch (Exception e) {
-
-                                                        e.printStackTrace();
-
-                                                    }
-
-                                                    String car_type_title = Car_type_title.getText().toString();
-                                                    int minute_free = Integer.parseInt(Minute_free.getText().toString());
-                                                    int basic_amount = Integer.parseInt(Basic_amount.getText().toString());
-                                                    int basic_minute = Integer.parseInt(Basic_minute.getText().toString());
-                                                    int amount_unit = Integer.parseInt(Amount_unit.getText().toString());
-                                                    int minute_unit = Integer.parseInt(Minute_unit.getText().toString());
-                                                    carTypeServices.insert(car_type_title, minute_free, basic_amount, basic_minute, amount_unit, minute_unit, "N");
-                                                    cts.dismiss();
-                                                    break;
-
-                                                case R.id.close_cartype :
-
-                                                    cts.dismiss();
-                                                    break;
-                                            }
-                                        }
-                                    };
-                                    insertCartype.setOnClickListener(clickListener);
-                                    closeCartype.setOnClickListener(clickListener);
+                                    Bundle args = new Bundle();
+                                    args.putString("status", "new");
+                                    args.putString("is_daycar", "N");
+                                    Config_CarType_Add config_carType_add = new Config_CarType_Add();
+                                    config_carType_add.setArguments(args);
+                                    config_carType_add.setCancelable(false);
+                                    config_carType_add.show(getFragmentManager(), "config_carType_add");
                                 }
                             });
                             adb.show();
@@ -393,10 +313,12 @@ public class MainActivity extends Activity {
                                 }
                             });
                         }
-
                         break;
 
                     case R.id.outCarChk:
+
+                        final Map<String, Object> map = garageService.getByIdx(carNum);
+                        final int idx = (int) map.get("idx");
 
                         if (carNum.equals("관리번호")) {
 
@@ -404,6 +326,34 @@ public class MainActivity extends Activity {
                             adb.setTitle("관리번호를 입력해주세요");
                             adb.setNegativeButton("닫기", null);
                             adb.show();
+
+                        } else if (garageService.findMonthCarNum(carNum) > 0) {
+
+                            AlertDialog.Builder adb = new AlertDialog.Builder(activity);
+                            adb.setTitle("월차 출차");
+                            adb.setNegativeButton("다른 번호 입력", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                }
+                            });
+                            adb.setPositiveButton(carNum+"월차 차량을 출차하시겠습니까?", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    String is_out = "Y";
+                                    String is_paid = "";
+                                    int total_amount = 0;
+                                    long endDate = System.currentTimeMillis();
+                                    if (total_amount > 0) {
+                                        is_paid = "N";
+                                    } else {
+                                        is_paid = "Y";
+                                    }
+                                    garageService.updateForceOut(is_out, total_amount, endDate, is_paid, idx);
+                                    fm.beginTransaction().replace(R.id.content_fragment, new Current_Fragment()).commit();
+                                }
+                            });
+                            adb.show();
+                            mainField.setText("관리번호");
 
                         } else if (garageService.doubleCarNum(carNum) != 1) {
 
@@ -415,16 +365,13 @@ public class MainActivity extends Activity {
 
                         } else {
 
-                            String car_num = mainField.getText().toString();
                             Bundle args = new Bundle();
-                            args.putString("car_num", car_num);
+                            args.putInt("idx", idx);
                             Payment_Discount payment_discount = new Payment_Discount();
                             payment_discount.setArguments(args);
                             payment_discount.setCancelable(false);
                             payment_discount.show(getFragmentManager(), "payment_discount");
-
                             mainField.setText("관리번호");
-
                         }
                         break;
 
@@ -432,54 +379,13 @@ public class MainActivity extends Activity {
 
                         if (carNum.equals("관리번호")) {
 
-                            View view = activity.getLayoutInflater().inflate(R.layout.panel_cartypelist, null);
-                            GridView gridView = (GridView)view.findViewById(R.id.panel_cartypeList);
-                            final List<Map<String, Object>> list = monthService.getByCarNum(toDay, "");
-                            TextView Title = (TextView)view.findViewById(R.id.title);
-                            PanelMonthTypeViewAdapter adapter = new PanelMonthTypeViewAdapter(activity, R.layout.panel_monthlist_item, list);
-                            gridView.setAdapter(adapter);
+                            Bundle args = new Bundle();
+                            args.putString("car_num", "");
+                            Month_Carlist month_car = new Month_Carlist();
+                            month_car.setArguments(args);
+                            month_car.setCancelable(false);
+                            month_car.show(getFragmentManager(), "month_car");
 
-                            // 타이틀
-                            Title.setText("월차 선택");
-
-                            AlertDialog.Builder openMonthDialog = new AlertDialog.Builder(activity);
-                            openMonthDialog.setNegativeButton("닫기",null);
-                            openMonthDialog.setView(view);
-
-                            // 다이얼 로그 크기 조정
-                            final Dialog dialog = openMonthDialog.create();
-                            LayoutParams params = new LayoutParams();
-                            params.copyFrom(dialog.getWindow().getAttributes());
-                            params.width = 845;
-                            params.height = WindowManager.LayoutParams.WRAP_CONTENT;
-                            dialog.show();
-                            Window window = dialog.getWindow();
-                            window.setAttributes(params);
-                            window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-                            gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                                FragmentManager fm = getFragmentManager();
-                                @Override
-                                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                                    int idx = (int) list.get(position).get("idx");
-                                    String car_num = (String) list.get(position).get("car_num");
-                                    long start_date = System.currentTimeMillis();
-                                    String car_type_title = (String) list.get(position).get("car_type_title");
-
-                                    if (garageService.doubleCarNum(car_num) > 0) {
-                                        AlertDialog.Builder adb = new AlertDialog.Builder(activity);
-                                        adb.setTitle("입차된 월차입니다");
-                                        adb.setNegativeButton("닫기",null);
-                                        adb.show();
-                                        return;
-                                    } else {
-                                        garageService.insert(start_date, car_num, car_type_title, 0, 0, 0, 0, 0, idx, 0, 0, 0);
-                                        fm.beginTransaction().replace(R.id.content_fragment, new Current_Fragment()).commit();
-                                        dialog.dismiss();
-                                    }
-                                }
-                            });
                         } else if (monthService.findCarNum(toDay, carNum) > 0) {
 
                             AlertDialog.Builder adb = new AlertDialog.Builder(activity);

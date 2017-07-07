@@ -65,7 +65,7 @@ public class Month_Carlist extends DialogFragment{
                 long start_date = System.currentTimeMillis();
                 String car_type_title = (String) list.get(position).get("car_type_title");
 
-                if (garageService.doubleCarNum(car_num) > 0) {
+                if (garageService.findMonthCarNum(car_num) > 0) {
                     AlertDialog.Builder adb = new AlertDialog.Builder(getActivity());
                     adb.setTitle("입차된 월차입니다");
                     adb.setNegativeButton("닫기",null);
@@ -85,6 +85,6 @@ public class Month_Carlist extends DialogFragment{
     public void onResume() {
         super.onResume();
         Window window = getDialog().getWindow();
-        window.setLayout(845, WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setLayout(835, WindowManager.LayoutParams.WRAP_CONTENT);
     }
 }

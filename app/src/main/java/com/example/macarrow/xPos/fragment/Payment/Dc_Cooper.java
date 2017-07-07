@@ -60,6 +60,7 @@ public class Dc_Cooper extends DialogFragment {
                 int cooper_idx = (int) list.get(position).get("idx");
                 int minute_unit = (int) list.get(position).get("minute_unit");
                 int minute_max = (int) list.get(position).get("minute_max");
+
                 int amount_unit = (int) list.get(position).get("amount_unit");
                 int basic_amount = 0;
                 int basic_minute = 0;
@@ -117,6 +118,6 @@ public class Dc_Cooper extends DialogFragment {
     public void onResume() {
         super.onResume();
         Window window = getDialog().getWindow();
-        window.setLayout(845, WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setLayout(835, WindowManager.LayoutParams.WRAP_CONTENT);
     }
 }
