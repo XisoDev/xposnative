@@ -182,7 +182,7 @@ public class Current_Fragment extends Fragment {
 
                                 if (month_idx > 0) {
                                     AlertDialog.Builder adb = new AlertDialog.Builder(getActivity());
-                                    adb.setTitle("출차 - " + car_num);
+                                    adb.setTitle("월차출차 - " + car_num);
                                     adb.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
