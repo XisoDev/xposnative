@@ -106,9 +106,9 @@ public class HistoryViewAdapter extends BaseAdapter {
         if (monthIdx > 0) {
             item.totalAmount.setText(0 + "");
         } else if(monthIdx == 0 && is_out.equals("Y")) {
-            item.totalAmount.setText(result_charge + "");
-        } else if (monthIdx == 0 && is_out.equals("N")){
             item.totalAmount.setText(total_amount + "");
+        } else if (monthIdx == 0 && is_out.equals("N")){
+            item.totalAmount.setText(result_charge + "");
         }
 
         // 할인 금액

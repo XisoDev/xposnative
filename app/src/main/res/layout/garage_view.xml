@@ -20,6 +20,7 @@
         android:orientation="horizontal"
         >
         <LinearLayout
+            android:id="@+id/btn_layout"
             android:layout_width="165px"
             android:layout_height="453px"
             android:orientation="vertical"
@@ -31,6 +32,7 @@
                 android:gravity="center"
                 android:orientation="vertical"
                 android:background="#fc604e"
+                android:visibility="gone"
                 >
                 <ImageView
                     android:layout_width="33px"
@@ -46,12 +48,35 @@
                     />
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/pay_car"
+                android:layout_width="165px"
+                android:layout_height="151px"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:background="#fc604e"
+                android:visibility="gone"
+                >
+                <ImageView
+                    android:layout_width="33px"
+                    android:layout_height="33px"
+                    android:background="@drawable/tab_current"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="결제"
+                    android:textSize="15px"
+                    android:textColor="@android:color/white"
+                    />
+            </LinearLayout>
+            <LinearLayout
                 android:id="@+id/cancel_car"
                 android:layout_width="165px"
                 android:layout_height="151px"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:background="#028ecf"
+                android:visibility="gone"
                 >
                 <ImageView
                     android:layout_width="33px"
@@ -67,12 +92,35 @@
                     />
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/cancel_out"
+                android:layout_width="165px"
+                android:layout_height="151px"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:background="#028ecf"
+                android:visibility="gone"
+                >
+                <ImageView
+                    android:layout_width="33px"
+                    android:layout_height="33px"
+                    android:background="@drawable/tab_current"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="출차취소"
+                    android:textSize="15px"
+                    android:textColor="@android:color/white"
+                    />
+            </LinearLayout>
+            <LinearLayout
                 android:id="@+id/printin_car"
                 android:layout_width="165px"
                 android:layout_height="151px"
                 android:background="#1dbd92"
                 android:gravity="center"
                 android:orientation="vertical"
+                android:visibility="gone"
                 >
                 <ImageView
                     android:layout_width="33px"

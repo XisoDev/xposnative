@@ -318,7 +318,6 @@ public class MainActivity extends Activity {
                     case R.id.outCarChk:
 
                         final Map<String, Object> map = garageService.getByIdx(carNum);
-                        final int idx = (int) map.get("idx");
 
                         if (carNum.equals("관리번호")) {
 
@@ -348,7 +347,7 @@ public class MainActivity extends Activity {
                                     } else {
                                         is_paid = "Y";
                                     }
-                                    garageService.updateForceOut(is_out, total_amount, endDate, is_paid, idx);
+                                    garageService.updateForceOut(is_out, total_amount, endDate, is_paid, (int) map.get("idx"));
                                     fm.beginTransaction().replace(R.id.content_fragment, new Current_Fragment()).commit();
                                 }
                             });
@@ -366,7 +365,7 @@ public class MainActivity extends Activity {
                         } else {
 
                             Bundle args = new Bundle();
-                            args.putInt("idx", idx);
+                            args.putInt("idx", (int) map.get("idx"));
                             Payment_Discount payment_discount = new Payment_Discount();
                             payment_discount.setArguments(args);
                             payment_discount.setCancelable(false);

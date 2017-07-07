@@ -195,25 +195,19 @@ public class Garage_Service extends SQLiteOpenHelper {
 
     }
 
-    public void cancelCar(String is_cancel,
-                          String is_out,
-                          long end_date,
-                          int cooper_idx,
-                          int discount_cooper,
-                          int discount_self,
-                          int total_amount,
-                          int pay_amount,
+    public void cancelCar(long end_date,
                           int idx) {
         SQLiteDatabase db = getWritableDatabase();
         // 입력한 항목과 일치하는 행의 가격 정보 수정
-        db.execSQL("UPDATE garage SET is_cancel = '" + is_cancel + "', " +
-                "is_out = '" + is_out + "', " +
+        db.execSQL("UPDATE garage SET is_cancel = 'Y', " +
+                "is_out = 'Y', " +
+                "is_paid = 'N', " +
                 "end_date = " + end_date + ", " +
-                "cooper_idx = " + cooper_idx + ", " +
-                "discount_cooper = " + discount_cooper + ", " +
-                "discount_self = " + discount_self + ", " +
-                "total_amount = " + total_amount + ", " +
-                "pay_amount = " + pay_amount + " " +
+                "cooper_idx = 0, " +
+                "discount_cooper = 0, " +
+                "discount_self = 0, " +
+                "total_amount = 0, " +
+                "pay_amount =  0 " +
                 "WHERE idx = " + idx + ";");
         db.close();
 
