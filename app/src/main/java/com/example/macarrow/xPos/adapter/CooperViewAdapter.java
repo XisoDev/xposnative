@@ -37,18 +37,14 @@ public class CooperViewAdapter extends BaseAdapter {
             TextView Coop_title = (TextView) convertView.findViewById(R.id.coop_title);
             TextView Coop_tel = (TextView) convertView.findViewById(R.id.coop_tel);
             TextView Coop_user_name = (TextView) convertView.findViewById(R.id.coop_user_name);
-            TextView Minute_unit = (TextView) convertView.findViewById(R.id.minute_unit);
             TextView Minute_max = (TextView) convertView.findViewById(R.id.minute_max);
-            TextView Amount_unit = (TextView) convertView.findViewById(R.id.amount_unit);
             TextView Is_end = (TextView) convertView.findViewById(R.id.is_end);
 
             item = new CooperView_Item();
             item.coopTitle = Coop_title;
             item.coopTel = Coop_tel;
             item.coopUserName = Coop_user_name;
-            item.minuteUnit = Minute_unit;
             item.minuteMax = Minute_max;
-            item.amountUnit = Amount_unit;
             item.isEnd = Is_end;
             convertView.setTag(item);
 
@@ -60,9 +56,7 @@ public class CooperViewAdapter extends BaseAdapter {
         item.coopTitle.setText((String) list.get(position).get("coop_title"));
         item.coopTel.setText((String) list.get(position).get("coop_tel"));
         item.coopUserName.setText((String) list.get(position).get("coop_user_name"));
-        item.minuteUnit.setText((Integer) list.get(position).get("minute_unit") + "");
         item.minuteMax.setText((Integer) list.get(position).get("minute_max") + "");
-        item.amountUnit.setText((Integer) list.get(position).get("amount_unit") + "");
         item.isEnd.setText((String) list.get(position).get("is_end"));
 
         String isEnd = (String) list.get(position).get("is_end");
@@ -98,9 +92,7 @@ class CooperView_Item {
     TextView coopTitle;
     TextView coopTel;
     TextView coopUserName;
-    TextView minuteUnit;
     TextView minuteMax;
-    TextView amountUnit;
     TextView isEnd;
 
 }

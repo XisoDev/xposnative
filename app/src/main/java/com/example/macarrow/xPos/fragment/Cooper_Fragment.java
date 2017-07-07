@@ -28,6 +28,8 @@ import com.example.macarrow.xPos.R;
 import com.example.macarrow.xPos.Services.Cooper_Services;
 import com.example.macarrow.xPos.Services.Garage_Service;
 import com.example.macarrow.xPos.adapter.CooperViewAdapter;
+import com.example.macarrow.xPos.fragment.Cooper.Cooper_Add;
+import com.example.macarrow.xPos.fragment.Month.Month_Add;
 import com.melnykov.fab.FloatingActionButton;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -74,88 +76,13 @@ public class Cooper_Fragment extends Fragment {
                     @Override
                     public void onClick(View v) {
 
-                        final AlertDialog.Builder adb = new AlertDialog.Builder(getActivity());
+                        Bundle args = new Bundle();
+                        args.putString("status", "new");
+                        Cooper_Add cooper_add = new Cooper_Add();
+                        cooper_add.setArguments(args);
+                        cooper_add.setCancelable(false);
+                        cooper_add.show(getFragmentManager(), "cooper_add");
 
-                        View view = getActivity().getLayoutInflater().inflate(R.layout.cooper_add, null);
-                        final TextView Title_cooper = (TextView) view.findViewById(R.id.title_cooper);
-                        final EditText Coop_title = (EditText) view.findViewById(R.id.coop_title);
-                        final EditText Coop_tel = (EditText) view.findViewById(R.id.coop_tel);
-                        final EditText Coop_address = (EditText) view.findViewById(R.id.coop_address);
-                        final EditText Coop_user_name = (EditText) view.findViewById(R.id.coop_user_name);
-                        final EditText Minute_max = (EditText) view.findViewById(R.id.minute_max);
-                        final Button Add_cooper = (Button) view.findViewById(R.id.add_cooper);
-                        final Button Close_cooper = (Button) view.findViewById(R.id.close_cooper);
-
-                        adb.setView(view);
-                        // 다이얼 로그 크기 조정
-                        final Dialog dialog = adb.create();
-                        WindowManager.LayoutParams params = new WindowManager.LayoutParams();
-                        params.copyFrom(dialog.getWindow().getAttributes());
-                        params.width = 845;
-                        params.height = WindowManager.LayoutParams.WRAP_CONTENT;
-                        dialog.show();
-                        Window window = dialog.getWindow();
-                        window.setAttributes(params);
-                        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-                        Title_cooper.setText("업체 추가");
-                        Add_cooper.setVisibility(View.VISIBLE);
-
-                        View.OnClickListener clickListener = new View.OnClickListener() {
-
-                            @Override
-                            public void onClick(View v) {
-                                switch (v.getId()) {
-
-                                    case R.id.add_cooper:
-
-                                        try {
-
-                                            if (Coop_title.getText().toString().equals("")) {
-                                                Toast.makeText(v.getContext(), "업체 명을 입력하지 않았습니다", Toast.LENGTH_SHORT).show();
-                                                return;
-
-                                            } else if (Coop_tel.getText().toString().equals("")) {
-                                                Toast.makeText(v.getContext(), "전화번호를 입력하지 않았습니다", Toast.LENGTH_SHORT).show();
-                                                return;
-
-                                            } else if (Coop_address.getText().toString().equals("")) {
-                                                Toast.makeText(v.getContext(), "주소를 입력하지 않았습니다", Toast.LENGTH_SHORT).show();
-                                                return;
-
-                                            } else if (Coop_user_name.getText().toString().equals("")) {
-                                                Toast.makeText(v.getContext(), "대표자 명을 입력하지 않았습니다", Toast.LENGTH_SHORT).show();
-                                                return;
-
-                                            } else if (Minute_max.getText().toString().equals("")) {
-                                                Toast.makeText(v.getContext(), "최대 지원 시간 (분)을 입력하지 않았습니다", Toast.LENGTH_SHORT).show();
-                                                return;
-                                            }
-
-                                        } catch (Exception e) {
-                                            e.printStackTrace();
-                                        }
-
-                                        String coop_title = Coop_title.getText().toString();
-                                        String coop_tel = Coop_tel.getText().toString();
-                                        String coop_address = Coop_address.getText().toString();
-                                        String coop_user_name = Coop_user_name.getText().toString();
-                                        int minute_max = Integer.parseInt(Minute_max.getText().toString());
-                                        cooper_services.insert(coop_title, coop_tel, coop_address, coop_user_name, minute_max);
-                                        fm.beginTransaction().replace(R.id.content_fragment, new Cooper_Fragment(cooper)).commit();
-                                        dialog.dismiss();
-                                        break;
-
-                                    case R.id.close_cooper:
-
-                                        fm.beginTransaction().replace(R.id.content_fragment, new Cooper_Fragment(cooper)).commit();
-                                        dialog.dismiss();
-                                        break;
-                                }
-                            }
-                        };
-                        Add_cooper.setOnClickListener(clickListener);
-                        Close_cooper.setOnClickListener(clickListener);
                     }
                 });
 
@@ -164,136 +91,14 @@ public class Cooper_Fragment extends Fragment {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                         final int idx = (int) list.get(position).get("idx");
-                        final AlertDialog.Builder adb = new AlertDialog.Builder(getActivity());
+                        Bundle args = new Bundle();
+                        args.putString("status", "modify");
+                        args.putInt("idx", idx);
+                        Cooper_Add cooper_add = new Cooper_Add();
+                        cooper_add.setArguments(args);
+                        cooper_add.setCancelable(false);
+                        cooper_add.show(getFragmentManager(), "cooper_add");
 
-                        View v = getActivity().getLayoutInflater().inflate(R.layout.cooper_add, null);
-                        final TextView Title_cooper = (TextView) v.findViewById(R.id.title_cooper);
-                        final EditText Coop_title = (EditText) v.findViewById(R.id.coop_title);
-                        final EditText Coop_tel = (EditText) v.findViewById(R.id.coop_tel);
-                        final EditText Coop_address = (EditText) v.findViewById(R.id.coop_address);
-                        final EditText Coop_user_name = (EditText) v.findViewById(R.id.coop_user_name);
-                        final EditText Minute_max = (EditText) v.findViewById(R.id.minute_max);
-                        final LinearLayout Is_end_lay = (LinearLayout) v.findViewById(R.id.is_end_lay);
-                        final Switch Is_end = (Switch) v.findViewById(R.id.is_end);
-                        final Button Update_cooper = (Button) v.findViewById(R.id.update_cooper);
-                        final Button Delete_cooper = (Button) v.findViewById(R.id.delete_cooper);
-                        final Button Close_cooper = (Button) v.findViewById(R.id.close_cooper);
-
-                        adb.setView(v);
-                        // 다이얼 로그 크기 조정
-                        final Dialog dialog = adb.create();
-                        WindowManager.LayoutParams params = new WindowManager.LayoutParams();
-                        params.copyFrom(dialog.getWindow().getAttributes());
-                        params.width = 845;
-                        params.height = WindowManager.LayoutParams.WRAP_CONTENT;
-                        dialog.show();
-                        Window window = dialog.getWindow();
-                        window.setAttributes(params);
-                        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-                        Title_cooper.setText("업체 수정 / 삭제");
-                        Is_end_lay.setVisibility(View.VISIBLE);
-                        Update_cooper.setVisibility(View.VISIBLE);
-                        Delete_cooper.setVisibility(View.VISIBLE);
-
-                        final Map<String, Object> map = cooper_services.getResultForUpdate(idx);
-                        Coop_title.setText((String) map.get("coop_title"));
-                        Coop_tel.setText((String) map.get("coop_tel"));
-                        Coop_address.setText((String) map.get("coop_address"));
-                        Coop_user_name.setText((String) map.get("coop_user_name"));
-                        Minute_max.setText((Integer) map.get("minute_max") + "");
-
-                        // Switch
-                        final String isEnd = (String) map.get("is_end");
-                        if (isEnd.equals("N")) {
-                            Is_end.setChecked(true);
-                            Is_end.setText("활성");
-                        } else if (isEnd.equals("Y")) {
-                            Is_end.setChecked(false);
-                            Is_end.setText("종료");
-                        }
-
-                        Is_end.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                            @Override
-                            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                                if (isChecked) {
-                                    Is_end.setText("활성");
-                                } else if (!isChecked) {
-                                    Is_end.setText("종료");
-                                }
-                            }
-                        });
-
-                        View.OnClickListener clickListener = new View.OnClickListener() {
-                            private FragmentManager fm = getFragmentManager();
-                            @Override
-                            public void onClick(View v) {
-                                switch (v.getId()) {
-
-                                    case R.id.update_cooper:
-
-                                        try {
-
-                                            if (Coop_title.getText().toString().equals("")) {
-                                                Toast.makeText(v.getContext(), "업체 명을 입력하지 않았습니다", Toast.LENGTH_SHORT).show();
-                                                return;
-
-                                            } else if (Coop_tel.getText().toString().equals("")) {
-                                                Toast.makeText(v.getContext(), "전화번호를 입력하지 않았습니다", Toast.LENGTH_SHORT).show();
-                                                return;
-
-                                            } else if (Coop_address.getText().toString().equals("")) {
-                                                Toast.makeText(v.getContext(), "주소를 입력하지 않았습니다", Toast.LENGTH_SHORT).show();
-                                                return;
-
-                                            } else if (Coop_user_name.getText().toString().equals("")) {
-                                                Toast.makeText(v.getContext(), "대표자 명을 입력하지 않았습니다", Toast.LENGTH_SHORT).show();
-                                                return;
-
-                                            } else if (Minute_max.getText().toString().equals("")) {
-                                                Toast.makeText(v.getContext(), "최대 지원 시간 (분)을 입력하지 않았습니다", Toast.LENGTH_SHORT).show();
-                                                return;
-                                            }
-
-                                        } catch (Exception e) {
-                                            e.printStackTrace();
-                                        }
-
-                                        String coop_title = Coop_title.getText().toString();
-                                        String coop_tel = Coop_tel.getText().toString();
-                                        String coop_address = Coop_address.getText().toString();
-                                        String coop_user_name = Coop_user_name.getText().toString();
-                                        int minute_max = Integer.parseInt(Minute_max.getText().toString());
-                                        String is_end = "";
-                                        if (Is_end.getText().equals("활성")) {
-                                            is_end = "N";
-                                        } else if (Is_end.getText().equals("종료")) {
-                                            is_end = "Y";
-                                        }
-
-                                        cooper_services.update(coop_title, coop_tel, coop_address, coop_user_name, minute_max, is_end, idx);
-                                        fm.beginTransaction().replace(R.id.content_fragment, new Cooper_Fragment(cooper)).commit();
-                                        dialog.dismiss();
-                                        break;
-
-                                    case R.id.delete_cooper:
-
-                                        cooper_services.delete(idx);
-                                        fm.beginTransaction().replace(R.id.content_fragment, new Cooper_Fragment(cooper)).commit();
-                                        dialog.dismiss();
-                                        break;
-
-                                    case R.id.close_cooper:
-
-                                        fm.beginTransaction().replace(R.id.content_fragment, new Cooper_Fragment(cooper)).commit();
-                                        dialog.dismiss();
-                                        break;
-                                }
-                            }
-                        };
-                        Update_cooper.setOnClickListener(clickListener);
-                        Delete_cooper.setOnClickListener(clickListener);
-                        Close_cooper.setOnClickListener(clickListener);
                     }
                 });
                 break;

@@ -37,8 +37,6 @@ public class Cooper_Services extends SQLiteOpenHelper {
                 "coop_address TEXT, " +
                 "coop_user_name TEXT, " +
                 "minute_max INTEGER DEFAULT 0, " +
-                "amount_unit INTEGER DEFAULT 0, " +
-                "minute_unit INTEGER DEFAULT 0, " +
                 "regdate INTEGER, " +
                 "is_end TEXT NOT NULL DEFAULT 'N');");
     }
@@ -59,9 +57,7 @@ public class Cooper_Services extends SQLiteOpenHelper {
                 "coop_tel," +
                 "coop_address," +
                 "coop_user_name," +
-                "minute_max," +
-                "amount_unit," +
-                "minute_unit) VALUES('" + coop_title + "', " +
+                "minute_max) VALUES('" + coop_title + "', " +
                 "'" + coop_tel + "', " +
                 "'" + coop_address + "', " +
                 "'" + coop_user_name + "', " +
@@ -129,10 +125,8 @@ public class Cooper_Services extends SQLiteOpenHelper {
             map.put("coop_address", cursor.getString(3));
             map.put("coop_user_name", cursor.getString(4));
             map.put("minute_max", cursor.getInt(5));
-            map.put("amount_unit", cursor.getInt(6));
-            map.put("minute_unit", cursor.getInt(7));
-            map.put("regdate", cursor.getInt(8));
-            map.put("is_end", cursor.getString(9));
+            map.put("regdate", cursor.getInt(6));
+            map.put("is_end", cursor.getString(7));
         }
 
         return map;
@@ -154,10 +148,8 @@ public class Cooper_Services extends SQLiteOpenHelper {
             map.put("coop_address", cursor.getString(3));
             map.put("coop_user_name", cursor.getString(4));
             map.put("minute_max", cursor.getInt(5));
-            map.put("amount_unit", cursor.getInt(6));
-            map.put("minute_unit", cursor.getInt(7));
-            map.put("regdate", cursor.getInt(8));
-            map.put("is_end", cursor.getString(9));
+            map.put("regdate", cursor.getInt(6));
+            map.put("is_end", cursor.getString(7));
             list.add(map);
         }
 
