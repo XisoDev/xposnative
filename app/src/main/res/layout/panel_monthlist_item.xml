@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="182px"
     android:layout_height="156px"
-    android:background="@drawable/panel_cartypelist_item_shape"
+    android:background="@drawable/panel_monthlist_item_shape"
     >
     <TextView
         android:id="@+id/car_num"

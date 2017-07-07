@@ -38,14 +38,10 @@ public class PanelCooperTypeViewAdapter extends BaseAdapter {
             convertView = inflater.inflate(layout, null);
             TextView Coop_title = (TextView) convertView.findViewById(R.id.coop_title);
             TextView Minute_max = (TextView) convertView.findViewById(R.id.minute_max);
-            TextView Minute_unit = (TextView) convertView.findViewById(R.id.minute_unit);
-            TextView Amount_unit = (TextView) convertView.findViewById(R.id.amount_unit);
 
             item = new PanelCooperTypeView_Item();
             item.coopTitle = Coop_title;
             item.minuteMax = Minute_max;
-            item.minuteUnit = Minute_unit;
-            item.amountUnit = Amount_unit;
             convertView.setTag(item);
 
         } else {
@@ -56,8 +52,6 @@ public class PanelCooperTypeViewAdapter extends BaseAdapter {
 
         item.coopTitle.setText((String) list.get(position).get("coop_title"));
         item.minuteMax.setText((Integer) list.get(position).get("minute_max") + "");
-        item.minuteUnit.setText((Integer) list.get(position).get("minute_unit") + "");
-        item.amountUnit.setText((Integer) list.get(position).get("amount_unit") + "");
 
         return convertView;
     }
@@ -83,7 +77,5 @@ class PanelCooperTypeView_Item {
 
     TextView coopTitle;
     TextView minuteMax;
-    TextView minuteUnit;
-    TextView amountUnit;
 
 }

@@ -18,6 +18,7 @@
         android:layout_width="182px"
         android:layout_height="16px"
         android:paddingLeft="11px"
+        android:layout_marginBottom="40px"
         android:orientation="horizontal"
         >
         <TextView
@@ -42,57 +43,6 @@
             android:layout_height="16px"
             android:gravity="center_vertical"
             android:text="분 무료"
-            android:textSize="12px"
-            android:textColor="@android:color/white"
-            />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="182px"
-        android:layout_height="16px"
-        android:orientation="horizontal"
-        android:paddingLeft="11px"
-        android:layout_marginBottom="12px"
-        >
-        <TextView
-            android:layout_width="38px"
-            android:layout_height="16px"
-            android:gravity="center_vertical"
-            android:text="이후"
-            android:textSize="12px"
-            android:textColor="@android:color/white"
-            />
-        <TextView
-            android:id="@+id/minute_unit"
-            android:layout_width="wrap_content"
-            android:layout_height="16px"
-            android:gravity="center_vertical"
-            android:text="0"
-            android:textSize="12px"
-            android:textColor="@android:color/white"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="16px"
-            android:gravity="center_vertical"
-            android:text="분"
-            android:textSize="12px"
-            android:textColor="@android:color/white"
-            />
-        <TextView
-            android:id="@+id/amount_unit"
-            android:layout_width="wrap_content"
-            android:layout_height="16px"
-            android:gravity="center_vertical"
-            android:text="0"
-            android:textSize="12px"
-            android:textColor="@android:color/white"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="16px"
-            android:gravity="center_vertical"
-            android:text="원"
             android:textSize="12px"
             android:textColor="@android:color/white"
             />
