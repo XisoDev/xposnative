@@ -158,14 +158,16 @@ public class Garage_Service extends SQLiteOpenHelper {
                              int cooper_start,
                              int cooper_end,
                              int discount_cooper,
-                             int minute_free,
                              int basic_amount,
                              int basic_minute,
                              int idx) {
         SQLiteDatabase db = getWritableDatabase();
         // 입력한 항목과 일치하는 행의 가격 정보 수정
         db.execSQL("UPDATE garage SET cooper_idx = " + cooper_idx + ", " +
-                "minute_free = " + minute_free + ", " +
+                "cooper_title = '" + cooper_title + "', " +
+                "cooper_start = " + cooper_start + ", " +
+                "cooper_end = " + cooper_end + ", " +
+                "discount_cooper = " + discount_cooper + ", " +
                 "basic_amount = " + basic_amount + ", " +
                 "basic_minute = " + basic_minute + " " +
                 "WHERE idx = " + idx + ";");
@@ -259,13 +261,16 @@ public class Garage_Service extends SQLiteOpenHelper {
             map.put("basic_minute", cursor.getInt(9));
             map.put("month_idx", cursor.getInt(10));
             map.put("cooper_idx", cursor.getInt(11));
-            map.put("discount_cooper", cursor.getInt(12));
-            map.put("discount_self", cursor.getInt(13));
-            map.put("total_amount", cursor.getInt(14));
-            map.put("pay_amount", cursor.getInt(15));
-            map.put("is_paid", cursor.getString(16));
-            map.put("is_out", cursor.getString(17));
-            map.put("is_cancel", cursor.getString(18));
+            map.put("cooper_title", cursor.getString(12));
+            map.put("cooper_start", cursor.getInt(13));
+            map.put("cooper_end", cursor.getInt(14));
+            map.put("discount_cooper", cursor.getInt(15));
+            map.put("discount_self", cursor.getInt(16));
+            map.put("total_amount", cursor.getInt(17));
+            map.put("pay_amount", cursor.getInt(18));
+            map.put("is_paid", cursor.getString(19));
+            map.put("is_out", cursor.getString(20));
+            map.put("is_cancel", cursor.getString(21));
         }
 
         return map;
@@ -312,13 +317,16 @@ public class Garage_Service extends SQLiteOpenHelper {
             map.put("basic_minute", cursor.getInt(9));
             map.put("month_idx", cursor.getInt(10));
             map.put("cooper_idx", cursor.getInt(11));
-            map.put("discount_cooper", cursor.getInt(12));
-            map.put("discount_self", cursor.getInt(13));
-            map.put("total_amount", cursor.getInt(14));
-            map.put("pay_amount", cursor.getInt(15));
-            map.put("is_paid", cursor.getString(16));
-            map.put("is_out", cursor.getString(17));
-            map.put("is_cancel", cursor.getString(18));
+            map.put("cooper_title", cursor.getString(12));
+            map.put("cooper_start", cursor.getInt(13));
+            map.put("cooper_end", cursor.getInt(14));
+            map.put("discount_cooper", cursor.getInt(15));
+            map.put("discount_self", cursor.getInt(16));
+            map.put("total_amount", cursor.getInt(17));
+            map.put("pay_amount", cursor.getInt(18));
+            map.put("is_paid", cursor.getString(19));
+            map.put("is_out", cursor.getString(20));
+            map.put("is_cancel", cursor.getString(21));
             list.add(map);
         }
 
@@ -346,9 +354,9 @@ public class Garage_Service extends SQLiteOpenHelper {
             map.put("basic_minute", cursor.getInt(9));
             map.put("month_idx", cursor.getInt(10));
             map.put("cooper_idx", cursor.getInt(11));
-            map.put("cooper_title", cursor.getString(3));
-            map.put("cooper_start", cursor.getInt(15));
-            map.put("cooper_end", cursor.getInt(15));
+            map.put("cooper_title", cursor.getString(12));
+            map.put("cooper_start", cursor.getInt(13));
+            map.put("cooper_end", cursor.getInt(14));
             map.put("discount_cooper", cursor.getInt(15));
             map.put("discount_self", cursor.getInt(16));
             map.put("total_amount", cursor.getInt(17));
