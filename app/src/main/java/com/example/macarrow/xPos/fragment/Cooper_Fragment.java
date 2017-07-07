@@ -83,8 +83,6 @@ public class Cooper_Fragment extends Fragment {
                         final EditText Coop_address = (EditText) view.findViewById(R.id.coop_address);
                         final EditText Coop_user_name = (EditText) view.findViewById(R.id.coop_user_name);
                         final EditText Minute_max = (EditText) view.findViewById(R.id.minute_max);
-                        final EditText Amount_unit = (EditText) view.findViewById(R.id.amount_unit);
-                        final EditText Minute_unit = (EditText) view.findViewById(R.id.minute_unit);
                         final Button Add_cooper = (Button) view.findViewById(R.id.add_cooper);
                         final Button Close_cooper = (Button) view.findViewById(R.id.close_cooper);
 
@@ -132,14 +130,6 @@ public class Cooper_Fragment extends Fragment {
                                             } else if (Minute_max.getText().toString().equals("")) {
                                                 Toast.makeText(v.getContext(), "최대 지원 시간 (분)을 입력하지 않았습니다", Toast.LENGTH_SHORT).show();
                                                 return;
-
-                                            } else if (Amount_unit.getText().toString().equals("")) {
-                                                Toast.makeText(v.getContext(), "추가요금 (원)을 입력하지 않았습니다", Toast.LENGTH_SHORT).show();
-                                                return;
-
-                                            } else if (Minute_unit.getText().toString().equals("")) {
-                                                Toast.makeText(v.getContext(), "추가요금 단위(분)을 입력하지 않았습니다", Toast.LENGTH_SHORT).show();
-                                                return;
                                             }
 
                                         } catch (Exception e) {
@@ -151,9 +141,7 @@ public class Cooper_Fragment extends Fragment {
                                         String coop_address = Coop_address.getText().toString();
                                         String coop_user_name = Coop_user_name.getText().toString();
                                         int minute_max = Integer.parseInt(Minute_max.getText().toString());
-                                        int amount_unit = Integer.parseInt(Amount_unit.getText().toString());
-                                        int minute_unit = Integer.parseInt(Minute_unit.getText().toString());
-                                        cooper_services.insert(coop_title, coop_tel, coop_address, coop_user_name, minute_max, amount_unit, minute_unit);
+                                        cooper_services.insert(coop_title, coop_tel, coop_address, coop_user_name, minute_max);
                                         fm.beginTransaction().replace(R.id.content_fragment, new Cooper_Fragment(cooper)).commit();
                                         dialog.dismiss();
                                         break;
@@ -185,8 +173,6 @@ public class Cooper_Fragment extends Fragment {
                         final EditText Coop_address = (EditText) v.findViewById(R.id.coop_address);
                         final EditText Coop_user_name = (EditText) v.findViewById(R.id.coop_user_name);
                         final EditText Minute_max = (EditText) v.findViewById(R.id.minute_max);
-                        final EditText Amount_unit = (EditText) v.findViewById(R.id.amount_unit);
-                        final EditText Minute_unit = (EditText) v.findViewById(R.id.minute_unit);
                         final LinearLayout Is_end_lay = (LinearLayout) v.findViewById(R.id.is_end_lay);
                         final Switch Is_end = (Switch) v.findViewById(R.id.is_end);
                         final Button Update_cooper = (Button) v.findViewById(R.id.update_cooper);
@@ -216,8 +202,6 @@ public class Cooper_Fragment extends Fragment {
                         Coop_address.setText((String) map.get("coop_address"));
                         Coop_user_name.setText((String) map.get("coop_user_name"));
                         Minute_max.setText((Integer) map.get("minute_max") + "");
-                        Amount_unit.setText((Integer) map.get("amount_unit") + "");
-                        Minute_unit.setText((Integer) map.get("minute_unit") + "");
 
                         // Switch
                         final String isEnd = (String) map.get("is_end");
@@ -269,14 +253,6 @@ public class Cooper_Fragment extends Fragment {
                                             } else if (Minute_max.getText().toString().equals("")) {
                                                 Toast.makeText(v.getContext(), "최대 지원 시간 (분)을 입력하지 않았습니다", Toast.LENGTH_SHORT).show();
                                                 return;
-
-                                            } else if (Amount_unit.getText().toString().equals("")) {
-                                                Toast.makeText(v.getContext(), "추가요금 (원)을 입력하지 않았습니다", Toast.LENGTH_SHORT).show();
-                                                return;
-
-                                            } else if (Minute_unit.getText().toString().equals("")) {
-                                                Toast.makeText(v.getContext(), "추가요금 단위(분)을 입력하지 않았습니다", Toast.LENGTH_SHORT).show();
-                                                return;
                                             }
 
                                         } catch (Exception e) {
@@ -288,8 +264,6 @@ public class Cooper_Fragment extends Fragment {
                                         String coop_address = Coop_address.getText().toString();
                                         String coop_user_name = Coop_user_name.getText().toString();
                                         int minute_max = Integer.parseInt(Minute_max.getText().toString());
-                                        int amount_unit = Integer.parseInt(Amount_unit.getText().toString());
-                                        int minute_unit = Integer.parseInt(Minute_unit.getText().toString());
                                         String is_end = "";
                                         if (Is_end.getText().equals("활성")) {
                                             is_end = "N";
@@ -297,7 +271,7 @@ public class Cooper_Fragment extends Fragment {
                                             is_end = "Y";
                                         }
 
-                                        cooper_services.update(coop_title, coop_tel, coop_address, coop_user_name, minute_unit, minute_max, amount_unit, is_end, idx);
+                                        cooper_services.update(coop_title, coop_tel, coop_address, coop_user_name, minute_max, is_end, idx);
                                         fm.beginTransaction().replace(R.id.content_fragment, new Cooper_Fragment(cooper)).commit();
                                         dialog.dismiss();
                                         break;

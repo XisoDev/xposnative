@@ -51,9 +51,7 @@ public class Cooper_Services extends SQLiteOpenHelper {
                        String coop_tel,
                        String coop_address,
                        String coop_user_name,
-                       int minute_max,
-                       int amount_unit,
-                       int minute_unit) {
+                       int minute_max) {
         // 읽고 쓰기가 가능하게 DB 열기
         SQLiteDatabase db = getWritableDatabase();
         // DB에 입력한 값으로 행 추가
@@ -67,9 +65,7 @@ public class Cooper_Services extends SQLiteOpenHelper {
                 "'" + coop_tel + "', " +
                 "'" + coop_address + "', " +
                 "'" + coop_user_name + "', " +
-                "" + minute_max + ", " +
-                "" + amount_unit + ", " +
-                "" + minute_unit + ");");
+                "" + minute_max + ");");
         db.close();
     }
 
@@ -77,9 +73,7 @@ public class Cooper_Services extends SQLiteOpenHelper {
                        String coop_tel,
                        String coop_address,
                        String coop_user_name,
-                       int minute_unit,
                        int minute_max,
-                       int amount_unit,
                        String is_end,
                        int idx) {
         SQLiteDatabase db = getWritableDatabase();
@@ -88,9 +82,7 @@ public class Cooper_Services extends SQLiteOpenHelper {
                 "coop_tel = '" + coop_tel + "', " +
                 "coop_address = '" + coop_address + "', " +
                 "coop_user_name = '" + coop_user_name + "', " +
-                "minute_unit = " + minute_unit + ", " +
                 "minute_max = " + minute_max + ", " +
-                "amount_unit = " + amount_unit + ", " +
                 "is_end = '" + is_end + "' " +
                 "WHERE idx = " + idx + ";");
         db.close();

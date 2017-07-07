@@ -123,50 +123,7 @@
             android:inputType="number"
             />
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
-            android:text="추가요금 (원)"
-            android:gravity="center_vertical"
-            />
-        <EditText
-            android:id="@+id/amount_unit"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:hint="시간당 추가될 금액 (원)"
-            android:gravity="center_vertical"
-            android:inputType="number"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
-            android:text="추가요금 단위 (분)"
-            android:gravity="center_vertical"
-            />
-        <EditText
-            android:id="@+id/minute_unit"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:hint="추가 요금 시간 단위 (분 단위)"
-            android:gravity="center_vertical"
-            android:inputType="number"
-            />
-    </LinearLayout>
+
     <LinearLayout
         android:id="@+id/is_end_lay"
         android:layout_width="match_parent"
