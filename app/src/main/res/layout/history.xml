@@ -8,49 +8,49 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="6">
-
+        android:layout_weight="6"
+        >
         <TextView
             android:id="@+id/history_all"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="전체" />
-
+            android:text="전체"
+            />
         <TextView
             android:id="@+id/history_in"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="입차중" />
-
+            android:text="입차중"
+            />
         <TextView
             android:id="@+id/history_out"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="정상출차" />
-
+            android:text="정상출차"
+            />
         <TextView
             android:id="@+id/history_no_pay"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="미결제" />
-
+            android:text="미결제"
+            />
         <TextView
             android:id="@+id/history_cancel"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="입차취소" />
+            android:text="입차취소"
+            />
     </LinearLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -372,6 +372,44 @@ public class Garage_Service extends SQLiteOpenHelper {
 
     }
 
+    public List<Map<String, Object>> getDay(String cooper_title, int cooper_end) {
+        // 읽기가 가능하게 DB 열기
+        SQLiteDatabase db = getReadableDatabase();
+        List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+
+        // DB에 있는 데이터를 쉽게 처리하기 위해 Cursor를 사용하여 테이블에 있는 모든 데이터 출력
+        Cursor cursor = db.rawQuery("SELECT * FROM garage WHERE cooper_title = ? AND cooper_end = " + cooper_end + " ", new String[] {cooper_title});
+        while (cursor.moveToNext()) {
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put("idx", cursor.getInt(0));
+            map.put("start_date", cursor.getLong(1));
+            map.put("end_date", cursor.getLong(2));
+            map.put("car_num", cursor.getString(3));
+            map.put("car_type_title", cursor.getString(4));
+            map.put("minute_unit", cursor.getInt(5));
+            map.put("minute_free", cursor.getInt(6));
+            map.put("amount_unit", cursor.getInt(7));
+            map.put("basic_amount", cursor.getInt(8));
+            map.put("basic_minute", cursor.getInt(9));
+            map.put("month_idx", cursor.getInt(10));
+            map.put("cooper_idx", cursor.getInt(11));
+            map.put("cooper_title", cursor.getString(12));
+            map.put("cooper_start", cursor.getInt(13));
+            map.put("cooper_end", cursor.getInt(14));
+            map.put("discount_cooper", cursor.getInt(15));
+            map.put("discount_self", cursor.getInt(16));
+            map.put("total_amount", cursor.getInt(17));
+            map.put("pay_amount", cursor.getInt(18));
+            map.put("is_paid", cursor.getString(19));
+            map.put("is_out", cursor.getString(20));
+            map.put("is_cancel", cursor.getString(21));
+            list.add(map);
+        }
+
+        return list;
+
+    }
+
     public Map<String, Object> getByIdx(String car_num) {
         // 읽기가 가능하게 DB 열기
         SQLiteDatabase db = getReadableDatabase();

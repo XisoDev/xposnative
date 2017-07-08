@@ -3,34 +3,25 @@ package com.example.macarrow.xPos.fragment;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
+
 import com.example.macarrow.xPos.R;
 import com.example.macarrow.xPos.Services.Cooper_Services;
 import com.example.macarrow.xPos.Services.Garage_Service;
 import com.example.macarrow.xPos.adapter.CooperPeriodAdapter;
 import com.example.macarrow.xPos.adapter.CooperViewAdapter;
-import com.example.macarrow.xPos.fragment.Cooper.Cooper_Add;
-import com.example.macarrow.xPos.fragment.Month.Month_Add;
+import com.example.macarrow.xPos.fragment.Garage.Cooper_Add;
 import com.melnykov.fab.FloatingActionButton;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -179,6 +170,7 @@ public class Cooper_Fragment extends Fragment {
                                 List<Map<String, Object>> plist = garage_service.getPeriod(coop_title, startDate, endDate);
                                 CooperPeriodAdapter P_adapter = new CooperPeriodAdapter(getActivity(), R.layout.cooper_period_item, plist);
                                 cooperList.setAdapter(P_adapter);
+                                Search.setText("");
 
                             }
                         }
@@ -189,6 +181,72 @@ public class Cooper_Fragment extends Fragment {
             case "day":
 
                 view = inflater.inflate(R.layout.cooper_period, container, false);
+
+                final ListView cooperDayList = (ListView) view.findViewById(R.id.cooper_list);
+                final EditText SearchDay = (EditText) view.findViewById(R.id.search);
+                final Button Search_Daybtn = (Button) view.findViewById(R.id.search_btn);
+                final TextView At = (TextView) view.findViewById(R.id.at);
+                Search_start = (TextView) view.findViewById(R.id.search_start);
+                Search_end = (TextView) view.findViewById(R.id.search_end);
+
+                Search_start.setVisibility(View.GONE);
+                At.setVisibility(View.GONE);
+
+                GregorianCalendar today = new GregorianCalendar();
+                year = today.get(Calendar.YEAR);
+                month = today.get(Calendar.MONTH);
+                day = today.get(Calendar.DAY_OF_MONTH);
+
+                Search_end.setText(year+"."+(month+1)+"."+day+"");
+
+                View.OnClickListener onClickListenerDay = new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        switch (v.getId()) {
+
+                            case R.id.search_end:
+
+                                new DatePickerDialog(getActivity(), end, year, month, day).show();
+                                break;
+                        }
+                    }
+                };
+                Search_end.setOnClickListener(onClickListenerDay);
+
+                Search_Daybtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        String coop_title = SearchDay.getText().toString();
+
+                        if (coop_title.equals("")) {
+
+                            AlertDialog.Builder adb = new AlertDialog.Builder(getActivity());
+                            adb.setTitle("업체명을 입력해주세요");
+                            adb.setNegativeButton("닫기", null);
+                            adb.show();
+
+                        } else {
+
+                            if (cooper_services.coopTitle(coop_title) <= 0) {
+
+                                AlertDialog.Builder adb = new AlertDialog.Builder(getActivity());
+                                adb.setTitle("없는 업체명입니다");
+                                adb.setNegativeButton("닫기", null);
+                                adb.show();
+
+                            } else {
+
+                                List<Map<String, Object>> dlist = garage_service.getDay(coop_title,  endDate);
+                                CooperPeriodAdapter D_adapter = new CooperPeriodAdapter(getActivity(), R.layout.cooper_period_item, dlist);
+                                cooperDayList.setAdapter(D_adapter);
+                                SearchDay.setText("");
+
+                            }
+                        }
+                    }
+                });
                 break;
         }
 

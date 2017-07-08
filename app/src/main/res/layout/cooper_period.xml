@@ -59,6 +59,7 @@
             android:textSize="10px"
             />
         <TextView
+            android:id="@+id/at"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="2"
