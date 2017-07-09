@@ -20,6 +20,9 @@ import java.util.Calendar;
 
 public class Calcu_Fragment extends LinearLayout implements View.OnClickListener {
 
+    // 안드로이드 gridview 달력 스케줄
+    // http://blog.naver.com/PostView.nhn?blogId=onblack_&logNo=220934784083&beginTime=0&jumpingVid=&from=search&redirect=Log&widgetTypeCall=true
+
     private enum DayOfTheWeek {
         일, 월, 화, 수, 목, 금, 토
     }
