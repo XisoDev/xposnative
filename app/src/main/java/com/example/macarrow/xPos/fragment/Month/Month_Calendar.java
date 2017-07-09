@@ -79,7 +79,7 @@ public class Month_Calendar extends Fragment {
         Calendar_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getActivity(), dayList.get(position), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), curYearFormat.format(date) + "/" + curMonthFormat.format(date) +  "/" +dayList.get(position), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -124,10 +124,10 @@ public class Month_Calendar extends Fragment {
 
     public class MonthCalendarAdapter extends BaseAdapter {
 
-        private final List<String> list;
+        private final ArrayList<String> list;
         private final LayoutInflater inflater;
 
-        public MonthCalendarAdapter(Context context, List<String> list) {
+        public MonthCalendarAdapter(Context context, ArrayList<String> list) {
             this.list = list;
             this.inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         }
@@ -146,16 +146,24 @@ public class Month_Calendar extends Fragment {
         }
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
+
             ViewHolder holder = null;
+
             if (convertView == null) {
                 convertView = inflater.inflate(R.layout.month_calendar_view, parent, false);
                 holder = new ViewHolder();
-                holder.tvItemGridView = (TextView)convertView.findViewById(R.id.calendar_view_item);
+                holder.calendar_day = (TextView)convertView.findViewById(R.id.calendar_day);
+                holder.calendar_month_in = (TextView)convertView.findViewById(R.id.calendar_month_in);
+                holder.calendar_month_out = (TextView)convertView.findViewById(R.id.calendar_month_out);
                 convertView.setTag(holder);
+
             } else {
                 holder = (ViewHolder)convertView.getTag();
+
             }
-            holder.tvItemGridView.setText("" + getItem(position));
+            holder.calendar_day.setText("" + getItem(position));
+            //holder.calendar_month_in.setText("" + getItem(position));
+            //holder.calendar_month_out.setText("" + getItem(position));
 
             // 해당 날짜 텍스트 컬러, 배경 변경
             mCal = Calendar.getInstance();
@@ -165,7 +173,7 @@ public class Month_Calendar extends Fragment {
             String sToday = String.valueOf(today);
             if (sToday.equals(getItem(position))) {
                 // 오늘 day 텍스트 컬러 변경
-                holder.tvItemGridView.setTextColor(Color.GREEN);
+                holder.calendar_day.setTextColor(Color.GREEN);
             }
             return convertView;
         }
@@ -174,6 +182,8 @@ public class Month_Calendar extends Fragment {
 
 class ViewHolder {
 
-    TextView tvItemGridView;
+    TextView calendar_day;
+    TextView calendar_month_in;
+    TextView calendar_month_out;
 
 }

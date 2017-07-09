@@ -14,6 +14,9 @@ import java.util.Calendar;
 
 public class CalcuAdapter extends BaseAdapter {
 
+    // 안드로이드 gridview 달력 스케줄
+    //http://blog.naver.com/PostView.nhn?blogId=onblack_&logNo=220934784083&beginTime=0&jumpingVid=&from=search&redirect=Log&widgetTypeCall=true
+
     private ArrayList<DayInfo> mDayList;
     private Context mContext;
     private int mResource;
@@ -50,7 +53,9 @@ public class CalcuAdapter extends BaseAdapter {
         if (convertView == null) {
             convertView = mflater.inflate(mResource, null);
             dayViewHolder = new ViewHolder();
-            dayViewHolder.day = (TextView) convertView.findViewById(R.id.calendar_view_item);
+            dayViewHolder.day = (TextView) convertView.findViewById(R.id.calendar_day);
+            dayViewHolder.in = (TextView) convertView.findViewById(R.id.calendar_month_in);
+            dayViewHolder.out = (TextView) convertView.findViewById(R.id.calendar_month_out);
             convertView.setTag(dayViewHolder);
         } else {
             dayViewHolder = (ViewHolder) convertView.getTag();
@@ -77,4 +82,6 @@ public class CalcuAdapter extends BaseAdapter {
 
 class ViewHolder {
     public TextView day;
+    public TextView in;
+    public TextView out;
 }
