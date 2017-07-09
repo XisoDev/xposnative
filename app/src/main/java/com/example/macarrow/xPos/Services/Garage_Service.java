@@ -285,7 +285,7 @@ public class Garage_Service extends SQLiteOpenHelper {
         // DB에 있는 데이터를 쉽게 처리하기 위해 Cursor를 사용하여 테이블에 있는 모든 데이터 출력
         Cursor cursor = null;
         // 전체
-        if(status.equals("all") && car_num.equals("")) {
+        if(status.equals("all")) {
             cursor = db.rawQuery("SELECT * FROM garage WHERE car_num like ? order by idx desc", new String[] {'%'+car_num+'%'});
         }
         // 입차중

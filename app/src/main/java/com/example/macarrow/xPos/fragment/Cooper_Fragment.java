@@ -22,6 +22,7 @@ import com.example.macarrow.xPos.Services.Garage_Service;
 import com.example.macarrow.xPos.adapter.CooperPeriodAdapter;
 import com.example.macarrow.xPos.adapter.CooperViewAdapter;
 import com.example.macarrow.xPos.fragment.Garage.Cooper_Add;
+import com.example.macarrow.xPos.fragment.Garage.Garage_View;
 import com.melnykov.fab.FloatingActionButton;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -167,11 +168,28 @@ public class Cooper_Fragment extends Fragment {
 
                             } else {
 
-                                List<Map<String, Object>> plist = garage_service.getPeriod(coop_title, startDate, endDate);
+                                final List<Map<String, Object>> plist = garage_service.getPeriod(coop_title, startDate, endDate);
                                 CooperPeriodAdapter P_adapter = new CooperPeriodAdapter(getActivity(), R.layout.cooper_period_item, plist);
                                 cooperList.setAdapter(P_adapter);
                                 Search.setText("");
 
+                                cooperList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                    @Override
+                                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                                        int idx = (int) plist.get(position).get("idx");
+                                        int total_amount = (int) plist.get(position).get("total_amount");
+
+                                        Bundle args = new Bundle();
+                                        args.putInt("idx", idx);
+                                        args.putInt("result_charge", total_amount);
+                                        Garage_View garage_view = new Garage_View();
+                                        garage_view.setArguments(args);
+                                        garage_view.setCancelable(false);
+                                        garage_view.show(getFragmentManager(), "garage_view");
+
+                                    }
+                                });
                             }
                         }
                     }
@@ -238,11 +256,28 @@ public class Cooper_Fragment extends Fragment {
 
                             } else {
 
-                                List<Map<String, Object>> dlist = garage_service.getDay(coop_title,  endDate);
+                                final List<Map<String, Object>> dlist = garage_service.getDay(coop_title,  endDate);
                                 CooperPeriodAdapter D_adapter = new CooperPeriodAdapter(getActivity(), R.layout.cooper_period_item, dlist);
                                 cooperDayList.setAdapter(D_adapter);
                                 SearchDay.setText("");
 
+                                cooperDayList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                    @Override
+                                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                                        int idx = (int) dlist.get(position).get("idx");
+                                        int total_amount = (int) dlist.get(position).get("total_amount");
+
+                                        Bundle args = new Bundle();
+                                        args.putInt("idx", idx);
+                                        args.putInt("result_charge", total_amount);
+                                        Garage_View garage_view = new Garage_View();
+                                        garage_view.setArguments(args);
+                                        garage_view.setCancelable(false);
+                                        garage_view.show(getFragmentManager(), "garage_view");
+
+                                    }
+                                });
                             }
                         }
                     }
