@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+    android:id="@+id/gridViewContainer"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -13,7 +14,7 @@
         android:background="@android:color/white"
         >
         <TextView
-            android:id="@+id/calendar_date"
+            android:id="@+id/sCal_dateTextView"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="#21a4ff"
@@ -23,15 +24,14 @@
             android:textSize="20sp"
             />
         <GridView
-            android:id="@+id/calendar_view"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:layout_height="0dp"
-            android:layout_width="match_parent"
             android:numColumns="7"
-            android:listSelector="@android:color/transparent"
-            >
-        </GridView>
+            android:id="@+id/sCal_calGrid"
+            android:background="#f2f2f2"
+            android:verticalSpacing="1dp"
+            android:horizontalSpacing="1dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,14 +40,14 @@
         android:orientation="horizontal"
         >
         <Button
-            android:id="@+id/last"
+            android:id="@+id/sCal_prevButton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="지난달"
             />
         <Button
-            android:id="@+id/next"
+            android:id="@+id/sCal_nextButton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
