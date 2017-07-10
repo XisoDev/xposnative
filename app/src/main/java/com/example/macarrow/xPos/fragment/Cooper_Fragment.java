@@ -163,6 +163,7 @@ public class Cooper_Fragment extends Fragment {
                                 adb.setTitle("없는 업체명입니다");
                                 adb.setNegativeButton("닫기", null);
                                 adb.show();
+                                Search.setText("");
 
                             } else {
 
@@ -214,6 +215,9 @@ public class Cooper_Fragment extends Fragment {
                 day = today.get(Calendar.DAY_OF_MONTH);
 
                 Search_end.setText(year+"."+(month+1)+"."+day+"");
+                GregorianCalendar cal = new GregorianCalendar();
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
+                endDate = Integer.parseInt(simpleDateFormat.format(cal.getTime()).toString());
 
                 View.OnClickListener onClickListenerDay = new View.OnClickListener() {
                     @Override
@@ -251,6 +255,7 @@ public class Cooper_Fragment extends Fragment {
                                 adb.setTitle("없는 업체명입니다");
                                 adb.setNegativeButton("닫기", null);
                                 adb.show();
+                                SearchDay.setText("");
 
                             } else {
 

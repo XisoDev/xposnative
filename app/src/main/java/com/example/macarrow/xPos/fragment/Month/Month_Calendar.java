@@ -15,12 +15,15 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.macarrow.xPos.R;
+import com.example.macarrow.xPos.Services.Month_Service;
 import com.example.macarrow.xPos.fragment.Month_Fragment;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 public class Month_Calendar extends Fragment {
 
@@ -84,7 +87,7 @@ public class Month_Calendar extends Fragment {
         Calendar_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getActivity(), curYearFormat.format(date) + "/" + curMonthFormat.format(date) +  "/" +dayList.get(position), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), curYearFormat.format(date) + "/" + curMonthFormat.format(date) +  "/" + dayList.get(position), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -124,11 +127,6 @@ public class Month_Calendar extends Fragment {
         monthExpired.setOnClickListener(clickListener);
         monthWait.setOnClickListener(clickListener);
         monthCalendar.setOnClickListener(clickListener);
-
-
-
-
-
 
         return view;
     }
@@ -178,7 +176,19 @@ public class Month_Calendar extends Fragment {
                 holder = (ViewHolder)convertView.getTag();
 
             }
+
+            long now = System.currentTimeMillis();
+            final Date date = new Date(now);
+            final SimpleDateFormat curYearFormat = new SimpleDateFormat("yyyy", Locale.KOREA);
+            final SimpleDateFormat curMonthFormat = new SimpleDateFormat("MM", Locale.KOREA);
+
+            Month_Service month_service = new Month_Service(getActivity(), "month.db", null, 1);
+            List<Map<String, Object>> list = month_service.calMonth(Integer.parseInt(curYearFormat.format(date)), Integer.parseInt(curMonthFormat.format(date)), "start");
+            //int start_date_d = (int) list.get(position).get("start_date_d");
+            //String car_num = (String) list.get(position).get("car_num");
+
             holder.calendar_day.setText(getItem(position) + "");
+
 
             // 해당 날짜 텍스트 컬러, 배경 변경
             mCal = Calendar.getInstance();
