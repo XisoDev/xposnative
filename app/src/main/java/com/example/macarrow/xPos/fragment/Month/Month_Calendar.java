@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,10 +20,12 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 public class Month_Calendar extends Fragment {
+
+    // 안드로이드 gridview 달력 스케줄
+    // http://blog.naver.com/PostView.nhn?blogId=onblack_&logNo=220934784083&beginTime=0&jumpingVid=&from=search&redirect=Log&widgetTypeCall=true
 
     public Month_Calendar(){}
     private MonthCalendarAdapter adapter;
@@ -40,6 +43,8 @@ public class Month_Calendar extends Fragment {
         final TextView monthCalendar = (TextView)view.findViewById(R.id.month_calendar);
         final TextView Calendar_date = (TextView)view.findViewById(R.id.calendar_date);
         final GridView Calendar_view = (GridView)view.findViewById(R.id.calendar_view);
+        final Button Last = (Button)view.findViewById(R.id.last);
+        final Button Next = (Button)view.findViewById(R.id.next);
 
         // 오늘 날짜
         long now = System.currentTimeMillis();
@@ -72,7 +77,7 @@ public class Month_Calendar extends Fragment {
             dayList.add("");
         }
 
-        setCalendarDate(mCal.get(Calendar.MONTH) + 1);
+        setCalendarDate(mCal.get(Calendar.MONTH));
         adapter = new MonthCalendarAdapter(getActivity(), dayList);
         Calendar_view.setAdapter(adapter);
 
@@ -104,6 +109,14 @@ public class Month_Calendar extends Fragment {
                     case R.id.month_calendar :
                         fm.beginTransaction().replace(R.id.content_fragment, new Month_Calendar()).commit();
                         break;
+
+                    case R.id.last :
+
+                        break;
+
+                    case R.id.next :
+
+                        break;
                 }
             }
         };
@@ -112,11 +125,15 @@ public class Month_Calendar extends Fragment {
         monthWait.setOnClickListener(clickListener);
         monthCalendar.setOnClickListener(clickListener);
 
+
+
+
+
+
         return view;
     }
 
     private void setCalendarDate (int month) {
-        mCal.set(Calendar.MONTH, month - 1);
         for (int i = 0; i < mCal.getActualMaximum(Calendar.DAY_OF_MONTH); i++) {
             dayList.add("" + (i + 1));
         }
@@ -161,9 +178,7 @@ public class Month_Calendar extends Fragment {
                 holder = (ViewHolder)convertView.getTag();
 
             }
-            holder.calendar_day.setText("" + getItem(position));
-            //holder.calendar_month_in.setText("" + getItem(position));
-            //holder.calendar_month_out.setText("" + getItem(position));
+            holder.calendar_day.setText(getItem(position) + "");
 
             // 해당 날짜 텍스트 컬러, 배경 변경
             mCal = Calendar.getInstance();
@@ -171,10 +186,18 @@ public class Month_Calendar extends Fragment {
             // 오늘 day 가져옴
             Integer today = mCal.get(Calendar.DAY_OF_MONTH);
             String sToday = String.valueOf(today);
+
             if (sToday.equals(getItem(position))) {
                 // 오늘 day 텍스트 컬러 변경
                 holder.calendar_day.setTextColor(Color.GREEN);
+
+            } else if (position % 7 == 6) {
+                holder.calendar_day.setTextColor(Color.BLUE);
+
+            } else if (position % 7 == 0) {
+                holder.calendar_day.setTextColor(Color.RED);
             }
+
             return convertView;
         }
     }

@@ -64,8 +64,6 @@ public class Cooper_Fragment extends Fragment {
                 fab.attachToListView(Cooper_list);
                 fab.setOnClickListener(new View.OnClickListener() {
 
-                    private FragmentManager fm = getFragmentManager();
-
                     @Override
                     public void onClick(View v) {
 

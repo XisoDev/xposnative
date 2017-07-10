@@ -63,6 +63,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:hint="차량 번호로 필터링"
+            android:inputType="number"
             />
         </LinearLayout>
     <LinearLayout

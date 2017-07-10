@@ -2,31 +2,23 @@ package com.example.macarrow.xPos;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
-import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.example.macarrow.xPos.Services.CarType_Services;
 import com.example.macarrow.xPos.Services.Garage_Service;
 import com.example.macarrow.xPos.Services.Month_Service;
-import com.example.macarrow.xPos.adapter.PanelCarTypeViewAdapter;
-import com.example.macarrow.xPos.fragment.Calcu_Fragment;
 import com.example.macarrow.xPos.fragment.Config.Config_CarType_Add;
 import com.example.macarrow.xPos.fragment.Cooper_Fragment;
 import com.example.macarrow.xPos.fragment.Garage.CarTypeList;
@@ -39,9 +31,7 @@ import com.example.macarrow.xPos.fragment.Payment.Payment_Discount;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.List;
 import java.util.Map;
-import android.view.WindowManager.LayoutParams;
 
 public class MainActivity extends Activity {
 
@@ -428,7 +418,7 @@ public class MainActivity extends Activity {
                         break;
 
                     case R.id.tab_calcu:
-                        fm.beginTransaction().replace(R.id.content_fragment, new Calcu_Fragment()).commit();
+                        //fm.beginTransaction().replace(R.id.content_fragment, new Calcu_Fragment()).commit();
                         mainTitle.setText("정산");
                         break;
 

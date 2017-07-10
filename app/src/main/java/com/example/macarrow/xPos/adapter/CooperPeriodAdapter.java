@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.example.macarrow.xPos.R;
-
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
@@ -31,6 +30,7 @@ public class CooperPeriodAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
         CooperPeriod_Item item = null;
 
         if(convertView == null) {
