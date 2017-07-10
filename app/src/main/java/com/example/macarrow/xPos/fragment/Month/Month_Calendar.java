@@ -29,7 +29,7 @@ public class Month_Calendar extends Fragment {
 
     // 안드로이드 gridview 달력 스케줄
     // http://blog.naver.com/PostView.nhn?blogId=onblack_&logNo=220934784083&beginTime=0&jumpingVid=&from=search&redirect=Log&widgetTypeCall=true
-
+    //https://github.com/psh667/android/tree/master/DoIt/book_part2_jellybean/book04/SampleCalendarMonthView/src/org/androidtown/calendar/month
     public Month_Calendar(){}
     private MonthCalendarAdapter adapter;
     private ArrayList<String> dayList;
@@ -188,6 +188,7 @@ public class Month_Calendar extends Fragment {
             //String car_num = (String) list.get(position).get("car_num");
 
             holder.calendar_day.setText(getItem(position) + "");
+
 
 
             // 해당 날짜 텍스트 컬러, 배경 변경
