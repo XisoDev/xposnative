@@ -21,15 +21,13 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 public class Month_Calendar extends Fragment {
 
     // 안드로이드 gridview 달력 스케줄
     // http://blog.naver.com/PostView.nhn?blogId=onblack_&logNo=220934784083&beginTime=0&jumpingVid=&from=search&redirect=Log&widgetTypeCall=true
-    //https://github.com/psh667/android/tree/master/DoIt/book_part2_jellybean/book04/SampleCalendarMonthView/src/org/androidtown/calendar/month
+    // https://github.com/psh667/android/tree/master/DoIt/book_part2_jellybean/book04/SampleCalendarMonthView/src/org/androidtown/calendar/month
     public Month_Calendar(){}
     private MonthCalendarAdapter adapter;
     private ArrayList<String> dayList;
@@ -167,31 +165,41 @@ public class Month_Calendar extends Fragment {
             if (convertView == null) {
                 convertView = inflater.inflate(R.layout.month_calendar_view, parent, false);
                 holder = new ViewHolder();
-                holder.calendar_day = (TextView)convertView.findViewById(R.id.calendar_day);
-                holder.calendar_month_in = (TextView)convertView.findViewById(R.id.calendar_month_in);
-                holder.calendar_month_out = (TextView)convertView.findViewById(R.id.calendar_month_out);
+                holder.Calendar_day = (TextView)convertView.findViewById(R.id.calendar_day);
+                holder.Month_cnt = (TextView)convertView.findViewById(R.id.month_cnt);
                 convertView.setTag(holder);
 
             } else {
                 holder = (ViewHolder)convertView.getTag();
-
             }
 
             long now = System.currentTimeMillis();
             final Date date = new Date(now);
             final SimpleDateFormat curYearFormat = new SimpleDateFormat("yyyy", Locale.KOREA);
             final SimpleDateFormat curMonthFormat = new SimpleDateFormat("MM", Locale.KOREA);
+            final SimpleDateFormat curDayFormat = new SimpleDateFormat("dd", Locale.KOREA);
 
             Month_Service month_service = new Month_Service(getActivity(), "month.db", null, 1);
-            List<Map<String, Object>> list = month_service.calMonth(Integer.parseInt(curYearFormat.format(date)), Integer.parseInt(curMonthFormat.format(date)), "start");
-            //int start_date_d = (int) list.get(position).get("start_date_d");
-            //String car_num = (String) list.get(position).get("car_num");
+            int year = Integer.parseInt(curYearFormat.format(date));
+            int month = Integer.parseInt(curMonthFormat.format(date));
+            int day = Integer.parseInt(curDayFormat.format(date));
 
-            holder.calendar_day.setText(getItem(position) + "");
+            int in = month_service.calMonthInCnt(year, month, day);
+            int out = month_service.calMonthOutCnt(year, month, day);
 
+            int cnt = in + out;
 
+            holder.Calendar_day.setText(getItem(position) + "");
 
-            // 해당 날짜 텍스트 컬러, 배경 변경
+            if (holder.Month_cnt.equals("")) {
+                holder.Month_cnt.setText("");
+            }
+
+            if (getItem(position).equals(day+"")) {
+                holder.Month_cnt.setText(cnt + "");
+            }
+
+            // 해당 날짜 텍스트 컬러 변경
             mCal = Calendar.getInstance();
 
             // 오늘 day 가져옴
@@ -200,13 +208,13 @@ public class Month_Calendar extends Fragment {
 
             if (sToday.equals(getItem(position))) {
                 // 오늘 day 텍스트 컬러 변경
-                holder.calendar_day.setTextColor(Color.GREEN);
+                holder.Calendar_day.setTextColor(Color.GREEN);
 
             } else if (position % 7 == 6) {
-                holder.calendar_day.setTextColor(Color.BLUE);
+                holder.Calendar_day.setTextColor(Color.BLUE);
 
             } else if (position % 7 == 0) {
-                holder.calendar_day.setTextColor(Color.RED);
+                holder.Calendar_day.setTextColor(Color.RED);
             }
 
             return convertView;
@@ -216,8 +224,7 @@ public class Month_Calendar extends Fragment {
 
 class ViewHolder {
 
-    TextView calendar_day;
-    TextView calendar_month_in;
-    TextView calendar_month_out;
+    TextView Calendar_day;
+    TextView Month_cnt;
 
 }

@@ -304,7 +304,33 @@ public class Month_Service extends SQLiteOpenHelper {
 
     }
 
-    public List<Map<String, Object>> calMonth(int year, int month, String status) {
+    public int calMonthInCnt(int year, int month, int day) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM month WHERE start_date_y = " + year + " AND start_date_m = " + month + " AND start_date_d = " + day + " ", null);
+        cursor.moveToFirst();
+        cursor.getCount();
+        return cursor.getCount();
+    }
+
+    public int calMonthOutCnt(int year, int month, int day) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM month WHERE end_date_y = " + year + " AND end_date_m = " + month + " AND end_date_d = " + day + " ", null);
+        cursor.moveToFirst();
+        cursor.getCount();
+        return cursor.getCount();
+    }
+
+    public int amountSum(int year, int month, int day) {
+        int Tamount = 0;
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT sum(amount) FROM month WHERE  = " + year + " AND start_date_m = " + month + " AND start_date_d = " + day + " ", null);
+        cursor.moveToFirst();
+        Tamount = cursor.getInt(0);
+        cursor.close();
+        return Tamount;
+    }
+
+    public List<Map<String, Object>> calMonth(int year, int month, int day, String status) {
         // 읽기가 가능하게 DB 열기
         SQLiteDatabase db = getReadableDatabase();
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
@@ -312,10 +338,10 @@ public class Month_Service extends SQLiteOpenHelper {
         // DB에 있는 데이터를 쉽게 처리하기 위해 Cursor를 사용하여 테이블에 있는 모든 데이터 출력
         Cursor cursor = null;
         if (status.equals("start")) {
-            cursor = db.rawQuery("SELECT * FROM month WHERE start_date_y = " + year + " AND start_date_m = " + month + " order by idx desc", null);
+            cursor = db.rawQuery("SELECT * FROM month WHERE start_date_y = " + year + " AND start_date_m = " + month + " AND start_date_d = " + day + " ", null);
         }
         if (status.equals("end")) {
-            cursor = db.rawQuery("SELECT * FROM month WHERE end_date_y = " + year + " AND end_date_m = " + month + " order by idx desc", null);
+            cursor = db.rawQuery("SELECT * FROM month WHERE end_date_y = " + year + " AND end_date_m = " + month + " AND end_date_d = " + day + " ", null);
         }
         while (cursor.moveToNext()) {
             Map<String, Object> map = new HashMap<String, Object>();

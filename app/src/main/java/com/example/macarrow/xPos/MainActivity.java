@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.example.macarrow.xPos.Services.CarType_Services;
 import com.example.macarrow.xPos.Services.Garage_Service;
 import com.example.macarrow.xPos.Services.Month_Service;
+import com.example.macarrow.xPos.fragment.Calcu_Fragment;
 import com.example.macarrow.xPos.fragment.Config.Config_CarType_Add;
 import com.example.macarrow.xPos.fragment.Cooper_Fragment;
 import com.example.macarrow.xPos.fragment.Garage.CarTypeList;
@@ -418,7 +419,7 @@ public class MainActivity extends Activity {
                         break;
 
                     case R.id.tab_calcu:
-                        //fm.beginTransaction().replace(R.id.content_fragment, new Calcu_Fragment()).commit();
+                        fm.beginTransaction().replace(R.id.content_fragment, new Calcu_Fragment()).commit();
                         mainTitle.setText("정산");
                         break;
 

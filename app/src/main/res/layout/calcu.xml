@@ -14,23 +14,93 @@
         android:background="@android:color/white"
         >
         <TextView
-            android:id="@+id/sCal_dateTextView"
+            android:id="@+id/dateTextView"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="50px"
             android:background="#21a4ff"
             android:gravity="center_vertical"
-            android:paddingLeft="10dp"
+            android:paddingLeft="10px"
             android:textColor="@android:color/white"
-            android:textSize="20sp"
+            android:textSize="20px"
             />
-        <GridView
-            android:numColumns="7"
-            android:id="@+id/sCal_calGrid"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70px"
+            android:orientation="horizontal"
             android:background="#f2f2f2"
-            android:verticalSpacing="1dp"
-            android:horizontalSpacing="1dp"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="70px"
+                android:textSize="35px"
+                android:text="일"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@android:color/holo_red_dark"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="80px"
+                android:textSize="40px"
+                android:text="월"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@android:color/black"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="80px"
+                android:textSize="40px"
+                android:text="화"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@android:color/black"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="80px"
+                android:textSize="40px"
+                android:text="수"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@android:color/black"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="80px"
+                android:textSize="40px"
+                android:text="목"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@android:color/black"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="80px"
+                android:textSize="40px"
+                android:text="금"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@android:color/black"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="80px"
+                android:textSize="40px"
+                android:text="토"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@android:color/holo_blue_dark"
+                />
+        </LinearLayout>
+        <GridView
+            android:id="@+id/calGrid"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="#f2f2f2"
+            android:horizontalSpacing="1dp"
+            android:numColumns="7"
+            android:verticalSpacing="1dp"
             />
     </LinearLayout>
     <LinearLayout
@@ -40,14 +110,14 @@
         android:orientation="horizontal"
         >
         <Button
-            android:id="@+id/sCal_prevButton"
+            android:id="@+id/prevButton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="지난달"
             />
         <Button
-            android:id="@+id/sCal_nextButton"
+            android:id="@+id/nextButton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
