@@ -320,16 +320,6 @@ public class Month_Service extends SQLiteOpenHelper {
         return cursor.getCount();
     }
 
-    public int amountSum(int year, int month, int day) {
-        int Tamount = 0;
-        SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT sum(amount) FROM month WHERE  = " + year + " AND start_date_m = " + month + " AND start_date_d = " + day + " ", null);
-        cursor.moveToFirst();
-        Tamount = cursor.getInt(0);
-        cursor.close();
-        return Tamount;
-    }
-
     public List<Map<String, Object>> calMonth(int year, int month, int day, String status) {
         // 읽기가 가능하게 DB 열기
         SQLiteDatabase db = getReadableDatabase();

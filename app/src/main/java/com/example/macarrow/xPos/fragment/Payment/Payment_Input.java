@@ -18,6 +18,8 @@ import com.example.macarrow.xPos.R;
 import com.example.macarrow.xPos.Services.Garage_Service;
 import com.example.macarrow.xPos.Services.Payment_Services;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Map;
 
 public class Payment_Input extends DialogFragment {
@@ -141,6 +143,10 @@ public class Payment_Input extends DialogFragment {
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
                 final int cooper_start = Integer.parseInt(sdf.format(startDate));
                 final int cooper_end = Integer.parseInt(sdf.format(endDate));
+                GregorianCalendar calendar = new GregorianCalendar();
+                final int year = calendar.get(Calendar.YEAR);
+                final int month = calendar.get(Calendar.MONTH)+1;
+                final int day = calendar.get(Calendar.DAY_OF_MONTH);
                 if (Integer.parseInt(Pay_money.getText().toString()) <= 0) {
                     Pay_money.setText(inPay+"");
                 }
@@ -179,8 +185,8 @@ public class Payment_Input extends DialogFragment {
                                 garageService.outCar(endDate, total_amount, payAmount, cooperIdx, discount_cooper, discount_self, is_out, is_paid, idx);
                                 String lookup_type = "garage";
                                 String pay_type = "card";
-                                int pay_amount = Integer.parseInt(In_pay.getText().toString());
-                                payment_services.insert(idx, lookup_type, pay_type, inPay, pay_money);
+                                int cooper_amount = discount_cooper+discount_self;
+                                payment_services.insert(idx, lookup_type, pay_type, inPay, cooper_amount, pay_money, year, month, day);
                                 dismiss();
                             }
                         });
@@ -218,7 +224,8 @@ public class Payment_Input extends DialogFragment {
                                 garageService.outCar(endDate, total_amount, payAmount, cooperIdx, discount_cooper, discount_self, is_out, is_paid, idx);
                                 String lookup_type = "garage";
                                 String pay_type = "cash";
-                                payment_services.insert(idx, lookup_type, pay_type, inPay, pay_money);
+                                int cooper_amount = discount_cooper+discount_self;
+                                payment_services.insert(idx, lookup_type, pay_type, inPay, cooper_amount, pay_money, year, month, day);
                                 dismiss();
                             }
                         });

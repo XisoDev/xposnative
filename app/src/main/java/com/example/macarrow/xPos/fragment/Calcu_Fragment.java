@@ -13,12 +13,12 @@ import android.widget.Toast;
 import com.example.macarrow.xPos.DayInfo;
 import com.example.macarrow.xPos.R;
 import com.example.macarrow.xPos.Services.Garage_Service;
-import com.example.macarrow.xPos.Services.Month_Service;
+import com.example.macarrow.xPos.Services.Payment_Services;
 import com.example.macarrow.xPos.adapter.CalcuAdapter;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class Calcu_Fragment extends Fragment implements View.OnClickListener, AdapterView.OnItemClickListener{
+public class Calcu_Fragment extends Fragment implements View.OnClickListener {
 
     public Calcu_Fragment(){}
 
@@ -35,35 +35,66 @@ public class Calcu_Fragment extends Fragment implements View.OnClickListener, Ad
     private TextView DateTextView;
     private GridView CalGrid;
 
+    TextView Total_amounts, Month_amounts, Dc_coopers, Pay_amounts, Receivable, In_car_count, Out_car_count;
+    int year, month, sDay;
+
     Calendar mLastMonthCalendar;
     Calendar mThisMonthCalendar;
     Calendar mNextMonthCalendar;
-
-    final Garage_Service garageService = new Garage_Service(getActivity(), "garage.db", null, 1);
-    final Month_Service monthService = new Month_Service(getActivity(), "month.db", null, 1);
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.calcu, container, false);
 
-        final TextView Total_amounts = (TextView)view.findViewById(R.id.total_amounts);
-        final TextView Month_amounts = (TextView)view.findViewById(R.id.month_amounts);
-        final TextView Dc_coopers = (TextView)view.findViewById(R.id.dc_coopers);
-        final TextView Pay_amounts = (TextView)view.findViewById(R.id.pay_amounts);
-        final TextView Receivable = (TextView)view.findViewById(R.id.receivable);
-        final TextView In_car_count = (TextView)view.findViewById(R.id.in_car_count);
-        final TextView Out_car_count = (TextView)view.findViewById(R.id.out_car_count);
+        final Payment_Services payment_services = new Payment_Services(getActivity(), "payment.db", null, 1);
+        final Garage_Service garage_service = new Garage_Service(getActivity(), "garage.db", null, 1);
+
+        Total_amounts = (TextView)view.findViewById(R.id.total_amounts);
+        Month_amounts = (TextView)view.findViewById(R.id.month_amounts);
+        Dc_coopers = (TextView)view.findViewById(R.id.dc_coopers);
+        Pay_amounts = (TextView)view.findViewById(R.id.pay_amounts);
+        Receivable = (TextView)view.findViewById(R.id.receivable);
+        In_car_count = (TextView)view.findViewById(R.id.in_car_count);
+        Out_car_count = (TextView)view.findViewById(R.id.out_car_count);
         DateTextView = (TextView)view.findViewById(R.id.dateTextView);
         CalGrid = (GridView)view.findViewById(R.id.calGrid);
         Button PrevButton = (Button)view.findViewById(R.id.prevButton);
         Button NextButton = (Button)view.findViewById(R.id.nextButton);
 
         mDayList = new ArrayList<DayInfo>();
+        year = mThisMonthCalendar.get(Calendar.YEAR);
+        month = mThisMonthCalendar.get(Calendar.MONTH)+1;
+        sDay = mThisMonthCalendar.get(Calendar.DAY_OF_MONTH);
+        int total_amount = payment_services.totalAmountSum(year, month, sDay);
+        int month_amount = payment_services.monthAmountSum(year, month, sDay);
+        int cooper_amount = payment_services.cooperAmountSum(year, month, sDay);
+        int pay_amount = payment_services.payAmountSum(year, month, sDay);
+
+        Total_amounts.setText(total_amount+"");
+        Month_amounts.setText(month_amount+"");
+        Dc_coopers.setText(cooper_amount+"");
+        Pay_amounts.setText(pay_amount+"");
+        Receivable.setText((total_amount-month_amount-cooper_amount-pay_amount)+"");
 
         PrevButton.setOnClickListener(this);
         NextButton.setOnClickListener(this);
-        CalGrid.setOnItemClickListener(this);
+
+        CalGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                DayInfo day = mDayList.get(position);
+                sDay = Integer.parseInt(day.getDay());
+//        Toast.makeText(getActivity(), mThisMonthCalendar.get(Calendar.YEAR) + "/" + (mThisMonthCalendar.get(Calendar.MONTH) +1) + "/" + Integer.parseInt(day.getDay()), Toast.LENGTH_SHORT).show();
+
+                int total_amount = payment_services.totalAmountSum(year, month, sDay);
+                int month_amount = payment_services.monthAmountSum(year, month, sDay);
+                int cooper_amount = payment_services.cooperAmountSum(year, month, sDay);
+                int pay_amount = payment_services.payAmountSum(year, month, sDay);
+
+                Toast.makeText(getActivity(), 0+"", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         return view;
 
@@ -144,31 +175,6 @@ public class Calcu_Fragment extends Fragment implements View.OnClickListener, Ad
         calendar.add(Calendar.MONTH, +1);
         DateTextView.setText(mThisMonthCalendar.get(Calendar.YEAR) + "년 " + (mThisMonthCalendar.get(Calendar.MONTH) + 1) + "월");
         return calendar;
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-        DayInfo day = mDayList.get(position);
-//        Toast.makeText(getActivity(), mThisMonthCalendar.get(Calendar.YEAR) + "/" + (mThisMonthCalendar.get(Calendar.MONTH) +1) + "/" + Integer.parseInt(day.getDay()), Toast.LENGTH_SHORT).show();
-
-        int year = mThisMonthCalendar.get(Calendar.YEAR);
-        int month = mThisMonthCalendar.get(Calendar.MONTH)+1;
-        int sDay = Integer.parseInt(day.getDay());
-
-        int monthAmount = monthService.amountSum(year, month, sDay);
-
-        Toast.makeText(getActivity(), monthAmount+"", Toast.LENGTH_SHORT).show();
-
-
-
-
-
-
-
-
-
-
     }
 
     @Override

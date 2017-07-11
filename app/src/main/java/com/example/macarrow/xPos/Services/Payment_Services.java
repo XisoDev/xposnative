@@ -21,7 +21,11 @@ public class Payment_Services extends SQLiteOpenHelper {
     * lookup_type (garage, month)
     * pay_type (cash, card)
     * 총액 = total_amount
+    * 할인액 = cooper_amount
     * 결제 금액 = pay_amount
+    * pay_year
+    * pay_month
+    * pay_day
     * code
     * ret_code
     * success_code
@@ -40,7 +44,11 @@ public class Payment_Services extends SQLiteOpenHelper {
                 "lookup_type TEXT NOT NULL, " +
                 "pay_type TEXT, " +
                 "total_amount INTEGER DEFAULT 0, " +
+                "cooper_amount INTEGER DEFAULT 0, " +
                 "pay_amount INTEGER DEFAULT 0, " +
+                "pay_year INTEGER, " +
+                "pay_month INTEGER, " +
+                "pay_day INTEGER, " +
                 "code TEXT, " +
                 "ret_code TEXT, " +
                 "success_code TEXT, " +
@@ -58,7 +66,11 @@ public class Payment_Services extends SQLiteOpenHelper {
                        String lookup_type,
                        String pay_type,
                        int total_amount,
-                       int pay_amount) {
+                       int cooper_amount,
+                       int pay_amount,
+                       int pay_year,
+                       int pay_month,
+                       int pay_day) {
         // 읽고 쓰기가 가능하게 DB 열기
         SQLiteDatabase db = getWritableDatabase();
         // DB에 입력한 값으로 행 추가
@@ -66,32 +78,60 @@ public class Payment_Services extends SQLiteOpenHelper {
                 "lookup_type," +
                 "pay_type," +
                 "total_amount," +
-                "pay_amount) VALUES(" + lookup_idx + ", " +
+                "cooper_amount," +
+                "pay_amount," +
+                "pay_year," +
+                "pay_month," +
+                "pay_day) VALUES(" + lookup_idx + ", " +
                 "'" + lookup_type + "', " +
                 "'" + pay_type + "', " +
                 "" + total_amount + ", " +
-                "" + pay_amount + ");");
+                "" + cooper_amount + ", " +
+                "" + pay_amount + ", " +
+                "" + pay_year + ", " +
+                "" + pay_month + ", " +
+                "" + pay_day + ");");
         db.close();
     }
 
-    public void update(String car_type_title,
-                       int minute_free,
-                       int basic_amount,
-                       int basic_minute,
-                       int amount_unit,
-                       int minute_unit,
-                       int idx) {
-        SQLiteDatabase db = getWritableDatabase();
-        // 입력한 항목과 일치하는 행의 가격 정보 수정
-        db.execSQL("UPDATE payment SET car_type_title = '" + car_type_title + "', " +
-                "minute_free = " + minute_free + ", " +
-                "basic_amount = " + basic_amount + ", " +
-                "basic_minute = " + basic_minute + ", " +
-                "amount_unit = " + amount_unit + ", " +
-                "minute_unit = " + minute_unit + " " +
-                "WHERE idx = " + idx + ";");
-        db.close();
+    public int totalAmountSum(int year, int month, int day) {
+        SQLiteDatabase db = getReadableDatabase();
+        int total_amount = 0;
+        Cursor cursor = db.rawQuery("SELECT sum(total_amount) FROM payment WHERE start_date_y = " + year + " AND start_date_m = " + month + " AND start_date_d = " + day + " ", null);
+        cursor.moveToFirst();
+        total_amount = cursor.getInt(0);
+        cursor.close();
+        return total_amount;
+    }
 
+    public int monthAmountSum(int year, int month, int day) {
+        SQLiteDatabase db = getReadableDatabase();
+        int month_amount = 0;
+        Cursor cursor = db.rawQuery("SELECT sum(total_amount) FROM payment WHERE lookup_type = 'month' AND start_date_y = " + year + " AND start_date_m = " + month + " AND start_date_d = " + day + " ", null);
+        cursor.moveToFirst();
+        month_amount = cursor.getInt(0);
+        cursor.close();
+        return month_amount;
+    }
+
+    public int cooperAmountSum(int year, int month, int day) {
+        SQLiteDatabase db = getReadableDatabase();
+        int total_amount = 0;
+        Cursor cursor = db.rawQuery("SELECT sum(cooper_amount) FROM payment WHERE start_date_y = " + year + " AND start_date_m = " + month + " AND start_date_d = " + day + " ", null);
+        cursor.moveToFirst();
+        total_amount = cursor.getInt(0);
+        cursor.close();
+        return total_amount;
+    }
+
+    public int payAmountSum(int year, int month, int day) {
+        SQLiteDatabase db = getReadableDatabase();
+        int total_amount = 0;
+        Cursor cursor = db.rawQuery("SELECT sum(pay_amount) FROM payment WHERE start_date_y = " + year + " AND start_date_m = " + month + " AND start_date_d = " + day + " ", null);
+        cursor.moveToFirst();
+        total_amount = cursor.getInt(0);
+        cursor.close();
+        return total_amount;
     }
 
     public Map<String, Object> getResultForUpdate(int idx) {
@@ -107,14 +147,18 @@ public class Payment_Services extends SQLiteOpenHelper {
             map.put("lookup_type", cursor.getString(2));
             map.put("pay_type", cursor.getString(3));
             map.put("total_amount", cursor.getInt(4));
-            map.put("pay_amount", cursor.getInt(5));
-            map.put("code", cursor.getString(6));
-            map.put("ret_code", cursor.getString(7));
-            map.put("success_code", cursor.getString(8));
-            map.put("success_date", cursor.getString(9));
-            map.put("regdate", cursor.getInt(10));
-            map.put("cancel_date", cursor.getInt(11));
-            map.put("is_cancel", cursor.getString(12));
+            map.put("cooper_amount", cursor.getInt(5));
+            map.put("pay_amount", cursor.getInt(6));
+            map.put("pay_year", cursor.getInt(7));
+            map.put("pay_month", cursor.getInt(8));
+            map.put("pay_day", cursor.getInt(9));
+            map.put("code", cursor.getString(10));
+            map.put("ret_code", cursor.getString(11));
+            map.put("success_code", cursor.getString(12));
+            map.put("success_date", cursor.getString(13));
+            map.put("regdate", cursor.getInt(14));
+            map.put("cancel_date", cursor.getInt(15));
+            map.put("is_cancel", cursor.getString(16));
 
         }
 
@@ -136,14 +180,18 @@ public class Payment_Services extends SQLiteOpenHelper {
             map.put("lookup_type", cursor.getString(2));
             map.put("pay_type", cursor.getString(3));
             map.put("total_amount", cursor.getInt(4));
-            map.put("pay_amount", cursor.getInt(5));
-            map.put("code", cursor.getString(6));
-            map.put("ret_code", cursor.getString(7));
-            map.put("success_code", cursor.getString(8));
-            map.put("success_date", cursor.getString(9));
-            map.put("regdate", cursor.getInt(10));
-            map.put("cancel_date", cursor.getInt(11));
-            map.put("is_cancel", cursor.getString(12));
+            map.put("cooper_amount", cursor.getInt(5));
+            map.put("pay_amount", cursor.getInt(6));
+            map.put("pay_year", cursor.getInt(7));
+            map.put("pay_month", cursor.getInt(8));
+            map.put("pay_day", cursor.getInt(9));
+            map.put("code", cursor.getString(10));
+            map.put("ret_code", cursor.getString(11));
+            map.put("success_code", cursor.getString(12));
+            map.put("success_date", cursor.getString(13));
+            map.put("regdate", cursor.getInt(14));
+            map.put("cancel_date", cursor.getInt(15));
+            map.put("is_cancel", cursor.getString(16));
             list.add(map);
 
         }

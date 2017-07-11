@@ -17,15 +17,15 @@ import java.util.Calendar;
 public class CalcuAdapter extends BaseAdapter {
 
     private ArrayList<DayInfo> mDayList;
-    private Context mContext;
+    private Context context;
     private int mResource;
     private LayoutInflater mflater;
 
     public CalcuAdapter (Context context, int textResource, ArrayList<DayInfo> dayList) {
-        this.mContext = context;
+        this.context = context;
         this.mDayList = dayList;
         this.mResource = textResource;
-        this.mflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        this.mflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
