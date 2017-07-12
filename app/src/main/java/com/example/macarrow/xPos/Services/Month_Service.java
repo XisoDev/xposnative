@@ -320,19 +320,13 @@ public class Month_Service extends SQLiteOpenHelper {
         return cursor.getCount();
     }
 
-    public List<Map<String, Object>> calMonth(int year, int month, int day, String status) {
+    public List<Map<String, Object>> calMonth(int year, int month, int day) {
         // 읽기가 가능하게 DB 열기
         SQLiteDatabase db = getReadableDatabase();
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 
         // DB에 있는 데이터를 쉽게 처리하기 위해 Cursor를 사용하여 테이블에 있는 모든 데이터 출력
-        Cursor cursor = null;
-        if (status.equals("start")) {
-            cursor = db.rawQuery("SELECT * FROM month WHERE start_date_y = " + year + " AND start_date_m = " + month + " AND start_date_d = " + day + " ", null);
-        }
-        if (status.equals("end")) {
-            cursor = db.rawQuery("SELECT * FROM month WHERE end_date_y = " + year + " AND end_date_m = " + month + " AND end_date_d = " + day + " ", null);
-        }
+        Cursor cursor = db.rawQuery("SELECT * FROM month WHERE start_date_y = " + year + " AND start_date_m = " + month + " AND start_date_d = " + day + " OR end_date_y = " + year + " AND end_date_m = " + month + " AND end_date_d = " + day + " ", null);
         while (cursor.moveToNext()) {
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("idx", cursor.getInt(0));

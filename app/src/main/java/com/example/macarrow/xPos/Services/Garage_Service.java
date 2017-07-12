@@ -17,6 +17,9 @@ public class Garage_Service extends SQLiteOpenHelper {
 
     /*
     * 입차시간 - start_date
+    * start_year
+    * start_month
+    * start_day
     * 출차시간 - end_date
     * 차량번호 - car_num
     * 차종 명 - car_type_title
@@ -45,6 +48,9 @@ public class Garage_Service extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE garage (" +
                 "idx INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
                 "start_date INTEGER NOT NULL, " +
+                "start_year INTEGER NOT NULL, " +
+                "start_month INTEGER NOT NULL, " +
+                "start_day INTEGER NOT NULL, " +
                 "end_date INTEGER, " +
                 "car_num TEXT, " +
                 "car_type_title TEXT, " +
@@ -72,6 +78,9 @@ public class Garage_Service extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {}
 
     public void insert(long start_date,
+                       int start_year,
+                       int start_month,
+                       int start_day,
                        String car_num,
                        String car_type_title,
                        int minute_unit,
@@ -87,6 +96,9 @@ public class Garage_Service extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         // DB에 입력한 값으로 행 추가
         db.execSQL("INSERT INTO garage(start_date," +
+                "start_year," +
+                "start_month," +
+                "start_day," +
                 "car_num," +
                 "car_type_title," +
                 "minute_unit," +
@@ -98,6 +110,9 @@ public class Garage_Service extends SQLiteOpenHelper {
                 "cooper_idx," +
                 "discount_cooper," +
                 "discount_self) VALUES(" + start_date + ", " +
+                "" + start_year + ", " +
+                "" + start_month + ", " +
+                "" + start_day + ", " +
                 "'" + car_num + "', " +
                 "'" + car_type_title + "', " +
                 "" + minute_unit + ", " +
@@ -243,7 +258,7 @@ public class Garage_Service extends SQLiteOpenHelper {
 
     public int inCarCount(int year, int month, int day) {
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT sum(total_amount) FROM garage WHERE start_date_y = " + year + " AND start_date_m = " + month + " AND start_date_d = " + day + " ", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM garage WHERE start_year = " + year + " AND start_month = " + month + " AND start_day = " + day + " ", null);
         cursor.moveToFirst();
         cursor.close();
         return cursor.getCount();
@@ -251,7 +266,7 @@ public class Garage_Service extends SQLiteOpenHelper {
 
     public int outCarCount(int year, int month, int day) {
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT sum(total_amount) FROM garage WHERE start_date_y = " + year + " AND start_date_m = " + month + " AND start_date_d = " + day + " ", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM garage WHERE is_out = 'Y' AND start_year = " + year + " AND start_month = " + month + " AND start_day = " + day + " ", null);
         cursor.moveToFirst();
         cursor.close();
         return cursor.getCount();
@@ -267,26 +282,29 @@ public class Garage_Service extends SQLiteOpenHelper {
         if (cursor.moveToNext()) {
             map.put("idx", cursor.getInt(0));
             map.put("start_date", cursor.getLong(1));
-            map.put("end_date", cursor.getLong(2));
-            map.put("car_num", cursor.getString(3));
-            map.put("car_type_title", cursor.getString(4));
-            map.put("minute_unit", cursor.getInt(5));
-            map.put("minute_free", cursor.getInt(6));
-            map.put("amount_unit", cursor.getInt(7));
-            map.put("basic_amount", cursor.getInt(8));
-            map.put("basic_minute", cursor.getInt(9));
-            map.put("month_idx", cursor.getInt(10));
-            map.put("cooper_idx", cursor.getInt(11));
-            map.put("cooper_title", cursor.getString(12));
-            map.put("cooper_start", cursor.getInt(13));
-            map.put("cooper_end", cursor.getInt(14));
-            map.put("discount_cooper", cursor.getInt(15));
-            map.put("discount_self", cursor.getInt(16));
-            map.put("total_amount", cursor.getInt(17));
-            map.put("pay_amount", cursor.getInt(18));
-            map.put("is_paid", cursor.getString(19));
-            map.put("is_out", cursor.getString(20));
-            map.put("is_cancel", cursor.getString(21));
+            map.put("start_year", cursor.getInt(2));
+            map.put("start_month", cursor.getInt(3));
+            map.put("start_day", cursor.getInt(4));
+            map.put("end_date", cursor.getLong(5));
+            map.put("car_num", cursor.getString(6));
+            map.put("car_type_title", cursor.getString(7));
+            map.put("minute_unit", cursor.getInt(8));
+            map.put("minute_free", cursor.getInt(9));
+            map.put("amount_unit", cursor.getInt(10));
+            map.put("basic_amount", cursor.getInt(11));
+            map.put("basic_minute", cursor.getInt(12));
+            map.put("month_idx", cursor.getInt(13));
+            map.put("cooper_idx", cursor.getInt(14));
+            map.put("cooper_title", cursor.getString(15));
+            map.put("cooper_start", cursor.getInt(16));
+            map.put("cooper_end", cursor.getInt(17));
+            map.put("discount_cooper", cursor.getInt(18));
+            map.put("discount_self", cursor.getInt(19));
+            map.put("total_amount", cursor.getInt(20));
+            map.put("pay_amount", cursor.getInt(21));
+            map.put("is_paid", cursor.getString(22));
+            map.put("is_out", cursor.getString(23));
+            map.put("is_cancel", cursor.getString(24));
         }
 
         return map;
@@ -323,26 +341,29 @@ public class Garage_Service extends SQLiteOpenHelper {
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("idx", cursor.getInt(0));
             map.put("start_date", cursor.getLong(1));
-            map.put("end_date", cursor.getLong(2));
-            map.put("car_num", cursor.getString(3));
-            map.put("car_type_title", cursor.getString(4));
-            map.put("minute_unit", cursor.getInt(5));
-            map.put("minute_free", cursor.getInt(6));
-            map.put("amount_unit", cursor.getInt(7));
-            map.put("basic_amount", cursor.getInt(8));
-            map.put("basic_minute", cursor.getInt(9));
-            map.put("month_idx", cursor.getInt(10));
-            map.put("cooper_idx", cursor.getInt(11));
-            map.put("cooper_title", cursor.getString(12));
-            map.put("cooper_start", cursor.getInt(13));
-            map.put("cooper_end", cursor.getInt(14));
-            map.put("discount_cooper", cursor.getInt(15));
-            map.put("discount_self", cursor.getInt(16));
-            map.put("total_amount", cursor.getInt(17));
-            map.put("pay_amount", cursor.getInt(18));
-            map.put("is_paid", cursor.getString(19));
-            map.put("is_out", cursor.getString(20));
-            map.put("is_cancel", cursor.getString(21));
+            map.put("start_year", cursor.getInt(2));
+            map.put("start_month", cursor.getInt(3));
+            map.put("start_day", cursor.getInt(4));
+            map.put("end_date", cursor.getLong(5));
+            map.put("car_num", cursor.getString(6));
+            map.put("car_type_title", cursor.getString(7));
+            map.put("minute_unit", cursor.getInt(8));
+            map.put("minute_free", cursor.getInt(9));
+            map.put("amount_unit", cursor.getInt(10));
+            map.put("basic_amount", cursor.getInt(11));
+            map.put("basic_minute", cursor.getInt(12));
+            map.put("month_idx", cursor.getInt(13));
+            map.put("cooper_idx", cursor.getInt(14));
+            map.put("cooper_title", cursor.getString(15));
+            map.put("cooper_start", cursor.getInt(16));
+            map.put("cooper_end", cursor.getInt(17));
+            map.put("discount_cooper", cursor.getInt(18));
+            map.put("discount_self", cursor.getInt(19));
+            map.put("total_amount", cursor.getInt(20));
+            map.put("pay_amount", cursor.getInt(21));
+            map.put("is_paid", cursor.getString(22));
+            map.put("is_out", cursor.getString(23));
+            map.put("is_cancel", cursor.getString(24));
             list.add(map);
         }
 
@@ -361,26 +382,29 @@ public class Garage_Service extends SQLiteOpenHelper {
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("idx", cursor.getInt(0));
             map.put("start_date", cursor.getLong(1));
-            map.put("end_date", cursor.getLong(2));
-            map.put("car_num", cursor.getString(3));
-            map.put("car_type_title", cursor.getString(4));
-            map.put("minute_unit", cursor.getInt(5));
-            map.put("minute_free", cursor.getInt(6));
-            map.put("amount_unit", cursor.getInt(7));
-            map.put("basic_amount", cursor.getInt(8));
-            map.put("basic_minute", cursor.getInt(9));
-            map.put("month_idx", cursor.getInt(10));
-            map.put("cooper_idx", cursor.getInt(11));
-            map.put("cooper_title", cursor.getString(12));
-            map.put("cooper_start", cursor.getInt(13));
-            map.put("cooper_end", cursor.getInt(14));
-            map.put("discount_cooper", cursor.getInt(15));
-            map.put("discount_self", cursor.getInt(16));
-            map.put("total_amount", cursor.getInt(17));
-            map.put("pay_amount", cursor.getInt(18));
-            map.put("is_paid", cursor.getString(19));
-            map.put("is_out", cursor.getString(20));
-            map.put("is_cancel", cursor.getString(21));
+            map.put("start_year", cursor.getInt(2));
+            map.put("start_month", cursor.getInt(3));
+            map.put("start_day", cursor.getInt(4));
+            map.put("end_date", cursor.getLong(5));
+            map.put("car_num", cursor.getString(6));
+            map.put("car_type_title", cursor.getString(7));
+            map.put("minute_unit", cursor.getInt(8));
+            map.put("minute_free", cursor.getInt(9));
+            map.put("amount_unit", cursor.getInt(10));
+            map.put("basic_amount", cursor.getInt(11));
+            map.put("basic_minute", cursor.getInt(12));
+            map.put("month_idx", cursor.getInt(13));
+            map.put("cooper_idx", cursor.getInt(14));
+            map.put("cooper_title", cursor.getString(15));
+            map.put("cooper_start", cursor.getInt(16));
+            map.put("cooper_end", cursor.getInt(17));
+            map.put("discount_cooper", cursor.getInt(18));
+            map.put("discount_self", cursor.getInt(19));
+            map.put("total_amount", cursor.getInt(20));
+            map.put("pay_amount", cursor.getInt(21));
+            map.put("is_paid", cursor.getString(22));
+            map.put("is_out", cursor.getString(23));
+            map.put("is_cancel", cursor.getString(24));
             list.add(map);
         }
 
@@ -399,26 +423,29 @@ public class Garage_Service extends SQLiteOpenHelper {
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("idx", cursor.getInt(0));
             map.put("start_date", cursor.getLong(1));
-            map.put("end_date", cursor.getLong(2));
-            map.put("car_num", cursor.getString(3));
-            map.put("car_type_title", cursor.getString(4));
-            map.put("minute_unit", cursor.getInt(5));
-            map.put("minute_free", cursor.getInt(6));
-            map.put("amount_unit", cursor.getInt(7));
-            map.put("basic_amount", cursor.getInt(8));
-            map.put("basic_minute", cursor.getInt(9));
-            map.put("month_idx", cursor.getInt(10));
-            map.put("cooper_idx", cursor.getInt(11));
-            map.put("cooper_title", cursor.getString(12));
-            map.put("cooper_start", cursor.getInt(13));
-            map.put("cooper_end", cursor.getInt(14));
-            map.put("discount_cooper", cursor.getInt(15));
-            map.put("discount_self", cursor.getInt(16));
-            map.put("total_amount", cursor.getInt(17));
-            map.put("pay_amount", cursor.getInt(18));
-            map.put("is_paid", cursor.getString(19));
-            map.put("is_out", cursor.getString(20));
-            map.put("is_cancel", cursor.getString(21));
+            map.put("start_year", cursor.getInt(2));
+            map.put("start_month", cursor.getInt(3));
+            map.put("start_day", cursor.getInt(4));
+            map.put("end_date", cursor.getLong(5));
+            map.put("car_num", cursor.getString(6));
+            map.put("car_type_title", cursor.getString(7));
+            map.put("minute_unit", cursor.getInt(8));
+            map.put("minute_free", cursor.getInt(9));
+            map.put("amount_unit", cursor.getInt(10));
+            map.put("basic_amount", cursor.getInt(11));
+            map.put("basic_minute", cursor.getInt(12));
+            map.put("month_idx", cursor.getInt(13));
+            map.put("cooper_idx", cursor.getInt(14));
+            map.put("cooper_title", cursor.getString(15));
+            map.put("cooper_start", cursor.getInt(16));
+            map.put("cooper_end", cursor.getInt(17));
+            map.put("discount_cooper", cursor.getInt(18));
+            map.put("discount_self", cursor.getInt(19));
+            map.put("total_amount", cursor.getInt(20));
+            map.put("pay_amount", cursor.getInt(21));
+            map.put("is_paid", cursor.getString(22));
+            map.put("is_out", cursor.getString(23));
+            map.put("is_cancel", cursor.getString(24));
             list.add(map);
         }
 
@@ -436,26 +463,29 @@ public class Garage_Service extends SQLiteOpenHelper {
         if (cursor.moveToNext()) {
             map.put("idx", cursor.getInt(0));
             map.put("start_date", cursor.getLong(1));
-            map.put("end_date", cursor.getLong(2));
-            map.put("car_num", cursor.getString(3));
-            map.put("car_type_title", cursor.getString(4));
-            map.put("minute_unit", cursor.getInt(5));
-            map.put("minute_free", cursor.getInt(6));
-            map.put("amount_unit", cursor.getInt(7));
-            map.put("basic_amount", cursor.getInt(8));
-            map.put("basic_minute", cursor.getInt(9));
-            map.put("month_idx", cursor.getInt(10));
-            map.put("cooper_idx", cursor.getInt(11));
-            map.put("cooper_title", cursor.getString(12));
-            map.put("cooper_start", cursor.getInt(13));
-            map.put("cooper_end", cursor.getInt(14));
-            map.put("discount_cooper", cursor.getInt(15));
-            map.put("discount_self", cursor.getInt(16));
-            map.put("total_amount", cursor.getInt(17));
-            map.put("pay_amount", cursor.getInt(18));
-            map.put("is_paid", cursor.getString(19));
-            map.put("is_out", cursor.getString(20));
-            map.put("is_cancel", cursor.getString(21));
+            map.put("start_year", cursor.getInt(2));
+            map.put("start_month", cursor.getInt(3));
+            map.put("start_day", cursor.getInt(4));
+            map.put("end_date", cursor.getLong(5));
+            map.put("car_num", cursor.getString(6));
+            map.put("car_type_title", cursor.getString(7));
+            map.put("minute_unit", cursor.getInt(8));
+            map.put("minute_free", cursor.getInt(9));
+            map.put("amount_unit", cursor.getInt(10));
+            map.put("basic_amount", cursor.getInt(11));
+            map.put("basic_minute", cursor.getInt(12));
+            map.put("month_idx", cursor.getInt(13));
+            map.put("cooper_idx", cursor.getInt(14));
+            map.put("cooper_title", cursor.getString(15));
+            map.put("cooper_start", cursor.getInt(16));
+            map.put("cooper_end", cursor.getInt(17));
+            map.put("discount_cooper", cursor.getInt(18));
+            map.put("discount_self", cursor.getInt(19));
+            map.put("total_amount", cursor.getInt(20));
+            map.put("pay_amount", cursor.getInt(21));
+            map.put("is_paid", cursor.getString(22));
+            map.put("is_out", cursor.getString(23));
+            map.put("is_cancel", cursor.getString(24));
         }
 
         return map;

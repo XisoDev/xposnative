@@ -7,10 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-
 import com.example.macarrow.xPos.DayInfo;
 import com.example.macarrow.xPos.R;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -57,6 +55,7 @@ public class CalcuAdapter extends BaseAdapter {
             convertView.setTag(dayViewHolder);
 
         } else {
+
             dayViewHolder = (ViewHolder) convertView.getTag();
 
         } if (day != null) {

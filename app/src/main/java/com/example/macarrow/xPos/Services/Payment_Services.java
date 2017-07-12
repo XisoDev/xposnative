@@ -97,17 +97,27 @@ public class Payment_Services extends SQLiteOpenHelper {
     public int totalAmountSum(int year, int month, int day) {
         SQLiteDatabase db = getReadableDatabase();
         int total_amount = 0;
-        Cursor cursor = db.rawQuery("SELECT sum(total_amount) FROM payment WHERE start_date_y = " + year + " AND start_date_m = " + month + " AND start_date_d = " + day + " ", null);
+        Cursor cursor = db.rawQuery("SELECT sum(total_amount) FROM payment WHERE pay_year = " + year + " AND pay_month = " + month + " AND pay_day = " + day + " ", null);
         cursor.moveToFirst();
         total_amount = cursor.getInt(0);
         cursor.close();
         return total_amount;
     }
 
+    public int nomalAmountSum(int year, int month, int day) {
+        SQLiteDatabase db = getReadableDatabase();
+        int month_amount = 0;
+        Cursor cursor = db.rawQuery("SELECT sum(pay_amount) FROM payment WHERE lookup_type = 'garage' AND pay_year = " + year + " AND pay_month = " + month + " AND pay_day = " + day + " ", null);
+        cursor.moveToFirst();
+        month_amount = cursor.getInt(0);
+        cursor.close();
+        return month_amount;
+    }
+
     public int monthAmountSum(int year, int month, int day) {
         SQLiteDatabase db = getReadableDatabase();
         int month_amount = 0;
-        Cursor cursor = db.rawQuery("SELECT sum(total_amount) FROM payment WHERE lookup_type = 'month' AND start_date_y = " + year + " AND start_date_m = " + month + " AND start_date_d = " + day + " ", null);
+        Cursor cursor = db.rawQuery("SELECT sum(pay_amount) FROM payment WHERE lookup_type = 'month' AND pay_year = " + year + " AND pay_month = " + month + " AND pay_day = " + day + " ", null);
         cursor.moveToFirst();
         month_amount = cursor.getInt(0);
         cursor.close();
@@ -117,7 +127,7 @@ public class Payment_Services extends SQLiteOpenHelper {
     public int cooperAmountSum(int year, int month, int day) {
         SQLiteDatabase db = getReadableDatabase();
         int total_amount = 0;
-        Cursor cursor = db.rawQuery("SELECT sum(cooper_amount) FROM payment WHERE start_date_y = " + year + " AND start_date_m = " + month + " AND start_date_d = " + day + " ", null);
+        Cursor cursor = db.rawQuery("SELECT sum(cooper_amount) FROM payment WHERE pay_year = " + year + " AND pay_month = " + month + " AND pay_day = " + day + " ", null);
         cursor.moveToFirst();
         total_amount = cursor.getInt(0);
         cursor.close();
@@ -127,7 +137,7 @@ public class Payment_Services extends SQLiteOpenHelper {
     public int payAmountSum(int year, int month, int day) {
         SQLiteDatabase db = getReadableDatabase();
         int total_amount = 0;
-        Cursor cursor = db.rawQuery("SELECT sum(pay_amount) FROM payment WHERE start_date_y = " + year + " AND start_date_m = " + month + " AND start_date_d = " + day + " ", null);
+        Cursor cursor = db.rawQuery("SELECT sum(pay_amount) FROM payment WHERE pay_year = " + year + " AND pay_month = " + month + " AND pay_day = " + day + " ", null);
         cursor.moveToFirst();
         total_amount = cursor.getInt(0);
         cursor.close();

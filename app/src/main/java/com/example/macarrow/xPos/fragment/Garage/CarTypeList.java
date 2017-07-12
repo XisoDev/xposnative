@@ -46,6 +46,11 @@ public class CarTypeList extends DialogFragment {
         builder.setNegativeButton("닫기", null);
         builder.setView(view);
 
+        GregorianCalendar gcalendar = new GregorianCalendar();
+        final int year = gcalendar.get(Calendar.YEAR);
+        final int month = gcalendar.get(Calendar.MONTH)+1;
+        final int day = gcalendar.get(Calendar.DAY_OF_MONTH);
+
         if (status.equals("month")) {
 
             Calendar calendar = Calendar.getInstance();
@@ -77,7 +82,7 @@ public class CarTypeList extends DialogFragment {
                         adb.show();
                         return;
                     } else {
-                        garageService.insert(start_date, car_num, car_type_title, 0, 0, 0, 0, 0, idx, 0, 0, 0);
+                        garageService.insert(start_date, year, month, day, car_num, car_type_title, 0, 0, 0, 0, 0, idx, 0, 0, 0);
                         fm.beginTransaction().replace(R.id.content_fragment, new Current_Fragment()).commit();
                     }
                     dismiss();
@@ -109,6 +114,9 @@ public class CarTypeList extends DialogFragment {
 
                     garageService.insert(
                             start_date,
+                            year,
+                            month,
+                            day,
                             carNum,
                             car_type_title,
                             minute_unit,
