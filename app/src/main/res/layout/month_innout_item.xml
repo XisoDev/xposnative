@@ -9,14 +9,12 @@
         android:id="@+id/month_num"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="번호"
         android:layout_weight="1"
         />
     <TextView
         android:id="@+id/month_status"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="시작"
         android:layout_weight="1"
         />
 </LinearLayout>

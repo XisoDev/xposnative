@@ -7,65 +7,50 @@
     >
     <TextView
         android:id="@+id/car_num"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="할인선택"
+        android:layout_width="815px"
+        android:layout_height="42px"
+        android:text="할인"
+        android:textSize="17px"
         android:gravity="center"
         />
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="133px"
+        android:layout_height="453px"
         android:orientation="vertical"
-        android:layout_weight="1"
         >
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal"
+            android:layout_width="133px"
+            android:layout_height="113px"
+            android:orientation="vertical"
             >
             <LinearLayout
                 android:id="@+id/dc_skip"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:orientation="vertical"
                 >
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:text="바로 결제"
-                    android:gravity="center"
-                    />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="할인 없이 바로 결제 화면으로 넘어갑니다"
-                    android:textSize="10px"
                     android:gravity="center"
                     />
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/dc_cooper"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_width="133px"
+                android:layout_height="113px"
                 android:orientation="vertical"
                 >
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:text="지정 할인"
                     android:gravity="center"
                     />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:text="지정된 업체 선택화면으로 넘어가서 할인을 적용합니다"
                     android:textSize="9px"
                     android:gravity="center"
@@ -73,22 +58,19 @@
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/dc_day_car"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_width="133px"
+                android:layout_height="113px"
                 android:orientation="vertical"
                 >
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:text="일차로 변경"
                     android:gravity="center"
                     />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:text="설정해둔 일차 요금으로 대체 할 수 있습니다"
                     android:textSize="10px"
                     android:gravity="center"
@@ -96,15 +78,13 @@
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/dc_self"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_width="133px"
+                android:layout_height="114px"
                 android:orientation="vertical"
                 >
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:text="임의 할인"
                     android:gravity="center"
                     />
@@ -112,7 +92,6 @@
                     android:id="@+id/dc_self_text"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:text="0원을 임의 할인을 적용합니다"
                     android:textSize="10px"
                     android:gravity="center"
