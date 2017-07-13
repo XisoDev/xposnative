@@ -153,6 +153,7 @@
                     android:gravity="center"
                     android:textColor="#028ecf"
                     android:background="#e6e6e6"
+                    android:textStyle="bold"
                     />
                 <LinearLayout
                     android:layout_width="650px"
@@ -166,6 +167,7 @@
                         android:textSize="13px"
                         android:gravity="center_vertical"
                         android:paddingLeft="20px"
+                        android:textColor="@android:color/black"
                         />
                     <TextView
                         android:id="@+id/start_date"
@@ -174,8 +176,16 @@
                         android:text="0000-00-00 00:00"
                         android:textSize="13px"
                         android:gravity="center_vertical"
+                        android:textColor="@android:color/black"
                         />
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#e4e4e4"
+                    android:layout_marginLeft="20px"
+                    android:layout_marginRight="20px"
+                    />
                 <LinearLayout
                     android:layout_width="650px"
                     android:layout_height="48px"
@@ -188,6 +198,7 @@
                         android:textSize="13px"
                         android:gravity="center_vertical"
                         android:paddingLeft="20px"
+                        android:textColor="@android:color/black"
                         />
                     <TextView
                         android:id="@+id/end_date"
@@ -196,8 +207,16 @@
                         android:text="0000-00-00 00:00"
                         android:textSize="13px"
                         android:gravity="center_vertical"
+                        android:textColor="@android:color/black"
                         />
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#e4e4e4"
+                    android:layout_marginLeft="20px"
+                    android:layout_marginRight="20px"
+                    />
                 <LinearLayout
                     android:layout_width="650px"
                     android:layout_height="48px"
@@ -210,6 +229,7 @@
                         android:textSize="13px"
                         android:gravity="center_vertical"
                         android:paddingLeft="20px"
+                        android:textColor="@android:color/black"
                         />
                     <TextView
                         android:id="@+id/month_idx"
@@ -218,6 +238,7 @@
                         android:text="일반 고객"
                         android:textSize="13px"
                         android:gravity="center_vertical"
+                        android:textColor="@android:color/black"
                         />
                 </LinearLayout>
                 <LinearLayout
@@ -234,6 +255,7 @@
                         android:gravity="center"
                         android:textColor="#028ecf"
                         android:background="#e6e6e6"
+                        android:textStyle="bold"
                         />
                     <LinearLayout
                         android:layout_width="650px"
@@ -247,6 +269,7 @@
                             android:textSize="13px"
                             android:gravity="center_vertical"
                             android:paddingLeft="20px"
+                            android:textColor="@android:color/black"
                             />
                         <TextView
                             android:id="@+id/result_charge"
@@ -254,9 +277,17 @@
                             android:layout_height="48px"
                             android:text="0원"
                             android:textSize="13px"
+                            android:textColor="@android:color/black"
                             android:gravity="center_vertical"
                             />
                     </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="#e4e4e4"
+                        android:layout_marginLeft="20px"
+                        android:layout_marginRight="20px"
+                        />
                     <LinearLayout
                         android:layout_width="650px"
                         android:layout_height="48px"
@@ -267,6 +298,7 @@
                             android:layout_height="48px"
                             android:text="할인된 금액(지정주차)"
                             android:textSize="13px"
+                            android:textColor="@android:color/black"
                             android:gravity="center_vertical"
                             android:paddingLeft="20px"
                             />
@@ -274,11 +306,19 @@
                             android:id="@+id/discount_cooper"
                             android:layout_width="440px"
                             android:layout_height="48px"
+                            android:textColor="@android:color/black"
                             android:gravity="center_vertical"
                             android:text="0원"
                             android:textSize="13px"
                             />
                     </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="#e4e4e4"
+                        android:layout_marginLeft="20px"
+                        android:layout_marginRight="20px"
+                        />
                     <LinearLayout
                         android:layout_width="650px"
                         android:layout_height="48px"
@@ -291,6 +331,7 @@
                             android:textSize="13px"
                             android:gravity="center_vertical"
                             android:paddingLeft="20px"
+                            android:textColor="@android:color/black"
                             />
                         <TextView
                             android:id="@+id/discount_self"
@@ -298,9 +339,17 @@
                             android:layout_height="48px"
                             android:text="0원"
                             android:textSize="13px"
+                            android:textColor="@android:color/black"
                             android:gravity="center_vertical"
                             />
                     </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="#e4e4e4"
+                        android:layout_marginLeft="20px"
+                        android:layout_marginRight="20px"
+                        />
                     <LinearLayout
                         android:layout_width="650px"
                         android:layout_height="48px"
@@ -311,6 +360,7 @@
                             android:layout_height="48px"
                             android:text="결제된금액"
                             android:textSize="13px"
+                            android:textColor="@android:color/black"
                             android:gravity="center_vertical"
                             android:paddingLeft="20px"
                             />
@@ -319,6 +369,7 @@
                             android:layout_width="440px"
                             android:layout_height="48px"
                             android:text="0원"
+                            android:textColor="@android:color/black"
                             android:textSize="13px"
                             android:gravity="center_vertical"
                             />
@@ -332,6 +383,7 @@
                     android:gravity="center"
                     android:textColor="#028ecf"
                     android:background="#e6e6e6"
+                    android:textStyle="bold"
                     />
                 <LinearLayout
                     android:layout_width="650px"
@@ -345,6 +397,7 @@
                         android:textSize="13px"
                         android:gravity="center_vertical"
                         android:paddingLeft="20px"
+                        android:textColor="@android:color/black"
                         />
                     <TextView
                         android:id="@+id/car_type_title"
@@ -353,8 +406,16 @@
                         android:text="차종"
                         android:textSize="13px"
                         android:gravity="center_vertical"
+                        android:textColor="@android:color/black"
                         />
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#e4e4e4"
+                    android:layout_marginLeft="20px"
+                    android:layout_marginRight="20px"
+                    />
                 <LinearLayout
                     android:layout_width="650px"
                     android:layout_height="48px"
@@ -366,6 +427,7 @@
                         android:text="최초 무료시간 (분)"
                         android:textSize="13px"
                         android:gravity="center_vertical"
+                        android:textColor="@android:color/black"
                         android:paddingLeft="20px"
                         />
                     <TextView
@@ -374,9 +436,17 @@
                         android:layout_height="48px"
                         android:text="0분"
                         android:textSize="13px"
+                        android:textColor="@android:color/black"
                         android:gravity="center_vertical"
                         />
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#e4e4e4"
+                    android:layout_marginLeft="20px"
+                    android:layout_marginRight="20px"
+                    />
                 <LinearLayout
                     android:layout_width="650px"
                     android:layout_height="48px"
@@ -389,16 +459,25 @@
                         android:textSize="13px"
                         android:gravity="center_vertical"
                         android:paddingLeft="20px"
+                        android:textColor="@android:color/black"
                         />
                     <TextView
                         android:id="@+id/basic_amount"
                         android:layout_width="440px"
                         android:layout_height="48px"
                         android:text="0원"
+                        android:textColor="@android:color/black"
                         android:textSize="13px"
                         android:gravity="center_vertical"
                         />
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#e4e4e4"
+                    android:layout_marginLeft="20px"
+                    android:layout_marginRight="20px"
+                    />
                 <LinearLayout
                     android:layout_width="650px"
                     android:layout_height="48px"
@@ -408,6 +487,7 @@
                         android:layout_width="210px"
                         android:layout_height="48px"
                         android:text="기본시간 (분)"
+                        android:textColor="@android:color/black"
                         android:textSize="13px"
                         android:gravity="center_vertical"
                         android:paddingLeft="20px"
@@ -416,11 +496,19 @@
                         android:id="@+id/basic_minute"
                         android:layout_width="440px"
                         android:layout_height="48px"
+                        android:textColor="@android:color/black"
                         android:text="0분"
                         android:textSize="13px"
                         android:gravity="center_vertical"
                         />
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#e4e4e4"
+                    android:layout_marginLeft="20px"
+                    android:layout_marginRight="20px"
+                    />
                 <LinearLayout
                     android:layout_width="650px"
                     android:layout_height="48px"
@@ -430,6 +518,7 @@
                         android:layout_width="210px"
                         android:layout_height="48px"
                         android:text="추가요금"
+                        android:textColor="@android:color/black"
                         android:textSize="13px"
                         android:gravity="center_vertical"
                         android:paddingLeft="20px"
@@ -439,10 +528,18 @@
                         android:layout_width="440px"
                         android:layout_height="48px"
                         android:text="0원"
+                        android:textColor="@android:color/black"
                         android:textSize="13px"
                         android:gravity="center_vertical"
                         />
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#e4e4e4"
+                    android:layout_marginLeft="20px"
+                    android:layout_marginRight="20px"
+                    />
                 <LinearLayout
                     android:layout_width="650px"
                     android:layout_height="48px"
@@ -453,6 +550,7 @@
                         android:layout_height="48px"
                         android:text="추가요금 단위 (분)"
                         android:textSize="13px"
+                        android:textColor="@android:color/black"
                         android:gravity="center_vertical"
                         android:paddingLeft="20px"
                         />
@@ -461,6 +559,7 @@
                         android:layout_width="440px"
                         android:layout_height="48px"
                         android:text="0분"
+                        android:textColor="@android:color/black"
                         android:textSize="13px"
                         android:gravity="center_vertical"
                         />
@@ -473,6 +572,7 @@
                     android:gravity="center"
                     android:textColor="#028ecf"
                     android:background="#e6e6e6"
+                    android:textStyle="bold"
                     />
                 <LinearLayout
                     android:layout_width="650px"
@@ -483,6 +583,7 @@
                         android:layout_width="210px"
                         android:layout_height="48px"
                         android:text="입/출차 상태"
+                        android:textColor="@android:color/black"
                         android:textSize="13px"
                         android:gravity="center_vertical"
                         android:paddingLeft="20px"
@@ -492,10 +593,18 @@
                         android:layout_width="440px"
                         android:layout_height="48px"
                         android:text="입차중"
+                        android:textColor="@android:color/black"
                         android:textSize="13px"
                         android:gravity="center_vertical"
                         />
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#e4e4e4"
+                    android:layout_marginLeft="20px"
+                    android:layout_marginRight="20px"
+                    />
                 <LinearLayout
                     android:layout_width="650px"
                     android:layout_height="48px"
@@ -506,6 +615,7 @@
                         android:layout_height="48px"
                         android:text="입차 취소 여부"
                         android:textSize="13px"
+                        android:textColor="@android:color/black"
                         android:gravity="center_vertical"
                         android:paddingLeft="20px"
                         />
@@ -513,6 +623,7 @@
                         android:id="@+id/is_cancel"
                         android:layout_width="440px"
                         android:layout_height="48px"
+                        android:textColor="@android:color/black"
                         android:text="아니오"
                         android:textSize="13px"
                         android:gravity="center_vertical"

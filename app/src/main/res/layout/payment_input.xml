@@ -3,286 +3,387 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="815px"
-    android:layout_height="495px"
+    android:layout_height="381px"
     >
     <TextView
         android:id="@+id/car_num"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_width="815px"
+        android:layout_height="42px"
         android:text="결제"
+        android:textSize="17px"
         android:gravity="center"
+        android:background="#3a3a3a"
+        android:textColor="@android:color/white"
         />
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_weight="1"
+        android:layout_width="815px"
+        android:layout_height="339px"
+        android:orientation="horizontal"
         >
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal"
+            android:layout_width="133px"
+            android:layout_height="339px"
+            android:orientation="vertical"
             >
             <LinearLayout
                 android:id="@+id/do_card"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_width="133px"
+                android:layout_height="113px"
                 android:orientation="vertical"
+                android:background="#fc604e"
+                android:gravity="center"
                 >
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="카드 결제"
-                    android:gravity="center"
+                <ImageView
+                    android:layout_width="33px"
+                    android:layout_height="32px"
+                    android:background="@drawable/do_card"
                     />
                 <TextView
-                    android:id="@+id/do_card_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="0원을 카드로 결제합니다"
-                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="카드 결제"
+                    android:textSize="11px"
+                    android:textColor="@android:color/white"
                     />
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/do_cash"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_width="133px"
+                android:layout_height="113px"
                 android:orientation="vertical"
+                android:background="#028ecf"
+                android:gravity="center"
                 >
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="현금 결제"
-                    android:gravity="center"
+                <ImageView
+                    android:layout_width="33px"
+                    android:layout_height="32px"
+                    android:background="@drawable/dc_skip"
                     />
                 <TextView
-                    android:id="@+id/do_cash_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="0원을 현금으로 결제합니다"
-                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="현금 결제"
+                    android:textSize="11px"
+                    android:textColor="@android:color/white"
                     />
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/force_out"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_width="133px"
+                android:layout_height="113px"
                 android:orientation="vertical"
+                android:background="#1dbd92"
+                android:gravity="center"
                 >
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="출차 처리"
-                    android:gravity="center"
+                <ImageView
+                    android:layout_width="33px"
+                    android:layout_height="32px"
+                    android:background="@drawable/dc_day_car"
                     />
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="결제 없이 출차 처리 합니다"
-                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="출차 처리"
+                    android:textSize="11px"
+                    android:textColor="@android:color/white"
                     />
             </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="결제할 금액 입력 (원)"
-            android:gravity="center_vertical"
-            />
-        <EditText
-            android:id="@+id/pay_money"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:inputType="number"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="(결제할 금액을 수정 할 수 있습니다)"
-            android:gravity="center_vertical"
-            />
-    </LinearLayout>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="정보"
-        android:gravity="center"
-        />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
-            android:text="총 금액 (원)"
-            android:gravity="center_vertical"
-            />
-        <TextView
-            android:id="@+id/total_amount"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="0"
-            android:gravity="center_vertical"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
-            android:text="결제해야 될 금액 (원)"
-            android:gravity="center_vertical"
-            />
-        <TextView
-            android:id="@+id/in_pay"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="0"
-            android:gravity="center_vertical"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
-            android:text="현재까지 결제된 금액 (원)"
-            android:gravity="center_vertical"
-            />
-        <TextView
-            android:id="@+id/pay_amount"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="0"
-            android:gravity="center_vertical"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
-            android:text="지정 할인된 금액 (원)"
-            android:gravity="center_vertical"
-            />
-        <TextView
-            android:id="@+id/discount_cooper"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:text="0"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
-            android:text="임의 할인된 금액 (원)"
-            android:gravity="center_vertical"
-            />
-        <TextView
-            android:id="@+id/discount_self"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:text="0"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
-            android:text="입차 시간"
-            android:gravity="center_vertical"
-            />
-        <TextView
-            android:id="@+id/start_date"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="0000-00-00"
-            android:gravity="center_vertical"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
-            android:text="출차 시간"
-            android:gravity="center_vertical"
-            />
-        <TextView
-            android:id="@+id/end_date"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="0000-00-00"
-            android:gravity="center_vertical"
-            />
+        <LinearLayout
+            android:layout_width="682px"
+            android:layout_height="339px"
+            android:orientation="vertical"
+            >
+            <LinearLayout
+                android:layout_width="682px"
+                android:layout_height="66px"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="200px"
+                    android:layout_height="66px"
+                    android:textSize="15px"
+                    android:text="결제할 금액 입력 (원)"
+                    android:paddingLeft="20px"
+                    android:gravity="center_vertical"
+                    android:textColor="@android:color/black"
+                    />
+                <EditText
+                    android:id="@+id/pay_money"
+                    android:layout_width="300px"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30px"
+                    android:gravity="center_vertical"
+                    android:inputType="number"
+                    android:textSize="15px"
+                    />
+            </LinearLayout>
+            <TextView
+                android:layout_width="682px"
+                android:layout_height="33px"
+                android:text="결제 정보"
+                android:background="#e4e4e4"
+                android:textColor="#028ecf"
+                android:gravity="center"
+                android:textSize="15px"
+                />
+            <LinearLayout
+                android:layout_width="682px"
+                android:layout_height="33px"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="200px"
+                    android:layout_height="33px"
+                    android:text="총 금액"
+                    android:paddingLeft="20px"
+                    android:gravity="center_vertical"
+                    android:textSize="15px"
+                    android:textColor="@android:color/black"
+                    />
+                <TextView
+                    android:id="@+id/total_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="33px"
+                    android:text="0"
+                    android:paddingLeft="30px"
+                    android:gravity="center_vertical"
+                    android:textSize="15px"
+                    android:textColor="@android:color/black"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="33px"
+                    android:text="원"
+                    android:gravity="center_vertical"
+                    android:textSize="15px"
+                    android:textColor="@android:color/black"
+                    />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#e4e4e4"
+                android:layout_marginLeft="20px"
+                android:layout_marginRight="20px"
+                />
+            <LinearLayout
+                android:layout_width="682px"
+                android:layout_height="33px"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="200px"
+                    android:layout_height="33px"
+                    android:text="결제해야 될 금액"
+                    android:paddingLeft="20px"
+                    android:gravity="center_vertical"
+                    android:textSize="15px"
+                    android:textColor="@android:color/black"
+                    />
+                <TextView
+                    android:id="@+id/in_pay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="33px"
+                    android:text="0"
+                    android:paddingLeft="30px"
+                    android:gravity="center_vertical"
+                    android:textSize="15px"
+                    android:textColor="@android:color/black"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="33px"
+                    android:text="원"
+                    android:gravity="center_vertical"
+                    android:textSize="15px"
+                    android:textColor="@android:color/black"
+                    />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#e4e4e4"
+                android:layout_marginLeft="20px"
+                android:layout_marginRight="20px"
+                />
+            <LinearLayout
+                android:layout_width="682px"
+                android:layout_height="33px"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="200px"
+                    android:layout_height="33px"
+                    android:text="현재까지 결제된 금액"
+                    android:paddingLeft="20px"
+                    android:gravity="center_vertical"
+                    android:textSize="15px"
+                    android:textColor="@android:color/black"
+                    />
+                <TextView
+                    android:id="@+id/pay_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="33px"
+                    android:text="0"
+                    android:paddingLeft="30px"
+                    android:gravity="center_vertical"
+                    android:textSize="15px"
+                    android:textColor="@android:color/black"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="33px"
+                    android:text="원"
+                    android:gravity="center_vertical"
+                    android:textSize="15px"
+                    android:textColor="@android:color/black"
+                    />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#e4e4e4"
+                android:layout_marginLeft="20px"
+                android:layout_marginRight="20px"
+                />
+            <LinearLayout
+                android:layout_width="682px"
+                android:layout_height="33px"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="200px"
+                    android:layout_height="33px"
+                    android:text="지정 할인된 금액"
+                    android:paddingLeft="20px"
+                    android:gravity="center_vertical"
+                    android:textSize="15px"
+                    android:textColor="@android:color/black"
+                    />
+                <TextView
+                    android:id="@+id/discount_cooper"
+                    android:layout_width="wrap_content"
+                    android:layout_height="33px"
+                    android:text="0"
+                    android:paddingLeft="30px"
+                    android:gravity="center_vertical"
+                    android:textSize="15px"
+                    android:textColor="@android:color/black"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="33px"
+                    android:text="원"
+                    android:gravity="center_vertical"
+                    android:textSize="15px"
+                    android:textColor="@android:color/black"
+                    />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#e4e4e4"
+                android:layout_marginLeft="20px"
+                android:layout_marginRight="20px"
+                />
+            <LinearLayout
+                android:layout_width="682px"
+                android:layout_height="33px"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="200px"
+                    android:layout_height="33px"
+                    android:text="임의 할인된 금액"
+                    android:paddingLeft="20px"
+                    android:gravity="center_vertical"
+                    android:textSize="15px"
+                    android:textColor="@android:color/black"
+                    />
+                <TextView
+                    android:id="@+id/discount_self"
+                    android:layout_width="wrap_content"
+                    android:layout_height="33px"
+                    android:text="0"
+                    android:paddingLeft="30px"
+                    android:gravity="center_vertical"
+                    android:textSize="15px"
+                    android:textColor="@android:color/black"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="33px"
+                    android:text="원"
+                    android:gravity="center_vertical"
+                    android:textSize="15px"
+                    android:textColor="@android:color/black"
+                    />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#e4e4e4"
+                android:layout_marginLeft="20px"
+                android:layout_marginRight="20px"
+                />
+            <LinearLayout
+                android:layout_width="682px"
+                android:layout_height="33px"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="200px"
+                    android:layout_height="33px"
+                    android:text="입차 시간"
+                    android:paddingLeft="20px"
+                    android:gravity="center_vertical"
+                    android:textSize="15px"
+                    android:textColor="@android:color/black"
+                    />
+                <TextView
+                    android:id="@+id/start_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="33px"
+                    android:text="0000-00-00 00:00"
+                    android:paddingLeft="30px"
+                    android:gravity="center_vertical"
+                    android:textSize="15px"
+                    android:textColor="@android:color/black"
+                    />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#e4e4e4"
+                android:layout_marginLeft="20px"
+                android:layout_marginRight="20px"
+                />
+            <LinearLayout
+                android:layout_width="682px"
+                android:layout_height="33px"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="200px"
+                    android:layout_height="33px"
+                    android:text="출차 시간"
+                    android:paddingLeft="20px"
+                    android:gravity="center_vertical"
+                    android:textSize="15px"
+                    android:textColor="@android:color/black"
+                    />
+                <TextView
+                    android:id="@+id/end_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="33px"
+                    android:text="0000-00-00 00:00"
+                    android:paddingLeft="30px"
+                    android:gravity="center_vertical"
+                    android:textSize="15px"
+                    android:textColor="@android:color/black"
+                    />
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

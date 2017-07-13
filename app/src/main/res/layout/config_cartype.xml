@@ -1,22 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:fab="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="829px"
+    android:layout_height="723px"
     android:orientation="vertical"
     >
+    <LinearLayout
+        android:layout_width="829px"
+        android:layout_height="38px"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:id="@+id/config_cartype"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="일반차설정"
+            android:textSize="15px"
+            android:textColor="#ffdf5f"
+            android:background="#4c4c4c"
+            />
+        <TextView
+            android:id="@+id/config_dayCar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="일차설정"
+            android:textSize="15px"
+            android:textColor="#ffdf5f"
+            android:background="#4c4c4c"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="829px"
+        android:layout_height="38px"
+        android:background="#e3e3e3"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="차종명"
+            android:textColor="@android:color/black"
+            android:textSize="16px"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="최초무료시간"
+            android:textColor="@android:color/black"
+            android:textSize="16px"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="기본요금"
+            android:textColor="@android:color/black"
+            android:textSize="16px"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="기본시간"
+            android:textColor="@android:color/black"
+            android:textSize="16px"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="추가요금"
+            android:textColor="@android:color/black"
+            android:textSize="16px"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="추가요금 단위"
+            android:textColor="@android:color/black"
+            android:textSize="16px"
+            />
+    </LinearLayout>
     <ListView
         android:id="@+id/cartype_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_width="829px"
+        android:layout_height="580px"
         />
     <com.melnykov.fab.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
-        android:layout_margin="50px"
         android:src="@drawable/ic_plus"
+        android:layout_marginRight="10px"
         />
 </LinearLayout>

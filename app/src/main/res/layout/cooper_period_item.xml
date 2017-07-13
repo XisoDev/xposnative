@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="829px"
+    android:layout_height="58px"
     >
     <TextView
         android:id="@+id/cooper_title"
@@ -11,6 +11,8 @@
         android:layout_weight="1"
         android:text="업체명"
         android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="16px"
         />
     <TextView
         android:id="@+id/cooper_start"
@@ -19,6 +21,8 @@
         android:layout_weight="1"
         android:text="입차시간"
         android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="16px"
         />
     <TextView
         android:id="@+id/cooper_end"
@@ -27,6 +31,8 @@
         android:layout_weight="1"
         android:text="출차시간"
         android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="16px"
         />
     <TextView
         android:id="@+id/cooper_pt"
@@ -35,6 +41,8 @@
         android:layout_weight="1"
         android:text="주차시간"
         android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="16px"
         />
     <TextView
         android:id="@+id/discount_cooper"
@@ -43,5 +51,7 @@
         android:layout_weight="1"
         android:text="할인금액"
         android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="16px"
         />
 </LinearLayout>

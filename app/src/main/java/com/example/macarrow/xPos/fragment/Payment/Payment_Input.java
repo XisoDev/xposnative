@@ -46,9 +46,7 @@ public class Payment_Input extends DialogFragment {
 
         final TextView Car_num = (TextView)view.findViewById(R.id.car_num);
         final LinearLayout Do_card = (LinearLayout)view.findViewById(R.id.do_card);
-        final TextView Do_card_text = (TextView)view.findViewById(R.id.do_card_text);
         final LinearLayout Do_cash = (LinearLayout)view.findViewById(R.id.do_cash);
-        final TextView Do_cash_text = (TextView)view.findViewById(R.id.do_cash_text);
         final LinearLayout Force_out = (LinearLayout)view.findViewById(R.id.force_out);
         final EditText Pay_money = (EditText)view.findViewById(R.id.pay_money);
         final TextView Total_amount = (TextView)view.findViewById(R.id.total_amount);
@@ -93,8 +91,6 @@ public class Payment_Input extends DialogFragment {
         Start_date.setText(simpleDateFormat.format(startDate));
         End_date.setText(simpleDateFormat.format(endDate));
 
-        Do_card_text.setText(inPay + "원을 신용카드로 결제합니다");
-        Do_cash_text.setText(inPay + "원을 현금으로 결제합니다");
         Pay_money.setText(inPay + "");
         // EidtText가 눌릴때마다 감지하는 부분
         TextWatcher textWatcher = (new TextWatcher() {
@@ -110,12 +106,8 @@ public class Payment_Input extends DialogFragment {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
                 if (s.equals("")) {
-                    Do_card_text.setText(inPay + "원을 신용카드로 결제합니다");
-                    Do_cash_text.setText(inPay + "원을 현금으로 결제합니다");
                     Pay_money.setText(0 + "");
                 } else if (s.length() < 1) {
-                    Do_card_text.setText(inPay + "원을 신용카드로 결제합니다");
-                    Do_cash_text.setText(inPay + "원을 현금으로 결제합니다");
                     Pay_money.setText(0 + "");
                 } else if (inPay - (int) Integer.parseInt(s.toString()) < 0) {
                     AlertDialog.Builder adb = new AlertDialog.Builder(getActivity());
@@ -123,9 +115,6 @@ public class Payment_Input extends DialogFragment {
                     adb.setNegativeButton("닫기", null);
                     adb.show();
                     Pay_money.setText(inPay+"");
-                } else {
-                    Do_card_text.setText(s + "원을 신용카드로 결제합니다");
-                    Do_cash_text.setText(s + "원을 현금으로 결제합니다");
                 }
             }
         });

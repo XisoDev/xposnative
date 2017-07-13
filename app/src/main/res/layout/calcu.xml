@@ -193,14 +193,14 @@
         <TextView
             android:layout_width="180px"
             android:layout_height="35px"
-            android:text="결제"
+            android:text="미수"
             android:gravity="center"
             android:textStyle="bold"
             android:textColor="@android:color/black"
             android:textSize="16px"
             />
         <TextView
-            android:id="@+id/pay_amounts"
+            android:id="@+id/receivable"
             android:layout_width="234px"
             android:layout_height="35px"
             android:text="0"
@@ -233,7 +233,7 @@
         <TextView
             android:layout_width="180px"
             android:layout_height="35px"
-            android:text="미수"
+            android:text="결제"
             android:gravity="center"
             android:textStyle="bold"
             android:textColor="@android:color/black"
@@ -241,7 +241,7 @@
             android:background="#f3f3f3"
             />
         <TextView
-            android:id="@+id/receivable"
+            android:id="@+id/pay_amounts"
             android:layout_width="234px"
             android:layout_height="35px"
             android:text="0"

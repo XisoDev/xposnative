@@ -2,151 +2,177 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="829px"
+    android:layout_height="723px"
     >
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="829px"
+        android:layout_height="38px"
         android:orientation="horizontal"
-        android:layout_weight="5"
         >
         <TextView
-            android:id="@+id/possibility"
+            android:id="@+id/month_all"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="목록"
             android:gravity="center"
+            android:text="월차목록"
+            android:textSize="15px"
+            android:textColor="#ffdf5f"
+            android:background="#4c4c4c"
             />
         <TextView
             android:id="@+id/month_expired"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="만료목록"
             android:gravity="center"
+            android:text="만료목록"
+            android:textSize="15px"
+            android:textColor="#ffdf5f"
+            android:background="#4c4c4c"
             />
         <TextView
             android:id="@+id/month_wait"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="대기목록"
             android:gravity="center"
+            android:text="대기목록"
+            android:textSize="15px"
+            android:textColor="#ffdf5f"
+            android:background="#4c4c4c"
             />
         <TextView
             android:id="@+id/month_calendar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="캘린더"
             android:gravity="center"
+            android:text="월차달력"
+            android:textSize="15px"
+            android:textColor="#ffdf5f"
+            android:background="#4c4c4c"
             />
     </LinearLayout>
+
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="5"
-        android:orientation="horizontal"
-        >
+        android:layout_width="829px"
+        android:layout_height="38px"
+        android:background="#e3e3e3"
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="차량번호"
-            android:gravity="center"
-            />
+            android:textColor="@android:color/black"
+            android:textSize="16px" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="시작일"
-            android:gravity="center"
-            />
+            android:textColor="@android:color/black"
+            android:textSize="16px" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="종료일"
-            android:gravity="center"
-            />
+            android:textColor="@android:color/black"
+            android:textSize="16px" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="월차금액"
-            android:gravity="center"
-            />
+            android:textColor="@android:color/black"
+            android:textSize="16px" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="결제금액"
-            android:gravity="center"
-            />
+            android:textColor="@android:color/black"
+            android:textSize="16px" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="미수금액"
-            android:gravity="center"
-            />
+            android:textColor="@android:color/black"
+            android:textSize="16px" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="차종"
-            android:gravity="center"
-            />
+            android:textColor="@android:color/black"
+            android:textSize="16px" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="구분"
-            android:gravity="center"
-            />
+            android:textColor="@android:color/black"
+            android:textSize="16px" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="차주명"
-            android:gravity="center"
-            />
+            android:textColor="@android:color/black"
+            android:textSize="16px" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="휴대폰"
-            android:gravity="center"
-            />
+            android:textColor="@android:color/black"
+            android:textSize="16px" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="결제"
             android:gravity="center"
-            />
+            android:text="결제"
+            android:textColor="@android:color/black"
+            android:textSize="16px" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <ListView
-            android:id="@+id/month_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-
-        <com.melnykov.fab.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
-            android:layout_margin="50px"
-            android:src="@drawable/ic_plus" />
-    </LinearLayout>
+    <ListView
+        android:id="@+id/month_view"
+        android:layout_width="829px"
+        android:layout_height="580px"
+        />
+    <com.melnykov.fab.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:src="@drawable/ic_plus"
+        android:layout_marginRight="10px"
+        />
 </LinearLayout>

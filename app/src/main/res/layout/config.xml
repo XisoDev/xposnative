@@ -4,36 +4,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-    <TextView
-        android:id="@+id/config_default"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:text="상점 기본정보 설정"
-        android:clickable="true"
-        />
-    <TextView
-        android:id="@+id/config_cartype"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="차종 설정"
-        android:clickable="true"
-        />
-    <TextView
-        android:id="@+id/config_dayCar"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="일차 설정"
-        android:clickable="true"
-        />
-    <TextView
-        android:id="@+id/config_database"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="데이터 베이스 관리"
-        android:clickable="true"
-        />
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:id="@+id/config_default"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="상점 기본정보 설정"
+            android:gravity="center"
+            />
+        <TextView
+            android:id="@+id/config_cartype"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="차종 설정"
+            android:gravity="center"
+            />
+        <TextView
+            android:id="@+id/config_database"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="데이터 베이스 관리"
+            android:gravity="center"
+            />
+    </LinearLayout>
 </LinearLayout>

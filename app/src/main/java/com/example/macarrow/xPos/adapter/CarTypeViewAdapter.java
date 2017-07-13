@@ -35,11 +35,19 @@ public class CarTypeViewAdapter extends BaseAdapter {
         if(convertView == null) {
             convertView = inflater.inflate(layout, null);
             TextView Car_type_title = (TextView) convertView.findViewById(R.id.car_type_title);
-//            TextView Is_daycar = (TextView) convertView.findViewById(R.id.is_daycar);
+            TextView Minute_free = (TextView) convertView.findViewById(R.id.minute_free);
+            TextView Basic_amount = (TextView) convertView.findViewById(R.id.basic_amount);
+            TextView Basic_minute = (TextView) convertView.findViewById(R.id.basic_minute);
+            TextView Amount_unit = (TextView) convertView.findViewById(R.id.amount_unit);
+            TextView Minute_unit = (TextView) convertView.findViewById(R.id.minute_unit);
 
             item = new CarTypeView_Item();
             item.carTypeTitle = Car_type_title;
-//            item.isDaycar = Is_daycar;
+            item.minuteFree = Minute_free;
+            item.basicAmount = Basic_amount;
+            item.basicMinute = Basic_minute;
+            item.amountUnit = Amount_unit;
+            item.minuteUnit = Minute_unit;
 
             convertView.setTag(item);
 
@@ -50,7 +58,11 @@ public class CarTypeViewAdapter extends BaseAdapter {
         }
 
         item.carTypeTitle.setText((String) list.get(position).get("car_type_title"));
-//        item.isDaycar.setText((String) list.get(position).get("is_daycar"));
+        item.minuteFree.setText((int) list.get(position).get("minute_free")+"분");
+        item.basicAmount.setText((int) list.get(position).get("basic_amount")+"원");
+        item.basicMinute.setText((int) list.get(position).get("basic_minute")+"분");
+        item.amountUnit.setText((int) list.get(position).get("amount_unit")+"원");
+        item.minuteUnit.setText((int) list.get(position).get("minute_unit")+"분");
 
         return convertView;
     }
@@ -75,6 +87,10 @@ public class CarTypeViewAdapter extends BaseAdapter {
 class CarTypeView_Item {
 
     TextView carTypeTitle;
-//    TextView isDaycar;
+    TextView minuteFree;
+    TextView basicAmount;
+    TextView basicMinute;
+    TextView amountUnit;
+    TextView minuteUnit;
 
 }

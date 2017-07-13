@@ -41,7 +41,6 @@ public class Payment_Discount extends DialogFragment {
         final LinearLayout Dc_cooper = (LinearLayout)view.findViewById(R.id.dc_cooper);
         final LinearLayout Dc_day_car = (LinearLayout)view.findViewById(R.id.dc_day_car);
         final LinearLayout Dc_self = (LinearLayout)view.findViewById(R.id.dc_self);
-        final TextView Dc_self_text = (TextView)view.findViewById(R.id.dc_self_text);
         final EditText Dc_money = (EditText)view.findViewById(R.id.dc_money);
         final TextView Total_amount = (TextView)view.findViewById(R.id.total_amount);
         final TextView In_pay = (TextView)view.findViewById(R.id.in_pay);
@@ -128,11 +127,9 @@ public class Payment_Discount extends DialogFragment {
 
                 if (s.equals("")) {
                     Discount_self.setText((Integer) map.get("discount_self")+"");
-                    Dc_self_text.setText((Integer) map.get("discount_self")+"원을 임의 할인을 적용합니다");
                     In_pay.setText((resultCharge-(Integer) map.get("pay_amount")-(Integer) map.get("discount_cooper")-(Integer) map.get("discount_self"))+"");
                 } else if (s.length() < 1) {
                     Discount_self.setText((Integer) map.get("discount_self")+"");
-                    Dc_self_text.setText((Integer) map.get("discount_self")+"원을 임의 할인을 적용합니다");
                     In_pay.setText((resultCharge-(Integer) map.get("pay_amount")-(Integer) map.get("discount_cooper")-(Integer) map.get("discount_self"))+"");
                 } else if ((resultCharge-(Integer) map.get("pay_amount")-(Integer) map.get("discount_cooper")-(Integer) map.get("discount_self")) - (int) Integer.parseInt(s.toString()) < 0) {
                     AlertDialog.Builder adb = new AlertDialog.Builder(getActivity());
@@ -144,7 +141,6 @@ public class Payment_Discount extends DialogFragment {
                     int inPay = resultCharge - ((Integer) map.get("discount_self") + (int) Integer.parseInt(s.toString()));
                     In_pay.setText(inPay+"");
                     Discount_self.setText(((Integer) map.get("discount_self") + (int) Integer.parseInt(s.toString()))+"");
-                    Dc_self_text.setText(((Integer) map.get("discount_self") + (int) Integer.parseInt(s.toString()))+"원을 임의 할인을 적용합니다");
                 }
             }
         });

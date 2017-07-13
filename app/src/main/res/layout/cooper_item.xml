@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="829px"
+    android:layout_height="58px"
     >
     <TextView
         android:id="@+id/coop_title"
@@ -11,6 +11,8 @@
         android:layout_weight="1"
         android:text="업체명"
         android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="16px"
         />
     <TextView
         android:id="@+id/coop_tel"
@@ -19,6 +21,8 @@
         android:layout_weight="1"
         android:text="전화번호"
         android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="16px"
         />
     <TextView
         android:id="@+id/coop_user_name"
@@ -27,6 +31,8 @@
         android:layout_weight="1"
         android:text="대표자명"
         android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="16px"
         />
     <TextView
         android:id="@+id/minute_max"
@@ -35,6 +41,8 @@
         android:layout_weight="1"
         android:text="최대지원시간"
         android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="16px"
         />
     <TextView
         android:id="@+id/is_end"
@@ -43,5 +51,7 @@
         android:layout_weight="1"
         android:text="상태"
         android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="16px"
         />
 </LinearLayout>

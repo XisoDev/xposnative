@@ -1,95 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="829px"
+    android:layout_height="723px"
     >
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="829px"
+        android:layout_height="38px"
         android:orientation="horizontal"
-        android:layout_weight="5"
         >
         <TextView
             android:id="@+id/cooper"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="업체목록"
             android:gravity="center"
+            android:text="업체목록"
+            android:textSize="15px"
+            android:textColor="#ffdf5f"
+            android:background="#4c4c4c"
             />
         <TextView
             android:id="@+id/period"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="업체별 이용기록(기간)"
             android:gravity="center"
+            android:text="업체별 이용기록 (기간)"
+            android:textSize="15px"
+            android:textColor="#ffdf5f"
+            android:background="#4c4c4c"
             />
         <TextView
             android:id="@+id/day"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="업체별 이용기록(일자)"
             android:gravity="center"
+            android:text="업체별 이용기록 (일자)"
+            android:textSize="15px"
+            android:textColor="#ffdf5f"
+            android:background="#4c4c4c"
             />
     </LinearLayout>
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="5"
+        android:layout_width="829px"
+        android:layout_height="87px"
         android:orientation="horizontal"
+        android:gravity="center"
         >
         <EditText
             android:id="@+id/search"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:hint="업체명으로 필터링"
-            android:textSize="10px"
+            android:layout_width="360px"
+            android:layout_height="wrap_content"
+            android:hint="업체명으로 검색"
+            android:gravity="center_vertical|center"
+            android:layout_gravity="center"
+            android:textSize="16px"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
             />
         <TextView
             android:id="@+id/search_start"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_width="100px"
+            android:layout_height="39px"
             android:gravity="center"
             android:text="2017. 07. 01"
-            android:textSize="10px"
+            android:textSize="16px"
             />
         <TextView
             android:id="@+id/at"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_width="wrap_content"
+            android:layout_height="39px"
             android:gravity="center"
             android:text="에서"
-            android:textSize="10px"
+            android:textSize="16px"
             />
         <TextView
             android:id="@+id/search_end"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_width="100px"
+            android:layout_height="39px"
             android:gravity="center"
             android:text="2017. 07. 30"
-            android:textSize="10px"
+            android:textSize="16px"
             />
         <Button
             android:id="@+id/search_btn"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_width="118px"
+            android:layout_height="39px"
             android:text="검색"
+            android:background="@drawable/search_shape"
+            android:textSize="16px"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
             />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="5"
+        android:layout_width="829px"
+        android:layout_height="38px"
         android:orientation="horizontal"
+        android:background="#e3e3e3"
         >
         <TextView
             android:layout_width="match_parent"
@@ -97,6 +108,8 @@
             android:layout_weight="1"
             android:text="업체명"
             android:gravity="center"
+            android:textColor="@android:color/black"
+            android:textSize="16px"
             />
         <TextView
             android:layout_width="match_parent"
@@ -104,6 +117,17 @@
             android:layout_weight="1"
             android:text="입차시간"
             android:gravity="center"
+            android:textColor="@android:color/black"
+            android:textSize="16px"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="대표자명"
+            android:gravity="center"
+            android:textColor="@android:color/black"
+            android:textSize="16px"
             />
         <TextView
             android:layout_width="match_parent"
@@ -111,13 +135,8 @@
             android:layout_weight="1"
             android:text="출차시간"
             android:gravity="center"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="주차시간"
-            android:gravity="center"
+            android:textColor="@android:color/black"
+            android:textSize="16px"
             />
         <TextView
             android:layout_width="match_parent"
@@ -125,6 +144,8 @@
             android:layout_weight="1"
             android:text="할인금액"
             android:gravity="center"
+            android:textColor="@android:color/black"
+            android:textSize="16px"
             />
     </LinearLayout>
     <LinearLayout

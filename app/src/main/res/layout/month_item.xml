@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="829px"
+    android:layout_height="58px"
     >
     <TextView
         android:id="@+id/car_num"
@@ -11,6 +11,8 @@
         android:layout_weight="1"
         android:text="차량번호"
         android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="16px"
         />
     <TextView
         android:id="@+id/start_date"
@@ -19,6 +21,8 @@
         android:layout_weight="1"
         android:text="시작일"
         android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="16px"
         />
     <TextView
         android:id="@+id/end_date"
@@ -27,6 +31,8 @@
         android:layout_weight="1"
         android:text="종료일"
         android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="16px"
         />
     <TextView
         android:id="@+id/amount"
@@ -35,6 +41,8 @@
         android:layout_weight="1"
         android:text="월차금액"
         android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="16px"
         />
     <TextView
         android:id="@+id/pay_amount"
@@ -43,6 +51,8 @@
         android:layout_weight="1"
         android:text="결제금액"
         android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="16px"
         />
     <TextView
         android:id="@+id/outstanding_amount"
@@ -51,6 +61,8 @@
         android:layout_weight="1"
         android:text="미수금액"
         android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="16px"
         />
     <TextView
         android:id="@+id/car_name"
@@ -59,6 +71,8 @@
         android:layout_weight="1"
         android:text="차종"
         android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="16px"
         />
     <TextView
         android:id="@+id/car_type_title"
@@ -67,6 +81,8 @@
         android:layout_weight="1"
         android:text="구분"
         android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="16px"
         />
     <TextView
         android:id="@+id/user_name"
@@ -75,6 +91,8 @@
         android:layout_weight="1"
         android:text="차주명"
         android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="16px"
         />
     <TextView
         android:id="@+id/mobile"
@@ -83,6 +101,8 @@
         android:layout_weight="1"
         android:text="휴대폰"
         android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="16px"
         />
     <TextView
         android:id="@+id/is_paid"
@@ -91,5 +111,7 @@
         android:layout_weight="1"
         android:text="결제"
         android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="16px"
         />
 </LinearLayout>

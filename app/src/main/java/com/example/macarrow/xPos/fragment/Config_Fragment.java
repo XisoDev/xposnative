@@ -21,7 +21,6 @@ public class Config_Fragment extends Fragment {
 
         final TextView configDefault = (TextView)view.findViewById(R.id.config_default);
         final TextView configCartype = (TextView)view.findViewById(R.id.config_cartype);
-        final TextView configDayCar = (TextView)view.findViewById(R.id.config_dayCar);
         final TextView configDatabase = (TextView)view.findViewById(R.id.config_database);
 
         // Button case 처리
@@ -36,30 +35,23 @@ public class Config_Fragment extends Fragment {
                     case R.id.config_default:
 
                         break;
+
                     case R.id.config_cartype:
 
                         fm.beginTransaction().replace(R.id.content_fragment, new Config_CarType("N")).commit();
                         break;
 
-                    case R.id.config_dayCar:
-
-                        fm.beginTransaction().replace(R.id.content_fragment, new Config_CarType("Y")).commit();
-                        break;
-
                     case R.id.config_database:
 
                         break;
-
                 }
             }
         };
 
         configDefault.setOnClickListener(clickListener);
         configCartype.setOnClickListener(clickListener);
-        configDayCar.setOnClickListener(clickListener);
         configDatabase.setOnClickListener(clickListener);
 
         return view;
-
     }
 }

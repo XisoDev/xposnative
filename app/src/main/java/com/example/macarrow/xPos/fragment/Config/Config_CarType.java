@@ -2,6 +2,7 @@ package com.example.macarrow.xPos.fragment.Config;
 
 import android.annotation.SuppressLint;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import com.melnykov.fab.FloatingActionButton;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import com.example.macarrow.xPos.R;
 import com.example.macarrow.xPos.Services.CarType_Services;
 import com.example.macarrow.xPos.adapter.CarTypeViewAdapter;
@@ -28,12 +30,27 @@ public class Config_CarType extends Fragment {
 
         final View view = inflater.inflate(R.layout.config_cartype, container, false);
         final CarType_Services carTypeServices = new CarType_Services(getActivity(), "car_type.db", null, 1);
-        final List<Map<String, Object>> list = carTypeServices.getResult(is_daycar);
-
+        final TextView Config_cartype = (TextView)view.findViewById(R.id.config_cartype);
+        final TextView Config_dayCar = (TextView)view.findViewById(R.id.config_dayCar);
         final ListView Car_type_List = (ListView) view.findViewById(R.id.cartype_list);
+
+        switch (is_daycar) {
+
+            case "nomal":
+                is_daycar = "N";
+                break;
+
+            case "day":
+                is_daycar = "Y";
+                break;
+
+        }
+
+        final List<Map<String, Object>> list = carTypeServices.getResult(is_daycar);
         final CarTypeViewAdapter adapter = new CarTypeViewAdapter(getActivity(), R.layout.config_cartype_item, list);
         adapter.notifyDataSetChanged();
         Car_type_List.setAdapter(adapter);
+
 
         fab = (FloatingActionButton) view.findViewById(R.id.fab);
         fab.attachToListView(Car_type_List);
@@ -70,6 +87,34 @@ public class Config_CarType extends Fragment {
 
             }
         });
+
+        View.OnClickListener clickListener = new View.OnClickListener() {
+
+            private FragmentManager fm = getFragmentManager();
+
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()) {
+
+                    case R.id.config_cartype:
+
+                        is_daycar = "N";
+                        fm.beginTransaction().replace(R.id.content_fragment, new Config_CarType(is_daycar)).commit();
+                        break;
+
+                    case R.id.config_dayCar:
+
+                        is_daycar = "Y";
+                        fm.beginTransaction().replace(R.id.content_fragment, new Config_CarType(is_daycar)).commit();
+                        break;
+
+                }
+            }
+        };
+
+        Config_cartype.setOnClickListener(clickListener);
+        Config_dayCar.setOnClickListener(clickListener);
+
         return view;
     }
 }

@@ -43,9 +43,7 @@ public class Month_Pay extends DialogFragment {
             View view = inflater.inflate(R.layout.month_pay, null);
             final TextView Title = (TextView)view.findViewById(R.id.title);
             final LinearLayout Do_card = (LinearLayout)view.findViewById(R.id.do_card);
-            final TextView Do_card_text = (TextView)view.findViewById(R.id.do_card_text);
             final LinearLayout Do_cash = (LinearLayout)view.findViewById(R.id.do_cash);
-            final TextView Do_cash_text = (TextView)view.findViewById(R.id.do_cash_text);
             final LinearLayout Close_pay_month = (LinearLayout)view.findViewById(R.id.close_pay_month);
             final EditText Pay_money = (EditText)view.findViewById(R.id.pay_money);
             final TextView Amount = (TextView)view.findViewById(R.id.amount);
@@ -64,8 +62,6 @@ public class Month_Pay extends DialogFragment {
             CarNum += (String) map.get("car_num");
             CarNum += " ]";
             Title.setText(CarNum);
-            Do_card_text.setText((Integer) map.get("amount")+"원을 신용카드로 결제합니다");
-            Do_cash_text.setText((Integer) map.get("amount")+"원을 현금으로 결제합니다");
             Pay_money.setText((Integer) map.get("amount") +"");
             Amount.setText((Integer) map.get("amount")+"원");
             Outstanding_amount.setText((Integer) map.get("amount")+"원");
@@ -105,24 +101,15 @@ public class Month_Pay extends DialogFragment {
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
 
                     if (s.equals("")) {
-                        Do_card_text.setText(total_result+"원을 신용카드로 결제합니다");
-                        Do_cash_text.setText(total_result+"원을 현금으로 결제합니다");
                         Pay_money.setText(0+"");
                     } else if (s.length() < 1) {
-                        Do_card_text.setText(total_result+"원을 신용카드로 결제합니다");
-                        Do_cash_text.setText(total_result+"원을 현금으로 결제합니다");
                         Pay_money.setText(0+"");
                     } else if (total_result - (int) Integer.parseInt(s.toString()) < 0) {
                         AlertDialog.Builder adb = new AlertDialog.Builder(getActivity());
                         adb.setTitle("결제 금액이 총 금액보다 큽니다");
                         adb.setNegativeButton("닫기", null);
                         adb.show();
-                        Do_card_text.setText(total_result+"원을 신용카드로 결제합니다");
-                        Do_cash_text.setText(total_result+"원을 현금으로 결제합니다");
                         Pay_money.setText(total_result+"");
-                    } else {
-                        Do_card_text.setText(s+"원을 신용카드로 결제합니다");
-                        Do_cash_text.setText(s+"원을 현금으로 결제합니다");
                     }
                 }
             });
@@ -223,9 +210,7 @@ public class Month_Pay extends DialogFragment {
             View view = inflater.inflate(R.layout.month_pay, null);
             final TextView Title = (TextView)view.findViewById(R.id.title);
             final LinearLayout Do_card = (LinearLayout)view.findViewById(R.id.do_card);
-            final TextView Do_card_text = (TextView)view.findViewById(R.id.do_card_text);
             final LinearLayout Do_cash = (LinearLayout)view.findViewById(R.id.do_cash);
-            final TextView Do_cash_text = (TextView)view.findViewById(R.id.do_cash_text);
             final LinearLayout Close_pay_month = (LinearLayout)view.findViewById(R.id.close_pay_month);
             final EditText Pay_money = (EditText)view.findViewById(R.id.pay_money);
             final TextView Amount = (TextView)view.findViewById(R.id.amount);
@@ -274,8 +259,6 @@ public class Month_Pay extends DialogFragment {
             final int edd = (Integer) map.get("end_date_d");
 
             Outstanding_amount.setText((amount-pay_amount)+"원");
-            Do_card_text.setText((amount-pay_amount)+"원을 신용카드로 결제합니다");
-            Do_cash_text.setText((amount-pay_amount)+"원을 현금으로 결제합니다");
             Pay_money.setText((amount-pay_amount) +"");
 
             // EidtText가 눌릴때마다 감지하는 부분
@@ -292,24 +275,15 @@ public class Month_Pay extends DialogFragment {
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
 
                     if (s.equals("")) {
-                        Do_card_text.setText((amount-pay_amount)+"원을 신용카드로 결제합니다");
-                        Do_cash_text.setText((amount-pay_amount)+"원을 현금으로 결제합니다");
                         Pay_money.setText(0+"");
                     } else if (s.length() < 1) {
-                        Do_card_text.setText((amount-pay_amount)+"원을 신용카드로 결제합니다");
-                        Do_cash_text.setText((amount-pay_amount)+"원을 현금으로 결제합니다");
                         Pay_money.setText(0+"");
                     } else if (amount - (int) Integer.parseInt(s.toString()) < 0) {
                         AlertDialog.Builder adb = new AlertDialog.Builder(getActivity());
                         adb.setTitle("결제 금액이 총 금액보다 큽니다");
                         adb.setNegativeButton("닫기", null);
                         adb.show();
-                        Do_card_text.setText((amount-pay_amount)+"원을 신용카드로 결제합니다");
-                        Do_cash_text.setText((amount-pay_amount)+"원을 현금으로 결제합니다");
                         Pay_money.setText((amount-pay_amount)+"");
-                    } else {
-                        Do_card_text.setText(s+"원을 신용카드로 결제합니다");
-                        Do_cash_text.setText(s+"원을 현금으로 결제합니다");
                     }
                 }
             });

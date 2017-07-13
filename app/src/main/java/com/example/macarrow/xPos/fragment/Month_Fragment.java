@@ -35,7 +35,7 @@ public class Month_Fragment extends Fragment {
         final Month_Service month_service = new Month_Service(getActivity(), "month.db", null, 1);
 
         View view = inflater.inflate(R.layout.month, container, false);
-        final TextView Month_all = (TextView)view.findViewById(R.id.possibility);
+        final TextView Month_all = (TextView)view.findViewById(R.id.month_all);
         final TextView Month_expired = (TextView)view.findViewById(R.id.month_expired);
         final TextView Month_wait = (TextView)view.findViewById(R.id.month_wait);
         final TextView Month_calendar = (TextView)view.findViewById(R.id.month_calendar);
@@ -106,7 +106,7 @@ public class Month_Fragment extends Fragment {
             public void onClick(View v) {
                 switch (v.getId()) {
 
-                    case R.id.possibility :
+                    case R.id.month_all :
 
                         month = "possibility";
                         fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment(month)).commit();
