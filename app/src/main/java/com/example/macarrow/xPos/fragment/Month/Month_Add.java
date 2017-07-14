@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
+import android.support.v7.widget.SwitchCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -53,7 +54,7 @@ public class Month_Add extends DialogFragment {
         final TextView Outstanding_amount = (TextView)view.findViewById(R.id.outstanding_amount);
         final LinearLayout Pay_amount_lay = (LinearLayout)view.findViewById(R.id.pay_amount_lay);
         final TextView Pay_amount = (TextView)view.findViewById(R.id.pay_amount);
-        final Switch Is_stop = (Switch)view.findViewById(R.id.is_stop);
+        final SwitchCompat Is_stop = (SwitchCompat)view.findViewById(R.id.is_stop);
         final LinearLayout Is_stop_lay = (LinearLayout)view.findViewById(R.id.is_stop_lay);
         final Button Update_month = (Button)view.findViewById(R.id.update_month);
         final Button Open_ext_month = (Button)view.findViewById(R.id.open_ext_month);

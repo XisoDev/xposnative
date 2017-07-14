@@ -4,8 +4,8 @@
     android:shape="oval"
     >
     <size
-        android:width="25px"
-        android:height="25px"
+        android:width="15px"
+        android:height="15px"
         />
 
     <solid

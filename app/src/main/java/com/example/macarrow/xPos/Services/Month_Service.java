@@ -355,4 +355,38 @@ public class Month_Service extends SQLiteOpenHelper {
         return list;
 
     }
+
+    public Map<String, Object> getMonthCarNum(int today, String car_num) {
+        // 읽기가 가능하게 DB 열기
+        SQLiteDatabase db = getReadableDatabase();
+        Map<String, Object> map = new HashMap<String, Object>();
+
+        // DB에 있는 데이터를 쉽게 처리하기 위해 Cursor를 사용하여 테이블에 있는 모든 데이터 출력
+        Cursor cursor = db.rawQuery("SELECT * FROM month WHERE car_num like ? AND is_stop='N' AND end_date >= " + today + " AND start_date <= " + today + "", new String[] {'%'+car_num});
+        if (cursor.moveToNext()) {
+            map.put("idx", cursor.getInt(0));
+            map.put("start_date_y", cursor.getInt(1));
+            map.put("start_date_m", cursor.getInt(2));
+            map.put("start_date_d", cursor.getInt(3));
+            map.put("start_date", cursor.getInt(4));
+            map.put("end_date_y", cursor.getInt(5));
+            map.put("end_date_m", cursor.getInt(6));
+            map.put("end_date_d", cursor.getInt(7));
+            map.put("end_date", cursor.getInt(8));
+            map.put("amount", cursor.getInt(9));
+            map.put("pay_amount", cursor.getInt(10));
+            map.put("is_paid", cursor.getString(11));
+            map.put("car_num", cursor.getString(12));
+            map.put("car_name", cursor.getString(13));
+            map.put("car_type_title", cursor.getString(14));
+            map.put("user_name", cursor.getString(15));
+            map.put("mobile", cursor.getString(16));
+            map.put("regdate", cursor.getInt(17));
+            map.put("is_stop", cursor.getString(18));
+            map.put("stop_date", cursor.getInt(19));
+        }
+
+        return map;
+
+    }
 }

@@ -268,6 +268,7 @@ public class Month_Calendar extends Fragment implements View.OnClickListener {
 
                 Calendar mCal = Calendar.getInstance();
                 Integer today = mCal.get(Calendar.DAY_OF_MONTH);
+                Integer thisMonth = mCal.get(Calendar.MONTH)+1;
                 String sToday = String.valueOf(today);
                 dayViewHolder.Calendar_day.setText(day.getDay());
 
@@ -280,8 +281,8 @@ public class Month_Calendar extends Fragment implements View.OnClickListener {
                 Month_Service month_service = new Month_Service(context, "month.db", null, 1);
                 int year = Integer.parseInt(curYearFormat.format(date));
                 int month = Integer.parseInt(curMonthFormat.format(date));
-                int tDay = Integer.parseInt(curDayFormat.format(date));
 
+                int tDay = Integer.parseInt(curDayFormat.format(date));
                 int in = month_service.calMonthInCnt(year, month, tDay);
                 int out = month_service.calMonthOutCnt(year, month, tDay);
 
@@ -290,18 +291,18 @@ public class Month_Calendar extends Fragment implements View.OnClickListener {
                     dayViewHolder.Month_out_cnt.setText("종료"+out+"대");
                 }
 
-                if (day.isInMonth()) {
+                if (day.getDay() == sToday && month == thisMonth) {
+                    dayViewHolder.Calendar_day.setTextColor(Color.GREEN);
+                } else if (day.isInMonth()) {
 
-                    if (day.getDay() == sToday) {
-                        dayViewHolder.Calendar_day.setTextColor(Color.GREEN);
-                    } else if (position % 7 == 0) {
+                     if (position % 7 == 0) {
                         dayViewHolder.Calendar_day.setTextColor(Color.RED);
                     } else if (position % 7 == 6) {
                         dayViewHolder.Calendar_day.setTextColor(Color.BLUE);
                     }
 
                 } else {
-                    dayViewHolder.Calendar_day.setText("");
+                    dayViewHolder.Calendar_day.setText(month+"/"+thisMonth);
                 }
 
             }

@@ -2,241 +2,367 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="815px"
+    android:layout_height="wrap_content"
     >
     <TextView
         android:id="@+id/month_title"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="월차 추가 / 수정 / 삭제"
+        android:layout_width="815px"
+        android:layout_height="32px"
+        android:text="월차 추가 / 수정"
         android:gravity="center"
+        android:background="#3a3a3a"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
         />
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_width="815px"
+        android:layout_height="34px"
         >
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="190px"
+            android:layout_height="34px"
             android:text="차량 번호"
+            android:gravity="center_vertical"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:textSize="15px"
+            android:paddingLeft="44px"
             />
         <EditText
             android:id="@+id/car_num"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="625px"
+            android:layout_height="34px"
             android:hint="차량 식별 번호 (예: 23허4523)"
+            android:gravity="center_vertical"
             android:singleLine="true"
-            android:lines="1"
+            android:textSize="15px"
+            android:background="@null"
+            android:paddingLeft="20px"
             />
     </LinearLayout>
-    <LinearLayout
+    <View
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_height="1px"
+        android:background="#e4e4e4"
+        android:layout_marginLeft="20px"
+        android:layout_marginRight="20px"
+        />
+    <LinearLayout
+        android:layout_width="815px"
+        android:layout_height="34px"
         >
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="190px"
+            android:layout_height="34px"
             android:text="차종"
+            android:gravity="center_vertical"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:textSize="15px"
+            android:paddingLeft="44px"
             />
         <EditText
             android:id="@+id/car_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="625px"
+            android:layout_height="34px"
             android:hint="차종 (예: 산타페, 크루즈, 말리부 ... )"
+            android:gravity="center_vertical"
             android:singleLine="true"
-            android:lines="1"
+            android:textSize="15px"
+            android:background="@null"
+            android:paddingLeft="20px"
             />
     </LinearLayout>
-    <LinearLayout
+    <View
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_height="1px"
+        android:background="#e4e4e4"
+        android:layout_marginLeft="20px"
+        android:layout_marginRight="20px"
+        />
+    <LinearLayout
+        android:layout_width="815px"
+        android:layout_height="34px"
         >
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="190px"
+            android:layout_height="34px"
             android:text="구분"
+            android:gravity="center_vertical"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:textSize="15px"
+            android:paddingLeft="44px"
             />
         <EditText
             android:id="@+id/car_type_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="625px"
+            android:layout_height="34px"
             android:hint="차종 구분 (예:소형, 중형, 대형 ... )"
+            android:gravity="center_vertical"
             android:singleLine="true"
-            android:lines="1"
+            android:textSize="15px"
+            android:background="@null"
+            android:paddingLeft="20px"
             android:nextFocusDown="@+id/amount"
             />
     </LinearLayout>
-    <LinearLayout
+    <View
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="1px"
+        android:background="#e4e4e4"
+        android:layout_marginLeft="20px"
+        android:layout_marginRight="20px"
+        />
+    <LinearLayout
+        android:layout_width="815px"
+        android:layout_height="44px"
         android:orientation="horizontal"
-        android:layout_weight="1"
-        >
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            >
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="시작 날짜"
-                android:gravity="center"
-                />
-            <DatePicker
-                android:id="@+id/start_date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:calendarViewShown="false"
-                android:datePickerMode="spinner"
-                >
-            </DatePicker>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            >
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="종료 날짜"
-                android:gravity="center"
-                />
-            <DatePicker
-                android:id="@+id/end_date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:calendarViewShown="false"
-                android:datePickerMode="spinner"
-                >
-            </DatePicker>
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
         >
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="44px"
+            android:layout_weight="1"
+            android:text="시작 날짜"
+            android:gravity="bottom|center_horizontal"
+            android:textSize="15px"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="44px"
+            android:layout_weight="1"
+            android:text="종료 날짜"
+            android:gravity="bottom|center_horizontal"
+            android:textSize="15px"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="815px"
+        android:layout_height="160px"
+        android:orientation="horizontal"
+        >
+        <DatePicker
+            android:id="@+id/start_date"
+            android:layout_width="match_parent"
+            android:layout_height="160px"
+            android:layout_weight="1"
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner"
+            >
+        </DatePicker>
+        <DatePicker
+            android:id="@+id/end_date"
+            android:layout_width="match_parent"
+            android:layout_height="160px"
+            android:layout_weight="1"
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner"
+            >
+        </DatePicker>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#e4e4e4"
+        android:layout_marginLeft="20px"
+        android:layout_marginRight="20px"
+        />
+    <LinearLayout
+        android:layout_width="815px"
+        android:layout_height="34px"
+        >
+        <TextView
+            android:layout_width="190px"
+            android:layout_height="34px"
+            android:gravity="center_vertical"
+            android:paddingLeft="44px"
             android:text="월차 금액"
+            android:textColor="@android:color/black"
+            android:textSize="15px"
+            android:textStyle="bold"
             />
         <EditText
             android:id="@+id/amount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"
+            android:layout_width="625px"
+            android:layout_height="34px"
+            android:background="@null"
+            android:gravity="center_vertical"
             android:hint="월차 금액"
+            android:paddingLeft="20px"
+            android:inputType="number"
+            android:textSize="15px"
             />
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#e4e4e4"
+        android:layout_marginLeft="20px"
+        android:layout_marginRight="20px"
+        />
     <LinearLayout
         android:id="@+id/pay_amount_lay"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_width="815px"
+        android:layout_height="34px"
+        android:orientation="horizontal"
         android:visibility="gone"
         >
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="190px"
+            android:layout_height="34px"
             android:text="결제 금액"
+            android:gravity="center_vertical"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:textSize="15px"
+            android:paddingLeft="44px"
             />
         <TextView
             android:id="@+id/pay_amount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"
+            android:layout_width="625px"
+            android:layout_height="34px"
             android:text="0"
+            android:gravity="center_vertical"
+            android:textSize="15px"
+            android:paddingLeft="20px"
             />
     </LinearLayout>
     <LinearLayout
         android:id="@+id/outstanding_amount_lay"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_width="815px"
+        android:layout_height="36px"
+        android:orientation="vertical"
         android:visibility="gone"
         >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="미수 금액"
-            />
-        <TextView
-            android:id="@+id/outstanding_amount"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:text="0"
+            android:layout_height="1px"
+            android:background="#e4e4e4"
+            android:layout_marginLeft="20px"
+            android:layout_marginRight="30px"
+            />
+        <LinearLayout
+            android:layout_width="815px"
+            android:layout_height="34px"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_width="190px"
+                android:layout_height="34px"
+                android:text="미수 금액"
+                android:gravity="center_vertical"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:textSize="15px"
+                android:paddingLeft="44px"
+                />
+            <TextView
+                android:id="@+id/outstanding_amount"
+                android:layout_width="625px"
+                android:layout_height="34px"
+                android:text="0"
+                android:gravity="center_vertical"
+                android:textSize="15px"
+                android:paddingLeft="20px"
+                />
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#e4e4e4"
+            android:layout_marginLeft="20px"
+            android:layout_marginRight="30px"
             />
     </LinearLayout>
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_width="815px"
+        android:layout_height="34px"
         >
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="차주 명"
+            android:layout_width="190px"
+            android:layout_height="34px"
+            android:text="차주명"
+            android:gravity="center_vertical"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:textSize="15px"
+            android:paddingLeft="44px"
             />
-
         <EditText
             android:id="@+id/user_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="차주 명"
-            android:lines="1"
-            android:singleLine="true" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="연락처"
-            />
-        <EditText
-            android:id="@+id/mobile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:hint="연락처"
+            android:layout_width="625px"
+            android:layout_height="34px"
+            android:hint="차주명"
+            android:gravity="center_vertical"
             android:singleLine="true"
-            android:lines="1"
+            android:textSize="15px"
+            android:background="@null"
+            android:paddingLeft="20px"
             />
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#e4e4e4"
+        android:layout_marginLeft="20px"
+        android:layout_marginRight="20px"
+        />
+    <LinearLayout
+        android:layout_width="815px"
+        android:layout_height="34px"
+        >
+    <TextView
+        android:layout_width="190px"
+        android:layout_height="34px"
+        android:text="연락처"
+        android:gravity="center_vertical"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:textSize="15px"
+        android:paddingLeft="44px"
+        />
+    <EditText
+        android:id="@+id/mobile"
+        android:layout_width="625px"
+        android:layout_height="34px"
+        android:hint="연락처"
+        android:gravity="center_vertical"
+        android:inputType="number"
+        android:textSize="15px"
+        android:background="@null"
+        android:paddingLeft="20px"
+        />
+</LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#e4e4e4"
+        android:layout_marginLeft="20px"
+        android:layout_marginRight="20px"
+        />
     <LinearLayout
         android:id="@+id/is_stop_lay"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_width="815px"
+        android:layout_height="34px"
         android:gravity="right|center_vertical"
         android:visibility="gone"
         >
-        <Switch
+        <android.support.v7.widget.SwitchCompat
             android:id="@+id/is_stop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:track="@drawable/switch_track_selector"
-            android:thumb="@drawable/switch_thumb_selector"
+            android:textSize="15px"
+            android:paddingRight="20px"
             />
     </LinearLayout>
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_width="815px"
+        android:layout_height="33px"
         >
         <Button
             android:id="@+id/add_month"
@@ -245,6 +371,9 @@
             android:layout_weight="1"
             android:text="추가"
             android:visibility="gone"
+            android:background="#1dbd92"
+            android:textSize="16px"
+            android:textColor="@android:color/white"
             />
         <Button
             android:id="@+id/update_month"
@@ -253,6 +382,9 @@
             android:layout_weight="1"
             android:text="수정"
             android:visibility="gone"
+            android:background="#1dbd92"
+            android:textSize="16px"
+            android:textColor="@android:color/white"
             />
         <Button
             android:id="@+id/open_ext_month"
@@ -261,6 +393,9 @@
             android:layout_weight="1"
             android:text="연장하기"
             android:visibility="gone"
+            android:background="#fc604e"
+            android:textSize="16px"
+            android:textColor="@android:color/white"
             />
         <Button
             android:id="@+id/open_pay_month"
@@ -269,6 +404,9 @@
             android:layout_weight="1"
             android:text="결제하기"
             android:visibility="gone"
+            android:background="#fc604e"
+            android:textSize="16px"
+            android:textColor="@android:color/white"
             />
         <Button
             android:id="@+id/close_month"
@@ -276,6 +414,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="닫기"
+            android:background="#028ecf"
+            android:textSize="16px"
+            android:textColor="@android:color/white"
             />
     </LinearLayout>
 </LinearLayout>

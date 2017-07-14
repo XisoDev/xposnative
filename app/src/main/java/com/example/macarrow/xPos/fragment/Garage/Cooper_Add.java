@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
+import android.support.v7.widget.SwitchCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -13,7 +14,6 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.macarrow.xPos.R;
@@ -46,9 +46,9 @@ public class Cooper_Add extends DialogFragment {
         final Button Add_cooper = (Button) view.findViewById(R.id.add_cooper);
         final Button Close_cooper = (Button) view.findViewById(R.id.close_cooper);
         final LinearLayout Is_end_lay = (LinearLayout) view.findViewById(R.id.is_end_lay);
-        final Switch Is_end = (Switch) view.findViewById(R.id.is_end);
+        final SwitchCompat Is_end = (SwitchCompat) view.findViewById(R.id.is_end);
         final Button Update_cooper = (Button) view.findViewById(R.id.update_cooper);
-        final Button Delete_cooper = (Button) view.findViewById(R.id.delete_cooper);
+//        final Button Delete_cooper = (Button) view.findViewById(R.id.delete_cooper);
 
         builder.setView(view);
 
@@ -116,10 +116,10 @@ public class Cooper_Add extends DialogFragment {
 
         if (status.equals("modify")) {
 
-            Title_cooper.setText("업체 수정 / 삭제");
+            Title_cooper.setText("업체 수정");
             Is_end_lay.setVisibility(View.VISIBLE);
             Update_cooper.setVisibility(View.VISIBLE);
-            Delete_cooper.setVisibility(View.VISIBLE);
+//            Delete_cooper.setVisibility(View.VISIBLE);
 
             final Map<String, Object> map = cooper_services.getResultForUpdate(idx);
             Coop_title.setText((String) map.get("coop_title"));
@@ -135,7 +135,7 @@ public class Cooper_Add extends DialogFragment {
                 Is_end.setText("활성");
             } else if (isEnd.equals("Y")) {
                 Is_end.setChecked(false);
-                Is_end.setText("종료");
+                Is_end.setText("중단");
             }
 
             Is_end.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -144,7 +144,7 @@ public class Cooper_Add extends DialogFragment {
                     if (isChecked) {
                         Is_end.setText("활성");
                     } else if (!isChecked) {
-                        Is_end.setText("종료");
+                        Is_end.setText("중단");
                     }
                 }
             });
@@ -192,7 +192,7 @@ public class Cooper_Add extends DialogFragment {
                             String is_end = "";
                             if (Is_end.getText().equals("활성")) {
                                 is_end = "N";
-                            } else if (Is_end.getText().equals("종료")) {
+                            } else if (Is_end.getText().equals("중단")) {
                                 is_end = "Y";
                             }
 
@@ -201,12 +201,12 @@ public class Cooper_Add extends DialogFragment {
                             dismiss();
                             break;
 
-                        case R.id.delete_cooper:
-
-                            cooper_services.delete(idx);
-                            fm.beginTransaction().replace(R.id.content_fragment, new Cooper_Fragment("cooper")).commit();
-                            dismiss();
-                            break;
+//                        case R.id.delete_cooper:
+//
+//                            cooper_services.delete(idx);
+//                            fm.beginTransaction().replace(R.id.content_fragment, new Cooper_Fragment("cooper")).commit();
+//                            dismiss();
+//                            break;
 
                         case R.id.close_cooper:
 
@@ -217,7 +217,7 @@ public class Cooper_Add extends DialogFragment {
                 }
             };
             Update_cooper.setOnClickListener(clickListener);
-            Delete_cooper.setOnClickListener(clickListener);
+//            Delete_cooper.setOnClickListener(clickListener);
             Close_cooper.setOnClickListener(clickListener);
         }
 

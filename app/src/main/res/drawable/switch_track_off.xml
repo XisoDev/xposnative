@@ -7,7 +7,7 @@
         android:radius="15px"
         />
     <size
-        android:width="75px"
+        android:width="45px"
         android:height="25px"
         />
     <solid
