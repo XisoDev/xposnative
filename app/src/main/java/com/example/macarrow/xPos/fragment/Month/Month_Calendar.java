@@ -310,6 +310,51 @@ public class Month_Calendar extends Fragment implements View.OnClickListener {
         }
     }
 
+    public class Month_inNout extends DialogFragment {
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            final Month_Service month_service = new Month_Service(getActivity(), "month.db", null, 1);
+            LayoutInflater inflater = getActivity().getLayoutInflater();
+
+            final View view = inflater.inflate(R.layout.month_innout, null);
+            final ListView Month_inNouts = (ListView) view.findViewById(R.id.month_inNout);
+
+            final List<Map<String, Object>> list = month_service.calMonth(year, month, mDay);
+            MonthinNoutViewAdapter adapter = new MonthinNoutViewAdapter(getActivity(), R.layout.month_innout_item, list);
+            Month_inNouts.setAdapter(adapter);
+
+            Month_inNouts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                    final String car_num = (String) list.get(position).get("car_num");
+                    Bundle args = new Bundle();
+                    args.putString("status", "modify");
+                    args.putString("car_num", car_num);
+                    Month_Add month_add = new Month_Add();
+                    month_add.setArguments(args);
+                    month_add.setCancelable(false);
+                    month_add.show(getFragmentManager(), "month_modify");
+
+                }
+            });
+
+            builder.setNegativeButton("닫기", null);
+            builder.setView(view);
+
+            return builder.create();
+        }
+        @Override
+        public void onResume() {
+            super.onResume();
+            Window window = getDialog().getWindow();
+            window.setLayout(835, WindowManager.LayoutParams.WRAP_CONTENT);
+        }
+    }
+
     public class MonthinNoutViewAdapter extends BaseAdapter {
 
         private Context context;
@@ -384,34 +429,6 @@ public class Month_Calendar extends Fragment implements View.OnClickListener {
 
     }
 
-    public class Month_inNout extends DialogFragment {
-
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            final Month_Service month_service = new Month_Service(getActivity(), "month.db", null, 1);
-            LayoutInflater inflater = getActivity().getLayoutInflater();
-
-            final View view = inflater.inflate(R.layout.month_innout, null);
-            final ListView Month_inNouts = (ListView) view.findViewById(R.id.month_inNout);
-
-            final List<Map<String, Object>> list = month_service.calMonth(year, month, mDay);
-            MonthinNoutViewAdapter adapter = new MonthinNoutViewAdapter(getActivity(), R.layout.month_innout_item, list);
-            Month_inNouts.setAdapter(adapter);
-
-            builder.setNegativeButton("닫기", null);
-            builder.setView(view);
-
-            return builder.create();
-        }
-        @Override
-        public void onResume() {
-            super.onResume();
-            Window window = getDialog().getWindow();
-            window.setLayout(835, WindowManager.LayoutParams.WRAP_CONTENT);
-        }
-    }
 }
 
 class MonthCalendarView_Item {
