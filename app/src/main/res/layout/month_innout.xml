@@ -2,20 +2,23 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="415px"
+    android:layout_height="wrap_content"
     >
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/title"
+        android:layout_width="415px"
+        android:layout_height="42px"
         android:text="월차 현황"
-        android:layout_weight="10"
+        android:gravity="center"
+        android:background="#3a3a3a"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
         />
     <ListView
         android:id="@+id/month_inNout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_width="415px"
+        android:layout_height="wrap_content"
         >
     </ListView>
 </LinearLayout>

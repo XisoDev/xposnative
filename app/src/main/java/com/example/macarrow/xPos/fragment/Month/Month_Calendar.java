@@ -338,6 +338,7 @@ public class Month_Calendar extends Fragment implements View.OnClickListener {
                     month_add.setArguments(args);
                     month_add.setCancelable(false);
                     month_add.show(getFragmentManager(), "month_modify");
+                    dismiss();
 
                 }
             });
@@ -351,7 +352,7 @@ public class Month_Calendar extends Fragment implements View.OnClickListener {
         public void onResume() {
             super.onResume();
             Window window = getDialog().getWindow();
-            window.setLayout(835, WindowManager.LayoutParams.WRAP_CONTENT);
+            window.setLayout(435, WindowManager.LayoutParams.WRAP_CONTENT);
         }
     }
 
