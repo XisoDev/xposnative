@@ -291,6 +291,17 @@ public class Cooper_Fragment extends Fragment {
         final TextView Period = (TextView) view.findViewById(R.id.period);
         final TextView Day = (TextView) view.findViewById(R.id.day);
 
+        if (cooper.equals("cooper")) {
+            Cooper.setBackground(getResources().getDrawable(R.drawable.nav_bg_on));
+            Cooper.setTextColor(getResources().getColor(R.color.nav_txt_on));
+        } if (cooper.equals("period")) {
+            Period.setBackground(getResources().getDrawable(R.drawable.nav_bg_on));
+            Period.setTextColor(getResources().getColor(R.color.nav_txt_on));
+        } if (cooper.equals("day")) {
+            Day.setBackground(getResources().getDrawable(R.drawable.nav_bg_on));
+            Day.setTextColor(getResources().getColor(R.color.nav_txt_on));
+        }
+
         // Button case 처리
         View.OnClickListener clickListener = new View.OnClickListener() {
             private FragmentManager fm = getFragmentManager();

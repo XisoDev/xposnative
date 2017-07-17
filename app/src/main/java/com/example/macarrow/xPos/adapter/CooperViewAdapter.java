@@ -62,7 +62,7 @@ public class CooperViewAdapter extends BaseAdapter {
         String isEnd = (String) list.get(position).get("is_end");
 
         if (isEnd.equals("Y")) {
-            item.isEnd.setText("종료");
+            item.isEnd.setText("중단");
         } if (isEnd.equals("N")) {
             item.isEnd.setText("활성");
         }

@@ -175,7 +175,7 @@ public class Payment_Input extends DialogFragment {
                                 String lookup_type = "garage";
                                 String pay_type = "card";
                                 int cooper_amount = discount_cooper+discount_self;
-                                payment_services.insert(idx, lookup_type, pay_type, inPay, cooper_amount, pay_money, year, month, day);
+                                payment_services.insert(idx, lookup_type, pay_type, total_amount, cooper_amount, pay_money, year, month, day);
                                 dismiss();
                             }
                         });
@@ -214,7 +214,7 @@ public class Payment_Input extends DialogFragment {
                                 String lookup_type = "garage";
                                 String pay_type = "cash";
                                 int cooper_amount = discount_cooper+discount_self;
-                                payment_services.insert(idx, lookup_type, pay_type, inPay, cooper_amount, pay_money, year, month, day);
+                                payment_services.insert(idx, lookup_type, pay_type, total_amount, cooper_amount, pay_money, year, month, day);
                                 dismiss();
                             }
                         });

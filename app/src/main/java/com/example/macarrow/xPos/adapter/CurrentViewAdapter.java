@@ -1,6 +1,7 @@
 package com.example.macarrow.xPos.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -94,6 +95,7 @@ public class CurrentViewAdapter extends BaseAdapter {
         int month_idx = (int) list.get(position).get("month_idx");
         if (month_idx > 0) {
             item.resultCharge.setText("월차");
+            item.carTypeTitle.setBackground(convertView.getResources().getDrawable(R.drawable.current_month));
         } else {
             item.resultCharge.setText((result_charge) +"");
         }

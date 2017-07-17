@@ -60,7 +60,6 @@ public class Garage_View extends DialogFragment {
         final LinearLayout Cancel_out = (LinearLayout)view.findViewById(R.id.cancel_out);
         final LinearLayout Printin_car = (LinearLayout)view.findViewById(R.id.printin_car);
         final LinearLayout Pay_status = (LinearLayout)view.findViewById(R.id.pay_status);
-        final LinearLayout Btn_layout = (LinearLayout)view.findViewById(R.id.btn_layout);
         final TextView Car_num = (TextView)view.findViewById(R.id.car_num);
         final TextView Start_date = (TextView)view.findViewById(R.id.start_date);
         final TextView End_date = (TextView)view.findViewById(R.id.end_date);
@@ -90,8 +89,6 @@ public class Garage_View extends DialogFragment {
             Printin_car.setVisibility(view.VISIBLE);
         }  else if (isPaid.equals("Y")) {
             Cancel_out.setVisibility(view.VISIBLE);
-        } else if (isCancel.equals("Y")) {
-            Btn_layout.setVisibility(view.GONE);
         } else if (isPaid.equals("N") && isCancel.equals("N")) {
             Pay_car.setVisibility(view.VISIBLE);
             Cancel_out.setVisibility(view.VISIBLE);

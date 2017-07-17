@@ -46,22 +46,42 @@ public class History_Fragment extends Fragment {
 
             case "all":
                 status = "all";
+
+                historyAll.setBackground(getResources().getDrawable(R.drawable.nav_bg_on));
+                historyAll.setTextColor(getResources().getColor(R.color.nav_txt_on));
+
                 break;
 
             case "in":
                 status = "in";
+
+                historyIn.setBackground(getResources().getDrawable(R.drawable.nav_bg_on));
+                historyIn.setTextColor(getResources().getColor(R.color.nav_txt_on));
+
                 break;
 
             case "out":
                 status = "out";
+
+                historyOut.setBackground(getResources().getDrawable(R.drawable.nav_bg_on));
+                historyOut.setTextColor(getResources().getColor(R.color.nav_txt_on));
+
                 break;
 
             case "no_pay":
                 status = "no_pay";
+
+                historyNoPay.setBackground(getResources().getDrawable(R.drawable.nav_bg_on));
+                historyNoPay.setTextColor(getResources().getColor(R.color.nav_txt_on));
+
                 break;
 
             case "cancel":
                 status = "cancel";
+
+                historyCancel.setBackground(getResources().getDrawable(R.drawable.nav_bg_on));
+                historyCancel.setTextColor(getResources().getColor(R.color.nav_txt_on));
+
                 break;
         }
 

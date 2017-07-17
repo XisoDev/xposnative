@@ -20,6 +20,7 @@
             android:gravity="right"
             android:paddingTop="20px"
             android:paddingRight="48px"
+            android:singleLine="true"
             android:background="@drawable/mainfield_shape"
             />
     </LinearLayout>
@@ -112,16 +113,15 @@
                 android:layout_height="91px"
                 android:layout_marginLeft="40px"
                 android:layout_marginRight="13px"
-                android:background="@drawable/panel_bg"
                 >
                 <TextView
                     android:id="@+id/addMF7"
                     android:layout_width="94px"
                     android:layout_height="91px"
-                    android:background="@drawable/panel_bg"
                     android:gravity="center"
                     android:text="7"
-                    android:textColor="#3c7199"
+                    android:textColor="@color/panel_select_txt"
+                    android:background="@drawable/panel_select_bg"
                     android:textSize="30px"
                     />
             </LinearLayout>
@@ -129,32 +129,30 @@
                 android:layout_width="94px"
                 android:layout_height="91px"
                 android:layout_marginRight="13px"
-                android:background="@drawable/panel_bg"
                 >
                 <TextView
                     android:id="@+id/addMF8"
                     android:layout_width="94px"
                     android:layout_height="91px"
-                    android:background="@drawable/panel_bg"
                     android:gravity="center"
                     android:text="8"
-                    android:textColor="#3c7199"
+                    android:textColor="@color/panel_select_txt"
+                    android:background="@drawable/panel_select_bg"
                     android:textSize="30px"
                     />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="94px"
                 android:layout_height="91px"
-                android:background="@drawable/panel_bg"
                 >
                 <TextView
                     android:id="@+id/addMF9"
                     android:layout_width="94px"
                     android:layout_height="91px"
-                    android:background="@drawable/panel_bg"
                     android:gravity="center"
                     android:text="9"
-                    android:textColor="#3c7199"
+                    android:textColor="@color/panel_select_txt"
+                    android:background="@drawable/panel_select_bg"
                     android:textSize="30px"
                     />
             </LinearLayout>
@@ -170,16 +168,15 @@
                 android:layout_height="91px"
                 android:layout_marginLeft="40px"
                 android:layout_marginRight="13px"
-                android:background="@drawable/panel_bg"
                 >
                 <TextView
                     android:id="@+id/addMF4"
                     android:layout_width="94px"
                     android:layout_height="91px"
-                    android:background="@drawable/panel_bg"
                     android:gravity="center"
                     android:text="4"
-                    android:textColor="#3c7199"
+                    android:textColor="@color/panel_select_txt"
+                    android:background="@drawable/panel_select_bg"
                     android:textSize="30px"
                     />
             </LinearLayout>
@@ -187,32 +184,30 @@
                 android:layout_width="94px"
                 android:layout_height="91px"
                 android:layout_marginRight="13px"
-                android:background="@drawable/panel_bg"
                 >
                 <TextView
                     android:id="@+id/addMF5"
                     android:layout_width="94px"
                     android:layout_height="91px"
-                    android:background="@drawable/panel_bg"
                     android:gravity="center"
                     android:text="5"
-                    android:textColor="#3c7199"
+                    android:textColor="@color/panel_select_txt"
+                    android:background="@drawable/panel_select_bg"
                     android:textSize="30px"
                     />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="94px"
                 android:layout_height="91px"
-                android:background="@drawable/panel_bg"
                 >
                 <TextView
                     android:id="@+id/addMF6"
                     android:layout_width="94px"
                     android:layout_height="91px"
-                    android:background="@drawable/panel_bg"
                     android:gravity="center"
                     android:text="6"
-                    android:textColor="#3c7199"
+                    android:textColor="@color/panel_select_txt"
+                    android:background="@drawable/panel_select_bg"
                     android:textSize="30px"
                     />
             </LinearLayout>
@@ -228,16 +223,15 @@
                 android:layout_height="91px"
                 android:layout_marginLeft="40px"
                 android:layout_marginRight="13px"
-                android:background="@drawable/panel_bg"
                 >
                 <TextView
                     android:id="@+id/addMF1"
                     android:layout_width="94px"
                     android:layout_height="91px"
-                    android:background="@drawable/panel_bg"
                     android:gravity="center"
                     android:text="1"
-                    android:textColor="#3c7199"
+                    android:textColor="@color/panel_select_txt"
+                    android:background="@drawable/panel_select_bg"
                     android:textSize="30px"
                     />
             </LinearLayout>
@@ -245,32 +239,30 @@
                 android:layout_width="94px"
                 android:layout_height="91px"
                 android:layout_marginRight="13px"
-                android:background="@drawable/panel_bg"
                 >
                 <TextView
                     android:id="@+id/addMF2"
                     android:layout_width="94px"
                     android:layout_height="91px"
-                    android:background="@drawable/panel_bg"
                     android:gravity="center"
                     android:text="2"
-                    android:textColor="#3c7199"
+                    android:textColor="@color/panel_select_txt"
+                    android:background="@drawable/panel_select_bg"
                     android:textSize="30px"
                     />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="94px"
                 android:layout_height="91px"
-                android:background="@drawable/panel_bg"
                 >
                 <TextView
                     android:id="@+id/addMF3"
                     android:layout_width="94px"
                     android:layout_height="91px"
-                    android:background="@drawable/panel_bg"
                     android:gravity="center"
                     android:text="3"
-                    android:textColor="#3c7199"
+                    android:textColor="@color/panel_select_txt"
+                    android:background="@drawable/panel_select_bg"
                     android:textSize="30px"
                     />
             </LinearLayout>
@@ -286,16 +278,15 @@
                 android:layout_height="91px"
                 android:layout_marginLeft="40px"
                 android:layout_marginRight="13px"
-                android:background="@drawable/panel_bg"
                 >
                 <TextView
                     android:id="@+id/clearMF"
                     android:layout_width="94px"
                     android:layout_height="91px"
-                    android:background="@drawable/panel_bg"
                     android:gravity="center"
                     android:text="C"
-                    android:textColor="#3c7199"
+                    android:textColor="@color/panel_select_txt"
+                    android:background="@drawable/panel_select_bg"
                     android:textSize="30px"
                     />
             </LinearLayout>
@@ -303,32 +294,30 @@
                 android:layout_width="94px"
                 android:layout_height="91px"
                 android:layout_marginRight="13px"
-                android:background="@drawable/panel_bg"
                 >
                 <TextView
                     android:id="@+id/addMF0"
                     android:layout_width="94px"
                     android:layout_height="91px"
-                    android:background="@drawable/panel_bg"
                     android:gravity="center"
                     android:text="0"
-                    android:textColor="#3c7199"
+                    android:textColor="@color/panel_select_txt"
+                    android:background="@drawable/panel_select_bg"
                     android:textSize="30px"
                     />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="94px"
                 android:layout_height="91px"
-                android:background="@drawable/panel_bg"
                 >
                 <TextView
                     android:id="@+id/addMFdash"
                     android:layout_width="94px"
                     android:layout_height="91px"
-                    android:background="@drawable/panel_bg"
                     android:gravity="center"
                     android:text="-"
-                    android:textColor="#3c7199"
+                    android:textColor="@color/panel_select_txt"
+                    android:background="@drawable/panel_select_bg"
                     android:textSize="30px"
                     />
             </LinearLayout>

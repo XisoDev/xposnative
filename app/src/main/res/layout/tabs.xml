@@ -23,10 +23,12 @@
             android:background="@drawable/tab_current"
             />
         <TextView
+            android:id="@+id/tab_current_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="입차목록"
             android:textSize="13px"
+            android:textColor="@color/black"
             />
     </LinearLayout>
     <LinearLayout
@@ -46,10 +48,12 @@
             android:background="@drawable/tab_history"
             />
         <TextView
+            android:id="@+id/tab_history_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="입출차기록"
             android:textSize="13px"
+            android:textColor="@color/black"
             />
     </LinearLayout>
     <LinearLayout
@@ -69,10 +73,12 @@
             android:background="@drawable/tab_month"
             />
         <TextView
+            android:id="@+id/tab_month_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="월차"
             android:textSize="13px"
+            android:textColor="@color/black"
             />
     </LinearLayout>
     <LinearLayout
@@ -92,10 +98,12 @@
             android:background="@drawable/tab_cooper"
             />
         <TextView
+            android:id="@+id/tab_cooper_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="지정주차"
             android:textSize="13px"
+            android:textColor="@color/black"
             />
     </LinearLayout>
     <LinearLayout
@@ -115,10 +123,12 @@
             android:background="@drawable/tab_calcu"
             />
         <TextView
+            android:id="@+id/tab_calcu_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="정산"
             android:textSize="13px"
+            android:textColor="@color/black"
             />
     </LinearLayout>
     <LinearLayout
@@ -138,10 +148,12 @@
             android:background="@drawable/tab_config"
             />
         <TextView
+            android:id="@+id/tab_config_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="설정"
             android:textSize="13px"
+            android:textColor="@color/black"
             />
     </LinearLayout>
 </LinearLayout>

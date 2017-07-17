@@ -47,14 +47,26 @@ public class Month_Fragment extends Fragment {
 
             case "possibility":
                 status = "possibility";
+
+                Month_all.setBackground(getResources().getDrawable(R.drawable.nav_bg_on));
+                Month_all.setTextColor(getResources().getColor(R.color.nav_txt_on));
+
                 break;
 
             case "expired":
                 status = "expired";
+
+                Month_expired.setBackground(getResources().getDrawable(R.drawable.nav_bg_on));
+                Month_expired.setTextColor(getResources().getColor(R.color.nav_txt_on));
+
                 break;
 
             case "wait":
                 status = "wait";
+
+                Month_wait.setBackground(getResources().getDrawable(R.drawable.nav_bg_on));
+                Month_wait.setTextColor(getResources().getColor(R.color.nav_txt_on));
+
                 break;
         }
 

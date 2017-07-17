@@ -105,11 +105,31 @@ public class MainActivity extends Activity {
         final TextView addMF9 = (TextView) findViewById(R.id.addMF9);
         final TextView addMF0 = (TextView) findViewById(R.id.addMF0);
         final LinearLayout tabConfig = (LinearLayout) findViewById(R.id.tab_config);
+        final TextView tabConfigTxt = (TextView) findViewById(R.id.tab_config_txt);
         final LinearLayout tabCurrent = (LinearLayout) findViewById(R.id.tab_current);
+        final TextView tabCurrentTxt = (TextView) findViewById(R.id.tab_current_txt);
         final LinearLayout tabHistory = (LinearLayout) findViewById(R.id.tab_history);
+        final TextView tabHistoryTxt = (TextView) findViewById(R.id.tab_history_txt);
         final LinearLayout tabMonth = (LinearLayout) findViewById(R.id.tab_month);
+        final TextView tabMonthTxt = (TextView) findViewById(R.id.tab_month_txt);
         final LinearLayout tabCooper = (LinearLayout) findViewById(R.id.tab_cooper);
+        final TextView tabCooperTxt = (TextView) findViewById(R.id.tab_cooper_txt);
         final LinearLayout tabCalcu = (LinearLayout) findViewById(R.id.tab_calcu);
+        final TextView tabCalcuTxt = (TextView) findViewById(R.id.tab_calcu_txt);
+
+        tabCurrent.setBackground(getResources().getDrawable(R.drawable.tabs_bg_select));
+        tabCurrentTxt.setTextColor(getResources().getColor(R.color.white));
+
+        tabConfig.setBackground(getResources().getDrawable(R.drawable.tabs_bg));
+        tabConfigTxt.setTextColor(getResources().getColor(R.color.black));
+        tabHistory.setBackground(getResources().getDrawable(R.drawable.tabs_bg));
+        tabHistoryTxt.setTextColor(getResources().getColor(R.color.black));
+        tabMonth.setBackground(getResources().getDrawable(R.drawable.tabs_bg));
+        tabMonthTxt.setTextColor(getResources().getColor(R.color.black));
+        tabCooper.setBackground(getResources().getDrawable(R.drawable.tabs_bg));
+        tabCooperTxt.setTextColor(getResources().getColor(R.color.black));
+        tabCalcu.setBackground(getResources().getDrawable(R.drawable.tabs_bg));
+        tabCalcuTxt.setTextColor(getResources().getColor(R.color.black));
 
         // 숫자패널
         View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -424,21 +444,81 @@ public class MainActivity extends Activity {
                     case R.id.tab_config:
                         fm.beginTransaction().replace(R.id.content_fragment, new Config_Fragment()).commit();
                         mainTitle.setText("설정");
+
+                        tabConfig.setBackground(getResources().getDrawable(R.drawable.tabs_bg_select));
+                        tabConfigTxt.setTextColor(getResources().getColor(R.color.white));
+
+                        tabCurrent.setBackground(getResources().getDrawable(R.drawable.tabs_bg));
+                        tabCurrentTxt.setTextColor(getResources().getColor(R.color.black));
+                        tabHistory.setBackground(getResources().getDrawable(R.drawable.tabs_bg));
+                        tabHistoryTxt.setTextColor(getResources().getColor(R.color.black));
+                        tabMonth.setBackground(getResources().getDrawable(R.drawable.tabs_bg));
+                        tabMonthTxt.setTextColor(getResources().getColor(R.color.black));
+                        tabCooper.setBackground(getResources().getDrawable(R.drawable.tabs_bg));
+                        tabCooperTxt.setTextColor(getResources().getColor(R.color.black));
+                        tabCalcu.setBackground(getResources().getDrawable(R.drawable.tabs_bg));
+                        tabCalcuTxt.setTextColor(getResources().getColor(R.color.black));
+
                         break;
 
                     case R.id.tab_current:
                         fm.beginTransaction().replace(R.id.content_fragment, new Current_Fragment()).commit();
                         mainTitle.setText("입차목록");
+
+                        tabCurrent.setBackground(getResources().getDrawable(R.drawable.tabs_bg_select));
+                        tabCurrentTxt.setTextColor(getResources().getColor(R.color.white));
+
+                        tabConfig.setBackground(getResources().getDrawable(R.drawable.tabs_bg));
+                        tabConfigTxt.setTextColor(getResources().getColor(R.color.black));
+                        tabHistory.setBackground(getResources().getDrawable(R.drawable.tabs_bg));
+                        tabHistoryTxt.setTextColor(getResources().getColor(R.color.black));
+                        tabMonth.setBackground(getResources().getDrawable(R.drawable.tabs_bg));
+                        tabMonthTxt.setTextColor(getResources().getColor(R.color.black));
+                        tabCooper.setBackground(getResources().getDrawable(R.drawable.tabs_bg));
+                        tabCooperTxt.setTextColor(getResources().getColor(R.color.black));
+                        tabCalcu.setBackground(getResources().getDrawable(R.drawable.tabs_bg));
+                        tabCalcuTxt.setTextColor(getResources().getColor(R.color.black));
+
                         break;
 
                     case R.id.tab_history:
                         fm.beginTransaction().replace(R.id.content_fragment, new History_Fragment("all")).commit();
                         mainTitle.setText("입출차기록");
+
+                        tabHistory.setBackground(getResources().getDrawable(R.drawable.tabs_bg_select));
+                        tabHistoryTxt.setTextColor(getResources().getColor(R.color.white));
+
+                        tabCurrent.setBackground(getResources().getDrawable(R.drawable.tabs_bg));
+                        tabCurrentTxt.setTextColor(getResources().getColor(R.color.black));
+                        tabConfig.setBackground(getResources().getDrawable(R.drawable.tabs_bg));
+                        tabConfigTxt.setTextColor(getResources().getColor(R.color.black));
+                        tabMonth.setBackground(getResources().getDrawable(R.drawable.tabs_bg));
+                        tabMonthTxt.setTextColor(getResources().getColor(R.color.black));
+                        tabCooper.setBackground(getResources().getDrawable(R.drawable.tabs_bg));
+                        tabCooperTxt.setTextColor(getResources().getColor(R.color.black));
+                        tabCalcu.setBackground(getResources().getDrawable(R.drawable.tabs_bg));
+                        tabCalcuTxt.setTextColor(getResources().getColor(R.color.black));
+
                         break;
 
                     case R.id.tab_month:
                         fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment("possibility")).commit();
                         mainTitle.setText("월차");
+
+                        tabMonth.setBackground(getResources().getDrawable(R.drawable.tabs_bg_select));
+                        tabMonthTxt.setTextColor(getResources().getColor(R.color.white));
+
+                        tabCurrent.setBackground(getResources().getDrawable(R.drawable.tabs_bg));
+                        tabCurrentTxt.setTextColor(getResources().getColor(R.color.black));
+                        tabConfig.setBackground(getResources().getDrawable(R.drawable.tabs_bg));
+                        tabConfigTxt.setTextColor(getResources().getColor(R.color.black));
+                        tabHistory.setBackground(getResources().getDrawable(R.drawable.tabs_bg));
+                        tabHistoryTxt.setTextColor(getResources().getColor(R.color.black));
+                        tabCooper.setBackground(getResources().getDrawable(R.drawable.tabs_bg));
+                        tabCooperTxt.setTextColor(getResources().getColor(R.color.black));
+                        tabCalcu.setBackground(getResources().getDrawable(R.drawable.tabs_bg));
+                        tabCalcuTxt.setTextColor(getResources().getColor(R.color.black));
+
                         break;
 
                     case R.id.tab_cooper:
@@ -446,11 +526,41 @@ public class MainActivity extends Activity {
                         cooper = "cooper";
                         fm.beginTransaction().replace(R.id.content_fragment, new Cooper_Fragment(cooper)).commit();
                         mainTitle.setText("지정주차");
+
+                        tabCooper.setBackground(getResources().getDrawable(R.drawable.tabs_bg_select));
+                        tabCooperTxt.setTextColor(getResources().getColor(R.color.white));
+
+                        tabMonth.setBackground(getResources().getDrawable(R.drawable.tabs_bg));
+                        tabMonthTxt.setTextColor(getResources().getColor(R.color.black));
+                        tabCurrent.setBackground(getResources().getDrawable(R.drawable.tabs_bg));
+                        tabCurrentTxt.setTextColor(getResources().getColor(R.color.black));
+                        tabConfig.setBackground(getResources().getDrawable(R.drawable.tabs_bg));
+                        tabConfigTxt.setTextColor(getResources().getColor(R.color.black));
+                        tabHistory.setBackground(getResources().getDrawable(R.drawable.tabs_bg));
+                        tabHistoryTxt.setTextColor(getResources().getColor(R.color.black));
+                        tabCalcu.setBackground(getResources().getDrawable(R.drawable.tabs_bg));
+                        tabCalcuTxt.setTextColor(getResources().getColor(R.color.black));
+
                         break;
 
                     case R.id.tab_calcu:
                         fm.beginTransaction().replace(R.id.content_fragment, new Calcu_Fragment()).commit();
                         mainTitle.setText("정산");
+
+                        tabCalcu.setBackground(getResources().getDrawable(R.drawable.tabs_bg_select));
+                        tabCalcuTxt.setTextColor(getResources().getColor(R.color.white));
+
+                        tabCooper.setBackground(getResources().getDrawable(R.drawable.tabs_bg));
+                        tabCooperTxt.setTextColor(getResources().getColor(R.color.black));
+                        tabMonth.setBackground(getResources().getDrawable(R.drawable.tabs_bg));
+                        tabMonthTxt.setTextColor(getResources().getColor(R.color.black));
+                        tabCurrent.setBackground(getResources().getDrawable(R.drawable.tabs_bg));
+                        tabCurrentTxt.setTextColor(getResources().getColor(R.color.black));
+                        tabConfig.setBackground(getResources().getDrawable(R.drawable.tabs_bg));
+                        tabConfigTxt.setTextColor(getResources().getColor(R.color.black));
+                        tabHistory.setBackground(getResources().getDrawable(R.drawable.tabs_bg));
+                        tabHistoryTxt.setTextColor(getResources().getColor(R.color.black));
+
                         break;
 
                 }
