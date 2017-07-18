@@ -230,10 +230,14 @@ public class Garage_Service extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         // 입력한 항목과 일치하는 행의 가격 정보 수정
         db.execSQL("UPDATE garage SET is_out = 'N', " +
-                "end_date = 0, " +
-                "total_amount = 0, " +
+                "is_paid = 'N', " +
+                "end_date = -1, " +
+                "pay_amount = 0, " +
                 "cooper_idx = 0, " +
                 "discount_cooper = 0, " +
+                "cooper_title = '', " +
+                "cooper_start = 0, " +
+                "cooper_end = 0, " +
                 "discount_self = 0 " +
                 "WHERE idx = " + idx + ";");
         db.close();

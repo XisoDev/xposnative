@@ -331,10 +331,12 @@ public class Month_Calendar extends Fragment implements View.OnClickListener {
 
             final View view = inflater.inflate(R.layout.month_innout, null);
             final ListView Month_inNouts = (ListView) view.findViewById(R.id.month_inNout);
+            final TextView Title = (TextView) view.findViewById(R.id.title);
 
             final List<Map<String, Object>> list = month_service.calMonth(year, month, mDay);
             MonthinNoutViewAdapter adapter = new MonthinNoutViewAdapter(getActivity(), R.layout.month_innout_item, list);
             Month_inNouts.setAdapter(adapter);
+            Title.setText(year+"년"+month+"월"+mDay+"일"+"  "+"월차현황");
 
             Month_inNouts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override

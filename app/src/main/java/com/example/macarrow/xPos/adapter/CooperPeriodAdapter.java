@@ -81,6 +81,12 @@ public class CooperPeriodAdapter extends BaseAdapter {
 
         item.cooperTitle.setText((String) list.get(position).get("cooper_title"));
         item.cooperStart.setText(simpleDateFormat.format((long) list.get(position).get("start_date")) + "");
+        // 출차 시간
+        if (endDate <= 0) {
+            item.cooperEnd.setText("");
+        } else {
+            item.cooperEnd.setText(simpleDateFormat.format(endDate) + "");
+        }
         item.cooperEnd.setText(simpleDateFormat.format((long) list.get(position).get("end_date")) + "");
         item.cooperPt.setText(pt + "");
         item.discountCooper.setText((Integer) list.get(position).get("discount_cooper") + "");

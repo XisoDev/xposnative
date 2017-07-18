@@ -125,6 +125,7 @@
             android:numColumns="7"
             android:layout_marginLeft="30px"
             android:layout_marginTop="9px"
+            android:listSelector="#e5e5e5"
             />
     </LinearLayout>
     <LinearLayout
