@@ -84,14 +84,6 @@ public class Cooper_Services extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void delete(int idx) {
-
-        SQLiteDatabase db = getWritableDatabase();
-        // 입력한 항목과 일치하는 행 삭제
-        db.execSQL("DELETE FROM cooper WHERE idx = " + idx + ";");
-        db.close();
-    }
-
     public int cooper() {
 
         SQLiteDatabase db = getReadableDatabase();

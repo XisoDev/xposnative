@@ -272,6 +272,26 @@ public class Garage_Service extends SQLiteOpenHelper {
         return cursor.getCount();
     }
 
+    public int cooperPsum(String cooper_title, int cooper_start, int cooper_end) {
+        SQLiteDatabase db = getReadableDatabase();
+        int discount_cooper = 0;
+        Cursor cursor = db.rawQuery("SELECT sum(discount_cooper) FROM garage WHERE cooper_title = ? AND cooper_start >= " + cooper_start + " AND cooper_end <= " + cooper_end + " ", new String[] {cooper_title});
+        cursor.moveToFirst();
+        discount_cooper = cursor.getInt(0);
+        cursor.close();
+        return discount_cooper;
+    }
+
+    public int cooperDsum(String cooper_title, int cooper_end) {
+        SQLiteDatabase db = getReadableDatabase();
+        int discount_cooper = 0;
+        Cursor cursor = db.rawQuery("SELECT sum(discount_cooper) FROM garage WHERE cooper_title = ? AND cooper_end = " + cooper_end + " ", new String[] {cooper_title});
+        cursor.moveToFirst();
+        discount_cooper = cursor.getInt(0);
+        cursor.close();
+        return discount_cooper;
+    }
+
     public Map<String, Object> getResultForUpdate(int idx) {
         // 읽기가 가능하게 DB 열기
         SQLiteDatabase db = getReadableDatabase();

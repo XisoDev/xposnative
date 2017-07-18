@@ -35,7 +35,7 @@ public class Cooper_Fragment extends Fragment {
     private String cooper;
     int year, month, day;
     int startDate, endDate;
-    TextView Search_start, Search_end;
+    TextView Search_start, Search_end, Cooper_sum;
 
     @SuppressLint("ValidFragment")
     public Cooper_Fragment(String cooper) { this.cooper = cooper; }
@@ -102,6 +102,7 @@ public class Cooper_Fragment extends Fragment {
                 Search_start = (TextView) view.findViewById(R.id.search_start);
                 Search_end = (TextView) view.findViewById(R.id.search_end);
                 final Button Search_btn = (Button) view.findViewById(R.id.search_btn);
+                Cooper_sum = (TextView) view.findViewById(R.id.cooper_sum);
 
                 GregorianCalendar calendar = new GregorianCalendar();
                 year = calendar.get(Calendar.YEAR);
@@ -171,6 +172,9 @@ public class Cooper_Fragment extends Fragment {
                                 cooperList.setAdapter(P_adapter);
                                 Search.setText("");
 
+                                int cooperSum = garage_service.cooperPsum(coop_title, startDate, endDate);
+                                Cooper_sum.setText(cooperSum+"원");
+
                                 cooperList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                     @Override
                                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -202,6 +206,7 @@ public class Cooper_Fragment extends Fragment {
                 final EditText SearchDay = (EditText) view.findViewById(R.id.search);
                 final Button Search_Daybtn = (Button) view.findViewById(R.id.search_btn);
                 final TextView At = (TextView) view.findViewById(R.id.at);
+                Cooper_sum = (TextView) view.findViewById(R.id.cooper_sum);
                 Search_start = (TextView) view.findViewById(R.id.search_start);
                 Search_end = (TextView) view.findViewById(R.id.search_end);
 
@@ -262,6 +267,9 @@ public class Cooper_Fragment extends Fragment {
                                 CooperPeriodAdapter D_adapter = new CooperPeriodAdapter(getActivity(), R.layout.cooper_period_item, dlist);
                                 cooperDayList.setAdapter(D_adapter);
                                 SearchDay.setText("");
+
+                                int cooperSum = garage_service.cooperDsum(coop_title, endDate);
+                                Cooper_sum.setText(cooperSum+"원");
 
                                 cooperDayList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                     @Override

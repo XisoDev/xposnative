@@ -33,11 +33,11 @@
                 android:background="#fc604e"
                 android:gravity="center"
                 >
-                <!--<ImageView-->
-                    <!--android:layout_width="33px"-->
-                    <!--android:layout_height="32px"-->
-                    <!--android:background="@drawable/dc_skip"-->
-                    <!--/>-->
+                <ImageView
+                    android:layout_width="33px"
+                    android:layout_height="32px"
+                    android:background="@drawable/dc_skip"
+                    />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -54,11 +54,11 @@
                 android:background="#028ecf"
                 android:gravity="center"
                 >
-                <!--<ImageView-->
-                    <!--android:layout_width="33px"-->
-                    <!--android:layout_height="32px"-->
-                    <!--android:background="@drawable/dc_cooper"-->
-                    <!--/>-->
+                <ImageView
+                    android:layout_width="33px"
+                    android:layout_height="32px"
+                    android:background="@drawable/dc_cooper"
+                    />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -75,11 +75,11 @@
                 android:background="#1dbd92"
                 android:gravity="center"
                 >
-                <!--<ImageView-->
-                    <!--android:layout_width="33px"-->
-                    <!--android:layout_height="32px"-->
-                    <!--android:background="@drawable/dc_day_car"-->
-                    <!--/>-->
+                <ImageView
+                    android:layout_width="33px"
+                    android:layout_height="32px"
+                    android:background="@drawable/dc_day_car"
+                    />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -96,11 +96,11 @@
                 android:background="#929292"
                 android:gravity="center"
                 >
-                <!--<ImageView-->
-                    <!--android:layout_width="33px"-->
-                    <!--android:layout_height="32px"-->
-                    <!--android:background="@drawable/dc_self"-->
-                    <!--/>-->
+                <ImageView
+                    android:layout_width="33px"
+                    android:layout_height="32px"
+                    android:background="@drawable/dc_self"
+                    />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
