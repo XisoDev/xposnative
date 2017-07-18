@@ -83,6 +83,7 @@
                 android:layout_height="wrap_content"
                 android:text="지난달"
                 android:textSize="25px"
+                android:visibility="gone"
                 />
             <Button
                 android:id="@+id/nextButton"
@@ -90,6 +91,7 @@
                 android:layout_height="wrap_content"
                 android:text="다음달"
                 android:textSize="25px"
+                android:visibility="gone"
                 />
         </LinearLayout>
         <LinearLayout

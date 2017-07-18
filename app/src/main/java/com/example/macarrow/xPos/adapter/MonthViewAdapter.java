@@ -85,19 +85,15 @@ public class MonthViewAdapter extends BaseAdapter {
         ed += (Integer) list.get(position).get("end_date_d");
         item.endDate.setText(ed+"");
         // 월차금액
-        item.amounT.setText((Integer) list.get(position).get("amount") + "");
+        item.amounT.setText((Integer) list.get(position).get("amount") + "원");
         // 결제금액
-        item.payAmount.setText((Integer) list.get(position).get("pay_amount") + "");
+        item.payAmount.setText((Integer) list.get(position).get("pay_amount") + "원");
         // 미수금액
-        item.outstandingAmount.setText((Integer) list.get(position).get("amount")-(Integer) list.get(position).get("pay_amount")+ "");
+        item.outstandingAmount.setText((Integer) list.get(position).get("amount")-(Integer) list.get(position).get("pay_amount")+ "원");
         // 차종
         item.carName.setText((String) list.get(position).get("car_name"));
-        // 구분
-        item.carTypeTitle.setText((String) list.get(position).get("car_type_title"));
         // 차주명
         item.userName.setText((String) list.get(position).get("user_name"));
-        // 휴대폰
-        item.mobilE.setText((String) list.get(position).get("mobile"));
         // 결제
         String is_paid = (String) list.get(position).get("is_paid");
         if (is_paid.equals("Y")) {

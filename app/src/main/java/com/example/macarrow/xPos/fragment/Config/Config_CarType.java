@@ -34,6 +34,14 @@ public class Config_CarType extends Fragment {
         final TextView Config_dayCar = (TextView)view.findViewById(R.id.config_dayCar);
         final ListView Car_type_List = (ListView) view.findViewById(R.id.cartype_list);
 
+        if (is_daycar.equals("N")) {
+            Config_cartype.setBackground(getResources().getDrawable(R.drawable.nav_bg_on));
+            Config_cartype.setTextColor(getResources().getColor(R.color.nav_txt_on));
+        } if (is_daycar.equals("Y")) {
+            Config_dayCar.setBackground(getResources().getDrawable(R.drawable.nav_bg_on));
+            Config_dayCar.setTextColor(getResources().getColor(R.color.nav_txt_on));
+        }
+
         switch (is_daycar) {
 
             case "nomal":

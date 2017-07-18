@@ -332,7 +332,7 @@
         android:layout_height="34px"
         android:hint="연락처"
         android:gravity="center_vertical"
-        android:inputType="number"
+        android:inputType="phone"
         android:textSize="15px"
         android:background="@null"
         android:paddingLeft="20px"

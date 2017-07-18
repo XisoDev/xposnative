@@ -56,7 +56,7 @@ public class CooperViewAdapter extends BaseAdapter {
         item.coopTitle.setText((String) list.get(position).get("coop_title"));
         item.coopTel.setText((String) list.get(position).get("coop_tel"));
         item.coopUserName.setText((String) list.get(position).get("coop_user_name"));
-        item.minuteMax.setText((Integer) list.get(position).get("minute_max") + "");
+        item.minuteMax.setText((Integer) list.get(position).get("minute_max") + "분");
         item.isEnd.setText((String) list.get(position).get("is_end"));
 
         String isEnd = (String) list.get(position).get("is_end");

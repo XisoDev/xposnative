@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="차종 설정"
+            android:text="주차요금 설정"
             android:gravity="center"
             />
         <TextView

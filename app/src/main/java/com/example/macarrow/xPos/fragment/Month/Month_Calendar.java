@@ -312,7 +312,7 @@ public class Month_Calendar extends Fragment implements View.OnClickListener {
                     }
 
                 } else {
-                    dayViewHolder.Calendar_day.setText(month+"/"+thisMonth);
+                    dayViewHolder.Calendar_day.setText("");
                 }
 
             }

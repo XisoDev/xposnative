@@ -75,31 +75,11 @@
         android:textSize="16px"
         />
     <TextView
-        android:id="@+id/car_type_title"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="구분"
-        android:gravity="center"
-        android:textColor="@android:color/black"
-        android:textSize="16px"
-        />
-    <TextView
         android:id="@+id/user_name"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:text="차주명"
-        android:gravity="center"
-        android:textColor="@android:color/black"
-        android:textSize="16px"
-        />
-    <TextView
-        android:id="@+id/mobile"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="휴대폰"
         android:gravity="center"
         android:textColor="@android:color/black"
         android:textSize="16px"
