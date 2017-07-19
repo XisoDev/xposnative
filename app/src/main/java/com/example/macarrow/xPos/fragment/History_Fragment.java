@@ -9,6 +9,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -22,6 +23,7 @@ import java.util.Map;
 
 public class History_Fragment extends Fragment {
 
+    private InputMethodManager imm;
     private String history;
     String car_num;
     String status;
@@ -32,7 +34,9 @@ public class History_Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.history, container, false);
+        imm = (InputMethodManager)getActivity().getSystemService(getActivity().INPUT_METHOD_SERVICE);
+
+        final View view = inflater.inflate(R.layout.history, container, false);
         final Garage_Service garageService = new Garage_Service(getActivity(), "garage.db", null, 1);
         final TextView historyAll = (TextView)view.findViewById(R.id.history_all);
         final TextView historyIn = (TextView)view.findViewById(R.id.history_in);
@@ -41,6 +45,8 @@ public class History_Fragment extends Fragment {
         final TextView historyCancel = (TextView)view.findViewById(R.id.history_cancel);
         final ListView History_list = (ListView)view.findViewById(R.id.history_list);
         final EditText Search_car_num = (EditText)view.findViewById(R.id.search_car_num);
+
+        imm.hideSoftInputFromWindow(History_list.getWindowToken(), 0);
 
         switch (history) {
 
@@ -118,10 +124,9 @@ public class History_Fragment extends Fragment {
         });
 
         // EidtText가 눌릴때마다 감지하는 부분
-        TextWatcher textWatcher = (new TextWatcher() {
+        final TextWatcher textWatcher = (new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                // Text가 바뀌기 전 동작할 코드
             }
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {

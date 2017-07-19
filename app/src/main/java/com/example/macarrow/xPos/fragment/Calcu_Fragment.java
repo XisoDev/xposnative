@@ -89,7 +89,7 @@ public class Calcu_Fragment extends Fragment implements View.OnClickListener {
         Month_amounts.setText(month_amounts+"원");
         Dc_coopers.setText(cooper_amounts+"원");
         Pay_amounts.setText(pay_amounts+"원");
-        Receivable.setText((total_amounts-pay_amounts)+"원");
+        Receivable.setText((total_amounts-pay_amounts-cooper_amounts)+"원");
         In_car_counts.setText(in_car_counts+"대");
         Out_car_counts.setText(out_car_counts+"대");
 
@@ -109,7 +109,7 @@ public class Calcu_Fragment extends Fragment implements View.OnClickListener {
                 int total_amounts = payment_services.totalAmountSum(year, month, mDay);
                 int nomal_amounts = payment_services.nomalAmountSum(year, month, mDay);
                 int month_amounts = payment_services.monthAmountSum(year, month, mDay);
-                int cooper_amount = payment_services.cooperAmountSum(year, month, mDay);
+                int cooper_amounts = payment_services.cooperAmountSum(year, month, mDay);
                 int pay_amounts = payment_services.payAmountSum(year, month, mDay);
                 int in_car_counts = garage_service.inCarCount(year, month, mDay);
                 int out_car_counts = garage_service.outCarCount(year, month, mDay);
@@ -117,9 +117,9 @@ public class Calcu_Fragment extends Fragment implements View.OnClickListener {
                 Total_amounts.setText(total_amounts+"원");
                 Nomal_amounts.setText(nomal_amounts+"원");
                 Month_amounts.setText(month_amounts+"원");
-                Dc_coopers.setText(cooper_amount+"원");
+                Dc_coopers.setText(cooper_amounts+"원");
                 Pay_amounts.setText(pay_amounts+"원");
-                Receivable.setText((total_amounts-pay_amounts)+"원");
+                Receivable.setText((total_amounts-pay_amounts-cooper_amounts)+"원");
                 In_car_counts.setText(in_car_counts+"대");
                 Out_car_counts.setText(out_car_counts+"대");
 

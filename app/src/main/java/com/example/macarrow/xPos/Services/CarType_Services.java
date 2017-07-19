@@ -85,7 +85,6 @@ public class CarType_Services extends SQLiteOpenHelper {
                 "minute_unit = " + minute_unit + " " +
                 "WHERE idx = " + idx + ";");
         db.close();
-
     }
 
     public void delete(int idx) {
@@ -125,7 +124,6 @@ public class CarType_Services extends SQLiteOpenHelper {
             map.put("amount_unit", cursor.getInt(5));
             map.put("minute_unit", cursor.getInt(6));
             map.put("is_daycar", cursor.getString(7));
-
         }
 
         return map;
@@ -155,7 +153,6 @@ public class CarType_Services extends SQLiteOpenHelper {
             map.put("minute_unit", cursor.getInt(6));
             map.put("is_daycar", cursor.getString(7));
             list.add(map);
-
         }
 
         return list;

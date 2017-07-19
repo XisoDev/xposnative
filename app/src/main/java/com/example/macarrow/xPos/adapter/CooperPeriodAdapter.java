@@ -88,8 +88,8 @@ public class CooperPeriodAdapter extends BaseAdapter {
             item.cooperEnd.setText(simpleDateFormat.format(endDate) + "");
         }
         item.cooperEnd.setText(simpleDateFormat.format((long) list.get(position).get("end_date")) + "");
-        item.cooperPt.setText(pt + "");
-        item.discountCooper.setText((Integer) list.get(position).get("discount_cooper") + "");
+        item.cooperPt.setText(pt);
+        item.discountCooper.setText((Integer) list.get(position).get("discount_cooper") + "원");
 
         return convertView;
     }

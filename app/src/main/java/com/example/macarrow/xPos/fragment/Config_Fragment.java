@@ -38,7 +38,9 @@ public class Config_Fragment extends Fragment {
 
                     case R.id.config_cartype:
 
-                        fm.beginTransaction().replace(R.id.content_fragment, new Config_CarType("N")).commit();
+                        String carType;
+                        carType = "nomal";
+                        fm.beginTransaction().replace(R.id.content_fragment, new Config_CarType(carType)).commit();
                         break;
 
                     case R.id.config_database:

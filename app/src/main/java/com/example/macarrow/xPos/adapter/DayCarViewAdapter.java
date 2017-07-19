@@ -6,18 +6,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
 import com.example.macarrow.xPos.R;
+
 import java.util.List;
 import java.util.Map;
 
-public class PanelDayCarTypeViewAdapter extends BaseAdapter {
+public class DayCarViewAdapter extends BaseAdapter {
 
     private Context context;
     private int layout;
     private List<Map<String, Object>> list;
     private LayoutInflater inflater;
 
-    public PanelDayCarTypeViewAdapter(Context context, int layout, List<Map<String, Object>> list) {
+    public DayCarViewAdapter(Context context, int layout, List<Map<String, Object>> list) {
 
         this.context = context;
         this.layout = layout;
@@ -29,27 +31,26 @@ public class PanelDayCarTypeViewAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        PanelDayCarTypeView_Item item = null;
+
+        DayCarViewAdapter_Item item = null;
 
         if(convertView == null) {
-
             convertView = inflater.inflate(layout, null);
             TextView Car_type_title = (TextView) convertView.findViewById(R.id.car_type_title);
             TextView Basic_amount = (TextView) convertView.findViewById(R.id.basic_amount);
 
-            item = new PanelDayCarTypeView_Item();
+            item = new DayCarViewAdapter_Item();
             item.carTypeTitle = Car_type_title;
             item.basicAmount = Basic_amount;
+
             convertView.setTag(item);
 
         } else {
-
-            item = (PanelDayCarTypeView_Item) convertView.getTag();
-
+            item = (DayCarViewAdapter_Item) convertView.getTag();
         }
 
         item.carTypeTitle.setText((String) list.get(position).get("car_type_title"));
-        item.basicAmount.setText((Integer) list.get(position).get("basic_amount") + "원");
+        item.basicAmount.setText((int) list.get(position).get("basic_amount")+"원");
 
         return convertView;
     }
@@ -71,7 +72,7 @@ public class PanelDayCarTypeViewAdapter extends BaseAdapter {
 
 }
 
-class PanelDayCarTypeView_Item {
+class DayCarViewAdapter_Item {
 
     TextView carTypeTitle;
     TextView basicAmount;

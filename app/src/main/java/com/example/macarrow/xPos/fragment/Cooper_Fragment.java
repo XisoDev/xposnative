@@ -28,9 +28,11 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
+import android.view.inputmethod.InputMethodManager;
 
 public class Cooper_Fragment extends Fragment {
 
+    private InputMethodManager imm;
     private FloatingActionButton fab;
     private String cooper;
     int year, month, day;
@@ -42,6 +44,8 @@ public class Cooper_Fragment extends Fragment {
 
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        imm = (InputMethodManager)getActivity().getSystemService(getActivity().INPUT_METHOD_SERVICE);
 
         final Cooper_Services cooper_services = new Cooper_Services(getActivity(), "cooper.db", null, 1);
         final Garage_Service garage_service = new Garage_Service(getActivity(), "garage.db", null, 1);
@@ -147,6 +151,7 @@ public class Cooper_Fragment extends Fragment {
                     public void onClick(View v) {
 
                         String coop_title = Search.getText().toString();
+                        imm.hideSoftInputFromWindow(Search_btn.getWindowToken(), 0);
 
                         if (coop_title.equals("")) {
 
@@ -243,6 +248,7 @@ public class Cooper_Fragment extends Fragment {
                     public void onClick(View v) {
 
                         String coop_title = SearchDay.getText().toString();
+                        imm.hideSoftInputFromWindow(Search_Daybtn.getWindowToken(), 0);
 
                         if (coop_title.equals("")) {
 

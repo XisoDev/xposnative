@@ -154,7 +154,7 @@
         <TextView
             android:layout_width="190px"
             android:layout_height="44px"
-            android:text="최대 지원 시간"
+            android:text="최대 지원 시간 (분)"
             android:gravity="center_vertical"
             android:textStyle="bold"
             android:textColor="@android:color/black"

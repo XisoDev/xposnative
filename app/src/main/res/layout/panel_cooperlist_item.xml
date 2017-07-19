@@ -25,7 +25,7 @@
             android:layout_width="38px"
             android:layout_height="16px"
             android:gravity="center_vertical"
-            android:text="최초"
+            android:text="주차"
             android:textSize="12px"
             android:textColor="@android:color/white"
             />

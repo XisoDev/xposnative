@@ -91,7 +91,7 @@
         android:layout_height="16px"
         android:orientation="horizontal"
         android:paddingLeft="11px"
-        android:layout_marginBottom="22px"
+        android:layout_marginBottom="12px"
         >
         <TextView
             android:id="@+id/user_name"

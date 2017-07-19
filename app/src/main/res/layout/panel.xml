@@ -28,7 +28,6 @@
         android:layout_width="389px"
         android:layout_height="85px"
         android:orientation="horizontal"
-        android:background="#eeeded"
         >
         <LinearLayout
             android:id="@+id/inCarChk"
@@ -37,6 +36,7 @@
             android:orientation="vertical"
             android:gravity="center"
             android:onClick="clickListener"
+            android:background="#eeeded"
             >
             <ImageView
                 android:layout_marginTop="5px"
@@ -49,6 +49,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="13px"
                 android:text="입차"
+                android:textColor="@color/panel_select_txt"
                 />
         </LinearLayout>
         <LinearLayout
@@ -58,6 +59,7 @@
             android:orientation="vertical"
             android:gravity="center"
             android:onClick="clickListener"
+            android:background="#eeeded"
             >
             <ImageView
                 android:layout_marginTop="5px"
@@ -68,9 +70,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#505050"
                 android:textSize="13px"
                 android:text="출차"
+                android:textColor="@color/panel_select_txt"
                 />
         </LinearLayout>
         <LinearLayout
@@ -80,6 +82,7 @@
             android:orientation="vertical"
             android:gravity="center"
             android:onClick="clickListener"
+            android:background="#eeeded"
             >
             <ImageView
                 android:layout_marginTop="5px"
@@ -90,9 +93,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#505050"
                 android:textSize="13px"
                 android:text="월차"
+                android:textColor="@color/panel_select_txt"
                 />
         </LinearLayout>
     </LinearLayout>
@@ -120,8 +123,8 @@
                     android:layout_height="91px"
                     android:gravity="center"
                     android:text="7"
-                    android:textColor="@color/panel_select_txt"
-                    android:background="@drawable/panel_select_bg"
+                    android:textColor="@color/panel_num_select_txt"
+                    android:background="@drawable/panel_num_select_bg"
                     android:textSize="30px"
                     />
             </LinearLayout>
@@ -136,8 +139,8 @@
                     android:layout_height="91px"
                     android:gravity="center"
                     android:text="8"
-                    android:textColor="@color/panel_select_txt"
-                    android:background="@drawable/panel_select_bg"
+                    android:textColor="@color/panel_num_select_txt"
+                    android:background="@drawable/panel_num_select_bg"
                     android:textSize="30px"
                     />
             </LinearLayout>
@@ -151,8 +154,8 @@
                     android:layout_height="91px"
                     android:gravity="center"
                     android:text="9"
-                    android:textColor="@color/panel_select_txt"
-                    android:background="@drawable/panel_select_bg"
+                    android:textColor="@color/panel_num_select_txt"
+                    android:background="@drawable/panel_num_select_bg"
                     android:textSize="30px"
                     />
             </LinearLayout>
@@ -175,8 +178,8 @@
                     android:layout_height="91px"
                     android:gravity="center"
                     android:text="4"
-                    android:textColor="@color/panel_select_txt"
-                    android:background="@drawable/panel_select_bg"
+                    android:textColor="@color/panel_num_select_txt"
+                    android:background="@drawable/panel_num_select_bg"
                     android:textSize="30px"
                     />
             </LinearLayout>
@@ -191,8 +194,8 @@
                     android:layout_height="91px"
                     android:gravity="center"
                     android:text="5"
-                    android:textColor="@color/panel_select_txt"
-                    android:background="@drawable/panel_select_bg"
+                    android:textColor="@color/panel_num_select_txt"
+                    android:background="@drawable/panel_num_select_bg"
                     android:textSize="30px"
                     />
             </LinearLayout>
@@ -206,8 +209,8 @@
                     android:layout_height="91px"
                     android:gravity="center"
                     android:text="6"
-                    android:textColor="@color/panel_select_txt"
-                    android:background="@drawable/panel_select_bg"
+                    android:textColor="@color/panel_num_select_txt"
+                    android:background="@drawable/panel_num_select_bg"
                     android:textSize="30px"
                     />
             </LinearLayout>
@@ -230,8 +233,8 @@
                     android:layout_height="91px"
                     android:gravity="center"
                     android:text="1"
-                    android:textColor="@color/panel_select_txt"
-                    android:background="@drawable/panel_select_bg"
+                    android:textColor="@color/panel_num_select_txt"
+                    android:background="@drawable/panel_num_select_bg"
                     android:textSize="30px"
                     />
             </LinearLayout>
@@ -246,8 +249,8 @@
                     android:layout_height="91px"
                     android:gravity="center"
                     android:text="2"
-                    android:textColor="@color/panel_select_txt"
-                    android:background="@drawable/panel_select_bg"
+                    android:textColor="@color/panel_num_select_txt"
+                    android:background="@drawable/panel_num_select_bg"
                     android:textSize="30px"
                     />
             </LinearLayout>
@@ -261,8 +264,8 @@
                     android:layout_height="91px"
                     android:gravity="center"
                     android:text="3"
-                    android:textColor="@color/panel_select_txt"
-                    android:background="@drawable/panel_select_bg"
+                    android:textColor="@color/panel_num_select_txt"
+                    android:background="@drawable/panel_num_select_bg"
                     android:textSize="30px"
                     />
             </LinearLayout>
@@ -285,8 +288,8 @@
                     android:layout_height="91px"
                     android:gravity="center"
                     android:text="C"
-                    android:textColor="@color/panel_select_txt"
-                    android:background="@drawable/panel_select_bg"
+                    android:textColor="@color/panel_num_select_txt"
+                    android:background="@drawable/panel_num_select_bg"
                     android:textSize="30px"
                     />
             </LinearLayout>
@@ -301,8 +304,8 @@
                     android:layout_height="91px"
                     android:gravity="center"
                     android:text="0"
-                    android:textColor="@color/panel_select_txt"
-                    android:background="@drawable/panel_select_bg"
+                    android:textColor="@color/panel_num_select_txt"
+                    android:background="@drawable/panel_num_select_bg"
                     android:textSize="30px"
                     />
             </LinearLayout>
@@ -316,8 +319,8 @@
                     android:layout_height="91px"
                     android:gravity="center"
                     android:text="-"
-                    android:textColor="@color/panel_select_txt"
-                    android:background="@drawable/panel_select_bg"
+                    android:textColor="@color/panel_num_select_txt"
+                    android:background="@drawable/panel_num_select_bg"
                     android:textSize="30px"
                     />
             </LinearLayout>

@@ -14,9 +14,7 @@ import android.widget.TextView;
 import com.example.macarrow.xPos.R;
 import com.example.macarrow.xPos.Services.CarType_Services;
 import com.example.macarrow.xPos.Services.Garage_Service;
-import com.example.macarrow.xPos.adapter.PanelCooperTypeViewAdapter;
 import com.example.macarrow.xPos.adapter.PanelDayCarTypeViewAdapter;
-
 import java.util.List;
 import java.util.Map;
 
@@ -53,42 +51,22 @@ public class Dc_Day_Car extends DialogFragment{
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 String car_type_title = (String) list.get(position).get("car_type_title");
-                int minute_unit = (int) list.get(position).get("minute_unit");
-                int minute_free = (int) list.get(position).get("minute_free");
-                int amount_unit = (int) list.get(position).get("amount_unit");
-                int basic_amount = (int) list.get(position).get("basic_amount");
-                int basic_minute = (int) list.get(position).get("basic_minute");
-
-                double oneSecond = 1000;
-                double oneMinute = oneSecond * 60;
-                int result_charge = 0;
-                double startDate = (long) map.get("start_date");
-                double park_min = Math.floor(((double) System.currentTimeMillis() - startDate) / oneMinute);
-                double free_min = (int) list.get(position).get("minute_free");
-                double basic_min= (int) list.get(position).get("basic_minute");
-                double minuteUnit = (int) list.get(position).get("minute_unit");
-
-                if (park_min - free_min > 0) {
-                    if(park_min - free_min - basic_min > 0){
-                        double added_min = Math.ceil((park_min - free_min - basic_min) / minuteUnit);
-                        result_charge = (int) (basic_amount + (added_min * amount_unit));
-                    } else {
-                        result_charge = basic_amount;
-                    }
-                }
+                int total_amount = (int) list.get(position).get("basic_amount");
 
                 garageService.updateDayCar(
                         car_type_title,
-                        minute_unit,
-                        minute_free,
-                        amount_unit,
-                        basic_amount,
-                        basic_minute,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        total_amount,
+                        "Y",
                         idx);
 
                 Bundle args = new Bundle();
                 args.putInt("idx", idx);
-                args.putInt("total_amount", result_charge);
+                args.putInt("total_amount", total_amount);
                 args.putLong("end_date", endDate);
                 Payment_Input payment_input = new Payment_Input();
                 payment_input.setArguments(args);
