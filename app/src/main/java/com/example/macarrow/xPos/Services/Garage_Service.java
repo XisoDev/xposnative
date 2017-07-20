@@ -248,9 +248,11 @@ public class Garage_Service extends SQLiteOpenHelper {
         // 입력한 항목과 일치하는 행의 가격 정보 수정
         db.execSQL("UPDATE garage SET is_cancel = 'Y', " +
                 "is_out = 'Y', " +
-                "is_paid = 'N', " +
                 "end_date = " + end_date + ", " +
                 "cooper_idx = 0, " +
+                "cooper_title = 0, " +
+                "cooper_start = 0, " +
+                "cooper_end = 0, " +
                 "discount_cooper = 0, " +
                 "discount_self = 0, " +
                 "total_amount = 0, " +
@@ -268,10 +270,10 @@ public class Garage_Service extends SQLiteOpenHelper {
                 "end_date = 0, " +
                 "pay_amount = 0, " +
                 "cooper_idx = 0, " +
-                "discount_cooper = 0, " +
                 "cooper_title = '', " +
                 "cooper_start = 0, " +
                 "cooper_end = 0, " +
+                "discount_cooper = 0, " +
                 "discount_self = 0 " +
                 "WHERE idx = " + idx + ";");
         db.close();

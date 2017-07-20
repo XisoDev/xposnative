@@ -2,7 +2,6 @@ package com.example.macarrow.xPos.fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.view.GestureDetectorCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,11 +21,7 @@ import java.util.GregorianCalendar;
 
 public class Calcu_Fragment extends Fragment implements View.OnClickListener {
 
-    //http://blog.daum.net/andro_java/85
-
     public Calcu_Fragment(){}
-
-    private GestureDetectorCompat gestureDetectorCompat;
 
     public static int SUNDAY        = 1;
     public static int MONDAY        = 2;
@@ -104,7 +99,6 @@ public class Calcu_Fragment extends Fragment implements View.OnClickListener {
                 year = mThisMonthCalendar.get(Calendar.YEAR);
                 month = mThisMonthCalendar.get(Calendar.MONTH)+1;
                 mDay = Integer.parseInt(day.getDay());
-//        Toast.makeText(getActivity(), mThisMonthCalendar.get(Calendar.YEAR) + "/" + (mThisMonthCalendar.get(Calendar.MONTH) +1) + "/" + Integer.parseInt(day.getDay()), Toast.LENGTH_SHORT).show();
 
                 int total_amounts = payment_services.totalAmountSum(year, month, mDay);
                 int nomal_amounts = payment_services.nomalAmountSum(year, month, mDay);

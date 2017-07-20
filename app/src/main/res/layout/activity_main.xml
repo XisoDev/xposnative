@@ -10,16 +10,30 @@
         android:layout_height="768px"
         android:orientation="vertical"
         >
-        <TextView
-            android:id="@+id/main_title"
+        <LinearLayout
             android:layout_width="977px"
             android:layout_height="45px"
-            android:text="입차목록"
-            android:gravity="center"
+            android:orientation="horizontal"
             android:background="#00a0d3"
-            android:textColor="@android:color/white"
-            android:textSize="17px"
-            />
+            >
+            <ImageView
+                android:layout_width="88px"
+                android:layout_height="18px"
+                android:layout_gravity="center"
+                android:layout_marginLeft="30px"
+                android:layout_marginRight="30px"
+                android:background="@drawable/xpos_logo"
+                />
+            <TextView
+                android:id="@+id/main_title"
+                android:layout_width="880px"
+                android:layout_height="45px"
+                android:text="입차목록"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:textSize="17px"
+                />
+        </LinearLayout>
         <LinearLayout
             android:layout_width="977px"
             android:layout_height="723px"

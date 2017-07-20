@@ -37,12 +37,14 @@ public class CurrentViewAdapter extends BaseAdapter {
             convertView = inflater.inflate(layout, null);
             TextView Car_type_title = (TextView) convertView.findViewById(R.id.car_type_title);
             TextView Result_charge = (TextView) convertView.findViewById(R.id.result_charge);
+            TextView Currency = (TextView) convertView.findViewById(R.id.currency);
             TextView Car_num = (TextView) convertView.findViewById(R.id.car_num);
             TextView Pass_time = (TextView) convertView.findViewById(R.id.pass_time);
 
             item = new CurrentView_Item();
             item.carTypeTitle = Car_type_title;
             item.resultCharge = Result_charge;
+            item.currencY = Currency;
             item.carNum = Car_num;
             item.passTime = Pass_time;
             convertView.setTag(item);
@@ -92,12 +94,16 @@ public class CurrentViewAdapter extends BaseAdapter {
 
         item.carTypeTitle.setText((String) list.get(position).get("car_type_title"));
         item.carNum.setText((String) list.get(position).get("car_num"));
+
         int month_idx = (int) list.get(position).get("month_idx");
         String is_daycar = (String) list.get(position).get("is_daycar");
+
         if (month_idx > 0) {
+            item.currencY.setVisibility(View.GONE);
             item.resultCharge.setText("월차");
             item.carTypeTitle.setBackground(convertView.getResources().getDrawable(R.drawable.current_month));
-        } if (is_daycar.equals("Y")) {
+        } else if (is_daycar.equals("Y")) {
+            item.currencY.setVisibility(View.GONE);
             item.resultCharge.setText("일차");
             item.carTypeTitle.setBackground(convertView.getResources().getDrawable(R.drawable.current_day));
         } else {
@@ -128,6 +134,7 @@ public class CurrentViewAdapter extends BaseAdapter {
 class CurrentView_Item {
 
     TextView carTypeTitle;
+    TextView currencY;
     TextView resultCharge;
     TextView carNum;
     TextView passTime;

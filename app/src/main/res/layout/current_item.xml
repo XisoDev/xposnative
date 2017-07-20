@@ -41,14 +41,28 @@
         android:textSize="35px"
         android:background="#eeeeee"
         />
-    <TextView
-        android:id="@+id/result_charge"
+    <LinearLayout
         android:layout_width="182px"
         android:layout_height="48px"
-        android:text="0원"
-        android:textSize="13px"
+        android:orientation="horizontal"
         android:background="#eeeeee"
-        android:paddingLeft="20px"
-        android:paddingTop="15px"
-        />
+        >
+        <TextView
+            android:id="@+id/result_charge"
+            android:layout_width="wrap_content"
+            android:layout_height="48px"
+            android:text="0"
+            android:textSize="13px"
+            android:paddingLeft="20px"
+            android:paddingTop="15px"
+            />
+        <TextView
+            android:id="@+id/currency"
+            android:layout_width="wrap_content"
+            android:layout_height="48px"
+            android:text="원"
+            android:textSize="13px"
+            android:paddingTop="15px"
+            />
+    </LinearLayout>
 </LinearLayout>
