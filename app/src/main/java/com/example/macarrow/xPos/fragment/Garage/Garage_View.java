@@ -36,6 +36,7 @@ public class Garage_View extends DialogFragment {
         final Garage_Service garageService = new Garage_Service(getActivity(), "garage.db", null, 1);
         final Map<String, Object> map = garageService.getResultForUpdate(idx);
         final int month_idx = (int) map.get("month_idx");
+        final String is_daycar = (String) map.get("is_daycar");
         final String car_num = (String) map.get("car_num");
         final long startDate = (long) map.get("start_date");
         final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -95,6 +96,7 @@ public class Garage_View extends DialogFragment {
         }
 
         Result_charge.setText(result_charge + "원");
+
         String CarNum = "";
         CarNum += "입출차 정보 열람 - [ 차량번호 : ";
         CarNum += car_num;
@@ -113,6 +115,8 @@ public class Garage_View extends DialogFragment {
             Month_idx.setText("일반고객");
         } if (monthIdx > 0) {
             Month_idx.setText("월차고객");
+        } if (is_daycar.equals("Y")) {
+            Month_idx.setText("일차고객");
         }
 
         Discount_cooper.setText(discount_cooper + "원");
@@ -172,6 +176,26 @@ public class Garage_View extends DialogFragment {
                             });
                             adb.setNegativeButton("닫기", null);
                             adb.show();
+                        } if (is_daycar.equals("Y") && isPaid.equals("Y")) {
+
+                            AlertDialog.Builder adb = new AlertDialog.Builder(getActivity());
+                            adb.setTitle("출차 - " + car_num);
+                            adb.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    String is_out = "Y";
+                                    long endDate = System.currentTimeMillis();
+                                    garageService.outDayCar(endDate, is_out, idx);
+                                    if (status.equals("current")) {
+                                        fm.beginTransaction().replace(R.id.content_fragment, new Current_Fragment()).commit();
+                                    } else {
+                                        fm.beginTransaction().replace(R.id.content_fragment, new History_Fragment(status)).commit();
+                                    }
+                                }
+                            });
+                            adb.setNegativeButton("닫기", null);
+                            adb.show();
+
                         } else {
                             Bundle args = new Bundle();
                             args.putInt("idx", idx);

@@ -93,9 +93,13 @@ public class CurrentViewAdapter extends BaseAdapter {
         item.carTypeTitle.setText((String) list.get(position).get("car_type_title"));
         item.carNum.setText((String) list.get(position).get("car_num"));
         int month_idx = (int) list.get(position).get("month_idx");
+        String is_daycar = (String) list.get(position).get("is_daycar");
         if (month_idx > 0) {
             item.resultCharge.setText("월차");
             item.carTypeTitle.setBackground(convertView.getResources().getDrawable(R.drawable.current_month));
+        } if (is_daycar.equals("Y")) {
+            item.resultCharge.setText("일차");
+            item.carTypeTitle.setBackground(convertView.getResources().getDrawable(R.drawable.current_day));
         } else {
             item.resultCharge.setText((result_charge) +"");
         }

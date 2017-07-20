@@ -59,6 +59,8 @@ public class Current_Fragment extends Fragment {
                 int ResultCharge = 0;
                 if (result_charge.getText().equals("월차")) {
                     ResultCharge = 0;
+                } if (result_charge.getText().equals("일차")) {
+                    ResultCharge = (int) list.get(position).get("total_amount");
                 } else {
                     ResultCharge = Integer.parseInt(result_charge.getText().toString());
                 }

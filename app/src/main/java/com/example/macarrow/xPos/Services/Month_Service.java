@@ -165,6 +165,14 @@ public class Month_Service extends SQLiteOpenHelper {
 
     }
 
+    public int findMonthCar(int today, String car_num) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM month WHERE car_num like ? AND is_stop='N' AND end_date >= " + today + " AND start_date <= " + today + "", new String[] {'%'+car_num});
+        cursor.moveToFirst();
+        cursor.getCount();
+        return cursor.getCount();
+    }
+
     public int findCarNum(int today, String car_num) {
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM month WHERE car_num like ? AND is_stop='N' AND end_date >= " + today + " AND start_date <= " + today + "", new String[] {'%'+car_num+'%'});

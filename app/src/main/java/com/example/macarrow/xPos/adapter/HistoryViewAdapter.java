@@ -82,6 +82,7 @@ public class HistoryViewAdapter extends BaseAdapter {
 
         // 이용 요금
         int monthIdx = (int) list.get(position).get("month_idx");
+        String is_daycar = (String) list.get(position).get("is_daycar");
 
         double oneSecond = 1000;
         double oneMinute = oneSecond * 60;
@@ -105,6 +106,8 @@ public class HistoryViewAdapter extends BaseAdapter {
         String is_out = (String) list.get(position).get("is_out");
         if (monthIdx > 0) {
             item.totalAmount.setText(0 + "");
+        } if (is_daycar.equals("Y")) {
+            item.totalAmount.setText(total_amount + "");
         } else if(monthIdx == 0 && is_out.equals("Y")) {
             item.totalAmount.setText(total_amount + "");
         } else if (monthIdx == 0 && is_out.equals("N")){
@@ -126,11 +129,11 @@ public class HistoryViewAdapter extends BaseAdapter {
         // 입차 구분
         String isCancel = (String) list.get(position).get("is_cancel");
         String isOut = (String) list.get(position).get("is_out");
-        if(endDate <=0 && isCancel.equals("N")) {
+        if(isCancel.equals("N") && isOut.equals("N")) {
             item.inStatus.setText("입차중");
-        }if (isOut.equals("Y") && isCancel.equals("N")) {
+        } if (isOut.equals("Y") && isCancel.equals("N")) {
             item.inStatus.setText("출차완료");
-        }if (isOut.equals("Y") && isCancel.equals("Y")) {
+        } if (isOut.equals("Y") && isCancel.equals("Y")) {
             item.inStatus.setText("입차취소");
         }
 
@@ -141,12 +144,12 @@ public class HistoryViewAdapter extends BaseAdapter {
             } else {
                 item.payStatus.setText("결제완료");
             }
-        } if (monthIdx > 0 && isCancel.equals("N")) {
-            item.payStatus.setText("월차");
         } if (isCancel.equals("Y")) {
             item.payStatus.setText("입차취소");
         } if (isOut.equals("N")) {
             item.payStatus.setText("");
+        } if (monthIdx > 0) {
+            item.payStatus.setText("월차");
         }
 
         return convertView;

@@ -153,6 +153,34 @@ public class Garage_Service extends SQLiteOpenHelper {
 
     }
 
+    public void inDayCar(int total_amount,
+                        int pay_amount,
+                       String is_out,
+                       String is_paid,
+                       int idx) {
+        SQLiteDatabase db = getWritableDatabase();
+        // 입력한 항목과 일치하는 행의 가격 정보 수정
+        db.execSQL("UPDATE garage SET total_amount = " + total_amount + ", " +
+                "pay_amount = " + pay_amount + ", " +
+                "is_out = '" + is_out + "', " +
+                "is_paid = '" + is_paid + "' " +
+                "WHERE idx = " + idx + ";");
+        db.close();
+
+    }
+
+    public void outDayCar(long end_date,
+                          String is_out,
+                         int idx) {
+        SQLiteDatabase db = getWritableDatabase();
+        // 입력한 항목과 일치하는 행의 가격 정보 수정
+        db.execSQL("UPDATE garage SET end_date = " + end_date + ", " +
+                "is_out = '" + is_out + "' " +
+                "WHERE idx = " + idx + ";");
+        db.close();
+
+    }
+
     public void updateForceOut(String is_out,
                                int total_amount,
                                long end_date,
@@ -355,7 +383,7 @@ public class Garage_Service extends SQLiteOpenHelper {
         }
         // 입차중
         if(status.equals("in")) {
-            cursor = db.rawQuery("SELECT * FROM garage WHERE is_out = 'N' AND is_cancel = 'N' AND is_paid = 'N' AND car_num like ? order by idx desc", new String[] {'%'+car_num+'%'});
+            cursor = db.rawQuery("SELECT * FROM garage WHERE is_out = 'N' AND is_cancel = 'N' AND car_num like ? order by idx desc", new String[] {'%'+car_num+'%'});
         }
         // 정상출차
         if(status.equals("out")) {

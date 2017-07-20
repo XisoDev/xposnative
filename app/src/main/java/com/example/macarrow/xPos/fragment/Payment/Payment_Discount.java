@@ -63,8 +63,12 @@ public class Payment_Discount extends DialogFragment {
         Car_num.setText(CarNum);
 
         final String is_out = (String) map.get("is_out");
+        final String is_daycar = (String) map.get("is_daycar");
+
         // 총 금액
         if (is_out.equals("Y")) {
+            Total_amount.setText((int) map.get("total_amount")+"");
+        } if(is_daycar.equals("Y")) {
             Total_amount.setText((int) map.get("total_amount")+"");
         } else {
             double startDate = (long) map.get("start_date");

@@ -2,6 +2,7 @@ package com.example.macarrow.xPos;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -11,9 +12,12 @@ import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.example.macarrow.xPos.Services.CarType_Services;
@@ -164,21 +168,6 @@ public class MainActivity extends Activity {
             }
         });
 
-        // 월차추가
-        openMonthChk.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-
-                Bundle args = new Bundle();
-                args.putString("status", "new");
-                Month_Add month_add = new Month_Add();
-                month_add.setArguments(args);
-                month_add.setCancelable(false);
-                month_add.show(getFragmentManager(), "month_add");
-                return true;
-            }
-        });
-
         // Button case 처리
         View.OnClickListener clickListener = new View.OnClickListener() {
 
@@ -231,30 +220,52 @@ public class MainActivity extends Activity {
                             adb.show();
                             mainField.setText("관리번호");
 
-                        } else if (monthService.findCarNum(toDay, carNum) > 0) {
+                        }
+
+                        else if (monthService.findMonthCar(toDay, carNum) > 0) {
 
                             Map<String, Object> carNumMap = monthService.getMonthCarNum(toDay, carNum);
                             final String car_num = (String) carNumMap.get("car_num");
                             final String car_type_title = (String) carNumMap.get("car_type_title");
                             final int idx = (int) carNumMap.get("idx");
 
-                            AlertDialog.Builder adb = new AlertDialog.Builder(activity);
-                            adb.setTitle("월차 확인");
-                            adb.setNegativeButton("다른 번호 입력", new DialogInterface.OnClickListener() {
+                            LayoutInflater dialog = LayoutInflater.from(activity);
+                            final View dialogLayout = dialog.inflate(R.layout.month_check, null);
+                            final Dialog myDialog = new Dialog(activity);
+
+                            myDialog.setCancelable(false);
+                            myDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                            myDialog.setContentView(dialogLayout);
+
+                            Button Close = (Button)dialogLayout.findViewById(R.id.close);
+                            Button Car_num = (Button)dialogLayout.findViewById(R.id.car_num);
+
+                            // Dialog 사이즈 조절 하기
+                            WindowManager.LayoutParams params = myDialog.getWindow().getAttributes();
+                            params.width = 425;
+                            params.height = WindowManager.LayoutParams.WRAP_CONTENT;
+                            myDialog.getWindow().setAttributes((android.view.WindowManager.LayoutParams) params);
+                            myDialog.show();
+
+                            Car_num.setText(car_num+"월차 입차");
+
+                            Close.setOnClickListener(new View.OnClickListener() {
                                 @Override
-                                public void onClick(DialogInterface dialog, int which) {
+                                public void onClick(View v) {
+                                    myDialog.dismiss();
+                                    mainField.setText("관리번호");
                                 }
                             });
-                            adb.setPositiveButton(car_num+"차량을 월차로 입차 하시겠습니까?", new DialogInterface.OnClickListener() {
+
+                            Car_num.setOnClickListener(new View.OnClickListener() {
                                 @Override
-                                public void onClick(DialogInterface dialog, int which) {
+                                public void onClick(View v) {
 
                                     if (garageService.findMonthCarNum(car_num) > 0) {
                                         AlertDialog.Builder adb = new AlertDialog.Builder(activity);
                                         adb.setTitle("같은 관리번호가 입차되어 있습니다");
                                         adb.setNegativeButton("닫기", null);
                                         adb.show();
-                                        mainField.setText("관리번호");
                                     } else {
                                         long start_date = System.currentTimeMillis();
                                         GregorianCalendar gcalendar = new GregorianCalendar();
@@ -262,12 +273,12 @@ public class MainActivity extends Activity {
                                         int month = gcalendar.get(Calendar.MONTH)+1;
                                         int day = gcalendar.get(Calendar.DAY_OF_MONTH);
                                         garageService.insert(start_date, year, month, day, car_num, car_type_title, 0, 0, 0, 0, 0, idx, 0, 0, 0);
-                                        mainField.setText("관리번호");
                                         fm.beginTransaction().replace(R.id.content_fragment, new Current_Fragment()).commit();
+                                        myDialog.dismiss();
+                                        mainField.setText("관리번호");
                                     }
                                 }
                             });
-                            adb.show();
 
                         } else {
 
@@ -361,7 +372,8 @@ public class MainActivity extends Activity {
                         } else {
 
                             String car_num = "";
-                            if (mainField.equals("관리번호")) {
+
+                            if (carNum.equals("관리번호")) {
                                 car_num = "";
                             } else {
                                 car_num = carNum;

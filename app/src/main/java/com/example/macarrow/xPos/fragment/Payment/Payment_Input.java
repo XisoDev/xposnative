@@ -123,6 +123,7 @@ public class Payment_Input extends DialogFragment {
         View.OnClickListener clickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 final int total_amount = (Integer.parseInt(Total_amount.getText().toString()));
                 final int pay_amount = (Integer.parseInt(Pay_amount.getText().toString()));
                 final int discount_cooper = (Integer.parseInt(Discount_cooper.getText().toString()));
@@ -136,6 +137,7 @@ public class Payment_Input extends DialogFragment {
                 final int year = calendar.get(Calendar.YEAR);
                 final int month = calendar.get(Calendar.MONTH)+1;
                 final int day = calendar.get(Calendar.DAY_OF_MONTH);
+                final String is_daycar = (String) map.get("is_daycar");
                 if (Integer.parseInt(Pay_money.getText().toString()) <= 0) {
                     Pay_money.setText(inPay+"");
                 }
@@ -150,33 +152,55 @@ public class Payment_Input extends DialogFragment {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
-                                if (discount_cooper > 0) {
 
-                                    garageService.updateCooper(
-                                        cooperIdx,
-                                        cooper_title,
-                                        cooper_start,
-                                        cooper_end,
-                                        discount_cooper,
-                                        minute_free,
-                                        idx);
+                                if (is_daycar.equals("Y")) {
 
-                                }
+                                    String is_out = "N";
+                                    String is_paid = "";
+                                    if (total_amount-payAmount == 0) {
+                                        is_paid = "Y";
+                                    } else {
+                                        is_paid = "N";
+                                    }
 
-                                String is_out = "Y";
-                                String is_paid = "";
-                                if (total_amount-pay_money-pay_amount-discount_cooper-discount_self == 0) {
-                                    is_paid = "Y";
+                                    garageService.inDayCar(total_amount, payAmount, is_out, is_paid, idx);
+                                    String lookup_type = "garage";
+                                    String pay_type = "card";
+                                    int cooper_amount = discount_cooper+discount_self;
+                                    payment_services.insert(idx, lookup_type, pay_type, total_amount, cooper_amount, pay_money, year, month, day);
+                                    dismiss();
+
                                 } else {
-                                    is_paid = "N";
-                                }
 
-                                garageService.outCar(endDate, total_amount, payAmount, cooperIdx, discount_cooper, discount_self, is_out, is_paid, idx);
-                                String lookup_type = "garage";
-                                String pay_type = "card";
-                                int cooper_amount = discount_cooper+discount_self;
-                                payment_services.insert(idx, lookup_type, pay_type, total_amount, cooper_amount, pay_money, year, month, day);
-                                dismiss();
+                                    if (discount_cooper > 0) {
+
+                                        garageService.updateCooper(
+                                                cooperIdx,
+                                                cooper_title,
+                                                cooper_start,
+                                                cooper_end,
+                                                discount_cooper,
+                                                minute_free,
+                                                idx);
+
+                                    }
+
+                                    String is_out = "Y";
+                                    String is_paid = "";
+                                    if (total_amount-payAmount-discount_cooper-discount_self == 0) {
+                                        is_paid = "Y";
+                                    } else {
+                                        is_paid = "N";
+                                    }
+
+                                    garageService.outCar(endDate, total_amount, payAmount, cooperIdx, discount_cooper, discount_self, is_out, is_paid, idx);
+                                    String lookup_type = "garage";
+                                    String pay_type = "card";
+                                    int cooper_amount = discount_cooper+discount_self;
+                                    payment_services.insert(idx, lookup_type, pay_type, total_amount, cooper_amount, pay_money, year, month, day);
+                                    dismiss();
+
+                                }
                             }
                         });
                         do_card.show();
@@ -204,7 +228,7 @@ public class Payment_Input extends DialogFragment {
 
                                 String is_out = "Y";
                                 String is_paid = "";
-                                if (total_amount-pay_money-payAmount-discount_cooper-discount_self == 0) {
+                                if (total_amount-payAmount-discount_cooper-discount_self == 0) {
                                     is_paid = "Y";
                                 } else {
                                     is_paid = "N";
