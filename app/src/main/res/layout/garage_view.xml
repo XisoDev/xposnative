@@ -34,9 +34,10 @@
                 android:visibility="gone"
                 >
                 <ImageView
-                    android:layout_width="33px"
-                    android:layout_height="33px"
-                    android:background="@drawable/tab_current"
+                    android:layout_width="32px"
+                    android:layout_height="26px"
+                    android:background="@drawable/ic_out_car"
+                    android:layout_marginBottom="5px"
                     />
                 <TextView
                     android:layout_width="wrap_content"
@@ -56,9 +57,10 @@
                 android:visibility="gone"
                 >
                 <ImageView
-                    android:layout_width="33px"
-                    android:layout_height="33px"
-                    android:background="@drawable/tab_current"
+                    android:layout_width="32px"
+                    android:layout_height="32px"
+                    android:background="@drawable/ic_pay_car"
+                    android:layout_marginBottom="5px"
                     />
                 <TextView
                     android:layout_width="wrap_content"
@@ -78,9 +80,10 @@
                 android:visibility="gone"
                 >
                 <ImageView
-                    android:layout_width="33px"
-                    android:layout_height="33px"
-                    android:background="@drawable/tab_current"
+                    android:layout_width="32px"
+                    android:layout_height="35px"
+                    android:background="@drawable/ic_cancel_car"
+                    android:layout_marginBottom="5px"
                     />
                 <TextView
                     android:layout_width="wrap_content"
@@ -100,9 +103,10 @@
                 android:visibility="gone"
                 >
                 <ImageView
-                    android:layout_width="33px"
-                    android:layout_height="33px"
-                    android:background="@drawable/tab_current"
+                    android:layout_width="32px"
+                    android:layout_height="35px"
+                    android:background="@drawable/ic_cancel_out"
+                    android:layout_marginBottom="5px"
                     />
                 <TextView
                     android:layout_width="wrap_content"
@@ -122,9 +126,10 @@
                 android:visibility="gone"
                 >
                 <ImageView
-                    android:layout_width="33px"
-                    android:layout_height="33px"
-                    android:background="@drawable/tab_current"
+                    android:layout_width="32px"
+                    android:layout_height="38px"
+                    android:background="@drawable/ic_printin_car"
+                    android:layout_marginBottom="5px"
                     />
                 <TextView
                     android:layout_width="wrap_content"

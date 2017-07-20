@@ -64,6 +64,8 @@ public class Month_Add extends DialogFragment {
 
         if (status.equals("new")) {
 
+            Car_num.setText(car_num);
+
             Month_title.setText("월차 추가");
             Add_month.setVisibility(View.VISIBLE);
 

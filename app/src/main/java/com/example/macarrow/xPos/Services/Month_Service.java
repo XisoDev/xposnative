@@ -167,7 +167,7 @@ public class Month_Service extends SQLiteOpenHelper {
 
     public int findCarNum(int today, String car_num) {
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM month WHERE car_num like ? AND is_stop='N' AND end_date >= " + today + " AND start_date <= " + today + "", new String[] {'%'+car_num});
+        Cursor cursor = db.rawQuery("SELECT * FROM month WHERE car_num like ? AND is_stop='N' AND end_date >= " + today + " AND start_date <= " + today + "", new String[] {'%'+car_num+'%'});
         cursor.moveToFirst();
         cursor.getCount();
         return cursor.getCount();
@@ -273,7 +273,7 @@ public class Month_Service extends SQLiteOpenHelper {
             cursor = db.rawQuery("SELECT * FROM month WHERE is_stop='N' AND end_date >= " + today + " AND start_date <= " + today + " order by idx desc", null);
         }
         else {
-            cursor = db.rawQuery("SELECT * FROM month WHERE car_num like ? AND is_stop='N' AND end_date >= " + today + " AND start_date <= " + today + " order by idx desc", new String[] {'%'+car_num});
+            cursor = db.rawQuery("SELECT * FROM month WHERE car_num like ? AND is_stop='N' AND end_date >= " + today + " AND start_date <= " + today + " order by idx desc", new String[] {'%'+car_num+'%'});
         }
         while (cursor.moveToNext()) {
             Map<String, Object> map = new HashMap<String, Object>();
