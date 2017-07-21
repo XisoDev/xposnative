@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="107px"
-    android:layout_height="81px"
+    android:layout_height="80px"
     android:orientation="vertical"
     >
     <View
@@ -30,6 +30,6 @@
         android:layout_height="15px"
         android:textSize="10px"
         android:paddingLeft="10px"
-        android:layout_marginBottom="6px"
+        android:layout_marginBottom="5px"
         />
 </LinearLayout>

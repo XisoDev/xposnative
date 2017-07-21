@@ -6,9 +6,9 @@
     android:layout_height="723px"
     >
     <LinearLayout
-        android:layout_width="753px"
+        android:layout_width="829px"
         android:layout_height="55px"
-        android:paddingLeft="30px"
+        android:paddingLeft="64px"
         android:orientation="horizontal"
         >
         <TextView
@@ -22,19 +22,18 @@
             />
     </LinearLayout>
     <LinearLayout
-        android:layout_width="753px"
+        android:layout_width="829px"
         android:layout_height="23px"
-        android:layout_weight="1"
         android:orientation="vertical"
         >
         <LinearLayout
-            android:layout_width="753px"
+            android:layout_width="829px"
             android:layout_height="23px"
             android:orientation="horizontal"
-            android:paddingLeft="30px"
+            android:paddingLeft="64px"
             >
             <TextView
-                android:layout_width="107px"
+                android:layout_width="101px"
                 android:layout_height="23px"
                 android:textSize="11px"
                 android:text="일요일"
@@ -43,7 +42,7 @@
                 android:textColor="#e43d3d"
                 />
             <TextView
-                android:layout_width="107px"
+                android:layout_width="100px"
                 android:layout_height="23px"
                 android:textSize="11px"
                 android:text="월요일"
@@ -52,7 +51,7 @@
                 android:textColor="@android:color/black"
                 />
             <TextView
-                android:layout_width="107px"
+                android:layout_width="100px"
                 android:layout_height="23px"
                 android:textSize="11px"
                 android:text="화요일"
@@ -61,7 +60,7 @@
                 android:textColor="@android:color/black"
                 />
             <TextView
-                android:layout_width="107px"
+                android:layout_width="100px"
                 android:layout_height="23px"
                 android:textSize="11px"
                 android:text="수요일"
@@ -69,7 +68,7 @@
                 android:textColor="@android:color/black"
                 />
             <TextView
-                android:layout_width="107px"
+                android:layout_width="100px"
                 android:layout_height="23px"
                 android:textSize="11px"
                 android:text="목요일"
@@ -78,7 +77,7 @@
                 android:textColor="@android:color/black"
                 />
             <TextView
-                android:layout_width="107px"
+                android:layout_width="100px"
                 android:layout_height="23px"
                 android:textSize="11px"
                 android:text="금요일"
@@ -87,7 +86,7 @@
                 android:textColor="@android:color/black"
                 />
             <TextView
-                android:layout_width="107px"
+                android:layout_width="100px"
                 android:layout_height="23px"
                 android:textSize="11px"
                 android:text="토요일"
@@ -96,38 +95,39 @@
                 android:textColor="#5da6f1"
                 />
         </LinearLayout>
-        <View
-            android:layout_width="753px"
-            android:layout_height="1px"
-            android:layout_marginLeft="30px"
-            android:background="#c0c0c0"
-            />
     </LinearLayout>
+    <View
+        android:layout_width="701px"
+        android:layout_height="1px"
+        android:layout_marginLeft="64px"
+        android:background="#c0c0c0"
+        />
     <LinearLayout
         android:layout_width="829px"
-        android:layout_height="488px"
+        android:layout_height="484px"
         android:orientation="horizontal"
+        android:layout_marginTop="5px"
         >
         <Button
             android:id="@+id/prevButton"
             android:layout_width="64px"
             android:layout_height="64px"
-            android:background="@drawable/ic_pre"
+            android:background="@drawable/pre_select_bg"
             android:layout_gravity="center_vertical"
             />
         <GridView
             android:id="@+id/calGrid"
             android:layout_width="701px"
             android:layout_height="488px"
-            android:numColumns="7"
             android:layout_marginTop="9px"
             android:listSelector="#e5e5e5"
+            android:numColumns="7"
             />
         <Button
             android:id="@+id/nextButton"
             android:layout_width="64px"
             android:layout_height="64px"
-            android:background="@drawable/ic_next"
+            android:background="@drawable/next_select_bg"
             android:layout_gravity="center_vertical"
             />
     </LinearLayout>
