@@ -151,6 +151,7 @@ public class Month_Service extends SQLiteOpenHelper {
                           int end_date_d,
                           int end_date,
                           String is_paid,
+                          long regdate,
                           int idx) {
         SQLiteDatabase db = getWritableDatabase();
         // 입력한 항목과 일치하는 행의 가격 정보 수정
@@ -160,6 +161,7 @@ public class Month_Service extends SQLiteOpenHelper {
                 "end_date_d = " + end_date_d + ", " +
                 "end_date = " + end_date + ", " +
                 "is_paid = '" + is_paid + "' " +
+                "regdate = '" + regdate + "' " +
                 "WHERE idx = " + idx + ";");
         db.close();
 

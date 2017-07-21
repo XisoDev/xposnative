@@ -10,10 +10,10 @@
         android:layout_height="250px"
         android:layout_gravity="center"
         android:layout_margin="30px"
-        android:background="@drawable/config_select_bg"
         android:gravity="center"
         android:text="상점 기본정보 설정"
-        android:textColor="@color/config_select_txt"
+        android:background="@drawable/config_defalut_bg"
+        android:textColor="@color/config_defalut_txt"
         android:textSize="22px"
         />
     <TextView
@@ -22,10 +22,10 @@
         android:layout_height="250px"
         android:layout_gravity="center"
         android:layout_margin="30px"
-        android:background="@drawable/config_select_bg"
         android:gravity="center"
         android:text="주차요금 설정"
-        android:textColor="@color/config_select_txt"
+        android:background="@drawable/config_cartype_bg"
+        android:textColor="@color/config_cartype_txt"
         android:textSize="22px"
         />
     <TextView
@@ -34,10 +34,10 @@
         android:layout_height="250px"
         android:layout_gravity="center"
         android:layout_margin="30px"
-        android:background="@drawable/config_select_bg"
         android:gravity="center"
         android:text="데이터 베이스 관리"
-        android:textColor="@color/config_select_txt"
+        android:background="@drawable/config_database_bg"
+        android:textColor="@color/config_database_txt"
         android:textSize="22px"
         />
 </LinearLayout>

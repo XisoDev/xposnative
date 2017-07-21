@@ -419,9 +419,10 @@ public class Month_Add extends DialogFragment {
                                 SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
                                 final int start_date = Integer.parseInt(sdf.format(start.getTime()));
                                 final int end_date = Integer.parseInt(sdf.format(end.getTime()));
+                                final long regdate = System.currentTimeMillis();
 
                                 month_service.update(sdy, sdm, sdd, start_date, edy, edm, edd, end_date, amounT, car_name, car_type_title, user_name, mobile, "N", idx);
-                                month_service.updatePay(0, edy, edm, edd, end_date, "N", idx);
+                                month_service.updatePay(0, edy, edm, edd, end_date, "N", regdate, idx);
                                 dismiss();
                                 Bundle args = new Bundle();
                                 args.putString("status", "new");

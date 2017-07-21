@@ -132,6 +132,8 @@ public class Month_Pay extends DialogFragment {
                     final int year = calendar.get(Calendar.YEAR);
                     final int month = calendar.get(Calendar.MONTH)+1;
                     final int day = calendar.get(Calendar.DAY_OF_MONTH);
+                    final long regdate = System.currentTimeMillis();
+                    final int lookup_idx = idx;
 
                     switch (v.getId()) {
 
@@ -150,12 +152,8 @@ public class Month_Pay extends DialogFragment {
                                     } else {
                                         is_paid = "N";
                                     }
-                                    month_service.updatePay(payMoney, end_date_y, end_date_m, end_date_d, end_date, is_paid, idx);
-                                    int lookup_idx = idx;
-                                    String lookup_type = "month";
-                                    String pay_type = "card";
-                                    int cooper_amount = 0;
-                                    payment_services.insert(lookup_idx, lookup_type, pay_type, total_result, cooper_amount, payMoney, year, month, day);
+                                    month_service.updatePay(payMoney, end_date_y, end_date_m, end_date_d, end_date, is_paid, regdate, idx);
+                                    payment_services.insert(lookup_idx, "month", "card", total_result, 0, payMoney, year, month, day, regdate);
                                     dismiss();
                                     fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment("possibility")).commit();
 
@@ -179,12 +177,8 @@ public class Month_Pay extends DialogFragment {
                                     } else {
                                         is_paid = "N";
                                     }
-                                    month_service.updatePay(payMoney, end_date_y, end_date_m, end_date_d, end_date, is_paid, idx);
-                                    int lookup_idx = idx;
-                                    String lookup_type = "month";
-                                    String pay_type = "cash";
-                                    int cooper_amount = 0;
-                                    payment_services.insert(lookup_idx, lookup_type, pay_type, total_result, cooper_amount, payMoney, year, month, day);
+                                    month_service.updatePay(payMoney, end_date_y, end_date_m, end_date_d, end_date, is_paid, regdate, idx);
+                                    payment_services.insert(lookup_idx, "month", "cash", total_result, 0, payMoney, year, month, day, regdate);
                                     dismiss();
                                     fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment("possibility")).commit();
                                 }
@@ -194,6 +188,8 @@ public class Month_Pay extends DialogFragment {
 
                         case R.id.close_pay_month:
 
+                            month_service.updatePay(payMoney, end_date_y, end_date_m, end_date_d, end_date, "N", regdate, idx);
+                            payment_services.insert(lookup_idx, "month", "", total_result, 0, 0, year, month, day, regdate);
                             dismiss();
                             fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment("possibility")).commit();
                             break;
@@ -305,6 +301,7 @@ public class Month_Pay extends DialogFragment {
                     final int year = calendar.get(Calendar.YEAR);
                     final int month = calendar.get(Calendar.MONTH)+1;
                     final int day = calendar.get(Calendar.DAY_OF_MONTH);
+                    final long regdate = System.currentTimeMillis();
 
                     switch (v.getId()) {
 
@@ -324,12 +321,8 @@ public class Month_Pay extends DialogFragment {
                                     } else {
                                         is_paid = "N";
                                     }
-                                    month_service.updatePay(pay, edy, edm, edd, end_date, is_paid, idx);
-
-                                    String lookup_type = "month";
-                                    String pay_type = "card";
-                                    int cooper_amount = 0;
-                                    payment_services.insert(lookup_idx, lookup_type, pay_type, Amount, cooper_amount, payMoney, year, month, day);
+                                    month_service.updatePay(pay, edy, edm, edd, end_date, is_paid, regdate, idx);
+                                    payment_services.insert(lookup_idx, "month", "card", Amount, 0, payMoney, year, month, day, regdate);
                                     dismiss();
                                     fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment("possibility")).commit();
                                 }
@@ -353,12 +346,8 @@ public class Month_Pay extends DialogFragment {
                                     } else {
                                         is_paid = "N";
                                     }
-                                    month_service.updatePay(pay, edy, edm, edd, end_date, is_paid, idx);
-
-                                    String lookup_type = "month";
-                                    String pay_type = "cash";
-                                    int cooper_amount = 0;
-                                    payment_services.insert(lookup_idx, lookup_type, pay_type, Amount, cooper_amount, payMoney, year, month, day);
+                                    month_service.updatePay(pay, edy, edm, edd, end_date, is_paid, regdate, idx);
+                                    payment_services.insert(lookup_idx, "month", "cash", Amount, 0, payMoney, year, month, day, regdate);
                                     dismiss();
                                     fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment("possibility")).commit();
                                 }
@@ -368,7 +357,8 @@ public class Month_Pay extends DialogFragment {
 
                         case R.id.close_pay_month:
 
-                            month_service.updatePay(pay_amount, edy, edm, edd, end_date, "N", idx);
+                            month_service.updatePay(pay_amount, edy, edm, edd, end_date, "N", regdate, idx);
+                            payment_services.insert(lookup_idx, "month", "", Amount, 0, 0, year, month, day, regdate);
                             dismiss();
                             fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment("possibility")).commit();
                             break;

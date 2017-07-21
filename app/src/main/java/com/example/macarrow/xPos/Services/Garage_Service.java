@@ -70,6 +70,7 @@ public class Garage_Service extends SQLiteOpenHelper {
                 "is_daycar TEXT NOT NULL DEFAULT 'N', " +
                 "total_amount INTEGER DEFAULT 0, " +
                 "pay_amount INTEGER DEFAULT 0, " +
+                "regdate INTEGER, " +
                 "is_paid TEXT NOT NULL DEFAULT 'N', " +
                 "is_out TEXT NOT NULL DEFAULT 'N', " +
                 "is_cancel TEXT NOT NULL DEFAULT 'N');");
@@ -137,6 +138,7 @@ public class Garage_Service extends SQLiteOpenHelper {
                        int discount_self,
                        String is_out,
                        String is_paid,
+                       long regdate,
                        int idx) {
         SQLiteDatabase db = getWritableDatabase();
         // 입력한 항목과 일치하는 행의 가격 정보 수정
@@ -147,7 +149,8 @@ public class Garage_Service extends SQLiteOpenHelper {
                 "discount_cooper = " + discount_cooper + ", " +
                 "discount_self = " + discount_self + ", " +
                 "is_out = '" + is_out + "', " +
-                "is_paid = '" + is_paid + "' " +
+                "is_paid = '" + is_paid + "', " +
+                "regdate = " + regdate + " " +
                 "WHERE idx = " + idx + ";");
         db.close();
 
@@ -363,9 +366,10 @@ public class Garage_Service extends SQLiteOpenHelper {
             map.put("is_daycar", cursor.getString(20));
             map.put("total_amount", cursor.getInt(21));
             map.put("pay_amount", cursor.getInt(22));
-            map.put("is_paid", cursor.getString(23));
-            map.put("is_out", cursor.getString(24));
-            map.put("is_cancel", cursor.getString(25));
+            map.put("regdate", cursor.getLong(23));
+            map.put("is_paid", cursor.getString(24));
+            map.put("is_out", cursor.getString(25));
+            map.put("is_cancel", cursor.getString(26));
         }
 
         return map;
@@ -423,9 +427,10 @@ public class Garage_Service extends SQLiteOpenHelper {
             map.put("is_daycar", cursor.getString(20));
             map.put("total_amount", cursor.getInt(21));
             map.put("pay_amount", cursor.getInt(22));
-            map.put("is_paid", cursor.getString(23));
-            map.put("is_out", cursor.getString(24));
-            map.put("is_cancel", cursor.getString(25));
+            map.put("regdate", cursor.getLong(23));
+            map.put("is_paid", cursor.getString(24));
+            map.put("is_out", cursor.getString(25));
+            map.put("is_cancel", cursor.getString(26));
             list.add(map);
         }
 
@@ -465,9 +470,10 @@ public class Garage_Service extends SQLiteOpenHelper {
             map.put("is_daycar", cursor.getString(20));
             map.put("total_amount", cursor.getInt(21));
             map.put("pay_amount", cursor.getInt(22));
-            map.put("is_paid", cursor.getString(23));
-            map.put("is_out", cursor.getString(24));
-            map.put("is_cancel", cursor.getString(25));
+            map.put("regdate", cursor.getLong(23));
+            map.put("is_paid", cursor.getString(24));
+            map.put("is_out", cursor.getString(25));
+            map.put("is_cancel", cursor.getString(26));
             list.add(map);
         }
 
@@ -507,9 +513,10 @@ public class Garage_Service extends SQLiteOpenHelper {
             map.put("is_daycar", cursor.getString(20));
             map.put("total_amount", cursor.getInt(21));
             map.put("pay_amount", cursor.getInt(22));
-            map.put("is_paid", cursor.getString(23));
-            map.put("is_out", cursor.getString(24));
-            map.put("is_cancel", cursor.getString(25));
+            map.put("regdate", cursor.getLong(23));
+            map.put("is_paid", cursor.getString(24));
+            map.put("is_out", cursor.getString(25));
+            map.put("is_cancel", cursor.getString(26));
             list.add(map);
         }
 
@@ -548,9 +555,10 @@ public class Garage_Service extends SQLiteOpenHelper {
             map.put("is_daycar", cursor.getString(20));
             map.put("total_amount", cursor.getInt(21));
             map.put("pay_amount", cursor.getInt(22));
-            map.put("is_paid", cursor.getString(23));
-            map.put("is_out", cursor.getString(24));
-            map.put("is_cancel", cursor.getString(25));
+            map.put("regdate", cursor.getLong(23));
+            map.put("is_paid", cursor.getString(24));
+            map.put("is_out", cursor.getString(25));
+            map.put("is_cancel", cursor.getString(26));
         }
 
         return map;
