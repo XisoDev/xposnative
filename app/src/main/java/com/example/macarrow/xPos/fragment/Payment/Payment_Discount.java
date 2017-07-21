@@ -27,6 +27,7 @@ public class Payment_Discount extends DialogFragment {
 
         Bundle mArgs = getArguments();
         final int idx = mArgs.getInt("idx");
+        final int result_charge = mArgs.getInt("result_charge");
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
@@ -66,37 +67,9 @@ public class Payment_Discount extends DialogFragment {
         final String is_daycar = (String) map.get("is_daycar");
 
         // 총 금액
-        if (is_out.equals("Y")) {
-            Total_amount.setText((int) map.get("total_amount")+"");
-        } if(is_daycar.equals("Y")) {
-            Total_amount.setText((int) map.get("total_amount")+"");
-        } else {
-            double startDate = (long) map.get("start_date");
-            long end_date = System.currentTimeMillis();
-            double oneSecond = 1000;
-            double oneMinute = oneSecond * 60;
-            int result_charge = 0;
-            double park_min = Math.floor(((double) end_date - startDate) / oneMinute);
-            int basic_amount = (int) (Integer) map.get("basic_amount");
-            int amount_unit = (int) (Integer) map.get("amount_unit");
-            double free_min = (int) (Integer) map.get("minute_free");
-            double basic_min= (int) (Integer) map.get("basic_minute");
-            double minute_unit = (int) (Integer) map.get("minute_unit");
-
-            if (park_min - free_min > 0) {
-                if(park_min - free_min - basic_min > 0){
-                    double added_min = Math.ceil((park_min - free_min - basic_min) / minute_unit);
-                    result_charge = (int) (basic_amount + (added_min * amount_unit));
-                } else {
-                    result_charge = basic_amount;
-                }
-            }
-            Total_amount.setText(result_charge+"");
-        }
-        final int resultCharge = Integer.parseInt(Total_amount.getText().toString());
-
+        Total_amount.setText(result_charge+"");
         // 결제해야 될 금액
-        In_pay.setText((resultCharge-(Integer) map.get("pay_amount")-(Integer) map.get("discount_cooper")-(Integer) map.get("discount_self"))+"");
+        In_pay.setText((result_charge-(Integer) map.get("pay_amount")-(Integer) map.get("discount_cooper")-(Integer) map.get("discount_self"))+"");
         // 현재까지 결제된 금액
         Pay_amount.setText((Integer) map.get("pay_amount") + "");
         // 지정 할인된 금액
@@ -131,18 +104,18 @@ public class Payment_Discount extends DialogFragment {
 
                 if (s.equals("")) {
                     Discount_self.setText((Integer) map.get("discount_self")+"");
-                    In_pay.setText((resultCharge-(Integer) map.get("pay_amount")-(Integer) map.get("discount_cooper")-(Integer) map.get("discount_self"))+"");
+                    In_pay.setText((result_charge-(Integer) map.get("pay_amount")-(Integer) map.get("discount_cooper")-(Integer) map.get("discount_self"))+"");
                 } else if (s.length() < 1) {
                     Discount_self.setText((Integer) map.get("discount_self")+"");
-                    In_pay.setText((resultCharge-(Integer) map.get("pay_amount")-(Integer) map.get("discount_cooper")-(Integer) map.get("discount_self"))+"");
-                } else if ((resultCharge-(Integer) map.get("pay_amount")-(Integer) map.get("discount_cooper")-(Integer) map.get("discount_self")) - (int) Integer.parseInt(s.toString()) < 0) {
+                    In_pay.setText((result_charge-(Integer) map.get("pay_amount")-(Integer) map.get("discount_cooper")-(Integer) map.get("discount_self"))+"");
+                } else if ((result_charge-(Integer) map.get("pay_amount")-(Integer) map.get("discount_cooper")-(Integer) map.get("discount_self")) - (int) Integer.parseInt(s.toString()) < 0) {
                     AlertDialog.Builder adb = new AlertDialog.Builder(getActivity());
                     adb.setTitle("할인 금액이 결제 할 금액 보다 큽니다");
                     adb.setNegativeButton("닫기", null);
                     adb.show();
                     Dc_money.setText("");
                 } else {
-                    int inPay = resultCharge - ((Integer) map.get("discount_self") + (int) Integer.parseInt(s.toString()));
+                    int inPay = result_charge - ((Integer) map.get("discount_self") + (int) Integer.parseInt(s.toString()));
                     In_pay.setText(inPay+"");
                     Discount_self.setText(((Integer) map.get("discount_self") + (int) Integer.parseInt(s.toString()))+"");
                 }
@@ -178,7 +151,7 @@ public class Payment_Discount extends DialogFragment {
                         } else {
                             Bundle args = new Bundle();
                             args.putInt("idx", idx);
-                            args.putInt("total_amount", resultCharge);
+                            args.putInt("total_amount", result_charge);
                             args.putLong("end_date", end_date);
                             Payment_Input payment_input = new Payment_Input();
                             payment_input.setArguments(args);
@@ -215,7 +188,7 @@ public class Payment_Discount extends DialogFragment {
                         } else {
                             Bundle args = new Bundle();
                             args.putInt("idx", idx);
-                            args.putInt("total_amount", resultCharge);
+                            args.putInt("total_amount", result_charge);
                             args.putLong("end_date", end_date);
                             Dc_Cooper dc_cooper = new Dc_Cooper();
                             dc_cooper.setArguments(args);
@@ -264,7 +237,7 @@ public class Payment_Discount extends DialogFragment {
                         } else {
                             Bundle args = new Bundle();
                             args.putInt("idx", idx);
-                            args.putInt("total_amount", resultCharge);
+                            args.putInt("total_amount", result_charge);
                             args.putInt("discount_self", discount_self);
                             args.putLong("end_date", end_date);
                             Payment_Input payment_input = new Payment_Input();

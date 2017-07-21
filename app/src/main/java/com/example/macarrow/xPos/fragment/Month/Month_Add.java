@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.example.macarrow.xPos.R;
 import com.example.macarrow.xPos.Services.Month_Service;
+import com.example.macarrow.xPos.Services.Payment_Services;
 import com.example.macarrow.xPos.fragment.Month_Fragment;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -36,6 +37,7 @@ public class Month_Add extends DialogFragment {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         final Month_Service month_service = new Month_Service(getActivity(), "month.db", null, 1);
+        final Payment_Services payment_services = new Payment_Services(getActivity(), "payment.db", null, 1);
         LayoutInflater inflater = getActivity().getLayoutInflater();
 
         final View view = inflater.inflate(R.layout.month_add, null);
@@ -149,8 +151,14 @@ public class Month_Add extends DialogFragment {
                                 SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
                                 final int start_date = Integer.parseInt(sdf.format(start.getTime()));
                                 final int end_date = Integer.parseInt(sdf.format(end.getTime()));
+                                final long regdate = System.currentTimeMillis();
 
                                 month_service.insert(SDY, SDM, SDD, start_date, EDY, EDM, EDD, end_date, amounT, car_num, car_name, car_type_title, user_name, mobile);
+
+                                final Map<String, Object> map = month_service.getResultForUpdate(car_num);
+                                final int idx = (int) map.get("idx");
+                                payment_services.insert(idx, "month", "", amounT, 0, 0, SDY, SDM, SDD, regdate);
+
                                 Bundle args = new Bundle();
                                 args.putString("status", "new");
                                 args.putString("car_num", car_num);
@@ -423,6 +431,7 @@ public class Month_Add extends DialogFragment {
 
                                 month_service.update(sdy, sdm, sdd, start_date, edy, edm, edd, end_date, amounT, car_name, car_type_title, user_name, mobile, "N", idx);
                                 month_service.updatePay(0, edy, edm, edd, end_date, "N", regdate, idx);
+
                                 dismiss();
                                 Bundle args = new Bundle();
                                 args.putString("status", "new");

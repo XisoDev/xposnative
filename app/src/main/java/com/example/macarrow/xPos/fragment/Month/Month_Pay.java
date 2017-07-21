@@ -63,8 +63,8 @@ public class Month_Pay extends DialogFragment {
             CarNum += " ]";
             Title.setText(CarNum);
             Pay_money.setText((Integer) map.get("amount") +"");
-            Amount.setText((Integer) map.get("amount")+"원");
-            Outstanding_amount.setText((Integer) map.get("amount")+"원");
+            Amount.setText((Integer) map.get("amount")+"");
+            Outstanding_amount.setText((Integer) map.get("amount")+"");
 
             // 시작날짜
             String sd = "";
@@ -153,7 +153,7 @@ public class Month_Pay extends DialogFragment {
                                         is_paid = "N";
                                     }
                                     month_service.updatePay(payMoney, end_date_y, end_date_m, end_date_d, end_date, is_paid, regdate, idx);
-                                    payment_services.insert(lookup_idx, "month", "card", total_result, 0, payMoney, year, month, day, regdate);
+                                    payment_services.insert(lookup_idx, "month", "card", 0, 0, payMoney, year, month, day, regdate);
                                     dismiss();
                                     fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment("possibility")).commit();
 
@@ -178,7 +178,7 @@ public class Month_Pay extends DialogFragment {
                                         is_paid = "N";
                                     }
                                     month_service.updatePay(payMoney, end_date_y, end_date_m, end_date_d, end_date, is_paid, regdate, idx);
-                                    payment_services.insert(lookup_idx, "month", "cash", total_result, 0, payMoney, year, month, day, regdate);
+                                    payment_services.insert(lookup_idx, "month", "cash", 0, 0, payMoney, year, month, day, regdate);
                                     dismiss();
                                     fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment("possibility")).commit();
                                 }
@@ -188,8 +188,6 @@ public class Month_Pay extends DialogFragment {
 
                         case R.id.close_pay_month:
 
-                            month_service.updatePay(payMoney, end_date_y, end_date_m, end_date_d, end_date, "N", regdate, idx);
-                            payment_services.insert(lookup_idx, "month", "", total_result, 0, 0, year, month, day, regdate);
                             dismiss();
                             fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment("possibility")).commit();
                             break;
@@ -225,8 +223,8 @@ public class Month_Pay extends DialogFragment {
             CarNum += (String) map.get("car_num");
             CarNum += " ]";
             Title.setText(CarNum);
-            Amount.setText((Integer) map.get("amount")+"원");
-            Pay_amount.setText((Integer) map.get("pay_amount")+"원");
+            Amount.setText((Integer) map.get("amount")+"");
+            Pay_amount.setText((Integer) map.get("pay_amount")+"");
 
             // 시작날짜
             String sd = "";
@@ -254,7 +252,7 @@ public class Month_Pay extends DialogFragment {
             final int edm = (Integer) map.get("end_date_m");
             final int edd = (Integer) map.get("end_date_d");
 
-            Outstanding_amount.setText((amount-pay_amount)+"원");
+            Outstanding_amount.setText((amount-pay_amount)+"");
             Pay_money.setText((amount-pay_amount) +"");
 
             // EidtText가 눌릴때마다 감지하는 부분
@@ -322,7 +320,7 @@ public class Month_Pay extends DialogFragment {
                                         is_paid = "N";
                                     }
                                     month_service.updatePay(pay, edy, edm, edd, end_date, is_paid, regdate, idx);
-                                    payment_services.insert(lookup_idx, "month", "card", Amount, 0, payMoney, year, month, day, regdate);
+                                    payment_services.insert(lookup_idx, "month", "card", 0, 0, payMoney, year, month, day, regdate);
                                     dismiss();
                                     fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment("possibility")).commit();
                                 }
@@ -347,7 +345,7 @@ public class Month_Pay extends DialogFragment {
                                         is_paid = "N";
                                     }
                                     month_service.updatePay(pay, edy, edm, edd, end_date, is_paid, regdate, idx);
-                                    payment_services.insert(lookup_idx, "month", "cash", Amount, 0, payMoney, year, month, day, regdate);
+                                    payment_services.insert(lookup_idx, "month", "cash", 0, 0, payMoney, year, month, day, regdate);
                                     dismiss();
                                     fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment("possibility")).commit();
                                 }
@@ -357,8 +355,6 @@ public class Month_Pay extends DialogFragment {
 
                         case R.id.close_pay_month:
 
-                            month_service.updatePay(pay_amount, edy, edm, edd, end_date, "N", regdate, idx);
-                            payment_services.insert(lookup_idx, "month", "", Amount, 0, 0, year, month, day, regdate);
                             dismiss();
                             fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment("possibility")).commit();
                             break;

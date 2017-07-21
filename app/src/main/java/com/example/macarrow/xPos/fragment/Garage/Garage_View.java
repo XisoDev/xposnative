@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.example.macarrow.xPos.R;
 import com.example.macarrow.xPos.Services.Garage_Service;
+import com.example.macarrow.xPos.Services.Payment_Services;
 import com.example.macarrow.xPos.fragment.Current_Fragment;
 import com.example.macarrow.xPos.fragment.History_Fragment;
 import com.example.macarrow.xPos.fragment.Payment.Payment_Discount;
@@ -34,6 +35,7 @@ public class Garage_View extends DialogFragment {
         LayoutInflater inflater = getActivity().getLayoutInflater();
 
         final Garage_Service garageService = new Garage_Service(getActivity(), "garage.db", null, 1);
+        final Payment_Services paymentServices = new Payment_Services(getActivity(), "payment.db", null, 1);
         final Map<String, Object> map = garageService.getResultForUpdate(idx);
         final int month_idx = (int) map.get("month_idx");
         final String is_daycar = (String) map.get("is_daycar");
@@ -53,6 +55,7 @@ public class Garage_View extends DialogFragment {
         final String isPaid = (String) map.get("is_paid");
         final String isOut = (String) map.get("is_out");
         final String isCancel = (String) map.get("is_cancel");
+        final long regdate = (long) map.get("regdate");
 
         final View view = inflater.inflate(R.layout.garage_view, null);
         final LinearLayout Out_car = (LinearLayout)view.findViewById(R.id.out_car);
@@ -199,6 +202,7 @@ public class Garage_View extends DialogFragment {
                         } else {
                             Bundle args = new Bundle();
                             args.putInt("idx", idx);
+                            args.putInt("result_charge", result_charge);
                             Payment_Discount payment_discount = new Payment_Discount();
                             payment_discount.setArguments(args);
                             payment_discount.setCancelable(false);
@@ -221,7 +225,10 @@ public class Garage_View extends DialogFragment {
 
                     case R.id.cancel_out:
 
+                        long cancel_date = System.currentTimeMillis();
+
                         garageService.cancelOutCar(idx);
+                        paymentServices.update( cancel_date, "Y", regdate);
                         if (status.equals("current")) {
                             fm.beginTransaction().replace(R.id.content_fragment, new Current_Fragment()).commit();
                         } else {

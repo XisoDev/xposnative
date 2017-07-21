@@ -124,7 +124,6 @@ public class Payment_Input extends DialogFragment {
             @Override
             public void onClick(View v) {
 
-                final int total_amount = (Integer.parseInt(Total_amount.getText().toString()));
                 final int pay_amount = (Integer.parseInt(Pay_amount.getText().toString()));
                 final int discount_cooper = (Integer.parseInt(Discount_cooper.getText().toString()));
                 final int discount_self = (Integer.parseInt(Discount_self.getText().toString()));
@@ -153,6 +152,7 @@ public class Payment_Input extends DialogFragment {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
+                                int total_amount = (Integer.parseInt(Total_amount.getText().toString()));
 
                                 if (is_daycar.equals("Y")) {
 
@@ -162,6 +162,10 @@ public class Payment_Input extends DialogFragment {
                                         is_paid = "Y";
                                     } else {
                                         is_paid = "N";
+                                    }
+
+                                    if (pay_amount > 0) {
+                                        total_amount = 0;
                                     }
 
                                     garageService.inDayCar(total_amount, payAmount, is_out, is_paid, idx);
@@ -213,6 +217,8 @@ public class Payment_Input extends DialogFragment {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
+                                int total_amount = (Integer.parseInt(Total_amount.getText().toString()));
+
                                 if (is_daycar.equals("Y")) {
 
                                     String is_out = "N";
@@ -221,6 +227,10 @@ public class Payment_Input extends DialogFragment {
                                         is_paid = "Y";
                                     } else {
                                         is_paid = "N";
+                                    }
+
+                                    if (pay_amount > 0) {
+                                        total_amount = 0;
                                     }
 
                                     garageService.inDayCar(total_amount, payAmount, is_out, is_paid, idx);
@@ -275,6 +285,8 @@ public class Payment_Input extends DialogFragment {
 
                                 String is_out = "Y";
                                 String is_paid = "";
+
+                                int total_amount = (Integer.parseInt(Total_amount.getText().toString()));
 
                                 if (total_amount > 0) {
                                     is_paid = "N";

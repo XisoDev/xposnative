@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="415px"
+    android:layout_width="515px"
     android:layout_height="wrap_content"
     >
     <TextView
         android:id="@+id/title_day_car"
-        android:layout_width="415px"
+        android:layout_width="515px"
         android:layout_height="42px"
         android:text="일차 추가 / 수정 / 삭제"
         android:gravity="center"
@@ -15,7 +15,7 @@
         android:textColor="@android:color/white"
         />
     <LinearLayout
-        android:layout_width="415px"
+        android:layout_width="515px"
         android:layout_height="44px"
         >
         <TextView
@@ -30,7 +30,7 @@
             />
         <EditText
             android:id="@+id/car_type_title"
-            android:layout_width="275px"
+            android:layout_width="375px"
             android:layout_height="44px"
             android:hint="차종 구분 (예:소형, 중형, 대형 ... )"
             android:gravity="center_vertical"
@@ -63,7 +63,7 @@
             />
         <EditText
             android:id="@+id/basic_amount"
-            android:layout_width="275px"
+            android:layout_width="375px"
             android:layout_height="44px"
             android:hint="일차요금"
             android:gravity="center_vertical"
@@ -74,7 +74,7 @@
             />
     </LinearLayout>
     <LinearLayout
-        android:layout_width="415px"
+        android:layout_width="515px"
         android:layout_height="33px"
         >
         <Button

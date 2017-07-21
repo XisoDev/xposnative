@@ -172,6 +172,6 @@ public class Config_DayCar_Add extends DialogFragment {
     public void onResume() {
         super.onResume();
         Window window = getDialog().getWindow();
-        window.setLayout(435, WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setLayout(535, WindowManager.LayoutParams.WRAP_CONTENT);
     }
 }

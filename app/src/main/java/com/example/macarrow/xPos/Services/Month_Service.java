@@ -160,8 +160,8 @@ public class Month_Service extends SQLiteOpenHelper {
                 "end_date_m = " + end_date_m + ", " +
                 "end_date_d = " + end_date_d + ", " +
                 "end_date = " + end_date + ", " +
-                "is_paid = '" + is_paid + "' " +
-                "regdate = '" + regdate + "' " +
+                "is_paid = '" + is_paid + "', " +
+                "regdate = " + regdate + " " +
                 "WHERE idx = " + idx + ";");
         db.close();
 
@@ -217,7 +217,7 @@ public class Month_Service extends SQLiteOpenHelper {
             map.put("car_type_title", cursor.getString(14));
             map.put("user_name", cursor.getString(15));
             map.put("mobile", cursor.getString(16));
-            map.put("regdate", cursor.getInt(17));
+            map.put("regdate", cursor.getLong(17));
             map.put("is_stop", cursor.getString(18));
             map.put("stop_date", cursor.getInt(19));
         }
@@ -262,7 +262,7 @@ public class Month_Service extends SQLiteOpenHelper {
             map.put("car_type_title", cursor.getString(14));
             map.put("user_name", cursor.getString(15));
             map.put("mobile", cursor.getString(16));
-            map.put("regdate", cursor.getInt(17));
+            map.put("regdate", cursor.getLong(17));
             map.put("is_stop", cursor.getString(18));
             map.put("stop_date", cursor.getInt(19));
             list.add(map);
@@ -304,7 +304,7 @@ public class Month_Service extends SQLiteOpenHelper {
             map.put("car_type_title", cursor.getString(14));
             map.put("user_name", cursor.getString(15));
             map.put("mobile", cursor.getString(16));
-            map.put("regdate", cursor.getInt(17));
+            map.put("regdate", cursor.getLong(17));
             map.put("is_stop", cursor.getString(18));
             map.put("stop_date", cursor.getInt(19));
             list.add(map);
@@ -356,7 +356,7 @@ public class Month_Service extends SQLiteOpenHelper {
             map.put("car_type_title", cursor.getString(14));
             map.put("user_name", cursor.getString(15));
             map.put("mobile", cursor.getString(16));
-            map.put("regdate", cursor.getInt(17));
+            map.put("regdate", cursor.getLong(17));
             map.put("is_stop", cursor.getString(18));
             map.put("stop_date", cursor.getInt(19));
             list.add(map);
@@ -391,7 +391,7 @@ public class Month_Service extends SQLiteOpenHelper {
             map.put("car_type_title", cursor.getString(14));
             map.put("user_name", cursor.getString(15));
             map.put("mobile", cursor.getString(16));
-            map.put("regdate", cursor.getInt(17));
+            map.put("regdate", cursor.getLong(17));
             map.put("is_stop", cursor.getString(18));
             map.put("stop_date", cursor.getInt(19));
         }
