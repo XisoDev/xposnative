@@ -35,7 +35,7 @@
             android:orientation="vertical"
             android:gravity="center"
             android:onClick="clickListener"
-            android:background="#eeeded"
+            android:background="@drawable/panel_top_select_bg"
             >
             <ImageView
                 android:layout_marginTop="5px"
@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="13px"
                 android:text="입차"
-                android:textColor="@color/panel_select_txt"
+                android:textColor="@color/panel_top_select_txt"
                 />
         </LinearLayout>
         <LinearLayout
@@ -58,7 +58,7 @@
             android:orientation="vertical"
             android:gravity="center"
             android:onClick="clickListener"
-            android:background="#eeeded"
+            android:background="@drawable/panel_top_select_bg"
             >
             <ImageView
                 android:layout_marginTop="5px"
@@ -71,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="13px"
                 android:text="출차"
-                android:textColor="@color/panel_select_txt"
+                android:textColor="@color/panel_top_select_txt"
                 />
         </LinearLayout>
         <LinearLayout
@@ -81,7 +81,7 @@
             android:orientation="vertical"
             android:gravity="center"
             android:onClick="clickListener"
-            android:background="#eeeded"
+            android:background="@drawable/panel_top_select_bg"
             >
             <ImageView
                 android:layout_marginTop="5px"
@@ -94,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="13px"
                 android:text="월차"
-                android:textColor="@color/panel_select_txt"
+                android:textColor="@color/panel_top_select_txt"
                 />
         </LinearLayout>
     </LinearLayout>
@@ -328,7 +328,6 @@
     <LinearLayout
         android:layout_width="389px"
         android:layout_height="111px"
-        android:background="#00bd93"
         android:orientation="horizontal"
         >
         <LinearLayout
@@ -338,6 +337,7 @@
             android:gravity="center"
             android:orientation="vertical"
             android:onClick="clickListener"
+            android:background="@drawable/panel_bottom_select_bg"
             >
             <ImageView
                 android:layout_width="45px"
@@ -349,7 +349,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="카드결제"
-                android:textColor="@android:color/white"
+                android:textColor="@color/panel_bottom_select_txt"
                 android:textSize="13px"
                 />
         </LinearLayout>
@@ -360,6 +360,7 @@
             android:gravity="center"
             android:orientation="vertical"
             android:onClick="clickListener"
+            android:background="@drawable/panel_bottom_select_bg"
             >
             <ImageView
                 android:layout_width="45px"
@@ -371,7 +372,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="현금영수증"
-                android:textColor="@android:color/white"
+                android:textColor="@color/panel_bottom_select_txt"
                 android:textSize="13px"
                 />
         </LinearLayout>
@@ -382,6 +383,7 @@
             android:gravity="center"
             android:orientation="vertical"
             android:onClick="clickListener"
+            android:background="@drawable/panel_bottom_select_bg"
             >
             <ImageView
                 android:layout_width="45px"
@@ -393,7 +395,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="현금함열기"
-                android:textColor="@android:color/white"
+                android:textColor="@color/panel_bottom_select_txt"
                 android:textSize="13px"
                 />
         </LinearLayout>
