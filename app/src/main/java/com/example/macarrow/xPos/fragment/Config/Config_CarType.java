@@ -55,6 +55,7 @@ public class Config_CarType extends Fragment {
 
                         Bundle args = new Bundle();
                         args.putString("status", "new");
+                        args.putString("from", "cartype");
                         Config_CarType_Add config_carType_add = new Config_CarType_Add();
                         config_carType_add.setArguments(args);
                         config_carType_add.setCancelable(false);

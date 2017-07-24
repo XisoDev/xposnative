@@ -204,6 +204,7 @@ public class MainActivity extends Activity {
                                     Bundle args = new Bundle();
                                     args.putString("status", "new");
                                     args.putString("is_daycar", "N");
+                                    args.putString("from", "current");
                                     Config_CarType_Add config_carType_add = new Config_CarType_Add();
                                     config_carType_add.setArguments(args);
                                     config_carType_add.setCancelable(false);
@@ -211,6 +212,7 @@ public class MainActivity extends Activity {
                                 }
                             });
                             adb.show();
+                            mainField.setText("관리번호");
 
                         } else if (garageService.doubleCarNum(carNum) > 0) {
 
@@ -382,6 +384,7 @@ public class MainActivity extends Activity {
                             Bundle args = new Bundle();
                             args.putString("status", "new");
                             args.putString("car_num", car_num);
+                            args.putString("from", "current");
                             Month_Add month_add = new Month_Add();
                             month_add.setArguments(args);
                             month_add.setCancelable(false);

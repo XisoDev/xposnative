@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.example.macarrow.xPos.R;
 import com.example.macarrow.xPos.Services.CarType_Services;
-
+import com.example.macarrow.xPos.fragment.Current_Fragment;
 import java.util.Map;
 
 public class Config_CarType_Add extends DialogFragment {
@@ -26,6 +26,7 @@ public class Config_CarType_Add extends DialogFragment {
         Bundle mArgs = getArguments();
         final int idx = mArgs.getInt("idx");
         final String status = mArgs.getString("status");
+        final String from = mArgs.getString("from");
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
@@ -96,13 +97,21 @@ public class Config_CarType_Add extends DialogFragment {
                             String isDaycar = "N";
                             carTypeServices.insert(car_type_title, minute_free, basic_amount, basic_minute, amount_unit, minute_unit, isDaycar);
 
-                            fm.beginTransaction().replace(R.id.content_fragment, new Config_CarType("nomal")).commit();
+                            if (from.equals("current")) {
+                                fm.beginTransaction().replace(R.id.content_fragment, new Current_Fragment()).commit();
+                            } else {
+                                fm.beginTransaction().replace(R.id.content_fragment, new Config_CarType("nomal")).commit();
+                            }
                             dismiss();
                             break;
 
                         case R.id.close_cartype :
 
-                            fm.beginTransaction().replace(R.id.content_fragment, new Config_CarType("nomal")).commit();
+                            if (from.equals("current")) {
+                                fm.beginTransaction().replace(R.id.content_fragment, new Current_Fragment()).commit();
+                            } else {
+                                fm.beginTransaction().replace(R.id.content_fragment, new Config_CarType("nomal")).commit();
+                            }
                             dismiss();
                             break;
                     }

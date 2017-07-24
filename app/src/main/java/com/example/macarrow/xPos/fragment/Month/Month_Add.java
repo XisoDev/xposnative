@@ -15,12 +15,12 @@ import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.macarrow.xPos.R;
 import com.example.macarrow.xPos.Services.Month_Service;
 import com.example.macarrow.xPos.Services.Payment_Services;
+import com.example.macarrow.xPos.fragment.Current_Fragment;
 import com.example.macarrow.xPos.fragment.Month_Fragment;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -34,6 +34,7 @@ public class Month_Add extends DialogFragment {
         Bundle mArgs = getArguments();
         final String status = mArgs.getString("status");
         final String car_num = mArgs.getString("car_num");
+        final String from = mArgs.getString("from");
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         final Month_Service month_service = new Month_Service(getActivity(), "month.db", null, 1);
@@ -162,13 +163,12 @@ public class Month_Add extends DialogFragment {
                                 Bundle args = new Bundle();
                                 args.putString("status", "new");
                                 args.putString("car_num", car_num);
+                                args.putString("from", "current");
                                 Month_Pay month_pay = new Month_Pay();
                                 month_pay.setArguments(args);
                                 month_pay.setCancelable(false);
                                 month_pay.show(getFragmentManager(), "month_pay");
                                 dismiss();
-
-                                fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment("possibility")).commit();
 
                             }
                             break;
@@ -177,8 +177,11 @@ public class Month_Add extends DialogFragment {
 
                             dismiss();
 
-                            fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment("possibility")).commit();
-
+                            if (from.equals("current")) {
+                                fm.beginTransaction().replace(R.id.content_fragment, new Current_Fragment()).commit();
+                            } else {
+                                fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment("possibility")).commit();
+                            }
                             break;
                     }
                 }

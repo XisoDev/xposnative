@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.example.macarrow.xPos.R;
 import com.example.macarrow.xPos.Services.Month_Service;
 import com.example.macarrow.xPos.Services.Payment_Services;
+import com.example.macarrow.xPos.fragment.Current_Fragment;
 import com.example.macarrow.xPos.fragment.Month_Fragment;
 
 import java.util.Calendar;
@@ -32,6 +33,7 @@ public class Month_Pay extends DialogFragment {
         Bundle mArgs = getArguments();
         final String status = mArgs.getString("status");
         final String car_num = mArgs.getString("car_num");
+        final String from = mArgs.getString("from");
 
         final Month_Service month_service = new Month_Service(getActivity(), "month.db", null, 1);
         final Payment_Services payment_services = new Payment_Services(getActivity(), "payment.db", null, 1);
@@ -155,8 +157,12 @@ public class Month_Pay extends DialogFragment {
                                     month_service.updatePay(payMoney, end_date_y, end_date_m, end_date_d, end_date, is_paid, regdate, idx);
                                     payment_services.insert(lookup_idx, "month", "card", 0, 0, payMoney, year, month, day, regdate);
                                     dismiss();
-                                    fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment("possibility")).commit();
 
+                                    if (from.equals("current")) {
+                                        fm.beginTransaction().replace(R.id.content_fragment, new Current_Fragment()).commit();
+                                    } else {
+                                        fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment("possibility")).commit();
+                                    }
                                 }
                             });
                             do_card.show();
@@ -180,7 +186,12 @@ public class Month_Pay extends DialogFragment {
                                     month_service.updatePay(payMoney, end_date_y, end_date_m, end_date_d, end_date, is_paid, regdate, idx);
                                     payment_services.insert(lookup_idx, "month", "cash", 0, 0, payMoney, year, month, day, regdate);
                                     dismiss();
-                                    fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment("possibility")).commit();
+
+                                    if (from.equals("current")) {
+                                        fm.beginTransaction().replace(R.id.content_fragment, new Current_Fragment()).commit();
+                                    } else {
+                                        fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment("possibility")).commit();
+                                    }
                                 }
                             });
                             do_cash.show();
@@ -189,7 +200,12 @@ public class Month_Pay extends DialogFragment {
                         case R.id.close_pay_month:
 
                             dismiss();
-                            fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment("possibility")).commit();
+
+                            if (from.equals("current")) {
+                                fm.beginTransaction().replace(R.id.content_fragment, new Current_Fragment()).commit();
+                            } else {
+                                fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment("possibility")).commit();
+                            }
                             break;
                     }
                 }
