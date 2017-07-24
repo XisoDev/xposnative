@@ -228,7 +228,7 @@ public class Payment_Discount extends DialogFragment {
 
                     case R.id.dc_self:
 
-                        if (discount_self < 0) {
+                        if (discount_self <= 0) {
                             AlertDialog.Builder adb = new AlertDialog.Builder(getActivity());
                             adb.setTitle("임의 할인을 하려면 임의 할인 금액을 입력해주세요");
                             adb.setNegativeButton("닫기", null);

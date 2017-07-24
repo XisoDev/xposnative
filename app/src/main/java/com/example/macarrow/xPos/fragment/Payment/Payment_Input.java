@@ -126,7 +126,6 @@ public class Payment_Input extends DialogFragment {
 
                 final int pay_amount = (Integer.parseInt(Pay_amount.getText().toString()));
                 final int discount_cooper = (Integer.parseInt(Discount_cooper.getText().toString()));
-                final int discount_self = (Integer.parseInt(Discount_self.getText().toString()));
                 final int pay_money = (Integer.parseInt(Pay_money.getText().toString()));
                 final int payAmount = pay_amount+pay_money;
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
@@ -153,6 +152,9 @@ public class Payment_Input extends DialogFragment {
                             public void onClick(DialogInterface dialog, int which) {
 
                                 int total_amount = (Integer.parseInt(Total_amount.getText().toString()));
+                                int total_amounts = (Integer.parseInt(Total_amount.getText().toString()));
+                                int discount_self = (Integer.parseInt(Discount_self.getText().toString()));
+                                int cooper_amount = discount_cooper+discount_self;
 
                                 if (is_daycar.equals("Y")) {
 
@@ -165,12 +167,11 @@ public class Payment_Input extends DialogFragment {
                                     }
 
                                     if (pay_amount > 0) {
-                                        total_amount = 0;
+                                        total_amounts = 0;
                                     }
 
                                     garageService.inDayCar(total_amount, payAmount, is_out, is_paid, idx);
-                                    int cooper_amount = discount_cooper+discount_self;
-                                    payment_services.insert(idx, "garage", "card", total_amount, cooper_amount, pay_money, year, month, day, regdate);
+                                    payment_services.insert(idx, "garage", "card", total_amounts, cooper_amount, pay_money, year, month, day, regdate);
                                     dismiss();
 
                                 } else {
@@ -196,11 +197,15 @@ public class Payment_Input extends DialogFragment {
                                         is_paid = "N";
                                     }
 
+                                    if (pay_amount > 0) {
+                                        total_amounts = 0;
+                                        cooper_amount = 0;
+                                    }
+
                                     garageService.outCar(endDate, total_amount, payAmount, cooperIdx, discount_cooper, discount_self, is_out, is_paid, regdate, idx);
                                     String lookup_type = "garage";
                                     String pay_type = "card";
-                                    int cooper_amount = discount_cooper+discount_self;
-                                    payment_services.insert(idx, lookup_type, pay_type, total_amount, cooper_amount, pay_money, year, month, day, regdate);
+                                    payment_services.insert(idx, lookup_type, pay_type, total_amounts, cooper_amount, pay_money, year, month, day, regdate);
                                     dismiss();
 
                                 }
@@ -218,6 +223,9 @@ public class Payment_Input extends DialogFragment {
                             public void onClick(DialogInterface dialog, int which) {
 
                                 int total_amount = (Integer.parseInt(Total_amount.getText().toString()));
+                                int total_amounts = (Integer.parseInt(Total_amount.getText().toString()));
+                                int discount_self = (Integer.parseInt(Discount_self.getText().toString()));
+                                int cooper_amount = discount_cooper+discount_self;
 
                                 if (is_daycar.equals("Y")) {
 
@@ -230,14 +238,13 @@ public class Payment_Input extends DialogFragment {
                                     }
 
                                     if (pay_amount > 0) {
-                                        total_amount = 0;
+                                        total_amounts = 0;
                                     }
 
                                     garageService.inDayCar(total_amount, payAmount, is_out, is_paid, idx);
                                     String lookup_type = "garage";
                                     String pay_type = "cash";
-                                    int cooper_amount = discount_cooper+discount_self;
-                                    payment_services.insert(idx, lookup_type, pay_type, total_amount, cooper_amount, pay_money, year, month, day, regdate);
+                                    payment_services.insert(idx, lookup_type, pay_type, total_amounts, cooper_amount, pay_money, year, month, day, regdate);
                                     dismiss();
 
                                 } else {
@@ -262,11 +269,15 @@ public class Payment_Input extends DialogFragment {
                                         is_paid = "N";
                                     }
 
+                                    if (pay_amount > 0) {
+                                        total_amounts = 0;
+                                        cooper_amount = 0;
+                                    }
+
                                     garageService.outCar(endDate, total_amount, payAmount, cooperIdx, discount_cooper, discount_self, is_out, is_paid, regdate, idx);
                                     String lookup_type = "garage";
                                     String pay_type = "cash";
-                                    int cooper_amount = discount_cooper+discount_self;
-                                    payment_services.insert(idx, lookup_type, pay_type, total_amount, cooper_amount, pay_money, year, month, day, regdate);
+                                    payment_services.insert(idx, lookup_type, pay_type, total_amounts, cooper_amount, pay_money, year, month, day, regdate);
                                     dismiss();
 
                                 }
