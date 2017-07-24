@@ -96,7 +96,7 @@ public class Payment_Services extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void update(long cancel_date,
+    public void cancePay(long cancel_date,
                        String is_cancel,
                        long regdate) {
         SQLiteDatabase db = getWritableDatabase();
@@ -104,6 +104,19 @@ public class Payment_Services extends SQLiteOpenHelper {
         db.execSQL("UPDATE payment SET cancel_date = " + cancel_date + ", " +
                 "is_cancel = '" + is_cancel + "' " +
                 "WHERE regdate = " + regdate + ";");
+        db.close();
+    }
+
+    public void cancelOut(long cancel_date,
+                          String is_cancel,
+                          int lookup_idx,
+                          String lookup_type) {
+        SQLiteDatabase db = getWritableDatabase();
+        // 입력한 항목과 일치하는 행의 가격 정보 수정
+        db.execSQL("UPDATE payment SET cancel_date = " + cancel_date + ", " +
+                "is_cancel = '" + is_cancel + "' " +
+                "WHERE lookup_idx = " + lookup_idx + " " +
+                "AND lookup_type = '" + lookup_type + "';");
         db.close();
     }
 

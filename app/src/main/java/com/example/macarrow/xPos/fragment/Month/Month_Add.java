@@ -167,14 +167,18 @@ public class Month_Add extends DialogFragment {
                                 month_pay.setCancelable(false);
                                 month_pay.show(getFragmentManager(), "month_pay");
                                 dismiss();
+
                                 fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment("possibility")).commit();
+
                             }
                             break;
 
                         case R.id.close_month :
 
                             dismiss();
+
                             fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment("possibility")).commit();
+
                             break;
                     }
                 }
@@ -248,6 +252,33 @@ public class Month_Add extends DialogFragment {
                 private FragmentManager fm = getFragmentManager();
                 @Override
                 public void onClick(View v) {
+
+                    long regdate = System.currentTimeMillis();
+                    int sdy = Start_date.getYear();
+                    int sdm = Start_date.getMonth() + 1;
+                    int sdd = Start_date.getDayOfMonth();
+                    int edy = End_date.getYear();
+                    int edm = End_date.getMonth() + 1;
+                    int edd = End_date.getDayOfMonth();
+                    EditText amount = (EditText) view.findViewById(R.id.amount);
+                    int amounT = Integer.parseInt(amount.getText().toString());
+                    Calendar start = new GregorianCalendar(Start_date.getYear(), Start_date.getMonth(), Start_date.getDayOfMonth());
+                    Calendar end = new GregorianCalendar(End_date.getYear(), End_date.getMonth(), End_date.getDayOfMonth());
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+                    int start_date = Integer.parseInt(sdf.format(start.getTime()));
+                    int end_date = Integer.parseInt(sdf.format(end.getTime()));
+                    String car_name = Car_name.getText().toString();
+                    String car_type_title = Car_type_title.getText().toString();
+                    String user_name = User_name.getText().toString();
+                    String mobile = Mobile.getText().toString();
+
+                    String is_stop = "";
+                    if (Is_stop.getText().equals("활성")) {
+                        is_stop = "N";
+                    } else if (Is_stop.getText().equals("중단")) {
+                        is_stop = "Y";
+                    }
+
                     switch (v.getId()) {
 
                         case R.id.update_month:
@@ -273,31 +304,7 @@ public class Month_Add extends DialogFragment {
                                 return;
 
                             } else {
-                                String is_stop = "";
-                                if (Is_stop.getText().equals("활성")) {
-                                    is_stop = "N";
-                                } else if (Is_stop.getText().equals("중단")) {
-                                    is_stop = "Y";
-                                }
-                                int sdy = Start_date.getYear();
-                                int sdm = Start_date.getMonth() + 1;
-                                int sdd = Start_date.getDayOfMonth();
-                                int edy = End_date.getYear();
-                                int edm = End_date.getMonth() + 1;
-                                int edd = End_date.getDayOfMonth();
 
-                                Calendar start = new GregorianCalendar(Start_date.getYear(), Start_date.getMonth(), Start_date.getDayOfMonth());
-                                Calendar end = new GregorianCalendar(End_date.getYear(), End_date.getMonth(), End_date.getDayOfMonth());
-                                SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-                                final int start_date = Integer.parseInt(sdf.format(start.getTime()));
-                                final int end_date = Integer.parseInt(sdf.format(end.getTime()));
-
-                                EditText amount = (EditText) view.findViewById(R.id.amount);
-                                int amounT = Integer.parseInt(amount.getText().toString());
-                                String car_name = Car_name.getText().toString();
-                                String car_type_title = Car_type_title.getText().toString();
-                                String user_name = User_name.getText().toString();
-                                String mobile = Mobile.getText().toString();
                                 month_service.update(sdy, sdm, sdd, start_date, edy, edm, edd, end_date, amounT, car_name, car_type_title, user_name, mobile, is_stop, idx);
                                 fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment("possibility")).commit();
                             }
@@ -430,7 +437,7 @@ public class Month_Add extends DialogFragment {
                                 final long regdate = System.currentTimeMillis();
 
                                 month_service.update(sdy, sdm, sdd, start_date, edy, edm, edd, end_date, amounT, car_name, car_type_title, user_name, mobile, "N", idx);
-                                month_service.updatePay(0, edy, edm, edd, end_date, "N", regdate, idx);
+                                payment_services.insert(idx, "month", "", amounT, 0, 0, sdy, sdm, sdd, regdate);
 
                                 dismiss();
                                 Bundle args = new Bundle();

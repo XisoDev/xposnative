@@ -179,7 +179,7 @@ public class Garage_View extends DialogFragment {
                             });
                             adb.setNegativeButton("닫기", null);
                             adb.show();
-                        } if (is_daycar.equals("Y") && isPaid.equals("Y")) {
+                        } else if (month_idx == 0 && is_daycar.equals("Y") && isPaid.equals("Y")) {
 
                             AlertDialog.Builder adb = new AlertDialog.Builder(getActivity());
                             adb.setTitle("출차 - " + car_num);
@@ -228,7 +228,7 @@ public class Garage_View extends DialogFragment {
                         long cancel_date = System.currentTimeMillis();
 
                         garageService.cancelOutCar(idx);
-                        paymentServices.update( cancel_date, "Y", regdate);
+                        paymentServices.cancelOut( cancel_date, "Y", idx, "garage");
                         if (status.equals("current")) {
                             fm.beginTransaction().replace(R.id.content_fragment, new Current_Fragment()).commit();
                         } else {
