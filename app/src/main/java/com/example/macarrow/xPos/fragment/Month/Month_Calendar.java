@@ -346,6 +346,7 @@ public class Month_Calendar extends Fragment implements View.OnClickListener {
                     Bundle args = new Bundle();
                     args.putString("status", "modify");
                     args.putString("car_num", car_num);
+                    args.putString("from", "cal");
                     Month_Add month_add = new Month_Add();
                     month_add.setArguments(args);
                     month_add.setCancelable(false);

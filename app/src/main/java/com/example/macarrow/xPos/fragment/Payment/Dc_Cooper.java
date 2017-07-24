@@ -26,6 +26,7 @@ public class Dc_Cooper extends DialogFragment {
         final int idx = mArgs.getInt("idx");
         final int totalAmount = mArgs.getInt("total_amount");
         final long endDate = mArgs.getLong("end_date");
+        final String status = mArgs.getString("status");
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
@@ -96,6 +97,7 @@ public class Dc_Cooper extends DialogFragment {
                 args.putInt("discount_cooper", discount_cooper);
                 args.putInt("minute_free", (int) list.get(position).get("minute_max") + minute_free);
                 args.putLong("end_date", endDate);
+                args.putString("status", status);
                 Payment_Input payment_input = new Payment_Input();
                 payment_input.setArguments(args);
                 payment_input.setCancelable(false);

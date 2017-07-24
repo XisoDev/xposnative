@@ -90,7 +90,7 @@ public class Month_Fragment extends Fragment {
                 Bundle args = new Bundle();
                 args.putString("status", "new");
                 args.putString("car_num", "");
-                args.putString("from", "month");
+                args.putString("from", month);
                 Month_Add month_add = new Month_Add();
                 month_add.setArguments(args);
                 month_add.setCancelable(false);
@@ -106,6 +106,7 @@ public class Month_Fragment extends Fragment {
                 Bundle args = new Bundle();
                 args.putString("status", "modify");
                 args.putString("car_num", car_num);
+                args.putString("from", month);
                 Month_Add month_add = new Month_Add();
                 month_add.setArguments(args);
                 month_add.setCancelable(false);

@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.example.macarrow.xPos.R;
 import com.example.macarrow.xPos.Services.Garage_Service;
 import com.example.macarrow.xPos.Services.Payment_Services;
+import com.example.macarrow.xPos.fragment.Cooper_Fragment;
 import com.example.macarrow.xPos.fragment.Current_Fragment;
 import com.example.macarrow.xPos.fragment.History_Fragment;
 import com.example.macarrow.xPos.fragment.Payment.Payment_Discount;
@@ -172,6 +173,8 @@ public class Garage_View extends DialogFragment {
                                     garageService.updateForceOut(is_out, total_amount, endDate, is_paid, idx);
                                     if (status.equals("current")) {
                                         fm.beginTransaction().replace(R.id.content_fragment, new Current_Fragment()).commit();
+                                    } else if (status.equals("period") || status.equals("day")) {
+                                        fm.beginTransaction().replace(R.id.content_fragment, new Cooper_Fragment(status)).commit();
                                     } else {
                                         fm.beginTransaction().replace(R.id.content_fragment, new History_Fragment(status)).commit();
                                     }
@@ -191,6 +194,8 @@ public class Garage_View extends DialogFragment {
                                     garageService.outDayCar(endDate, is_out, idx);
                                     if (status.equals("current")) {
                                         fm.beginTransaction().replace(R.id.content_fragment, new Current_Fragment()).commit();
+                                    } else if (status.equals("period") || status.equals("day")) {
+                                        fm.beginTransaction().replace(R.id.content_fragment, new Cooper_Fragment(status)).commit();
                                     } else {
                                         fm.beginTransaction().replace(R.id.content_fragment, new History_Fragment(status)).commit();
                                     }
@@ -202,6 +207,7 @@ public class Garage_View extends DialogFragment {
                         } else {
                             Bundle args = new Bundle();
                             args.putInt("idx", idx);
+                            args.putString("status", status);
                             args.putInt("result_charge", result_charge);
                             Payment_Discount payment_discount = new Payment_Discount();
                             payment_discount.setArguments(args);
@@ -217,6 +223,8 @@ public class Garage_View extends DialogFragment {
                         garageService.cancelCar(endDate, idx);
                         if (status.equals("current")) {
                             fm.beginTransaction().replace(R.id.content_fragment, new Current_Fragment()).commit();
+                        } else if (status.equals("period") || status.equals("day")) {
+                            fm.beginTransaction().replace(R.id.content_fragment, new Cooper_Fragment(status)).commit();
                         } else {
                             fm.beginTransaction().replace(R.id.content_fragment, new History_Fragment(status)).commit();
                         }
@@ -231,6 +239,8 @@ public class Garage_View extends DialogFragment {
                         paymentServices.cancelOut( cancel_date, "Y", idx, "garage");
                         if (status.equals("current")) {
                             fm.beginTransaction().replace(R.id.content_fragment, new Current_Fragment()).commit();
+                        } else if (status.equals("period") || status.equals("day")) {
+                            fm.beginTransaction().replace(R.id.content_fragment, new Cooper_Fragment(status)).commit();
                         } else {
                             fm.beginTransaction().replace(R.id.content_fragment, new History_Fragment(status)).commit();
                         }
@@ -241,6 +251,8 @@ public class Garage_View extends DialogFragment {
 
                         if (status.equals("current")) {
                             fm.beginTransaction().replace(R.id.content_fragment, new Current_Fragment()).commit();
+                        } else if (status.equals("period") || status.equals("day")) {
+                            fm.beginTransaction().replace(R.id.content_fragment, new Cooper_Fragment(status)).commit();
                         } else {
                             fm.beginTransaction().replace(R.id.content_fragment, new History_Fragment(status)).commit();
                         }

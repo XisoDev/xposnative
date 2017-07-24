@@ -28,6 +28,7 @@ public class Payment_Discount extends DialogFragment {
         Bundle mArgs = getArguments();
         final int idx = mArgs.getInt("idx");
         final int result_charge = mArgs.getInt("result_charge");
+        final String status = mArgs.getString("status");
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
@@ -153,6 +154,7 @@ public class Payment_Discount extends DialogFragment {
                             args.putInt("idx", idx);
                             args.putInt("total_amount", result_charge);
                             args.putLong("end_date", end_date);
+                            args.putString("status", status);
                             Payment_Input payment_input = new Payment_Input();
                             payment_input.setArguments(args);
                             payment_input.setCancelable(false);
@@ -190,6 +192,7 @@ public class Payment_Discount extends DialogFragment {
                             args.putInt("idx", idx);
                             args.putInt("total_amount", result_charge);
                             args.putLong("end_date", end_date);
+                            args.putString("status", status);
                             Dc_Cooper dc_cooper = new Dc_Cooper();
                             dc_cooper.setArguments(args);
                             dc_cooper.setCancelable(false);
@@ -218,6 +221,7 @@ public class Payment_Discount extends DialogFragment {
                             Bundle args = new Bundle();
                             args.putInt("idx", idx);
                             args.putLong("end_date", end_date);
+                            args.putString("status", status);
                             Dc_Day_Car dc_day_car = new Dc_Day_Car();
                             dc_day_car.setArguments(args);
                             dc_day_car.setCancelable(false);
@@ -240,6 +244,7 @@ public class Payment_Discount extends DialogFragment {
                             args.putInt("total_amount", result_charge);
                             args.putInt("discount_self", discount_self);
                             args.putLong("end_date", end_date);
+                            args.putString("status", status);
                             Payment_Input payment_input = new Payment_Input();
                             payment_input.setArguments(args);
                             payment_input.setCancelable(false);

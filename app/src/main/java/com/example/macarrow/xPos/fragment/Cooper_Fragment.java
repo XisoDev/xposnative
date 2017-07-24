@@ -190,6 +190,7 @@ public class Cooper_Fragment extends Fragment {
                                         Bundle args = new Bundle();
                                         args.putInt("idx", idx);
                                         args.putInt("result_charge", total_amount);
+                                        args.putString("status", cooper);
                                         Garage_View garage_view = new Garage_View();
                                         garage_view.setArguments(args);
                                         garage_view.setCancelable(false);
@@ -287,6 +288,7 @@ public class Cooper_Fragment extends Fragment {
                                         Bundle args = new Bundle();
                                         args.putInt("idx", idx);
                                         args.putInt("result_charge", total_amount);
+                                        args.putString("status", cooper);
                                         Garage_View garage_view = new Garage_View();
                                         garage_view.setArguments(args);
                                         garage_view.setCancelable(false);

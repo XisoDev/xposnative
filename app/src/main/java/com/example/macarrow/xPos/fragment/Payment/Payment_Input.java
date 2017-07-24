@@ -3,6 +3,7 @@ package com.example.macarrow.xPos.fragment.Payment;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.Editable;
@@ -17,6 +18,9 @@ import android.widget.TextView;
 import com.example.macarrow.xPos.R;
 import com.example.macarrow.xPos.Services.Garage_Service;
 import com.example.macarrow.xPos.Services.Payment_Services;
+import com.example.macarrow.xPos.fragment.Cooper_Fragment;
+import com.example.macarrow.xPos.fragment.Current_Fragment;
+import com.example.macarrow.xPos.fragment.History_Fragment;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -36,6 +40,7 @@ public class Payment_Input extends DialogFragment {
         final int minute_free = mArgs.getInt("minute_free");
         int discountSelf = mArgs.getInt("discount_self");
         final long endDate = mArgs.getLong("end_date");
+        final String status = mArgs.getString("status");
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
@@ -151,6 +156,7 @@ public class Payment_Input extends DialogFragment {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
+                                FragmentManager fm = getFragmentManager();
                                 int total_amount = (Integer.parseInt(Total_amount.getText().toString()));
                                 int total_amounts = (Integer.parseInt(Total_amount.getText().toString()));
                                 int discount_self = (Integer.parseInt(Discount_self.getText().toString()));
@@ -172,6 +178,15 @@ public class Payment_Input extends DialogFragment {
 
                                     garageService.inDayCar(total_amount, payAmount, is_out, is_paid, idx);
                                     payment_services.insert(idx, "garage", "card", total_amounts, cooper_amount, pay_money, year, month, day, regdate);
+
+                                    if (status.equals("current")) {
+                                        fm.beginTransaction().replace(R.id.content_fragment, new Current_Fragment()).commit();
+                                    } else if (status.equals("period") || status.equals("day")) {
+                                        fm.beginTransaction().replace(R.id.content_fragment, new Cooper_Fragment(status)).commit();
+                                    } else {
+                                        fm.beginTransaction().replace(R.id.content_fragment, new History_Fragment(status)).commit();
+                                    }
+
                                     dismiss();
 
                                 } else {
@@ -206,6 +221,15 @@ public class Payment_Input extends DialogFragment {
                                     String lookup_type = "garage";
                                     String pay_type = "card";
                                     payment_services.insert(idx, lookup_type, pay_type, total_amounts, cooper_amount, pay_money, year, month, day, regdate);
+
+                                    if (status.equals("current")) {
+                                        fm.beginTransaction().replace(R.id.content_fragment, new Current_Fragment()).commit();
+                                    } else if (status.equals("period") || status.equals("day")) {
+                                        fm.beginTransaction().replace(R.id.content_fragment, new Cooper_Fragment(status)).commit();
+                                    } else {
+                                        fm.beginTransaction().replace(R.id.content_fragment, new History_Fragment(status)).commit();
+                                    }
+
                                     dismiss();
 
                                 }
@@ -222,6 +246,7 @@ public class Payment_Input extends DialogFragment {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
+                                FragmentManager fm = getFragmentManager();
                                 int total_amount = (Integer.parseInt(Total_amount.getText().toString()));
                                 int total_amounts = (Integer.parseInt(Total_amount.getText().toString()));
                                 int discount_self = (Integer.parseInt(Discount_self.getText().toString()));
@@ -245,6 +270,15 @@ public class Payment_Input extends DialogFragment {
                                     String lookup_type = "garage";
                                     String pay_type = "cash";
                                     payment_services.insert(idx, lookup_type, pay_type, total_amounts, cooper_amount, pay_money, year, month, day, regdate);
+
+                                    if (status.equals("current")) {
+                                        fm.beginTransaction().replace(R.id.content_fragment, new Current_Fragment()).commit();
+                                    } else if (status.equals("period") || status.equals("day")) {
+                                        fm.beginTransaction().replace(R.id.content_fragment, new Cooper_Fragment(status)).commit();
+                                    } else {
+                                        fm.beginTransaction().replace(R.id.content_fragment, new History_Fragment(status)).commit();
+                                    }
+
                                     dismiss();
 
                                 } else {
@@ -278,6 +312,15 @@ public class Payment_Input extends DialogFragment {
                                     String lookup_type = "garage";
                                     String pay_type = "cash";
                                     payment_services.insert(idx, lookup_type, pay_type, total_amounts, cooper_amount, pay_money, year, month, day, regdate);
+
+                                    if (status.equals("current")) {
+                                        fm.beginTransaction().replace(R.id.content_fragment, new Current_Fragment()).commit();
+                                    } else if (status.equals("period") || status.equals("day")) {
+                                        fm.beginTransaction().replace(R.id.content_fragment, new Cooper_Fragment(status)).commit();
+                                    } else {
+                                        fm.beginTransaction().replace(R.id.content_fragment, new History_Fragment(status)).commit();
+                                    }
+
                                     dismiss();
 
                                 }
@@ -294,6 +337,8 @@ public class Payment_Input extends DialogFragment {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
+
+                                FragmentManager fm = getFragmentManager();
                                 String is_out = "Y";
                                 String is_paid = "";
 
@@ -306,6 +351,15 @@ public class Payment_Input extends DialogFragment {
                                 }
 
                                 garageService.updateForceOut(is_out, total_amount, endDate, is_paid, idx);
+
+                                if (status.equals("current")) {
+                                    fm.beginTransaction().replace(R.id.content_fragment, new Current_Fragment()).commit();
+                                } else if (status.equals("period") || status.equals("day")) {
+                                    fm.beginTransaction().replace(R.id.content_fragment, new Cooper_Fragment(status)).commit();
+                                } else {
+                                    fm.beginTransaction().replace(R.id.content_fragment, new History_Fragment(status)).commit();
+                                }
+
                                 dismiss();
                             }
                         });

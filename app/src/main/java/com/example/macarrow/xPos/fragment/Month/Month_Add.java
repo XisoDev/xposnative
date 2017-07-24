@@ -163,7 +163,7 @@ public class Month_Add extends DialogFragment {
                                 Bundle args = new Bundle();
                                 args.putString("status", "new");
                                 args.putString("car_num", car_num);
-                                args.putString("from", "current");
+                                args.putString("from", from);
                                 Month_Pay month_pay = new Month_Pay();
                                 month_pay.setArguments(args);
                                 month_pay.setCancelable(false);
@@ -180,7 +180,7 @@ public class Month_Add extends DialogFragment {
                             if (from.equals("current")) {
                                 fm.beginTransaction().replace(R.id.content_fragment, new Current_Fragment()).commit();
                             } else {
-                                fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment("possibility")).commit();
+                                fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment(from)).commit();
                             }
                             break;
                     }
@@ -309,7 +309,12 @@ public class Month_Add extends DialogFragment {
                             } else {
 
                                 month_service.update(sdy, sdm, sdd, start_date, edy, edm, edd, end_date, amounT, car_name, car_type_title, user_name, mobile, is_stop, idx);
-                                fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment("possibility")).commit();
+
+                                if (from.equals("cal")) {
+                                    fm.beginTransaction().replace(R.id.content_fragment, new Month_Calendar()).commit();
+                                } else {
+                                    fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment(from)).commit();
+                                }
                             }
                             dismiss();
                             break;
@@ -319,6 +324,7 @@ public class Month_Add extends DialogFragment {
                             Bundle args = new Bundle();
                             args.putString("status", "ext");
                             args.putString("car_num", car_num);
+                            args.putString("from", from);
                             Month_Add month_add = new Month_Add();
                             month_add.setArguments(args);
                             month_add.setCancelable(false);
@@ -331,6 +337,7 @@ public class Month_Add extends DialogFragment {
                             args = new Bundle();
                             args.putString("status", "add");
                             args.putString("car_num", car_num);
+                            args.putString("from", from);
                             Month_Pay month_pay = new Month_Pay();
                             month_pay.setArguments(args);
                             month_pay.setCancelable(false);
@@ -446,6 +453,7 @@ public class Month_Add extends DialogFragment {
                                 Bundle args = new Bundle();
                                 args.putString("status", "new");
                                 args.putString("car_num", carNum);
+                                args.putString("from", from);
                                 Month_Pay month_pay = new Month_Pay();
                                 month_pay.setArguments(args);
                                 month_pay.setCancelable(false);

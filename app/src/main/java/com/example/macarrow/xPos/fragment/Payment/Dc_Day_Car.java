@@ -25,6 +25,7 @@ public class Dc_Day_Car extends DialogFragment{
         Bundle mArgs = getArguments();
         final int idx = mArgs.getInt("idx");
         final long endDate = mArgs.getLong("end_date");
+        final String status = mArgs.getString("status");
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
@@ -68,6 +69,7 @@ public class Dc_Day_Car extends DialogFragment{
                 args.putInt("idx", idx);
                 args.putInt("total_amount", total_amount);
                 args.putLong("end_date", endDate);
+                args.putString("status", status);
                 Payment_Input payment_input = new Payment_Input();
                 payment_input.setArguments(args);
                 payment_input.setCancelable(false);

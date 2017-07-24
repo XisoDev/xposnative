@@ -160,8 +160,10 @@ public class Month_Pay extends DialogFragment {
 
                                     if (from.equals("current")) {
                                         fm.beginTransaction().replace(R.id.content_fragment, new Current_Fragment()).commit();
+                                    } else if (from.equals("cal")) {
+                                        fm.beginTransaction().replace(R.id.content_fragment, new Month_Calendar()).commit();
                                     } else {
-                                        fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment("possibility")).commit();
+                                        fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment(from)).commit();
                                     }
                                 }
                             });
@@ -189,8 +191,10 @@ public class Month_Pay extends DialogFragment {
 
                                     if (from.equals("current")) {
                                         fm.beginTransaction().replace(R.id.content_fragment, new Current_Fragment()).commit();
+                                    } else if (from.equals("cal")) {
+                                        fm.beginTransaction().replace(R.id.content_fragment, new Month_Calendar()).commit();
                                     } else {
-                                        fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment("possibility")).commit();
+                                        fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment(from)).commit();
                                     }
                                 }
                             });
@@ -203,8 +207,10 @@ public class Month_Pay extends DialogFragment {
 
                             if (from.equals("current")) {
                                 fm.beginTransaction().replace(R.id.content_fragment, new Current_Fragment()).commit();
+                            } else if (from.equals("cal")) {
+                                fm.beginTransaction().replace(R.id.content_fragment, new Month_Calendar()).commit();
                             } else {
-                                fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment("possibility")).commit();
+                                fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment(from)).commit();
                             }
                             break;
                     }
@@ -338,7 +344,11 @@ public class Month_Pay extends DialogFragment {
                                     month_service.updatePay(pay, edy, edm, edd, end_date, is_paid, regdate, idx);
                                     payment_services.insert(lookup_idx, "month", "card", 0, 0, payMoney, year, month, day, regdate);
                                     dismiss();
-                                    fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment("possibility")).commit();
+                                    if (from.equals("cal")) {
+                                        fm.beginTransaction().replace(R.id.content_fragment, new Month_Calendar()).commit();
+                                    } else {
+                                        fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment(from)).commit();
+                                    }
                                 }
                             });
                             do_card.show();
@@ -363,7 +373,11 @@ public class Month_Pay extends DialogFragment {
                                     month_service.updatePay(pay, edy, edm, edd, end_date, is_paid, regdate, idx);
                                     payment_services.insert(lookup_idx, "month", "cash", 0, 0, payMoney, year, month, day, regdate);
                                     dismiss();
-                                    fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment("possibility")).commit();
+                                    if (from.equals("cal")) {
+                                        fm.beginTransaction().replace(R.id.content_fragment, new Month_Calendar()).commit();
+                                    } else {
+                                        fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment(from)).commit();
+                                    }
                                 }
                             });
                             do_cash.show();
@@ -372,7 +386,11 @@ public class Month_Pay extends DialogFragment {
                         case R.id.close_pay_month:
 
                             dismiss();
-                            fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment("possibility")).commit();
+                            if (from.equals("cal")) {
+                                fm.beginTransaction().replace(R.id.content_fragment, new Month_Calendar()).commit();
+                            } else {
+                                fm.beginTransaction().replace(R.id.content_fragment, new Month_Fragment(from)).commit();
+                            }
                             break;
                     }
                 }
