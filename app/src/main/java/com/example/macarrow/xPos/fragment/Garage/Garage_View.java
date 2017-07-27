@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.example.macarrow.xPos.R;
@@ -81,6 +82,8 @@ public class Garage_View extends DialogFragment {
         final TextView Minute_unit = (TextView)view.findViewById(R.id.minute_unit);
         final TextView Is_out = (TextView)view.findViewById(R.id.is_out);
         final TextView Is_cancel = (TextView)view.findViewById(R.id.is_cancel);
+        final Button cancelPay = (Button)view.findViewById(R.id.cancel_pay);
+
         builder.setNegativeButton("닫기", null);
         builder.setView(view);
 
@@ -126,13 +129,36 @@ public class Garage_View extends DialogFragment {
         Discount_cooper.setText(discount_cooper + "원");
         Discount_self.setText(discount_self + "원");
         Pay_amount.setText(pay_amount + "원");
+
+        if (pay_amount > 0 && month_idx == 0) {
+            cancelPay.setVisibility(View.VISIBLE);
+        }
+
+        cancelPay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                long cancel_date = System.currentTimeMillis();
+                garageService.cancelPayCar(idx);
+                paymentServices.cancelPay(cancel_date, "Y", regdate);
+
+                dismiss();
+
+                Bundle args = new Bundle();
+                args.putInt("idx", idx);
+                args.putInt("result_charge", result_charge);
+                Garage_View garage_view = new Garage_View();
+                garage_view.setArguments(args);
+                garage_view.setCancelable(false);
+                garage_view.show(getFragmentManager(), "garage_view");
+            }
+        });
+
         Car_type_title.setText(car_type_title);
         Minute_free.setText(minute_free + "분");
         Basic_amount.setText(basic_amount + "원");
         Basic_minute.setText(basic_minute + "분");
         Amount_unit.setText(amount_unit + "원");
         Minute_unit.setText(minute_unit + "분");
-
 
         if (isOut.equals("Y")) {
             Is_out.setText("출차됨");

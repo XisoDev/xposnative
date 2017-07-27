@@ -225,9 +225,8 @@ public class Cooper_Fragment extends Fragment {
                 day = today.get(Calendar.DAY_OF_MONTH);
 
                 Search_end.setText(year+"."+(month+1)+"."+day+"");
-                GregorianCalendar cal = new GregorianCalendar();
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
-                endDate = Integer.parseInt(simpleDateFormat.format(cal.getTime()).toString());
+                endDate = Integer.parseInt(simpleDateFormat.format(today.getTime()).toString());
 
                 View.OnClickListener onClickListenerDay = new View.OnClickListener() {
                     @Override

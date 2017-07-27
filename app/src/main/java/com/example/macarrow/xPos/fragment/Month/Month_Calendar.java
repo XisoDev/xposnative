@@ -277,9 +277,7 @@ public class Month_Calendar extends Fragment implements View.OnClickListener {
 
                 Calendar mCal = Calendar.getInstance();
                 Integer today = mCal.get(Calendar.DAY_OF_MONTH);
-                Integer thisMonth = mCal.get(Calendar.MONTH)+1;
                 String sToday = String.valueOf(today);
-                String sMonth = String.valueOf(thisMonth);
                 dayViewHolder.Calendar_day.setText(day.getDay());
 
                 long now = System.currentTimeMillis();
@@ -292,17 +290,18 @@ public class Month_Calendar extends Fragment implements View.OnClickListener {
                 int year = Integer.parseInt(curYearFormat.format(date));
                 int month = Integer.parseInt(curMonthFormat.format(date));
                 int tDay = Integer.parseInt(curDayFormat.format(date));
+                mDay = Integer.parseInt(day.getDay());
+                int in = month_service.calMonthInCnt(mThisMonthCalendar.get(Calendar.YEAR), (mThisMonthCalendar.get(Calendar.MONTH) + 1), mDay);
+                int out = month_service.calMonthOutCnt(mThisMonthCalendar.get(Calendar.YEAR), (mThisMonthCalendar.get(Calendar.MONTH) + 1), mDay);
 
-                int in = month_service.calMonthInCnt(year, month, tDay);
-                int out = month_service.calMonthOutCnt(year, month, tDay);
-
-                if (day.getDay() == sToday) {
+                if ((mThisMonthCalendar.get(Calendar.MONTH) + 1) == month) {
                     dayViewHolder.Month_in_cnt.setText("시작"+in+"대");
                     dayViewHolder.Month_out_cnt.setText("종료"+out+"대");
                 }
 
-                if (day.getDay() == sToday) {
+                if (day.getDay() == sToday && position >= tDay && (mThisMonthCalendar.get(Calendar.MONTH) + 1) == month) {
                     dayViewHolder.Calendar_day.setTextColor(Color.GREEN);
+
                 } else if (day.isInMonth()) {
 
                      if (position % 7 == 0) {
@@ -313,8 +312,9 @@ public class Month_Calendar extends Fragment implements View.OnClickListener {
 
                 } else {
                     dayViewHolder.Calendar_day.setText("");
+                    dayViewHolder.Month_in_cnt.setText("");
+                    dayViewHolder.Month_out_cnt.setText("");
                 }
-
             }
             return convertView;
         }

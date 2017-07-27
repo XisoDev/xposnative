@@ -1,22 +1,28 @@
 package com.example.macarrow.xPos.fragment;
 
 import android.app.Fragment;
+import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
 import com.example.macarrow.xPos.DayInfo;
 import com.example.macarrow.xPos.R;
 import com.example.macarrow.xPos.Services.Garage_Service;
+import com.example.macarrow.xPos.Services.Month_Service;
 import com.example.macarrow.xPos.Services.Payment_Services;
-import com.example.macarrow.xPos.adapter.CalcuAdapter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 
 public class Calcu_Fragment extends Fragment implements View.OnClickListener {
 
@@ -70,13 +76,13 @@ public class Calcu_Fragment extends Fragment implements View.OnClickListener {
         int tMonth = today.get(Calendar.MONTH)+1;
         int tDay = today.get(Calendar.DAY_OF_MONTH);
 
-        int total_amounts = payment_services.totalAmountSum(tYear, tMonth, tDay);
-        int nomal_amounts = payment_services.nomalAmountSum(tYear, tMonth, tDay);
-        int month_amounts = payment_services.monthAmountSum(tYear, tMonth, tDay);
-        int cooper_amounts = payment_services.cooperAmountSum(tYear, tMonth, tDay);
-        int pay_amounts = payment_services.payAmountSum(tYear, tMonth, tDay);
-        int in_car_counts = garage_service.inCarCount(tYear, tMonth, tDay);
-        int out_car_counts = garage_service.outCarCount(tYear, tMonth, tDay);
+        int total_amounts = payment_services.totalAmountSum(tYear, tMonth);
+        int nomal_amounts = payment_services.nomalAmountSum(tYear, tMonth);
+        int month_amounts = payment_services.monthAmountSum(tYear, tMonth);
+        int cooper_amounts = payment_services.cooperAmountSum(tYear, tMonth);
+        int pay_amounts = payment_services.payAmountSum(tYear, tMonth);
+        int in_car_counts = garage_service.inCarCount(tYear, tMonth);
+        int out_car_counts = garage_service.outCarCount(tYear, tMonth);
 
         Total_amounts.setText(total_amounts+"원");
         Nomal_amounts.setText(nomal_amounts + "원");
@@ -99,22 +105,22 @@ public class Calcu_Fragment extends Fragment implements View.OnClickListener {
                 month = mThisMonthCalendar.get(Calendar.MONTH)+1;
                 mDay = Integer.parseInt(day.getDay());
 
-                int total_amounts = payment_services.totalAmountSum(year, month, mDay);
-                int nomal_amounts = payment_services.nomalAmountSum(year, month, mDay);
-                int month_amounts = payment_services.monthAmountSum(year, month, mDay);
-                int cooper_amounts = payment_services.cooperAmountSum(year, month, mDay);
-                int pay_amounts = payment_services.payAmountSum(year, month, mDay);
-                int in_car_counts = garage_service.inCarCount(year, month, mDay);
-                int out_car_counts = garage_service.outCarCount(year, month, mDay);
-
-                Total_amounts.setText(total_amounts+"원");
-                Nomal_amounts.setText(nomal_amounts+"원");
-                Month_amounts.setText(month_amounts+"원");
-                Dc_coopers.setText(cooper_amounts+"원");
-                Pay_amounts.setText(pay_amounts+"원");
-                Receivable.setText((total_amounts-pay_amounts-cooper_amounts)+"원");
-                In_car_counts.setText(in_car_counts+"대");
-                Out_car_counts.setText(out_car_counts+"대");
+//                int total_amounts = payment_services.totalAmountSum(year, month, mDay);
+//                int nomal_amounts = payment_services.nomalAmountSum(year, month, mDay);
+//                int month_amounts = payment_services.monthAmountSum(year, month, mDay);
+//                int cooper_amounts = payment_services.cooperAmountSum(year, month, mDay);
+//                int pay_amounts = payment_services.payAmountSum(year, month, mDay);
+//                int in_car_counts = garage_service.inCarCount(year, month, mDay);
+//                int out_car_counts = garage_service.outCarCount(year, month, mDay);
+//
+//                Total_amounts.setText(total_amounts+"원");
+//                Nomal_amounts.setText(nomal_amounts+"원");
+//                Month_amounts.setText(month_amounts+"원");
+//                Dc_coopers.setText(cooper_amounts+"원");
+//                Pay_amounts.setText(pay_amounts+"원");
+//                Receivable.setText((total_amounts-pay_amounts-cooper_amounts)+"원");
+//                In_car_counts.setText(in_car_counts+"대");
+//                Out_car_counts.setText(out_car_counts+"대");
 
             }
         });
@@ -214,7 +220,113 @@ public class Calcu_Fragment extends Fragment implements View.OnClickListener {
     }
 
     private void initCalendarAdapter() {
-        mAdapter = new CalcuAdapter(getActivity(), R.layout.month_calendar_view, mDayList);
+        mAdapter = new CalcuAdapter(getActivity(), R.layout.calcu_calendar_view, mDayList);
         CalGrid.setAdapter(mAdapter);
     }
+
+    public class CalcuAdapter extends BaseAdapter {
+
+        private ArrayList<DayInfo> mDayList;
+        private Context context;
+        private int mResource;
+        private LayoutInflater mflater;
+
+        public CalcuAdapter (Context context, int textResource, ArrayList<DayInfo> dayList) {
+            this.context = context;
+            this.mDayList = dayList;
+            this.mResource = textResource;
+            this.mflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        }
+
+        @Override
+        public int getCount() {
+            return mDayList.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return mDayList.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        public View getView (int position, View convertView, ViewGroup parent) {
+
+            DayInfo day = mDayList.get(position);
+            ViewHolder dayViewHolder;
+
+            if (convertView == null) {
+
+                convertView = mflater.inflate(mResource, null);
+                dayViewHolder = new ViewHolder();
+                dayViewHolder.calendar_day = (TextView) convertView.findViewById(R.id.calendar_day);
+                dayViewHolder.total_amount = (TextView) convertView.findViewById(R.id.total_amount);
+                dayViewHolder.receivable = (TextView) convertView.findViewById(R.id.receivable);
+                dayViewHolder.pay_amount = (TextView) convertView.findViewById(R.id.pay_amount);
+                convertView.setTag(dayViewHolder);
+
+            } else {
+
+                dayViewHolder = (ViewHolder) convertView.getTag();
+
+            } if (day != null) {
+
+                Calendar mCal = Calendar.getInstance();
+                Integer today = mCal.get(Calendar.DAY_OF_MONTH);
+                String sToday = String.valueOf(today);
+                dayViewHolder.calendar_day.setText(day.getDay());
+
+                long now = System.currentTimeMillis();
+                final Date date = new Date(now);
+                final SimpleDateFormat curYearFormat = new SimpleDateFormat("yyyy", Locale.KOREA);
+                final SimpleDateFormat curMonthFormat = new SimpleDateFormat("MM", Locale.KOREA);
+                final SimpleDateFormat curDayFormat = new SimpleDateFormat("dd", Locale.KOREA);
+
+                Payment_Services payment_services = new Payment_Services(context, "month.db", null, 1);
+                int year = Integer.parseInt(curYearFormat.format(date));
+                int month = Integer.parseInt(curMonthFormat.format(date));
+                int tDay = Integer.parseInt(curDayFormat.format(date));
+                mDay = Integer.parseInt(day.getDay());
+                int total_amount = payment_services.totalAmountSumDay(mThisMonthCalendar.get(Calendar.YEAR), (mThisMonthCalendar.get(Calendar.MONTH) + 1), mDay);
+                int pay_amount = payment_services.payAmountSumDay(mThisMonthCalendar.get(Calendar.YEAR), (mThisMonthCalendar.get(Calendar.MONTH) + 1), mDay);
+
+                if ((mThisMonthCalendar.get(Calendar.MONTH) + 1) == month) {
+                    dayViewHolder.total_amount.setText(total_amount+"원");
+                    dayViewHolder.receivable.setText((total_amount-pay_amount)+"원");
+                    dayViewHolder.pay_amount.setText(pay_amount+"원");
+                }
+
+                if (day.getDay() == sToday && position >= tDay && (mThisMonthCalendar.get(Calendar.MONTH) + 1) == month) {
+                    dayViewHolder.calendar_day.setTextColor(Color.GREEN);
+
+                } else if (day.isInMonth()) {
+
+                    if (position % 7 == 0) {
+                        dayViewHolder.calendar_day.setTextColor(Color.RED);
+                    } else if (position % 7 == 6) {
+                        dayViewHolder.calendar_day.setTextColor(Color.BLUE);
+                    }
+
+                } else {
+                    dayViewHolder.calendar_day.setText("");
+                    dayViewHolder.calendar_day.setText("");
+                    dayViewHolder.calendar_day.setText("");
+                }
+            }
+            return convertView;
+        }
+    }
+}
+
+class ViewHolder {
+
+    TextView calendar_day;
+    TextView total_amount;
+    TextView receivable;
+    TextView pay_amount;
+
 }

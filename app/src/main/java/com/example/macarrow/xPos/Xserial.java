@@ -26,7 +26,7 @@ import android.widget.Toast;
 public class Xserial extends Activity {
 
     public static String TAG = "Xserial";
-    public static String DEVICE_NAME = "/dev/bus/usb/001/003";
+    public static String DEVICE_NAME = "/dev/bus/usb/001/011";
     public static int END_POINT_SEND = 1;
     public static int END_POINT_RECEIVE = 0;
     private static final int TIMEOUT = 3500;
@@ -83,7 +83,11 @@ public class Xserial extends Activity {
             @Override
             public void onClick(View v) {
 
-                if(isOpen) new DataTransferThread(new byte[]{1,2,3}, END_POINT_SEND).start();
+                if(isOpen){
+                    byte[] buffer = hexStringToByteArray("02000604FD4344039EA6");
+
+                    new DataTransferThread(buffer, END_POINT_SEND).start();
+                }
 
             }
         });
@@ -303,5 +307,15 @@ public class Xserial extends Activity {
             if(endpointIndex == 0) receivedData = buffer;
 
         }
+    }
+
+    private byte[] hexStringToByteArray(String s) {
+        int len = s.length();
+        byte[] data = new byte[len / 2];
+        for (int i = 0; i < len; i += 2) {
+            data[i / 2] = (byte) ((Character.digit(s.charAt(i), 16) << 4)
+                    + Character.digit(s.charAt(i+1), 16));
+        }
+        return data;
     }
 }

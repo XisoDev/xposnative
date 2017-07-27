@@ -277,7 +277,27 @@ public class Garage_Service extends SQLiteOpenHelper {
                 "cooper_start = 0, " +
                 "cooper_end = 0, " +
                 "discount_cooper = 0, " +
-                "discount_self = 0 " +
+                "discount_self = 0, " +
+                "regdate = 0 " +
+                "WHERE idx = " + idx + ";");
+        db.close();
+
+    }
+
+    public void cancelPayCar(int idx) {
+        SQLiteDatabase db = getWritableDatabase();
+        // 입력한 항목과 일치하는 행의 가격 정보 수정
+        db.execSQL("UPDATE garage SET is_out = 'N', " +
+                "is_paid = 'N', " +
+                "end_date = 0, " +
+                "pay_amount = 0, " +
+                "cooper_idx = 0, " +
+                "cooper_title = '', " +
+                "cooper_start = 0, " +
+                "cooper_end = 0, " +
+                "discount_cooper = 0, " +
+                "discount_self = 0, " +
+                "regdate = 0 " +
                 "WHERE idx = " + idx + ";");
         db.close();
 
@@ -299,17 +319,17 @@ public class Garage_Service extends SQLiteOpenHelper {
         return cursor.getCount();
     }
 
-    public int inCarCount(int year, int month, int day) {
+    public int inCarCount(int year, int month) {
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM garage WHERE start_year = " + year + " AND start_month = " + month + " AND start_day = " + day + " ", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM garage WHERE start_year = " + year + " AND start_month = " + month + " ", null);
         cursor.moveToFirst();
         cursor.close();
         return cursor.getCount();
     }
 
-    public int outCarCount(int year, int month, int day) {
+    public int outCarCount(int year, int month) {
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM garage WHERE is_out = 'Y' AND start_year = " + year + " AND start_month = " + month + " AND start_day = " + day + " ", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM garage WHERE is_out = 'Y' AND start_year = " + year + " AND start_month = " + month + " ", null);
         cursor.moveToFirst();
         cursor.close();
         return cursor.getCount();
