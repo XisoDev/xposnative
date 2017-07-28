@@ -142,51 +142,81 @@ public class Payment_Services extends SQLiteOpenHelper {
 
     public int nomalAmountSum(int year, int month) {
         SQLiteDatabase db = getReadableDatabase();
-        int month_amount = 0;
+        int pay_amount = 0;
         Cursor cursor = db.rawQuery("SELECT sum(pay_amount) FROM payment WHERE is_cancel = 'N' AND lookup_type = 'garage' AND pay_year = " + year + " AND pay_month = " + month + " ", null);
         cursor.moveToFirst();
-        month_amount = cursor.getInt(0);
+        pay_amount = cursor.getInt(0);
         cursor.close();
-        return month_amount;
+        return pay_amount;
+    }
+
+    public int nomalAmountSumDay(int year, int month, int day) {
+        SQLiteDatabase db = getReadableDatabase();
+        int pay_amount = 0;
+        Cursor cursor = db.rawQuery("SELECT sum(pay_amount) FROM payment WHERE is_cancel = 'N' AND lookup_type = 'garage' AND pay_year = " + year + " AND pay_month = " + month + " AND pay_day = " + day + " ", null);
+        cursor.moveToFirst();
+        pay_amount = cursor.getInt(0);
+        cursor.close();
+        return pay_amount;
     }
 
     public int monthAmountSum(int year, int month) {
         SQLiteDatabase db = getReadableDatabase();
-        int month_amount = 0;
+        int pay_amount = 0;
         Cursor cursor = db.rawQuery("SELECT sum(pay_amount) FROM payment WHERE is_cancel = 'N' AND lookup_type = 'month' AND pay_year = " + year + " AND pay_month = " + month + " ", null);
         cursor.moveToFirst();
-        month_amount = cursor.getInt(0);
+        pay_amount = cursor.getInt(0);
         cursor.close();
-        return month_amount;
+        return pay_amount;
+    }
+
+    public int monthAmountSumDay(int year, int month, int day) {
+        SQLiteDatabase db = getReadableDatabase();
+        int pay_amount = 0;
+        Cursor cursor = db.rawQuery("SELECT sum(pay_amount) FROM payment WHERE is_cancel = 'N' AND lookup_type = 'month' AND pay_year = " + year + " AND pay_month = " + month + " AND pay_day = " + day + " ", null);
+        cursor.moveToFirst();
+        pay_amount = cursor.getInt(0);
+        cursor.close();
+        return pay_amount;
     }
 
     public int cooperAmountSum(int year, int month) {
         SQLiteDatabase db = getReadableDatabase();
-        int total_amount = 0;
+        int cooper_amount = 0;
         Cursor cursor = db.rawQuery("SELECT sum(cooper_amount) FROM payment WHERE is_cancel = 'N' AND pay_year = " + year + " AND pay_month = " + month + " ", null);
         cursor.moveToFirst();
-        total_amount = cursor.getInt(0);
+        cooper_amount = cursor.getInt(0);
         cursor.close();
-        return total_amount;
+        return cooper_amount;
+    }
+
+    public int cooperAmountSumDay(int year, int month, int day) {
+        SQLiteDatabase db = getReadableDatabase();
+        int cooper_amount = 0;
+        Cursor cursor = db.rawQuery("SELECT sum(cooper_amount) FROM payment WHERE is_cancel = 'N' AND pay_year = " + year + " AND pay_month = " + month + " AND pay_day = " + day + " ", null);
+        cursor.moveToFirst();
+        cooper_amount = cursor.getInt(0);
+        cursor.close();
+        return cooper_amount;
     }
 
     public int payAmountSum(int year, int month) {
         SQLiteDatabase db = getReadableDatabase();
-        int total_amount = 0;
+        int pay_amount = 0;
         Cursor cursor = db.rawQuery("SELECT sum(pay_amount) FROM payment WHERE is_cancel = 'N' AND pay_year = " + year + " AND pay_month = " + month + " ", null);
         cursor.moveToFirst();
-        total_amount = cursor.getInt(0);
+        pay_amount = cursor.getInt(0);
         cursor.close();
-        return total_amount;
+        return pay_amount;
     }
 
     public int payAmountSumDay(int year, int month, int day) {
         SQLiteDatabase db = getReadableDatabase();
-        int total_amount = 0;
+        int pay_amount = 0;
         Cursor cursor = db.rawQuery("SELECT sum(pay_amount) FROM payment WHERE is_cancel = 'N' AND pay_year = " + year + " AND pay_month = " + month + " AND pay_day = " + day + " ", null);
         cursor.moveToFirst();
-        total_amount = cursor.getInt(0);
+        pay_amount = cursor.getInt(0);
         cursor.close();
-        return total_amount;
+        return pay_amount;
     }
 }

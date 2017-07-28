@@ -34,6 +34,7 @@ import java.util.Map;
 public class Month_Calendar extends Fragment implements View.OnClickListener {
 
     public Month_Calendar() {}
+
     public static int SUNDAY        = 1;
     public static int MONDAY        = 2;
     public static int TUESDAY       = 3;
@@ -294,9 +295,13 @@ public class Month_Calendar extends Fragment implements View.OnClickListener {
                 int in = month_service.calMonthInCnt(mThisMonthCalendar.get(Calendar.YEAR), (mThisMonthCalendar.get(Calendar.MONTH) + 1), mDay);
                 int out = month_service.calMonthOutCnt(mThisMonthCalendar.get(Calendar.YEAR), (mThisMonthCalendar.get(Calendar.MONTH) + 1), mDay);
 
-                if ((mThisMonthCalendar.get(Calendar.MONTH) + 1) == month) {
+                if (day.isInMonth() || (mThisMonthCalendar.get(Calendar.MONTH) + 1) == month) {
                     dayViewHolder.Month_in_cnt.setText("시작"+in+"대");
                     dayViewHolder.Month_out_cnt.setText("종료"+out+"대");
+                } if (in <= 0) {
+                    dayViewHolder.Month_in_cnt.setText("");
+                } if (out <= 0) {
+                    dayViewHolder.Month_out_cnt.setText("");
                 }
 
                 if (day.getDay() == sToday && position >= tDay && (mThisMonthCalendar.get(Calendar.MONTH) + 1) == month) {

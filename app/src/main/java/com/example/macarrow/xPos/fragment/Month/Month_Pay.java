@@ -329,7 +329,7 @@ public class Month_Pay extends DialogFragment {
 
                             AlertDialog.Builder do_card = new AlertDialog.Builder(getActivity());
                             do_card.setTitle(payMoney+"원을 카드 결제하시겠습니까?");
-                            do_card.setNegativeButton("닫기", null);
+                            do_card.setNegativeButton(year+""+month+""+day+"닫기", null);
                             do_card.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {

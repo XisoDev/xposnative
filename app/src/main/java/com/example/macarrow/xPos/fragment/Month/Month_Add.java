@@ -75,16 +75,16 @@ public class Month_Add extends DialogFragment {
             Start_date.init(Start_date.getYear(), Start_date.getMonth(), Start_date.getDayOfMonth(), new DatePicker.OnDateChangedListener() {
                 @Override
                 public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                    String startDate = String.format("%d. %d. %d", year, monthOfYear + 1, dayOfMonth);
-                    Toast.makeText(getActivity(), startDate, Toast.LENGTH_SHORT).show();
+//                    String startDate = String.format("%d. %d. %d", year, monthOfYear + 1, dayOfMonth);
+//                    Toast.makeText(getActivity(), startDate, Toast.LENGTH_SHORT).show();
                 }
             });
 
             End_date.init(End_date.getYear(), End_date.getMonth(), End_date.getDayOfMonth() + 30, new DatePicker.OnDateChangedListener() {
                 @Override
                 public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                    String endDate = String.format("%d. %d. %d", year, monthOfYear + 1, dayOfMonth);
-                    Toast.makeText(getActivity(), endDate, Toast.LENGTH_SHORT).show();
+//                    String endDate = String.format("%d. %d. %d", year, monthOfYear + 1, dayOfMonth);
+//                    Toast.makeText(getActivity(), endDate, Toast.LENGTH_SHORT).show();
 
 //                        Calendar end = new GregorianCalendar(End_date.getYear(), End_date.getMonth(), End_date.getDayOfMonth());
 //                        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
@@ -133,32 +133,37 @@ public class Month_Add extends DialogFragment {
                             } else {
 
                                 EditText amount = (EditText) view.findViewById(R.id.amount);
-                                final int amounT = Integer.parseInt(amount.getText().toString());
-                                final String car_num = Car_num.getText().toString();
-                                final String car_name = Car_name.getText().toString();
-                                final String car_type_title = Car_type_title.getText().toString();
-                                final String user_name = User_name.getText().toString();
-                                final String mobile = Mobile.getText().toString();
+                                int amounT = Integer.parseInt(amount.getText().toString());
+                                String car_num = Car_num.getText().toString();
+                                String car_name = Car_name.getText().toString();
+                                String car_type_title = Car_type_title.getText().toString();
+                                String user_name = User_name.getText().toString();
+                                String mobile = Mobile.getText().toString();
 
-                                final int SDY = Start_date.getYear();
-                                final int SDM = Start_date.getMonth() + 1;
-                                final int SDD = Start_date.getDayOfMonth();
-                                final int EDY = End_date.getYear();
-                                final int EDM = End_date.getMonth() + 1;
-                                final int EDD = End_date.getDayOfMonth();
+                                GregorianCalendar calendar = new GregorianCalendar();
+                                int year = calendar.get(Calendar.YEAR);
+                                int month = calendar.get(Calendar.MONTH)+1;
+                                int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+                                int SDY = Start_date.getYear();
+                                int SDM = Start_date.getMonth() + 1;
+                                int SDD = Start_date.getDayOfMonth();
+                                int EDY = End_date.getYear();
+                                int EDM = End_date.getMonth() + 1;
+                                int EDD = End_date.getDayOfMonth();
 
                                 Calendar start = new GregorianCalendar(Start_date.getYear(), Start_date.getMonth(), Start_date.getDayOfMonth());
                                 Calendar end = new GregorianCalendar(End_date.getYear(), End_date.getMonth(), End_date.getDayOfMonth());
                                 SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-                                final int start_date = Integer.parseInt(sdf.format(start.getTime()));
-                                final int end_date = Integer.parseInt(sdf.format(end.getTime()));
-                                final long regdate = System.currentTimeMillis();
+                                int start_date = Integer.parseInt(sdf.format(start.getTime()));
+                                int end_date = Integer.parseInt(sdf.format(end.getTime()));
+                                long regdate = System.currentTimeMillis();
 
                                 month_service.insert(SDY, SDM, SDD, start_date, EDY, EDM, EDD, end_date, amounT, car_num, car_name, car_type_title, user_name, mobile);
 
-                                final Map<String, Object> map = month_service.getResultForUpdate(car_num);
-                                final int idx = (int) map.get("idx");
-                                payment_services.insert(idx, "month", "", amounT, 0, 0, SDY, SDM, SDD, regdate);
+                                Map<String, Object> map = month_service.getResultForUpdate(car_num);
+                                int idx = (int) map.get("idx");
+                                payment_services.insert(idx, "month", "", amounT, 0, 0, year, month, day, regdate);
 
                                 Bundle args = new Bundle();
                                 args.putString("status", "new");
@@ -426,11 +431,16 @@ public class Month_Add extends DialogFragment {
                             } else {
 
                                 EditText amount = (EditText) view.findViewById(R.id.amount);
-                                final int amounT = Integer.parseInt(amount.getText().toString());
-                                final String car_name = Car_name.getText().toString();
-                                final String car_type_title = Car_type_title.getText().toString();
-                                final String user_name = User_name.getText().toString();
-                                final String mobile = Mobile.getText().toString();
+                                int amounT = Integer.parseInt(amount.getText().toString());
+                                String car_name = Car_name.getText().toString();
+                                String car_type_title = Car_type_title.getText().toString();
+                                String user_name = User_name.getText().toString();
+                                String mobile = Mobile.getText().toString();
+
+                                GregorianCalendar calendar = new GregorianCalendar();
+                                int year = calendar.get(Calendar.YEAR);
+                                int month = calendar.get(Calendar.MONTH)+1;
+                                int day = calendar.get(Calendar.DAY_OF_MONTH);
 
                                 int sdy = Start_date.getYear();
                                 int sdm = Start_date.getMonth() + 1;
@@ -442,12 +452,12 @@ public class Month_Add extends DialogFragment {
                                 Calendar start = new GregorianCalendar(Start_date.getYear(), Start_date.getMonth(), Start_date.getDayOfMonth());
                                 Calendar end = new GregorianCalendar(End_date.getYear(), End_date.getMonth(), End_date.getDayOfMonth());
                                 SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-                                final int start_date = Integer.parseInt(sdf.format(start.getTime()));
-                                final int end_date = Integer.parseInt(sdf.format(end.getTime()));
-                                final long regdate = System.currentTimeMillis();
+                                int start_date = Integer.parseInt(sdf.format(start.getTime()));
+                                int end_date = Integer.parseInt(sdf.format(end.getTime()));
+                                long regdate = System.currentTimeMillis();
 
                                 month_service.update(sdy, sdm, sdd, start_date, edy, edm, edd, end_date, amounT, car_name, car_type_title, user_name, mobile, "N", idx);
-                                payment_services.insert(idx, "month", "", amounT, 0, 0, sdy, sdm, sdd, regdate);
+                                payment_services.insert(idx, "month", "", amounT, 0, 0, year, month, day, regdate);
 
                                 dismiss();
                                 Bundle args = new Bundle();

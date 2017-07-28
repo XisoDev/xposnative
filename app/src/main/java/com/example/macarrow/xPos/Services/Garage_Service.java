@@ -327,9 +327,25 @@ public class Garage_Service extends SQLiteOpenHelper {
         return cursor.getCount();
     }
 
+    public int inCarCountDay(int year, int month, int day) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM garage WHERE start_year = " + year + " AND start_month = " + month + " AND start_day = " + day + " ", null);
+        cursor.moveToFirst();
+        cursor.close();
+        return cursor.getCount();
+    }
+
     public int outCarCount(int year, int month) {
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM garage WHERE is_out = 'Y' AND start_year = " + year + " AND start_month = " + month + " ", null);
+        cursor.moveToFirst();
+        cursor.close();
+        return cursor.getCount();
+    }
+
+    public int outCarCountDay(int year, int month, int day) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM garage WHERE is_out = 'Y' AND start_year = " + year + " AND start_month = " + month + " AND start_day = " + day + " ", null);
         cursor.moveToFirst();
         cursor.close();
         return cursor.getCount();
