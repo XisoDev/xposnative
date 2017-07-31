@@ -12,6 +12,7 @@ import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -36,6 +37,8 @@ import com.example.macarrow.xPos.fragment.Payment.Payment_Discount;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 public class MainActivity extends Activity {
@@ -56,12 +59,12 @@ public class MainActivity extends Activity {
 
         UsbDevice udevice = (UsbDevice) getIntent().getParcelableExtra(UsbManager.EXTRA_DEVICE);
         UsbManager manager = (UsbManager) getSystemService(Context.USB_SERVICE);
-//        HashMap<String,UsbDevice> deviceList = manager.getDeviceList();
-//        Iterator<UsbDevice> deviceIterator = deviceList.values().iterator();
-//        while(deviceIterator.hasNext()) {
-//            UsbDevice device = deviceIterator.next();
-//            Log.d("xPos", "deviceIterator : " + deviceIterator + ", device : " + device);
-//        }
+        HashMap<String,UsbDevice> deviceList = manager.getDeviceList();
+        Iterator<UsbDevice> deviceIterator = deviceList.values().iterator();
+        while(deviceIterator.hasNext()) {
+            UsbDevice device = deviceIterator.next();
+            Log.d("xPos", "deviceIterator : " + deviceIterator + ", device : " + device);
+        }
 
         // 상태바 없애기
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);

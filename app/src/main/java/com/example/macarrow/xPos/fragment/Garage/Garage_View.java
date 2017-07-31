@@ -102,7 +102,7 @@ public class Garage_View extends DialogFragment {
             Cancel_out.setVisibility(view.VISIBLE);
         }
 
-        Result_charge.setText(result_charge + "원");
+        Result_charge.setText(String.format("%,d원",result_charge));
 
         String CarNum = "";
         CarNum += "입출차 정보 열람 - [ 차량번호 : ";
@@ -126,9 +126,9 @@ public class Garage_View extends DialogFragment {
             Month_idx.setText("일차고객");
         }
 
-        Discount_cooper.setText(discount_cooper + "원");
-        Discount_self.setText(discount_self + "원");
-        Pay_amount.setText(pay_amount + "원");
+        Discount_cooper.setText(String.format("%,d원",discount_cooper));
+        Discount_self.setText(String.format("%,d원",discount_self));
+        Pay_amount.setText(String.format("%,d원",pay_amount));
 
         if (pay_amount > 0 && month_idx == 0) {
             cancelPay.setVisibility(View.VISIBLE);
@@ -155,9 +155,9 @@ public class Garage_View extends DialogFragment {
 
         Car_type_title.setText(car_type_title);
         Minute_free.setText(minute_free + "분");
-        Basic_amount.setText(basic_amount + "원");
+        Basic_amount.setText(String.format("%,d원",basic_amount));
         Basic_minute.setText(basic_minute + "분");
-        Amount_unit.setText(amount_unit + "원");
+        Amount_unit.setText(String.format("%,d원",amount_unit));
         Minute_unit.setText(minute_unit + "분");
 
         if (isOut.equals("Y")) {

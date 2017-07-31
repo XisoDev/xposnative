@@ -26,7 +26,7 @@ import android.widget.Toast;
 public class Xserial extends Activity {
 
     public static String TAG = "Xserial";
-    public static String DEVICE_NAME = "/dev/bus/usb/001/011";
+    public static String DEVICE_NAME = "/dev/bus/usb/001/006";
     public static int END_POINT_SEND = 1;
     public static int END_POINT_RECEIVE = 0;
     private static final int TIMEOUT = 3500;

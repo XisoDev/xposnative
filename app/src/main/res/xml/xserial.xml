@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <usb-device vendor-id = "1027" product-id="24577"/>
-
     <usb-device vendor-id = "3034" product-id="33106"/>
     <usb-device vendor-id = "3823" product-id="1"/>
     <usb-device vendor-id = "3034" product-id="46880"/>

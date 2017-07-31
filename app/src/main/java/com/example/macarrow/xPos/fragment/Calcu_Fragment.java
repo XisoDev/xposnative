@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
@@ -356,8 +357,8 @@ public class Calcu_Fragment extends Fragment implements View.OnClickListener {
             builder.setNegativeButton("닫기", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-//                    FragmentManager fm = getFragmentManager();
-//                    fm.beginTransaction().replace(R.id.content_fragment, new Calcu_Fragment()).commit();
+                    FragmentManager fm = getFragmentManager();
+                    fm.beginTransaction().replace(R.id.content_fragment, new Calcu_Fragment()).commit();
                 }
             });
             builder.setView(view);
