@@ -16,169 +16,169 @@
         />
     <LinearLayout
         android:layout_width="515px"
-        android:layout_height="35px"
+        android:layout_height="60px"
         android:orientation="horizontal"
         >
         <TextView
             android:layout_width="100px"
-            android:layout_height="35px"
+            android:layout_height="60px"
             android:text="매출"
             android:gravity="center"
             android:textStyle="bold"
             android:textColor="@android:color/black"
-            android:textSize="16px"
+            android:textSize="20px"
             android:background="#f3f3f3"
             />
         <TextView
             android:id="@+id/total_amounts"
             android:layout_width="157px"
-            android:layout_height="35px"
+            android:layout_height="60px"
             android:text="0"
-            android:textSize="16px"
+            android:textSize="20px"
             android:gravity="center"
             android:background="#f3f3f3"
             />
         <TextView
             android:layout_width="100px"
-            android:layout_height="35px"
+            android:layout_height="60px"
             android:text="월차"
             android:gravity="center"
             android:textStyle="bold"
             android:textColor="@android:color/black"
-            android:textSize="16px"
+            android:textSize="20px"
             android:background="#e5e5e5"
             />
         <TextView
             android:id="@+id/month_amounts"
             android:layout_width="158px"
-            android:layout_height="35px"
+            android:layout_height="60px"
             android:text="0"
-            android:textSize="16px"
+            android:textSize="20px"
             android:gravity="center"
             android:background="#e5e5e5"
             />
     </LinearLayout>
     <LinearLayout
         android:layout_width="515px"
-        android:layout_height="35px"
+        android:layout_height="60px"
         android:orientation="horizontal"
         >
         <TextView
             android:layout_width="100px"
-            android:layout_height="35px"
+            android:layout_height="60px"
             android:text="미수"
             android:gravity="center"
             android:textStyle="bold"
             android:textColor="@android:color/black"
-            android:textSize="16px"
+            android:textSize="20px"
             />
         <TextView
             android:id="@+id/receivable"
             android:layout_width="157px"
-            android:layout_height="35px"
+            android:layout_height="60px"
             android:text="0"
-            android:textSize="16px"
+            android:textSize="20px"
             android:gravity="center"
             />
         <TextView
             android:layout_width="100px"
-            android:layout_height="35px"
+            android:layout_height="60px"
             android:text="일반"
             android:gravity="center"
             android:textStyle="bold"
             android:textColor="@android:color/black"
-            android:textSize="16px"
+            android:textSize="20px"
             />
         <TextView
             android:id="@+id/nomal_amounts"
             android:layout_width="158px"
-            android:layout_height="35px"
+            android:layout_height="60px"
             android:text="0"
-            android:textSize="16px"
+            android:textSize="20px"
             android:gravity="center"
             />
     </LinearLayout>
     <LinearLayout
         android:layout_width="515px"
-        android:layout_height="35px"
+        android:layout_height="60px"
         android:orientation="horizontal"
         >
         <TextView
             android:layout_width="100px"
-            android:layout_height="35px"
+            android:layout_height="60px"
             android:text="결제"
             android:gravity="center"
             android:textStyle="bold"
             android:textColor="@android:color/black"
-            android:textSize="16px"
+            android:textSize="20px"
             android:background="#f3f3f3"
             />
         <TextView
             android:id="@+id/pay_amounts"
             android:layout_width="157px"
-            android:layout_height="35px"
+            android:layout_height="60px"
             android:text="0"
-            android:textSize="16px"
+            android:textSize="20px"
             android:gravity="center"
             android:background="#f3f3f3"
             />
         <TextView
             android:layout_width="100px"
-            android:layout_height="35px"
+            android:layout_height="60px"
             android:text="할인"
             android:gravity="center"
             android:textStyle="bold"
             android:textColor="@android:color/black"
-            android:textSize="16px"
+            android:textSize="20px"
             android:background="#e5e5e5"
             />
         <TextView
             android:id="@+id/dc_coopers"
             android:layout_width="159px"
-            android:layout_height="35px"
+            android:layout_height="60px"
             android:text="0"
-            android:textSize="16px"
+            android:textSize="20px"
             android:gravity="center"
             android:background="#e5e5e5"
             />
     </LinearLayout>
     <LinearLayout
         android:layout_width="515px"
-        android:layout_height="36px"
+        android:layout_height="60px"
         android:orientation="horizontal"
         >
         <TextView
             android:layout_width="100px"
-            android:layout_height="36px"
+            android:layout_height="60px"
             android:text="입차"
             android:gravity="center"
             android:textStyle="bold"
             android:textColor="@android:color/black"
-            android:textSize="16px"
+            android:textSize="20px"
             />
         <TextView
             android:id="@+id/in_car_counts"
             android:layout_width="157px"
             android:layout_height="36px"
             android:text="0"
-            android:textSize="16px"
+            android:textSize="20px"
             android:gravity="center"
             />
         <TextView
             android:layout_width="100px"
-            android:layout_height="36px"
+            android:layout_height="60px"
             android:text="출차"
             android:gravity="center"
             android:textStyle="bold"
             android:textColor="@android:color/black"
-            android:textSize="16px"
+            android:textSize="20px"
             />
         <TextView
             android:id="@+id/out_car_counts"
             android:layout_width="158px"
-            android:layout_height="36px"
+            android:layout_height="60px"
             android:text="0"
-            android:textSize="16px"
+            android:textSize="20px"
             android:gravity="center"
             />
     </LinearLayout>

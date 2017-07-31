@@ -85,11 +85,14 @@ public class MonthViewAdapter extends BaseAdapter {
         ed += (Integer) list.get(position).get("end_date_d");
         item.endDate.setText(ed+"");
         // 월차금액
-        item.amounT.setText((Integer) list.get(position).get("amount") + "원");
+        int amount = (Integer) list.get(position).get("amount");
+        item.amounT.setText(String.format("%,d원",amount));
         // 결제금액
-        item.payAmount.setText((Integer) list.get(position).get("pay_amount") + "원");
+        int pay_amount = (Integer) list.get(position).get("pay_amount");
+        item.payAmount.setText(String.format("%,d원",pay_amount));
         // 미수금액
-        item.outstandingAmount.setText((Integer) list.get(position).get("amount")-(Integer) list.get(position).get("pay_amount")+ "원");
+        int outstandingAmount = (Integer) list.get(position).get("amount")-(Integer) list.get(position).get("pay_amount");
+        item.outstandingAmount.setText(String.format("%,d원",outstandingAmount));
         // 차종
         item.carName.setText((String) list.get(position).get("car_name"));
         // 차주명

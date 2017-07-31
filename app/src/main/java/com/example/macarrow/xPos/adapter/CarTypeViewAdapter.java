@@ -59,9 +59,11 @@ public class CarTypeViewAdapter extends BaseAdapter {
 
         item.carTypeTitle.setText((String) list.get(position).get("car_type_title"));
         item.minuteFree.setText((int) list.get(position).get("minute_free")+"분");
-        item.basicAmount.setText((int) list.get(position).get("basic_amount")+"원");
+        int basic_amount = (int) list.get(position).get("basic_amount");
+        item.basicAmount.setText(String.format("%,d원",basic_amount));
         item.basicMinute.setText((int) list.get(position).get("basic_minute")+"분");
-        item.amountUnit.setText((int) list.get(position).get("amount_unit")+"원");
+        int amount_unit = (int) list.get(position).get("amount_unit");
+        item.amountUnit.setText(String.format("%,d원",amount_unit));
         item.minuteUnit.setText((int) list.get(position).get("minute_unit")+"분");
 
         return convertView;

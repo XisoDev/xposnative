@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="107px"
-    android:layout_height="80px"
+    android:layout_height="160px"
     android:orientation="vertical"
     >
     <View
@@ -12,24 +12,24 @@
     <TextView
         android:id="@+id/calendar_day"
         android:layout_width="107px"
-        android:layout_height="44px"
-        android:textSize="14px"
+        android:layout_height="89px"
+        android:textSize="20px"
         android:paddingTop="8px"
         android:paddingLeft="10px"
         />
     <TextView
         android:id="@+id/month_in_cnt"
         android:layout_width="107px"
-        android:layout_height="15px"
-        android:textSize="10px"
+        android:layout_height="30px"
+        android:textSize="16px"
         android:paddingLeft="10px"
         />
     <TextView
         android:id="@+id/month_out_cnt"
         android:layout_width="107px"
-        android:layout_height="15px"
-        android:textSize="10px"
+        android:layout_height="30px"
+        android:textSize="16px"
         android:paddingLeft="10px"
-        android:layout_marginBottom="5px"
+        android:layout_marginBottom="10px"
         />
 </LinearLayout>

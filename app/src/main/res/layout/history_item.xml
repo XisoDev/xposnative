@@ -2,7 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="829px"
-    android:layout_height="58px"
+    android:layout_height="70px"
+    android:paddingTop="10px"
+    android:paddingBottom="10px"
     >
     <TextView
         android:id="@+id/car_num"
@@ -12,7 +14,7 @@
         android:text="차량번호"
         android:gravity="center"
         android:textColor="@android:color/black"
-        android:textSize="16px"
+        android:textSize="20px"
         />
     <TextView
         android:id="@+id/start_date"
@@ -22,7 +24,7 @@
         android:text="입차시간"
         android:gravity="center"
         android:textColor="@android:color/black"
-        android:textSize="16px"
+        android:textSize="15px"
         />
     <TextView
         android:id="@+id/end_date"
@@ -32,7 +34,7 @@
         android:text="출차시간"
         android:gravity="center"
         android:textColor="@android:color/black"
-        android:textSize="16px"
+        android:textSize="15px"
         />
     <LinearLayout
         android:layout_width="match_parent"
@@ -47,14 +49,14 @@
             android:text="이용요금"
             android:gravity="center"
             android:textColor="@android:color/black"
-            android:textSize="16px"
+            android:textSize="20px"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="원"
             android:textColor="@android:color/black"
-            android:textSize="16px"
+            android:textSize="20px"
             />
     </LinearLayout>
     <TextView
@@ -65,7 +67,7 @@
         android:text="할인금액"
         android:gravity="center"
         android:textColor="@android:color/black"
-        android:textSize="16px"
+        android:textSize="20px"
         />
     <TextView
         android:id="@+id/pay_amount"
@@ -75,7 +77,7 @@
         android:text="결제금액"
         android:gravity="center"
         android:textColor="@android:color/black"
-        android:textSize="16px"
+        android:textSize="20px"
         />
     <TextView
         android:id="@+id/in_status"
@@ -85,7 +87,7 @@
         android:text="입차"
         android:gravity="center"
         android:textColor="@android:color/black"
-        android:textSize="16px"
+        android:textSize="20px"
         />
     <TextView
         android:id="@+id/pay_status"
@@ -95,6 +97,6 @@
         android:gravity="center"
         android:text="결제"
         android:textColor="@android:color/black"
-        android:textSize="16px"
+        android:textSize="20px"
         />
 </LinearLayout>

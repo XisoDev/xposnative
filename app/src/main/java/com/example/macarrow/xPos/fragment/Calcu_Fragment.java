@@ -144,12 +144,12 @@ public class Calcu_Fragment extends Fragment implements View.OnClickListener {
         int in_car_counts = garage_service.inCarCount(mThisMonthCalendar.get(Calendar.YEAR), (mThisMonthCalendar.get(Calendar.MONTH) + 1));
         int out_car_counts = garage_service.outCarCount(mThisMonthCalendar.get(Calendar.YEAR), (mThisMonthCalendar.get(Calendar.MONTH) + 1));
 
-        Total_amounts.setText(total_amounts+"원");
-        Nomal_amounts.setText(nomal_amounts + "원");
-        Month_amounts.setText(month_amounts+"원");
-        Dc_coopers.setText(cooper_amounts+"원");
-        Pay_amounts.setText(pay_amounts+"원");
-        Receivable.setText((total_amounts-pay_amounts-cooper_amounts)+"원");
+        Total_amounts.setText(String.format("%,d원", total_amounts));
+        Nomal_amounts.setText(String.format("%,d원", nomal_amounts));
+        Month_amounts.setText(String.format("%,d원", month_amounts));
+        Dc_coopers.setText(String.format("%,d원", cooper_amounts));
+        Pay_amounts.setText(String.format("%,d원", pay_amounts));
+        Receivable.setText(String.format("%,d원", total_amounts-pay_amounts-cooper_amounts));
         In_car_counts.setText(in_car_counts+"대");
         Out_car_counts.setText(out_car_counts+"대");
 
@@ -283,9 +283,9 @@ public class Calcu_Fragment extends Fragment implements View.OnClickListener {
                 int pay_amount = payment_services.payAmountSumDay(mThisMonthCalendar.get(Calendar.YEAR), (mThisMonthCalendar.get(Calendar.MONTH) + 1), mDay);
 
                 if (day.isInMonth() || (mThisMonthCalendar.get(Calendar.MONTH) + 1) == month) {
-                    dayViewHolder.Total_amount.setText("매출"+total_amount+"원");
-                    dayViewHolder.Receivable.setText("미수"+(total_amount-pay_amount)+"원");
-                    dayViewHolder.Pay_amount.setText("결제"+pay_amount+"원");
+                    dayViewHolder.Total_amount.setText(String.format("매출 %,d원", total_amount));
+                    dayViewHolder.Receivable.setText(String.format("미수 %,d원", total_amount-pay_amount));
+                    dayViewHolder.Pay_amount.setText(String.format("결제 %,d원", pay_amount));
                 } if (total_amount <= 0) {
                     dayViewHolder.Total_amount.setText("");
                     dayViewHolder.Receivable.setText("");
@@ -344,20 +344,20 @@ public class Calcu_Fragment extends Fragment implements View.OnClickListener {
             int in_car_counts = garage_service.inCarCountDay(year, month, mDay);
             int out_car_counts = garage_service.outCarCountDay(year, month, mDay);
 
-            Total_amounts.setText(total_amounts+"원");
-            Nomal_amounts.setText(nomal_amounts+"원");
-            Month_amounts.setText(month_amounts+"원");
-            Dc_coopers.setText(cooper_amounts+"원");
-            Pay_amounts.setText(pay_amounts+"원");
-            Receivable.setText((total_amounts-pay_amounts-cooper_amounts)+"원");
+            Total_amounts.setText(String.format("%,d원", total_amounts));
+            Nomal_amounts.setText(String.format("%,d원", nomal_amounts));
+            Month_amounts.setText(String.format("%,d원", month_amounts));
+            Dc_coopers.setText(String.format("%,d원", cooper_amounts));
+            Pay_amounts.setText(String.format("%,d원", pay_amounts));
+            Receivable.setText(String.format("%,d원", total_amounts-pay_amounts-cooper_amounts));
             In_car_counts.setText(in_car_counts+"대");
             Out_car_counts.setText(out_car_counts+"대");
 
             builder.setNegativeButton("닫기", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    FragmentManager fm = getFragmentManager();
-                    fm.beginTransaction().replace(R.id.content_fragment, new Calcu_Fragment()).commit();
+//                    FragmentManager fm = getFragmentManager();
+//                    fm.beginTransaction().replace(R.id.content_fragment, new Calcu_Fragment()).commit();
                 }
             });
             builder.setView(view);

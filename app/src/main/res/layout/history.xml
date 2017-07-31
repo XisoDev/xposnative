@@ -6,7 +6,7 @@
     >
     <LinearLayout
         android:layout_width="829px"
-        android:layout_height="38px"
+        android:layout_height="70px"
         android:orientation="horizontal"
         >
         <TextView
@@ -16,7 +16,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="전체"
-            android:textSize="15px"
+            android:textSize="25px"
             android:textColor="#ffdf5f"
             android:background="#4c4c4c"
             />
@@ -27,7 +27,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="입차중"
-            android:textSize="15px"
+            android:textSize="25px"
             android:textColor="#ffdf5f"
             android:background="#4c4c4c"
             />
@@ -38,7 +38,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="정상출차"
-            android:textSize="15px"
+            android:textSize="25px"
             android:textColor="#ffdf5f"
             android:background="#4c4c4c"
             />
@@ -49,7 +49,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="미결제"
-            android:textSize="15px"
+            android:textSize="25px"
             android:textColor="#ffdf5f"
             android:background="#4c4c4c"
             />
@@ -60,7 +60,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="입차취소"
-            android:textSize="15px"
+            android:textSize="25px"
             android:textColor="#ffdf5f"
             android:background="#4c4c4c"
             />
@@ -79,7 +79,7 @@
             android:gravity="center_vertical|center"
             android:layout_gravity="center"
             android:layout_marginLeft="184px"
-            android:textSize="16px"
+            android:textSize="25px"
             android:textColor="@android:color/black"
             android:textStyle="bold"
             />
@@ -163,6 +163,7 @@
             android:textSize="16px"
             />
     </LinearLayout>
+
     <ListView
         android:id="@+id/history_list"
         android:layout_width="match_parent"

@@ -7,7 +7,7 @@
     >
     <LinearLayout
         android:layout_width="829px"
-        android:layout_height="38px"
+        android:layout_height="70px"
         android:orientation="horizontal"
         >
         <TextView
@@ -17,7 +17,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="업체목록"
-            android:textSize="15px"
+            android:textSize="25px"
             android:textColor="#ffdf5f"
             android:background="#4c4c4c"
             />
@@ -27,8 +27,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="업체별 이용기록 (기간)"
-            android:textSize="15px"
+            android:text="기간별 이용기록"
+            android:textSize="25px"
             android:textColor="#ffdf5f"
             android:background="#4c4c4c"
             />
@@ -38,8 +38,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="업체별 이용기록 (일자)"
-            android:textSize="15px"
+            android:text="일자별 이용기록"
+            android:textSize="25px"
             android:textColor="#ffdf5f"
             android:background="#4c4c4c"
             />
@@ -99,7 +99,7 @@
     <ListView
         android:id="@+id/cooper_list"
         android:layout_width="829px"
-        android:layout_height="580px"
+        android:layout_height="550px"
         />
     <com.melnykov.fab.FloatingActionButton
         android:id="@+id/fab"

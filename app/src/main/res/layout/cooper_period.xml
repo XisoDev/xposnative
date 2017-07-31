@@ -6,7 +6,7 @@
     >
     <LinearLayout
         android:layout_width="829px"
-        android:layout_height="38px"
+        android:layout_height="70px"
         android:orientation="horizontal"
         >
         <TextView
@@ -16,7 +16,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="업체목록"
-            android:textSize="15px"
+            android:textSize="25px"
             android:textColor="#ffdf5f"
             android:background="#4c4c4c"
             />
@@ -26,8 +26,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="업체별 이용기록 (기간)"
-            android:textSize="15px"
+            android:text="기간별 이용기록"
+            android:textSize="25px"
             android:textColor="#ffdf5f"
             android:background="#4c4c4c"
             />
@@ -37,8 +37,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="업체별 이용기록 (일자)"
-            android:textSize="15px"
+            android:text="일자별 이용기록"
+            android:textSize="25px"
             android:textColor="#ffdf5f"
             android:background="#4c4c4c"
             />
@@ -56,7 +56,7 @@
             android:hint="업체명으로 검색"
             android:gravity="center_vertical|center"
             android:layout_gravity="center"
-            android:textSize="16px"
+            android:textSize="25px"
             android:textColor="@android:color/black"
             android:textStyle="bold"
             />
@@ -66,7 +66,8 @@
             android:layout_height="39px"
             android:gravity="center"
             android:text="2017. 07. 01"
-            android:textSize="16px"
+            android:textSize="20px"
+            android:layout_marginLeft="10px"
             />
         <TextView
             android:id="@+id/at"
@@ -75,6 +76,7 @@
             android:gravity="center"
             android:text="에서"
             android:textSize="16px"
+            android:layout_marginLeft="10px"
             />
         <TextView
             android:id="@+id/search_end"
@@ -82,7 +84,8 @@
             android:layout_height="39px"
             android:gravity="center"
             android:text="2017. 07. 30"
-            android:textSize="16px"
+            android:textSize="20px"
+            android:layout_marginLeft="10px"
             />
         <Button
             android:id="@+id/search_btn"
@@ -90,9 +93,10 @@
             android:layout_height="39px"
             android:text="검색"
             android:background="@drawable/search_shape"
-            android:textSize="16px"
+            android:textSize="20px"
             android:textColor="@android:color/black"
             android:textStyle="bold"
+            android:layout_marginLeft="10px"
             />
     </LinearLayout>
     <LinearLayout

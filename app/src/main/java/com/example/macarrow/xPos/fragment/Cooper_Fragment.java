@@ -178,7 +178,7 @@ public class Cooper_Fragment extends Fragment {
                                 Search.setText("");
 
                                 int cooperSum = garage_service.cooperPsum(coop_title, startDate, endDate);
-                                Cooper_sum.setText(cooperSum+"원");
+                                Cooper_sum.setText(String.format("%,d원", cooperSum));
 
                                 cooperList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                     @Override
@@ -275,7 +275,7 @@ public class Cooper_Fragment extends Fragment {
                                 SearchDay.setText("");
 
                                 int cooperSum = garage_service.cooperDsum(coop_title, endDate);
-                                Cooper_sum.setText(cooperSum+"원");
+                                Cooper_sum.setText(String.format("%,d원", cooperSum));
 
                                 cooperDayList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                     @Override

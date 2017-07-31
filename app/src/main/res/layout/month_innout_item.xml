@@ -4,6 +4,8 @@
     android:orientation="horizontal"
     android:layout_width="415px"
     android:layout_height="58px"
+    android:paddingTop="10px"
+    android:paddingBottom="10px"
     >
     <TextView
         android:id="@+id/month_num"
@@ -12,7 +14,7 @@
         android:layout_weight="1"
         android:gravity="center"
         android:textColor="@android:color/black"
-        android:textSize="16px"
+        android:textSize="20px"
         />
     <TextView
         android:id="@+id/month_status"
@@ -21,6 +23,6 @@
         android:layout_weight="2"
         android:gravity="center"
         android:textColor="@android:color/black"
-        android:textSize="16px"
+        android:textSize="20px"
         />
 </LinearLayout>

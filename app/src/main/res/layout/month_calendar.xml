@@ -7,7 +7,7 @@
     >
     <LinearLayout
         android:layout_width="829px"
-        android:layout_height="38px"
+        android:layout_height="70px"
         android:orientation="horizontal"
         >
         <TextView
@@ -17,7 +17,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="월차목록"
-            android:textSize="15px"
+            android:textSize="25px"
             android:textColor="#ffdf5f"
             android:background="#4c4c4c"
             />
@@ -28,7 +28,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="만료목록"
-            android:textSize="15px"
+            android:textSize="25px"
             android:textColor="#ffdf5f"
             android:background="#4c4c4c"
             />
@@ -39,7 +39,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="대기목록"
-            android:textSize="15px"
+            android:textSize="25px"
             android:textColor="#ffdf5f"
             android:background="#4c4c4c"
             />
@@ -50,43 +50,42 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="월차달력"
-            android:textSize="15px"
+            android:textSize="25px"
             android:textColor="#ffdf5f"
             android:background="#4c4c4c"
             />
     </LinearLayout>
     <LinearLayout
         android:layout_width="829px"
-        android:layout_height="55px"
+        android:layout_height="70px"
         android:paddingLeft="64px"
-        android:layout_marginTop="64px"
         android:orientation="horizontal"
         >
         <TextView
             android:id="@+id/dateTextView"
             android:layout_width="wrap_content"
-            android:layout_height="55px"
+            android:layout_height="70px"
             android:gravity="center_vertical"
-            android:textSize="25px"
+            android:textSize="30px"
             android:textColor="@android:color/black"
             android:text="Agust 2017"
             />
     </LinearLayout>
     <LinearLayout
         android:layout_width="829px"
-        android:layout_height="23px"
+        android:layout_height="40px"
         android:orientation="vertical"
         >
         <LinearLayout
             android:layout_width="829px"
-            android:layout_height="23px"
+            android:layout_height="40px"
             android:orientation="horizontal"
             android:paddingLeft="64px"
             >
             <TextView
                 android:layout_width="101px"
-                android:layout_height="23px"
-                android:textSize="11px"
+                android:layout_height="40px"
+                android:textSize="16px"
                 android:text="일요일"
                 android:paddingLeft="10px"
                 android:gravity="center_vertical"
@@ -94,8 +93,8 @@
                 />
             <TextView
                 android:layout_width="100px"
-                android:layout_height="23px"
-                android:textSize="11px"
+                android:layout_height="40px"
+                android:textSize="16px"
                 android:text="월요일"
                 android:paddingLeft="10px"
                 android:gravity="center_vertical"
@@ -103,8 +102,8 @@
                 />
             <TextView
                 android:layout_width="100px"
-                android:layout_height="23px"
-                android:textSize="11px"
+                android:layout_height="40px"
+                android:textSize="16px"
                 android:text="화요일"
                 android:paddingLeft="10px"
                 android:gravity="center_vertical"
@@ -112,16 +111,17 @@
                 />
             <TextView
                 android:layout_width="100px"
-                android:layout_height="23px"
-                android:textSize="11px"
+                android:layout_height="40px"
+                android:textSize="16px"
                 android:text="수요일"
                 android:paddingLeft="10px"
+                android:gravity="center_vertical"
                 android:textColor="@android:color/black"
                 />
             <TextView
                 android:layout_width="100px"
-                android:layout_height="23px"
-                android:textSize="11px"
+                android:layout_height="40px"
+                android:textSize="16px"
                 android:text="목요일"
                 android:paddingLeft="10px"
                 android:gravity="center_vertical"
@@ -129,8 +129,8 @@
                 />
             <TextView
                 android:layout_width="100px"
-                android:layout_height="23px"
-                android:textSize="11px"
+                android:layout_height="40px"
+                android:textSize="16px"
                 android:text="금요일"
                 android:paddingLeft="10px"
                 android:gravity="center_vertical"
@@ -138,8 +138,8 @@
                 />
             <TextView
                 android:layout_width="100px"
-                android:layout_height="23px"
-                android:textSize="11px"
+                android:layout_height="40px"
+                android:textSize="16px"
                 android:text="토요일"
                 android:paddingLeft="10px"
                 android:gravity="center_vertical"
@@ -155,7 +155,7 @@
         />
     <LinearLayout
         android:layout_width="829px"
-        android:layout_height="484px"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="5px"
         >
@@ -169,7 +169,7 @@
         <GridView
             android:id="@+id/calGrid"
             android:layout_width="701px"
-            android:layout_height="488px"
+            android:layout_height="wrap_content"
             android:layout_marginTop="9px"
             android:listSelector="#e5e5e5"
             android:numColumns="7"

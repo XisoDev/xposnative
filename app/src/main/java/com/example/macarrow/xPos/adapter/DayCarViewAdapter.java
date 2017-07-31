@@ -50,7 +50,8 @@ public class DayCarViewAdapter extends BaseAdapter {
         }
 
         item.carTypeTitle.setText((String) list.get(position).get("car_type_title"));
-        item.basicAmount.setText((int) list.get(position).get("basic_amount")+"원");
+        int basic_amount = (int) list.get(position).get("basic_amount");
+        item.basicAmount.setText(String.format("%,d원",basic_amount));
 
         return convertView;
     }

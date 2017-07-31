@@ -120,11 +120,12 @@ public class HistoryViewAdapter extends BaseAdapter {
         if(discountCooper+discountSelf <= 0) {
             item.discounT.setText("0원");
         } else {
-            item.discounT.setText(discountCooper+discountSelf+"원");
+            item.discounT.setText(String.format("%,d원",discountCooper+discountSelf));
         }
 
         // 결제 금액
-        item.payAmount.setText((Integer) list.get(position).get("pay_amount") + "원");
+        int pay_amount = (Integer) list.get(position).get("pay_amount");
+        item.payAmount.setText(String.format("%,d원",pay_amount));
 
         // 입차 구분
         String isCancel = (String) list.get(position).get("is_cancel");

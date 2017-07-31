@@ -6,7 +6,7 @@
     >
     <LinearLayout
         android:layout_width="829px"
-        android:layout_height="38px"
+        android:layout_height="70px"
         android:orientation="horizontal"
         >
         <TextView
@@ -16,7 +16,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="일반차설정"
-            android:textSize="15px"
+            android:textSize="25px"
             android:textColor="#ffdf5f"
             android:background="#4c4c4c"
             />
@@ -27,7 +27,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="일차설정"
-            android:textSize="15px"
+            android:textSize="25px"
             android:textColor="#ffdf5f"
             android:background="#4c4c4c"
             />
@@ -60,7 +60,7 @@
     <ListView
         android:id="@+id/cartype_list"
         android:layout_width="829px"
-        android:layout_height="580px"
+        android:layout_height="550px"
         />
     <com.melnykov.fab.FloatingActionButton
         android:id="@+id/fab"
